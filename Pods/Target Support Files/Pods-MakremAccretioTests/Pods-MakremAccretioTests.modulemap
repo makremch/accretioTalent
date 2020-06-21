@@ -1,0 +1,6 @@
+framework module Pods_MakremAccretioTests {
+  umbrella header "Pods-MakremAccretioTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

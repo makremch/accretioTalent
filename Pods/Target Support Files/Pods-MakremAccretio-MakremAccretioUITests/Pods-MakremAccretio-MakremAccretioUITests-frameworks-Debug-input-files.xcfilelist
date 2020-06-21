@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/Promises/Promise.framework
+${BUILT_PRODUCTS_DIR}/SwiftyMimeTypes/SwiftyMimeTypes.framework

@@ -1,0 +1,1450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19F0B022D1A9099D35513DA2 /* Pods_MakremAccretio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */; };
+		485FE8B8ED9E585F31F7B467 /* Pods_MakremAccretio_MakremAccretioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */; };
+		F15DFF70CA376D5145EE16D5 /* Pods_MakremAccretioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */; };
+		F4216A1C248EC1C100FAECD5 /* radar_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */; };
+		F4216A1E248EC1FB00FAECD5 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1D248EC1FB00FAECD5 /* RadarMarkerView.xib */; };
+		F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */; };
+		F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42473A22487D92C00B27C6F /* CompetenceAPI.swift */; };
+		F445953F249D508000512E17 /* CompetenceCollabForLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */; };
+		F44614D8240C098E00D4F567 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614D7240C098E00D4F567 /* UserEndpoint.swift */; };
+		F44614EE240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614E8240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift */; };
+		F44614EF240D16E900D4F567 /* MobiliteCollaborateurWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614E9240D16E900D4F567 /* MobiliteCollaborateurWorker.swift */; };
+		F44614F0240D16E900D4F567 /* MobiliteCollaborateurRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614EA240D16E900D4F567 /* MobiliteCollaborateurRouter.swift */; };
+		F44614F1240D16E900D4F567 /* MobiliteCollaborateurModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614EB240D16E900D4F567 /* MobiliteCollaborateurModels.swift */; };
+		F44614F2240D16E900D4F567 /* MobiliteCollaborateurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614EC240D16E900D4F567 /* MobiliteCollaborateurViewController.swift */; };
+		F44614F3240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614ED240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift */; };
+		F44614F5240D4F8A00D4F567 /* MobiliteCollaborateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614F4240D4F8A00D4F567 /* MobiliteCollaborateur.swift */; };
+		F44614FD240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614F7240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift */; };
+		F44614FE240EAF1E00D4F567 /* MobiliteCollaborateurDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614F8240EAF1E00D4F567 /* MobiliteCollaborateurDetailsWorker.swift */; };
+		F44614FF240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614F9240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift */; };
+		F4461500240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614FA240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift */; };
+		F4461501240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614FB240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift */; };
+		F4461502240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614FC240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift */; };
+		F4461504240FF37600D4F567 /* TalentEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4461503240FF37600D4F567 /* TalentEndpoint.swift */; };
+		F47CA655246AABC000C6ACB1 /* MenuFormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */; };
+		F47CA656246AABC000C6ACB1 /* MenuFormationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */; };
+		F47CA657246AABC000C6ACB1 /* MenuFormationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */; };
+		F47CA658246AABC000C6ACB1 /* MenuFormationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA652246AABC000C6ACB1 /* MenuFormationModels.swift */; };
+		F47CA659246AABC000C6ACB1 /* MenuFormationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA653246AABC000C6ACB1 /* MenuFormationViewController.swift */; };
+		F47CA65A246AABC000C6ACB1 /* MenuFormationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA654246AABC000C6ACB1 /* MenuFormationInteractor.swift */; };
+		F47CA65C246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA65B246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift */; };
+		F47CA670246AE12100C6ACB1 /* CatalogueFormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA66A246AE12100C6ACB1 /* CatalogueFormationPresenter.swift */; };
+		F47CA671246AE12100C6ACB1 /* CatalogueFormationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA66B246AE12100C6ACB1 /* CatalogueFormationWorker.swift */; };
+		F47CA672246AE12100C6ACB1 /* CatalogueFormationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA66C246AE12100C6ACB1 /* CatalogueFormationRouter.swift */; };
+		F47CA673246AE12100C6ACB1 /* CatalogueFormationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA66D246AE12100C6ACB1 /* CatalogueFormationModels.swift */; };
+		F47CA674246AE12100C6ACB1 /* CatalogueFormationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA66E246AE12100C6ACB1 /* CatalogueFormationViewController.swift */; };
+		F47CA675246AE12100C6ACB1 /* CatalogueFormationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA66F246AE12100C6ACB1 /* CatalogueFormationInteractor.swift */; };
+		F47CA677246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA676246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift */; };
+		F47CA681246B032A00C6ACB1 /* FormationMyActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA67B246B032900C6ACB1 /* FormationMyActionPresenter.swift */; };
+		F47CA682246B032A00C6ACB1 /* FormationMyActionWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA67C246B032A00C6ACB1 /* FormationMyActionWorker.swift */; };
+		F47CA683246B032A00C6ACB1 /* FormationMyActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA67D246B032A00C6ACB1 /* FormationMyActionRouter.swift */; };
+		F47CA684246B032A00C6ACB1 /* FormationMyActionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA67E246B032A00C6ACB1 /* FormationMyActionModels.swift */; };
+		F47CA685246B032A00C6ACB1 /* FormationMyActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA67F246B032A00C6ACB1 /* FormationMyActionViewController.swift */; };
+		F47CA686246B032A00C6ACB1 /* FormationMyActionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA680246B032A00C6ACB1 /* FormationMyActionInteractor.swift */; };
+		F47CA688246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA687246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift */; };
+		F47CA68A246C586E00C6ACB1 /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA689246C586E00C6ACB1 /* PopUpWindow.swift */; };
+		F47CA6922471957200C6ACB1 /* CatalogueFormationDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA68C2471957100C6ACB1 /* CatalogueFormationDetailsPresenter.swift */; };
+		F47CA6932471957200C6ACB1 /* CatalogueFormationDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA68D2471957100C6ACB1 /* CatalogueFormationDetailsWorker.swift */; };
+		F47CA6942471957200C6ACB1 /* CatalogueFormationDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA68E2471957100C6ACB1 /* CatalogueFormationDetailsRouter.swift */; };
+		F47CA6952471957200C6ACB1 /* CatalogueFormationDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA68F2471957100C6ACB1 /* CatalogueFormationDetailsModels.swift */; };
+		F47CA6962471957200C6ACB1 /* CatalogueFormationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA6902471957100C6ACB1 /* CatalogueFormationDetailsViewController.swift */; };
+		F47CA6972471957200C6ACB1 /* CatalogueFormationDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA6912471957100C6ACB1 /* CatalogueFormationDetailsInteractor.swift */; };
+		F487DB832460E657001CA320 /* SessionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB822460E657001CA320 /* SessionAction.swift */; };
+		F487DB8524612AA2001CA320 /* CatalogueFormation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8424612AA2001CA320 /* CatalogueFormation.swift */; };
+		F487DB87246157E0001CA320 /* NewFormation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB86246157E0001CA320 /* NewFormation.swift */; };
+		F487DB8F24650AA8001CA320 /* FormationCollaborateurPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8924650AA8001CA320 /* FormationCollaborateurPresenter.swift */; };
+		F487DB9024650AA8001CA320 /* FormationCollaborateurWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8A24650AA8001CA320 /* FormationCollaborateurWorker.swift */; };
+		F487DB9124650AA8001CA320 /* FormationCollaborateurRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8B24650AA8001CA320 /* FormationCollaborateurRouter.swift */; };
+		F487DB9224650AA8001CA320 /* FormationCollaborateurModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8C24650AA8001CA320 /* FormationCollaborateurModels.swift */; };
+		F487DB9324650AA8001CA320 /* FormationCollaborateurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8D24650AA8001CA320 /* FormationCollaborateurViewController.swift */; };
+		F487DB9424650AA8001CA320 /* FormationCollaborateurInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8E24650AA8001CA320 /* FormationCollaborateurInteractor.swift */; };
+		F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB9524651429001CA320 /* FormationCollaborateur.swift */; };
+		F487DB9A24657FFC001CA320 /* DemandeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */; };
+		F4B470A0244E481700CFF242 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B4709F244E481700CFF242 /* Formation.swift */; };
+		F4B470A224569BD900CFF242 /* FormationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470A124569BD900CFF242 /* FormationAPI.swift */; };
+		F4B470D12456BF8200CFF242 /* FormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470CB2456BF8200CFF242 /* FormationPresenter.swift */; };
+		F4B470D22456BF8200CFF242 /* FormationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470CC2456BF8200CFF242 /* FormationWorker.swift */; };
+		F4B470D32456BF8200CFF242 /* FormationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470CD2456BF8200CFF242 /* FormationRouter.swift */; };
+		F4B470D42456BF8200CFF242 /* FormationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470CE2456BF8200CFF242 /* FormationModels.swift */; };
+		F4B470D52456BF8200CFF242 /* FormationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470CF2456BF8200CFF242 /* FormationViewController.swift */; };
+		F4B470D62456BF8200CFF242 /* FormationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470D02456BF8200CFF242 /* FormationInteractor.swift */; };
+		F4B5981024045B3300D0F935 /* DetailsMobilitePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5980A24045B3300D0F935 /* DetailsMobilitePresenter.swift */; };
+		F4B5981124045B3300D0F935 /* DetailsMobiliteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5980B24045B3300D0F935 /* DetailsMobiliteWorker.swift */; };
+		F4B5981224045B3300D0F935 /* DetailsMobiliteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5980C24045B3300D0F935 /* DetailsMobiliteRouter.swift */; };
+		F4B5981324045B3300D0F935 /* DetailsMobiliteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5980D24045B3300D0F935 /* DetailsMobiliteModels.swift */; };
+		F4B5981424045B3300D0F935 /* DetailsMobiliteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5980E24045B3300D0F935 /* DetailsMobiliteViewController.swift */; };
+		F4B5981524045B3300D0F935 /* DetailsMobiliteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5980F24045B3300D0F935 /* DetailsMobiliteInteractor.swift */; };
+		F4B764B1241142AA00BE3DF0 /* MobiliteCollaborateurTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B764B0241142AA00BE3DF0 /* MobiliteCollaborateurTableViewCell.swift */; };
+		F4C692CD23FD521F00980714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C692CC23FD521F00980714 /* AppDelegate.swift */; };
+		F4C692CF23FD521F00980714 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C692CE23FD521F00980714 /* SceneDelegate.swift */; };
+		F4C692D123FD521F00980714 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C692D023FD521F00980714 /* ViewController.swift */; };
+		F4C692D723FD521F00980714 /* MakremAccretio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4C692D523FD521F00980714 /* MakremAccretio.xcdatamodeld */; };
+		F4C692D923FD522000980714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C692D823FD522000980714 /* Assets.xcassets */; };
+		F4C692DC23FD522000980714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C692DA23FD522000980714 /* LaunchScreen.storyboard */; };
+		F4C692E723FD522000980714 /* MakremAccretioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C692E623FD522000980714 /* MakremAccretioTests.swift */; };
+		F4C692F223FD522100980714 /* MakremAccretioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C692F123FD522100980714 /* MakremAccretioUITests.swift */; };
+		F4C6931223FD532200980714 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6930C23FD532200980714 /* LoginPresenter.swift */; };
+		F4C6931323FD532200980714 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6930D23FD532200980714 /* LoginWorker.swift */; };
+		F4C6931423FD532200980714 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6930E23FD532200980714 /* LoginRouter.swift */; };
+		F4C6931523FD532200980714 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6930F23FD532200980714 /* LoginModels.swift */; };
+		F4C6931623FD532200980714 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6931023FD532200980714 /* LoginViewController.swift */; };
+		F4C6931723FD532200980714 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6931123FD532200980714 /* LoginInteractor.swift */; };
+		F4C6931D23FD557F00980714 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6931C23FD557F00980714 /* UserSession.swift */; };
+		F4C6931F23FD55E300980714 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6931E23FD55E300980714 /* User.swift */; };
+		F4C6932123FD560E00980714 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932023FD560E00980714 /* Employee.swift */; };
+		F4C6932323FD564E00980714 /* StatusEmployeeByManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932223FD564E00980714 /* StatusEmployeeByManager.swift */; };
+		F4C6932723FD578500980714 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932623FD578500980714 /* APIClient.swift */; };
+		F4C6932923FD590000980714 /* CompanyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932823FD590000980714 /* CompanyConfig.swift */; };
+		F4C6932B23FD7AC900980714 /* AccretioModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932A23FD7AC900980714 /* AccretioModule.swift */; };
+		F4C6932D23FDB01D00980714 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932C23FDB01D00980714 /* Constants.swift */; };
+		F4C6933023FDB62200980714 /* UserAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6932F23FDB62200980714 /* UserAPIClient.swift */; };
+		F4C6933D23FEA7ED00980714 /* MobilitePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6933723FEA7ED00980714 /* MobilitePresenter.swift */; };
+		F4C6933E23FEA7ED00980714 /* MobiliteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6933823FEA7ED00980714 /* MobiliteWorker.swift */; };
+		F4C6933F23FEA7ED00980714 /* MobiliteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6933923FEA7ED00980714 /* MobiliteRouter.swift */; };
+		F4C6934023FEA7ED00980714 /* MobiliteModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6933A23FEA7ED00980714 /* MobiliteModels.swift */; };
+		F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6933B23FEA7ED00980714 /* MobiliteViewController.swift */; };
+		F4C6934223FEA7ED00980714 /* MobiliteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6933C23FEA7ED00980714 /* MobiliteInteractor.swift */; };
+		F4C6934823FF187400980714 /* MobiliteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6934723FF187400980714 /* MobiliteAPI.swift */; };
+		F4C6934A23FF1BE700980714 /* Mobilite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6934923FF1BE700980714 /* Mobilite.swift */; };
+		F4C6934C23FFFA4E00980714 /* MobilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C6934B23FFFA4E00980714 /* MobilityTableViewCell.swift */; };
+		F4D38B2924869EA1003F2FD4 /* CompetenceCollaborateurPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2324869EA1003F2FD4 /* CompetenceCollaborateurPresenter.swift */; };
+		F4D38B2A24869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2424869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift */; };
+		F4D38B2B24869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2524869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift */; };
+		F4D38B2C24869EA1003F2FD4 /* CompetenceCollaborateurModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2624869EA1003F2FD4 /* CompetenceCollaborateurModels.swift */; };
+		F4D38B2D24869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2724869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift */; };
+		F4D38B2E24869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2824869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift */; };
+		F4D38B302486AC84003F2FD4 /* CompetenceCollab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */; };
+		F4D5B160241A424F00249390 /* MobilitePostule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D5B15F241A424F00249390 /* MobilitePostule.swift */; };
+		F4DD6B332474648B0042B062 /* FormateurCatalogueFormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B2D2474648B0042B062 /* FormateurCatalogueFormationPresenter.swift */; };
+		F4DD6B342474648B0042B062 /* FormateurCatalogueFormationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B2E2474648B0042B062 /* FormateurCatalogueFormationWorker.swift */; };
+		F4DD6B352474648B0042B062 /* FormateurCatalogueFormationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B2F2474648B0042B062 /* FormateurCatalogueFormationRouter.swift */; };
+		F4DD6B362474648B0042B062 /* FormateurCatalogueFormationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B302474648B0042B062 /* FormateurCatalogueFormationModels.swift */; };
+		F4DD6B372474648B0042B062 /* FormateurCatalogueFormationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B312474648B0042B062 /* FormateurCatalogueFormationViewController.swift */; };
+		F4DD6B382474648B0042B062 /* FormateurCatalogueFormationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */; };
+		F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */; };
+		F4F7EE072431AFBA00CDF58B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */; };
+		F4F7EE092431B02000CDF58B /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */; };
+		F4F7EE112431B56200CDF58B /* createPostulerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0B2431B56200CDF58B /* createPostulerPresenter.swift */; };
+		F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0C2431B56200CDF58B /* createPostulerWorker.swift */; };
+		F4F7EE132431B56200CDF58B /* createPostulerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0D2431B56200CDF58B /* createPostulerRouter.swift */; };
+		F4F7EE142431B56200CDF58B /* createPostulerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0E2431B56200CDF58B /* createPostulerModels.swift */; };
+		F4F7EE152431B56200CDF58B /* createPostulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0F2431B56200CDF58B /* createPostulerViewController.swift */; };
+		F4F7EE162431B56200CDF58B /* createPostulerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE102431B56200CDF58B /* createPostulerInteractor.swift */; };
+		F4F7EE61243345B900CDF58B /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE5B243345B900CDF58B /* MenuPresenter.swift */; };
+		F4F7EE62243345B900CDF58B /* MenuWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE5C243345B900CDF58B /* MenuWorker.swift */; };
+		F4F7EE63243345B900CDF58B /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE5D243345B900CDF58B /* MenuRouter.swift */; };
+		F4F7EE64243345B900CDF58B /* MenuModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE5E243345B900CDF58B /* MenuModels.swift */; };
+		F4F7EE65243345B900CDF58B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE5F243345B900CDF58B /* MenuViewController.swift */; };
+		F4F7EE66243345B900CDF58B /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE60243345B900CDF58B /* MenuInteractor.swift */; };
+		F612196F24365478005029CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F612196E24365478005029CD /* Main.storyboard */; };
+		F612197124367F0C005029CD /* MobiliteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612197024367F0C005029CD /* MobiliteEndpoint.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4C692E323FD522000980714 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4C692C123FD521F00980714 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4C692C823FD521F00980714;
+			remoteInfo = MakremAccretio;
+		};
+		F4C692EE23FD522100980714 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4C692C123FD521F00980714 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4C692C823FD521F00980714;
+			remoteInfo = MakremAccretio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01AF2C4B9421E6EBE3F30E93 /* Pods-MakremAccretio-MakremAccretioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio-MakremAccretioUITests.debug.xcconfig"; path = "Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0385E724F500D7345FF34C31 /* Pods-MakremAccretioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretioTests.debug.xcconfig"; path = "Target Support Files/Pods-MakremAccretioTests/Pods-MakremAccretioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretio_MakremAccretioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47B417BA90C056779B979A64 /* Pods-MakremAccretioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretioTests.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretioTests/Pods-MakremAccretioTests.release.xcconfig"; sourceTree = "<group>"; };
+		72F817F1377D2F46A2F3E523 /* Pods-MakremAccretio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio.release.xcconfig"; sourceTree = "<group>"; };
+		78C29C180CE1459575577D16 /* Pods-MakremAccretio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio.debug.xcconfig"; path = "Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio.debug.xcconfig"; sourceTree = "<group>"; };
+		D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radar_marker@3x.png"; path = "../../../../Charts-master/ChartsDemo-iOS/Resources/markers/radar_marker@3x.png"; sourceTree = "<group>"; };
+		F4216A1D248EC1FB00FAECD5 /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarMarkerView.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/RadarMarkerView.xib"; sourceTree = "<group>"; };
+		F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarChartViewController.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/Demos/RadarChartViewController.xib"; sourceTree = "<group>"; };
+		F42473A22487D92C00B27C6F /* CompetenceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceAPI.swift; sourceTree = "<group>"; };
+		F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollabForLabel.swift; sourceTree = "<group>"; };
+		F44614D7240C098E00D4F567 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
+		F44614E8240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurPresenter.swift; sourceTree = "<group>"; };
+		F44614E9240D16E900D4F567 /* MobiliteCollaborateurWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurWorker.swift; sourceTree = "<group>"; };
+		F44614EA240D16E900D4F567 /* MobiliteCollaborateurRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurRouter.swift; sourceTree = "<group>"; };
+		F44614EB240D16E900D4F567 /* MobiliteCollaborateurModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurModels.swift; sourceTree = "<group>"; };
+		F44614EC240D16E900D4F567 /* MobiliteCollaborateurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurViewController.swift; sourceTree = "<group>"; };
+		F44614ED240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurInteractor.swift; sourceTree = "<group>"; };
+		F44614F4240D4F8A00D4F567 /* MobiliteCollaborateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateur.swift; sourceTree = "<group>"; };
+		F44614F7240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsPresenter.swift; sourceTree = "<group>"; };
+		F44614F8240EAF1E00D4F567 /* MobiliteCollaborateurDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsWorker.swift; sourceTree = "<group>"; };
+		F44614F9240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsRouter.swift; sourceTree = "<group>"; };
+		F44614FA240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsModels.swift; sourceTree = "<group>"; };
+		F44614FB240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsViewController.swift; sourceTree = "<group>"; };
+		F44614FC240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsInteractor.swift; sourceTree = "<group>"; };
+		F4461503240FF37600D4F567 /* TalentEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalentEndpoint.swift; sourceTree = "<group>"; };
+		F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationPresenter.swift; sourceTree = "<group>"; };
+		F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationWorker.swift; sourceTree = "<group>"; };
+		F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationRouter.swift; sourceTree = "<group>"; };
+		F47CA652246AABC000C6ACB1 /* MenuFormationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationModels.swift; sourceTree = "<group>"; };
+		F47CA653246AABC000C6ACB1 /* MenuFormationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationViewController.swift; sourceTree = "<group>"; };
+		F47CA654246AABC000C6ACB1 /* MenuFormationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationInteractor.swift; sourceTree = "<group>"; };
+		F47CA65B246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurViewControllerCell.swift; sourceTree = "<group>"; };
+		F47CA66A246AE12100C6ACB1 /* CatalogueFormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationPresenter.swift; sourceTree = "<group>"; };
+		F47CA66B246AE12100C6ACB1 /* CatalogueFormationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationWorker.swift; sourceTree = "<group>"; };
+		F47CA66C246AE12100C6ACB1 /* CatalogueFormationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationRouter.swift; sourceTree = "<group>"; };
+		F47CA66D246AE12100C6ACB1 /* CatalogueFormationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationModels.swift; sourceTree = "<group>"; };
+		F47CA66E246AE12100C6ACB1 /* CatalogueFormationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationViewController.swift; sourceTree = "<group>"; };
+		F47CA66F246AE12100C6ACB1 /* CatalogueFormationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationInteractor.swift; sourceTree = "<group>"; };
+		F47CA676246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationViewCell.swift; sourceTree = "<group>"; };
+		F47CA67B246B032900C6ACB1 /* FormationMyActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionPresenter.swift; sourceTree = "<group>"; };
+		F47CA67C246B032A00C6ACB1 /* FormationMyActionWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionWorker.swift; sourceTree = "<group>"; };
+		F47CA67D246B032A00C6ACB1 /* FormationMyActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionRouter.swift; sourceTree = "<group>"; };
+		F47CA67E246B032A00C6ACB1 /* FormationMyActionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionModels.swift; sourceTree = "<group>"; };
+		F47CA67F246B032A00C6ACB1 /* FormationMyActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionViewController.swift; sourceTree = "<group>"; };
+		F47CA680246B032A00C6ACB1 /* FormationMyActionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionInteractor.swift; sourceTree = "<group>"; };
+		F47CA687246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationMyActionViewControllerCell.swift; sourceTree = "<group>"; };
+		F47CA689246C586E00C6ACB1 /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
+		F47CA68C2471957100C6ACB1 /* CatalogueFormationDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationDetailsPresenter.swift; sourceTree = "<group>"; };
+		F47CA68D2471957100C6ACB1 /* CatalogueFormationDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationDetailsWorker.swift; sourceTree = "<group>"; };
+		F47CA68E2471957100C6ACB1 /* CatalogueFormationDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationDetailsRouter.swift; sourceTree = "<group>"; };
+		F47CA68F2471957100C6ACB1 /* CatalogueFormationDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationDetailsModels.swift; sourceTree = "<group>"; };
+		F47CA6902471957100C6ACB1 /* CatalogueFormationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationDetailsViewController.swift; sourceTree = "<group>"; };
+		F47CA6912471957100C6ACB1 /* CatalogueFormationDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormationDetailsInteractor.swift; sourceTree = "<group>"; };
+		F487DB822460E657001CA320 /* SessionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAction.swift; sourceTree = "<group>"; };
+		F487DB8424612AA2001CA320 /* CatalogueFormation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueFormation.swift; sourceTree = "<group>"; };
+		F487DB86246157E0001CA320 /* NewFormation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFormation.swift; sourceTree = "<group>"; };
+		F487DB8924650AA8001CA320 /* FormationCollaborateurPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurPresenter.swift; sourceTree = "<group>"; };
+		F487DB8A24650AA8001CA320 /* FormationCollaborateurWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurWorker.swift; sourceTree = "<group>"; };
+		F487DB8B24650AA8001CA320 /* FormationCollaborateurRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurRouter.swift; sourceTree = "<group>"; };
+		F487DB8C24650AA8001CA320 /* FormationCollaborateurModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurModels.swift; sourceTree = "<group>"; };
+		F487DB8D24650AA8001CA320 /* FormationCollaborateurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurViewController.swift; sourceTree = "<group>"; };
+		F487DB8E24650AA8001CA320 /* FormationCollaborateurInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurInteractor.swift; sourceTree = "<group>"; };
+		F487DB9524651429001CA320 /* FormationCollaborateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateur.swift; sourceTree = "<group>"; };
+		F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandeTableViewCell.swift; sourceTree = "<group>"; };
+		F4B4709F244E481700CFF242 /* Formation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
+		F4B470A124569BD900CFF242 /* FormationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationAPI.swift; sourceTree = "<group>"; };
+		F4B470CB2456BF8200CFF242 /* FormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationPresenter.swift; sourceTree = "<group>"; };
+		F4B470CC2456BF8200CFF242 /* FormationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationWorker.swift; sourceTree = "<group>"; };
+		F4B470CD2456BF8200CFF242 /* FormationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationRouter.swift; sourceTree = "<group>"; };
+		F4B470CE2456BF8200CFF242 /* FormationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationModels.swift; sourceTree = "<group>"; };
+		F4B470CF2456BF8200CFF242 /* FormationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationViewController.swift; sourceTree = "<group>"; };
+		F4B470D02456BF8200CFF242 /* FormationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationInteractor.swift; sourceTree = "<group>"; };
+		F4B5980A24045B3300D0F935 /* DetailsMobilitePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMobilitePresenter.swift; sourceTree = "<group>"; };
+		F4B5980B24045B3300D0F935 /* DetailsMobiliteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMobiliteWorker.swift; sourceTree = "<group>"; };
+		F4B5980C24045B3300D0F935 /* DetailsMobiliteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMobiliteRouter.swift; sourceTree = "<group>"; };
+		F4B5980D24045B3300D0F935 /* DetailsMobiliteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMobiliteModels.swift; sourceTree = "<group>"; };
+		F4B5980E24045B3300D0F935 /* DetailsMobiliteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMobiliteViewController.swift; sourceTree = "<group>"; };
+		F4B5980F24045B3300D0F935 /* DetailsMobiliteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMobiliteInteractor.swift; sourceTree = "<group>"; };
+		F4B764B0241142AA00BE3DF0 /* MobiliteCollaborateurTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurTableViewCell.swift; sourceTree = "<group>"; };
+		F4C692C923FD521F00980714 /* MakremAccretio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakremAccretio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C692CC23FD521F00980714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F4C692CE23FD521F00980714 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F4C692D023FD521F00980714 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4C692D623FD521F00980714 /* MakremAccretio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakremAccretio.xcdatamodel; sourceTree = "<group>"; };
+		F4C692D823FD522000980714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4C692DB23FD522000980714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F4C692DD23FD522000980714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4C692E223FD522000980714 /* MakremAccretioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MakremAccretioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C692E623FD522000980714 /* MakremAccretioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakremAccretioTests.swift; sourceTree = "<group>"; };
+		F4C692E823FD522000980714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4C692ED23FD522100980714 /* MakremAccretioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MakremAccretioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C692F123FD522100980714 /* MakremAccretioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakremAccretioUITests.swift; sourceTree = "<group>"; };
+		F4C692F323FD522100980714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4C6930C23FD532200980714 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		F4C6930D23FD532200980714 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		F4C6930E23FD532200980714 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		F4C6930F23FD532200980714 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		F4C6931023FD532200980714 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F4C6931123FD532200980714 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		F4C6931C23FD557F00980714 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		F4C6931E23FD55E300980714 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F4C6932023FD560E00980714 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		F4C6932223FD564E00980714 /* StatusEmployeeByManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusEmployeeByManager.swift; sourceTree = "<group>"; };
+		F4C6932623FD578500980714 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F4C6932823FD590000980714 /* CompanyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyConfig.swift; sourceTree = "<group>"; };
+		F4C6932A23FD7AC900980714 /* AccretioModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccretioModule.swift; sourceTree = "<group>"; };
+		F4C6932C23FDB01D00980714 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F4C6932F23FDB62200980714 /* UserAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIClient.swift; sourceTree = "<group>"; };
+		F4C6933723FEA7ED00980714 /* MobilitePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilitePresenter.swift; sourceTree = "<group>"; };
+		F4C6933823FEA7ED00980714 /* MobiliteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteWorker.swift; sourceTree = "<group>"; };
+		F4C6933923FEA7ED00980714 /* MobiliteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteRouter.swift; sourceTree = "<group>"; };
+		F4C6933A23FEA7ED00980714 /* MobiliteModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteModels.swift; sourceTree = "<group>"; };
+		F4C6933B23FEA7ED00980714 /* MobiliteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteViewController.swift; sourceTree = "<group>"; };
+		F4C6933C23FEA7ED00980714 /* MobiliteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteInteractor.swift; sourceTree = "<group>"; };
+		F4C6934723FF187400980714 /* MobiliteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteAPI.swift; sourceTree = "<group>"; };
+		F4C6934923FF1BE700980714 /* Mobilite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobilite.swift; sourceTree = "<group>"; };
+		F4C6934B23FFFA4E00980714 /* MobilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityTableViewCell.swift; sourceTree = "<group>"; };
+		F4D38B2324869EA1003F2FD4 /* CompetenceCollaborateurPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollaborateurPresenter.swift; sourceTree = "<group>"; };
+		F4D38B2424869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollaborateurWorker.swift; sourceTree = "<group>"; };
+		F4D38B2524869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollaborateurRouter.swift; sourceTree = "<group>"; };
+		F4D38B2624869EA1003F2FD4 /* CompetenceCollaborateurModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollaborateurModels.swift; sourceTree = "<group>"; };
+		F4D38B2724869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollaborateurViewController.swift; sourceTree = "<group>"; };
+		F4D38B2824869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollaborateurInteractor.swift; sourceTree = "<group>"; };
+		F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollab.swift; sourceTree = "<group>"; };
+		F4D5B15F241A424F00249390 /* MobilitePostule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilitePostule.swift; sourceTree = "<group>"; };
+		F4DD6B2D2474648B0042B062 /* FormateurCatalogueFormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationPresenter.swift; sourceTree = "<group>"; };
+		F4DD6B2E2474648B0042B062 /* FormateurCatalogueFormationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationWorker.swift; sourceTree = "<group>"; };
+		F4DD6B2F2474648B0042B062 /* FormateurCatalogueFormationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationRouter.swift; sourceTree = "<group>"; };
+		F4DD6B302474648B0042B062 /* FormateurCatalogueFormationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationModels.swift; sourceTree = "<group>"; };
+		F4DD6B312474648B0042B062 /* FormateurCatalogueFormationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationViewController.swift; sourceTree = "<group>"; };
+		F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationInteractor.swift; sourceTree = "<group>"; };
+		F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationViewControllerCell.swift; sourceTree = "<group>"; };
+		F4F7EE0524319CFA00CDF58B /* MakremAccretio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MakremAccretio.entitlements; sourceTree = "<group>"; };
+		F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		F4F7EE0B2431B56200CDF58B /* createPostulerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostulerPresenter.swift; sourceTree = "<group>"; };
+		F4F7EE0C2431B56200CDF58B /* createPostulerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostulerWorker.swift; sourceTree = "<group>"; };
+		F4F7EE0D2431B56200CDF58B /* createPostulerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostulerRouter.swift; sourceTree = "<group>"; };
+		F4F7EE0E2431B56200CDF58B /* createPostulerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostulerModels.swift; sourceTree = "<group>"; };
+		F4F7EE0F2431B56200CDF58B /* createPostulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostulerViewController.swift; sourceTree = "<group>"; };
+		F4F7EE102431B56200CDF58B /* createPostulerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostulerInteractor.swift; sourceTree = "<group>"; };
+		F4F7EE5B243345B900CDF58B /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
+		F4F7EE5C243345B900CDF58B /* MenuWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWorker.swift; sourceTree = "<group>"; };
+		F4F7EE5D243345B900CDF58B /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
+		F4F7EE5E243345B900CDF58B /* MenuModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModels.swift; sourceTree = "<group>"; };
+		F4F7EE5F243345B900CDF58B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		F4F7EE60243345B900CDF58B /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
+		F612196E24365478005029CD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F612197024367F0C005029CD /* MobiliteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteEndpoint.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4C692C623FD521F00980714 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4F7EE092431B02000CDF58B /* ExternalAccessory.framework in Frameworks */,
+				19F0B022D1A9099D35513DA2 /* Pods_MakremAccretio.framework in Frameworks */,
+				F4F7EE072431AFBA00CDF58B /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C692DF23FD522000980714 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F15DFF70CA376D5145EE16D5 /* Pods_MakremAccretioTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C692EA23FD522100980714 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485FE8B8ED9E585F31F7B467 /* Pods_MakremAccretio_MakremAccretioUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18E0DFF89D0CC7E36A5299C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */,
+				F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */,
+				DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */,
+				3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */,
+				06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		946142DC7238F0CE944E24E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78C29C180CE1459575577D16 /* Pods-MakremAccretio.debug.xcconfig */,
+				72F817F1377D2F46A2F3E523 /* Pods-MakremAccretio.release.xcconfig */,
+				01AF2C4B9421E6EBE3F30E93 /* Pods-MakremAccretio-MakremAccretioUITests.debug.xcconfig */,
+				D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */,
+				0385E724F500D7345FF34C31 /* Pods-MakremAccretioTests.debug.xcconfig */,
+				47B417BA90C056779B979A64 /* Pods-MakremAccretioTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F44614E7240D16BA00D4F567 /* MobiliteCollaborateur */ = {
+			isa = PBXGroup;
+			children = (
+				F44614E8240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift */,
+				F44614E9240D16E900D4F567 /* MobiliteCollaborateurWorker.swift */,
+				F44614EA240D16E900D4F567 /* MobiliteCollaborateurRouter.swift */,
+				F44614EB240D16E900D4F567 /* MobiliteCollaborateurModels.swift */,
+				F44614EC240D16E900D4F567 /* MobiliteCollaborateurViewController.swift */,
+				F44614ED240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift */,
+				F4B764B0241142AA00BE3DF0 /* MobiliteCollaborateurTableViewCell.swift */,
+			);
+			path = MobiliteCollaborateur;
+			sourceTree = "<group>";
+		};
+		F44614F6240EAECA00D4F567 /* MobiliteCollaborateurDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F4F7EE0A2431B52900CDF58B /* Postuler */,
+				F44614F7240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift */,
+				F44614F8240EAF1E00D4F567 /* MobiliteCollaborateurDetailsWorker.swift */,
+				F44614F9240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift */,
+				F44614FA240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift */,
+				F44614FB240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift */,
+				F44614FC240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift */,
+			);
+			path = MobiliteCollaborateurDetails;
+			sourceTree = "<group>";
+		};
+		F47CA64E246AABA800C6ACB1 /* MenuFormation */ = {
+			isa = PBXGroup;
+			children = (
+				F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */,
+				F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */,
+				F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */,
+				F47CA652246AABC000C6ACB1 /* MenuFormationModels.swift */,
+				F47CA653246AABC000C6ACB1 /* MenuFormationViewController.swift */,
+				F47CA654246AABC000C6ACB1 /* MenuFormationInteractor.swift */,
+			);
+			path = MenuFormation;
+			sourceTree = "<group>";
+		};
+		F47CA65D246AE0B900C6ACB1 /* CatalogueFormation */ = {
+			isa = PBXGroup;
+			children = (
+				F47CA68B2471953700C6ACB1 /* CatalogueFormationDetails */,
+				F47CA66A246AE12100C6ACB1 /* CatalogueFormationPresenter.swift */,
+				F47CA66B246AE12100C6ACB1 /* CatalogueFormationWorker.swift */,
+				F47CA66C246AE12100C6ACB1 /* CatalogueFormationRouter.swift */,
+				F47CA66D246AE12100C6ACB1 /* CatalogueFormationModels.swift */,
+				F47CA66E246AE12100C6ACB1 /* CatalogueFormationViewController.swift */,
+				F47CA66F246AE12100C6ACB1 /* CatalogueFormationInteractor.swift */,
+				F47CA676246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift */,
+				F47CA689246C586E00C6ACB1 /* PopUpWindow.swift */,
+			);
+			path = CatalogueFormation;
+			sourceTree = "<group>";
+		};
+		F47CA678246B01ED00C6ACB1 /* FormationMyAction */ = {
+			isa = PBXGroup;
+			children = (
+				F47CA67B246B032900C6ACB1 /* FormationMyActionPresenter.swift */,
+				F47CA67C246B032A00C6ACB1 /* FormationMyActionWorker.swift */,
+				F47CA67D246B032A00C6ACB1 /* FormationMyActionRouter.swift */,
+				F47CA67E246B032A00C6ACB1 /* FormationMyActionModels.swift */,
+				F47CA67F246B032A00C6ACB1 /* FormationMyActionViewController.swift */,
+				F47CA680246B032A00C6ACB1 /* FormationMyActionInteractor.swift */,
+				F47CA687246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift */,
+			);
+			path = FormationMyAction;
+			sourceTree = "<group>";
+		};
+		F47CA68B2471953700C6ACB1 /* CatalogueFormationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD6B2C247464600042B062 /* FormateurCatalogue */,
+				F47CA68C2471957100C6ACB1 /* CatalogueFormationDetailsPresenter.swift */,
+				F47CA68D2471957100C6ACB1 /* CatalogueFormationDetailsWorker.swift */,
+				F47CA68E2471957100C6ACB1 /* CatalogueFormationDetailsRouter.swift */,
+				F47CA68F2471957100C6ACB1 /* CatalogueFormationDetailsModels.swift */,
+				F47CA6902471957100C6ACB1 /* CatalogueFormationDetailsViewController.swift */,
+				F47CA6912471957100C6ACB1 /* CatalogueFormationDetailsInteractor.swift */,
+			);
+			path = CatalogueFormationDetails;
+			sourceTree = "<group>";
+		};
+		F487DB88246508A2001CA320 /* FormationCollaborateur */ = {
+			isa = PBXGroup;
+			children = (
+				F487DB8924650AA8001CA320 /* FormationCollaborateurPresenter.swift */,
+				F487DB8A24650AA8001CA320 /* FormationCollaborateurWorker.swift */,
+				F487DB8B24650AA8001CA320 /* FormationCollaborateurRouter.swift */,
+				F487DB8C24650AA8001CA320 /* FormationCollaborateurModels.swift */,
+				F487DB8D24650AA8001CA320 /* FormationCollaborateurViewController.swift */,
+				F487DB8E24650AA8001CA320 /* FormationCollaborateurInteractor.swift */,
+				F47CA65B246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift */,
+			);
+			path = FormationCollaborateur;
+			sourceTree = "<group>";
+		};
+		F4B470CA2456BEE800CFF242 /* Formation */ = {
+			isa = PBXGroup;
+			children = (
+				F47CA678246B01ED00C6ACB1 /* FormationMyAction */,
+				F47CA65D246AE0B900C6ACB1 /* CatalogueFormation */,
+				F47CA64E246AABA800C6ACB1 /* MenuFormation */,
+				F487DB88246508A2001CA320 /* FormationCollaborateur */,
+				F4B470CB2456BF8200CFF242 /* FormationPresenter.swift */,
+				F4B470CC2456BF8200CFF242 /* FormationWorker.swift */,
+				F4B470CD2456BF8200CFF242 /* FormationRouter.swift */,
+				F4B470CE2456BF8200CFF242 /* FormationModels.swift */,
+				F4B470CF2456BF8200CFF242 /* FormationViewController.swift */,
+				F4B470D02456BF8200CFF242 /* FormationInteractor.swift */,
+				F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */,
+			);
+			path = Formation;
+			sourceTree = "<group>";
+		};
+		F4B5980924045AE600D0F935 /* MobiliteDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F4B5980A24045B3300D0F935 /* DetailsMobilitePresenter.swift */,
+				F4B5980B24045B3300D0F935 /* DetailsMobiliteWorker.swift */,
+				F4B5980C24045B3300D0F935 /* DetailsMobiliteRouter.swift */,
+				F4B5980D24045B3300D0F935 /* DetailsMobiliteModels.swift */,
+				F4B5980E24045B3300D0F935 /* DetailsMobiliteViewController.swift */,
+				F4B5980F24045B3300D0F935 /* DetailsMobiliteInteractor.swift */,
+			);
+			path = MobiliteDetails;
+			sourceTree = "<group>";
+		};
+		F4C692C023FD521F00980714 = {
+			isa = PBXGroup;
+			children = (
+				F4C692CB23FD521F00980714 /* MakremAccretio */,
+				F4C692E523FD522000980714 /* MakremAccretioTests */,
+				F4C692F023FD522100980714 /* MakremAccretioUITests */,
+				F4C692CA23FD521F00980714 /* Products */,
+				946142DC7238F0CE944E24E6 /* Pods */,
+				18E0DFF89D0CC7E36A5299C1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F4C692CA23FD521F00980714 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4C692C923FD521F00980714 /* MakremAccretio.app */,
+				F4C692E223FD522000980714 /* MakremAccretioTests.xctest */,
+				F4C692ED23FD522100980714 /* MakremAccretioUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4C692CB23FD521F00980714 /* MakremAccretio */ = {
+			isa = PBXGroup;
+			children = (
+				F4F7EE0524319CFA00CDF58B /* MakremAccretio.entitlements */,
+				F4C692CC23FD521F00980714 /* AppDelegate.swift */,
+				F4C692D823FD522000980714 /* Assets.xcassets */,
+				F4C692DD23FD522000980714 /* Info.plist */,
+				F4C692DA23FD522000980714 /* LaunchScreen.storyboard */,
+				F612196E24365478005029CD /* Main.storyboard */,
+				F4C692D523FD521F00980714 /* MakremAccretio.xcdatamodeld */,
+				F4C6931823FD537800980714 /* Models */,
+				F4C6931923FD544C00980714 /* Network */,
+				F4C6932423FD56FB00980714 /* Presentation */,
+				F4C692CE23FD521F00980714 /* SceneDelegate.swift */,
+				F4C6931A23FD548500980714 /* UserDefaults */,
+				F4C692D023FD521F00980714 /* ViewController.swift */,
+			);
+			path = MakremAccretio;
+			sourceTree = "<group>";
+		};
+		F4C692E523FD522000980714 /* MakremAccretioTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4C692E623FD522000980714 /* MakremAccretioTests.swift */,
+				F4C692E823FD522000980714 /* Info.plist */,
+			);
+			path = MakremAccretioTests;
+			sourceTree = "<group>";
+		};
+		F4C692F023FD522100980714 /* MakremAccretioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F4C692F123FD522100980714 /* MakremAccretioUITests.swift */,
+				F4C692F323FD522100980714 /* Info.plist */,
+			);
+			path = MakremAccretioUITests;
+			sourceTree = "<group>";
+		};
+		F4C6930B23FD52F500980714 /* SignIN */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6930C23FD532200980714 /* LoginPresenter.swift */,
+				F4C6930D23FD532200980714 /* LoginWorker.swift */,
+				F4C6930E23FD532200980714 /* LoginRouter.swift */,
+				F4C6930F23FD532200980714 /* LoginModels.swift */,
+				F4C6931023FD532200980714 /* LoginViewController.swift */,
+				F4C6931123FD532200980714 /* LoginInteractor.swift */,
+			);
+			path = SignIN;
+			sourceTree = "<group>";
+		};
+		F4C6931823FD537800980714 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6931C23FD557F00980714 /* UserSession.swift */,
+				F4C6931E23FD55E300980714 /* User.swift */,
+				F4C6932023FD560E00980714 /* Employee.swift */,
+				F4C6932223FD564E00980714 /* StatusEmployeeByManager.swift */,
+				F4C6932823FD590000980714 /* CompanyConfig.swift */,
+				F4C6932A23FD7AC900980714 /* AccretioModule.swift */,
+				F4C6934923FF1BE700980714 /* Mobilite.swift */,
+				F44614F4240D4F8A00D4F567 /* MobiliteCollaborateur.swift */,
+				F4D5B15F241A424F00249390 /* MobilitePostule.swift */,
+				F4B4709F244E481700CFF242 /* Formation.swift */,
+				F487DB822460E657001CA320 /* SessionAction.swift */,
+				F487DB8424612AA2001CA320 /* CatalogueFormation.swift */,
+				F487DB86246157E0001CA320 /* NewFormation.swift */,
+				F487DB9524651429001CA320 /* FormationCollaborateur.swift */,
+				F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */,
+				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4C6931923FD544C00980714 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6933123FDB67500980714 /* Endpoints */,
+				F4C6932E23FDB60900980714 /* Client */,
+				F4C6932523FD576500980714 /* Base */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F4C6931A23FD548500980714 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		F4C6932423FD56FB00980714 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F4D38B2224869E05003F2FD4 /* CompetenceCollaborateur */,
+				F4B470CA2456BEE800CFF242 /* Formation */,
+				F4F7EE5824333BC900CDF58B /* Menu */,
+				F44614F6240EAECA00D4F567 /* MobiliteCollaborateurDetails */,
+				F44614E7240D16BA00D4F567 /* MobiliteCollaborateur */,
+				F4B5980924045AE600D0F935 /* MobiliteDetails */,
+				F4C6933623FEA7B600980714 /* Mobilite */,
+				F4C6930B23FD52F500980714 /* SignIN */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F4C6932523FD576500980714 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6932623FD578500980714 /* APIClient.swift */,
+				F4C6932C23FDB01D00980714 /* Constants.swift */,
+				F44614D7240C098E00D4F567 /* UserEndpoint.swift */,
+				F4461503240FF37600D4F567 /* TalentEndpoint.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F4C6932E23FDB60900980714 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6932F23FDB62200980714 /* UserAPIClient.swift */,
+				F4C6934723FF187400980714 /* MobiliteAPI.swift */,
+				F4B470A124569BD900CFF242 /* FormationAPI.swift */,
+				F42473A22487D92C00B27C6F /* CompetenceAPI.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		F4C6933123FDB67500980714 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				F612197024367F0C005029CD /* MobiliteEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		F4C6933623FEA7B600980714 /* Mobilite */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6933723FEA7ED00980714 /* MobilitePresenter.swift */,
+				F4C6933823FEA7ED00980714 /* MobiliteWorker.swift */,
+				F4C6933923FEA7ED00980714 /* MobiliteRouter.swift */,
+				F4C6933A23FEA7ED00980714 /* MobiliteModels.swift */,
+				F4C6933B23FEA7ED00980714 /* MobiliteViewController.swift */,
+				F4C6933C23FEA7ED00980714 /* MobiliteInteractor.swift */,
+				F4C6934B23FFFA4E00980714 /* MobilityTableViewCell.swift */,
+			);
+			path = Mobilite;
+			sourceTree = "<group>";
+		};
+		F4D38B2224869E05003F2FD4 /* CompetenceCollaborateur */ = {
+			isa = PBXGroup;
+			children = (
+				F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */,
+				F4D38B2324869EA1003F2FD4 /* CompetenceCollaborateurPresenter.swift */,
+				F4D38B2424869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift */,
+				F4D38B2524869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift */,
+				F4D38B2624869EA1003F2FD4 /* CompetenceCollaborateurModels.swift */,
+				F4D38B2724869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift */,
+				F4D38B2824869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift */,
+				F4216A1D248EC1FB00FAECD5 /* RadarMarkerView.xib */,
+				F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */,
+			);
+			path = CompetenceCollaborateur;
+			sourceTree = "<group>";
+		};
+		F4DD6B2C247464600042B062 /* FormateurCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				F4DD6B2D2474648B0042B062 /* FormateurCatalogueFormationPresenter.swift */,
+				F4DD6B2E2474648B0042B062 /* FormateurCatalogueFormationWorker.swift */,
+				F4DD6B2F2474648B0042B062 /* FormateurCatalogueFormationRouter.swift */,
+				F4DD6B302474648B0042B062 /* FormateurCatalogueFormationModels.swift */,
+				F4DD6B312474648B0042B062 /* FormateurCatalogueFormationViewController.swift */,
+				F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */,
+				F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */,
+			);
+			path = FormateurCatalogue;
+			sourceTree = "<group>";
+		};
+		F4F7EE0A2431B52900CDF58B /* Postuler */ = {
+			isa = PBXGroup;
+			children = (
+				F4F7EE0B2431B56200CDF58B /* createPostulerPresenter.swift */,
+				F4F7EE0C2431B56200CDF58B /* createPostulerWorker.swift */,
+				F4F7EE0D2431B56200CDF58B /* createPostulerRouter.swift */,
+				F4F7EE0E2431B56200CDF58B /* createPostulerModels.swift */,
+				F4F7EE0F2431B56200CDF58B /* createPostulerViewController.swift */,
+				F4F7EE102431B56200CDF58B /* createPostulerInteractor.swift */,
+			);
+			path = Postuler;
+			sourceTree = "<group>";
+		};
+		F4F7EE5824333BC900CDF58B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F4F7EE5B243345B900CDF58B /* MenuPresenter.swift */,
+				F4F7EE5C243345B900CDF58B /* MenuWorker.swift */,
+				F4F7EE5D243345B900CDF58B /* MenuRouter.swift */,
+				F4F7EE5E243345B900CDF58B /* MenuModels.swift */,
+				F4F7EE5F243345B900CDF58B /* MenuViewController.swift */,
+				F4F7EE60243345B900CDF58B /* MenuInteractor.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4C692C823FD521F00980714 /* MakremAccretio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C692F623FD522100980714 /* Build configuration list for PBXNativeTarget "MakremAccretio" */;
+			buildPhases = (
+				C1728824BAEBD4797CC78552 /* [CP] Check Pods Manifest.lock */,
+				F4C692C523FD521F00980714 /* Sources */,
+				F4C692C623FD521F00980714 /* Frameworks */,
+				F4C692C723FD521F00980714 /* Resources */,
+				29C67E501F6D715D61AA748D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MakremAccretio;
+			productName = MakremAccretio;
+			productReference = F4C692C923FD521F00980714 /* MakremAccretio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4C692E123FD522000980714 /* MakremAccretioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C692F923FD522100980714 /* Build configuration list for PBXNativeTarget "MakremAccretioTests" */;
+			buildPhases = (
+				07885CB15070012BFD812206 /* [CP] Check Pods Manifest.lock */,
+				F4C692DE23FD522000980714 /* Sources */,
+				F4C692DF23FD522000980714 /* Frameworks */,
+				F4C692E023FD522000980714 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4C692E423FD522000980714 /* PBXTargetDependency */,
+			);
+			name = MakremAccretioTests;
+			productName = MakremAccretioTests;
+			productReference = F4C692E223FD522000980714 /* MakremAccretioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4C692EC23FD522100980714 /* MakremAccretioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C692FC23FD522100980714 /* Build configuration list for PBXNativeTarget "MakremAccretioUITests" */;
+			buildPhases = (
+				32379EB5D39CA54FF3F0F6F5 /* [CP] Check Pods Manifest.lock */,
+				F4C692E923FD522100980714 /* Sources */,
+				F4C692EA23FD522100980714 /* Frameworks */,
+				F4C692EB23FD522100980714 /* Resources */,
+				E747BDD7E68298D621F52786 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4C692EF23FD522100980714 /* PBXTargetDependency */,
+			);
+			name = MakremAccretioUITests;
+			productName = MakremAccretioUITests;
+			productReference = F4C692ED23FD522100980714 /* MakremAccretioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4C692C123FD521F00980714 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Makrem;
+				TargetAttributes = {
+					F4C692C823FD521F00980714 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					F4C692E123FD522000980714 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = F4C692C823FD521F00980714;
+					};
+					F4C692EC23FD522100980714 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = F4C692C823FD521F00980714;
+					};
+				};
+			};
+			buildConfigurationList = F4C692C423FD521F00980714 /* Build configuration list for PBXProject "MakremAccretio" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4C692C023FD521F00980714;
+			productRefGroup = F4C692CA23FD521F00980714 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4C692C823FD521F00980714 /* MakremAccretio */,
+				F4C692E123FD522000980714 /* MakremAccretioTests */,
+				F4C692EC23FD522100980714 /* MakremAccretioUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4C692C723FD521F00980714 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4216A1C248EC1C100FAECD5 /* radar_marker@3x.png in Resources */,
+				F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */,
+				F4C692DC23FD522000980714 /* LaunchScreen.storyboard in Resources */,
+				F4C692D923FD522000980714 /* Assets.xcassets in Resources */,
+				F4216A1E248EC1FB00FAECD5 /* RadarMarkerView.xib in Resources */,
+				F612196F24365478005029CD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C692E023FD522000980714 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C692EB23FD522100980714 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07885CB15070012BFD812206 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MakremAccretioTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29C67E501F6D715D61AA748D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32379EB5D39CA54FF3F0F6F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MakremAccretio-MakremAccretioUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1728824BAEBD4797CC78552 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MakremAccretio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E747BDD7E68298D621F52786 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4C692C523FD521F00980714 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4F7EE66243345B900CDF58B /* MenuInteractor.swift in Sources */,
+				F4B470D22456BF8200CFF242 /* FormationWorker.swift in Sources */,
+				F4F7EE162431B56200CDF58B /* createPostulerInteractor.swift in Sources */,
+				F4C6934C23FFFA4E00980714 /* MobilityTableViewCell.swift in Sources */,
+				F47CA674246AE12100C6ACB1 /* CatalogueFormationViewController.swift in Sources */,
+				F4C6933E23FEA7ED00980714 /* MobiliteWorker.swift in Sources */,
+				F4C6932B23FD7AC900980714 /* AccretioModule.swift in Sources */,
+				F44614FF240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift in Sources */,
+				F4B470D42456BF8200CFF242 /* FormationModels.swift in Sources */,
+				F4B470D52456BF8200CFF242 /* FormationViewController.swift in Sources */,
+				F4DD6B352474648B0042B062 /* FormateurCatalogueFormationRouter.swift in Sources */,
+				F4C6931623FD532200980714 /* LoginViewController.swift in Sources */,
+				F47CA6962471957200C6ACB1 /* CatalogueFormationDetailsViewController.swift in Sources */,
+				F4C6933023FDB62200980714 /* UserAPIClient.swift in Sources */,
+				F47CA671246AE12100C6ACB1 /* CatalogueFormationWorker.swift in Sources */,
+				F4F7EE65243345B900CDF58B /* MenuViewController.swift in Sources */,
+				F4F7EE64243345B900CDF58B /* MenuModels.swift in Sources */,
+				F47CA6932471957200C6ACB1 /* CatalogueFormationDetailsWorker.swift in Sources */,
+				F4B470A0244E481700CFF242 /* Formation.swift in Sources */,
+				F47CA686246B032A00C6ACB1 /* FormationMyActionInteractor.swift in Sources */,
+				F47CA683246B032A00C6ACB1 /* FormationMyActionRouter.swift in Sources */,
+				F487DB9224650AA8001CA320 /* FormationCollaborateurModels.swift in Sources */,
+				F4DD6B372474648B0042B062 /* FormateurCatalogueFormationViewController.swift in Sources */,
+				F4C692D123FD521F00980714 /* ViewController.swift in Sources */,
+				F4461500240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift in Sources */,
+				F487DB9024650AA8001CA320 /* FormationCollaborateurWorker.swift in Sources */,
+				F47CA6952471957200C6ACB1 /* CatalogueFormationDetailsModels.swift in Sources */,
+				F487DB9324650AA8001CA320 /* FormationCollaborateurViewController.swift in Sources */,
+				F4C6933F23FEA7ED00980714 /* MobiliteRouter.swift in Sources */,
+				F47CA658246AABC000C6ACB1 /* MenuFormationModels.swift in Sources */,
+				F487DB9A24657FFC001CA320 /* DemandeTableViewCell.swift in Sources */,
+				F4B470D32456BF8200CFF242 /* FormationRouter.swift in Sources */,
+				F4C6932323FD564E00980714 /* StatusEmployeeByManager.swift in Sources */,
+				F4F7EE62243345B900CDF58B /* MenuWorker.swift in Sources */,
+				F4461504240FF37600D4F567 /* TalentEndpoint.swift in Sources */,
+				F47CA6942471957200C6ACB1 /* CatalogueFormationDetailsRouter.swift in Sources */,
+				F44614F5240D4F8A00D4F567 /* MobiliteCollaborateur.swift in Sources */,
+				F4B470D62456BF8200CFF242 /* FormationInteractor.swift in Sources */,
+				F47CA673246AE12100C6ACB1 /* CatalogueFormationModels.swift in Sources */,
+				F4C6934A23FF1BE700980714 /* Mobilite.swift in Sources */,
+				F4DD6B332474648B0042B062 /* FormateurCatalogueFormationPresenter.swift in Sources */,
+				F4461502240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift in Sources */,
+				F4F7EE132431B56200CDF58B /* createPostulerRouter.swift in Sources */,
+				F4D38B302486AC84003F2FD4 /* CompetenceCollab.swift in Sources */,
+				F4C6934023FEA7ED00980714 /* MobiliteModels.swift in Sources */,
+				F4B5981124045B3300D0F935 /* DetailsMobiliteWorker.swift in Sources */,
+				F4C6931523FD532200980714 /* LoginModels.swift in Sources */,
+				F47CA677246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift in Sources */,
+				F4C692CD23FD521F00980714 /* AppDelegate.swift in Sources */,
+				F4DD6B342474648B0042B062 /* FormateurCatalogueFormationWorker.swift in Sources */,
+				F4C692D723FD521F00980714 /* MakremAccretio.xcdatamodeld in Sources */,
+				F4D38B2A24869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift in Sources */,
+				F47CA681246B032A00C6ACB1 /* FormationMyActionPresenter.swift in Sources */,
+				F44614EF240D16E900D4F567 /* MobiliteCollaborateurWorker.swift in Sources */,
+				F487DB9424650AA8001CA320 /* FormationCollaborateurInteractor.swift in Sources */,
+				F487DB87246157E0001CA320 /* NewFormation.swift in Sources */,
+				F44614F2240D16E900D4F567 /* MobiliteCollaborateurViewController.swift in Sources */,
+				F47CA6972471957200C6ACB1 /* CatalogueFormationDetailsInteractor.swift in Sources */,
+				F4C692CF23FD521F00980714 /* SceneDelegate.swift in Sources */,
+				F487DB9124650AA8001CA320 /* FormationCollaborateurRouter.swift in Sources */,
+				F4C6931D23FD557F00980714 /* UserSession.swift in Sources */,
+				F44614F1240D16E900D4F567 /* MobiliteCollaborateurModels.swift in Sources */,
+				F4B5981524045B3300D0F935 /* DetailsMobiliteInteractor.swift in Sources */,
+				F4B5981024045B3300D0F935 /* DetailsMobilitePresenter.swift in Sources */,
+				F4B5981224045B3300D0F935 /* DetailsMobiliteRouter.swift in Sources */,
+				F4D5B160241A424F00249390 /* MobilitePostule.swift in Sources */,
+				F4C6932723FD578500980714 /* APIClient.swift in Sources */,
+				F4F7EE152431B56200CDF58B /* createPostulerViewController.swift in Sources */,
+				F47CA6922471957200C6ACB1 /* CatalogueFormationDetailsPresenter.swift in Sources */,
+				F47CA657246AABC000C6ACB1 /* MenuFormationRouter.swift in Sources */,
+				F44614D8240C098E00D4F567 /* UserEndpoint.swift in Sources */,
+				F47CA685246B032A00C6ACB1 /* FormationMyActionViewController.swift in Sources */,
+				F4C6934223FEA7ED00980714 /* MobiliteInteractor.swift in Sources */,
+				F4B764B1241142AA00BE3DF0 /* MobiliteCollaborateurTableViewCell.swift in Sources */,
+				F47CA688246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift in Sources */,
+				F47CA682246B032A00C6ACB1 /* FormationMyActionWorker.swift in Sources */,
+				F47CA65C246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift in Sources */,
+				F487DB832460E657001CA320 /* SessionAction.swift in Sources */,
+				F612197124367F0C005029CD /* MobiliteEndpoint.swift in Sources */,
+				F4C6931223FD532200980714 /* LoginPresenter.swift in Sources */,
+				F4D38B2924869EA1003F2FD4 /* CompetenceCollaborateurPresenter.swift in Sources */,
+				F47CA655246AABC000C6ACB1 /* MenuFormationPresenter.swift in Sources */,
+				F445953F249D508000512E17 /* CompetenceCollabForLabel.swift in Sources */,
+				F4C6931F23FD55E300980714 /* User.swift in Sources */,
+				F4C6932923FD590000980714 /* CompanyConfig.swift in Sources */,
+				F4461501240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift in Sources */,
+				F47CA659246AABC000C6ACB1 /* MenuFormationViewController.swift in Sources */,
+				F47CA672246AE12100C6ACB1 /* CatalogueFormationRouter.swift in Sources */,
+				F4F7EE61243345B900CDF58B /* MenuPresenter.swift in Sources */,
+				F4C6932123FD560E00980714 /* Employee.swift in Sources */,
+				F4D38B2B24869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift in Sources */,
+				F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */,
+				F44614F0240D16E900D4F567 /* MobiliteCollaborateurRouter.swift in Sources */,
+				F4DD6B362474648B0042B062 /* FormateurCatalogueFormationModels.swift in Sources */,
+				F4F7EE112431B56200CDF58B /* createPostulerPresenter.swift in Sources */,
+				F4C6931423FD532200980714 /* LoginRouter.swift in Sources */,
+				F44614FD240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift in Sources */,
+				F47CA684246B032A00C6ACB1 /* FormationMyActionModels.swift in Sources */,
+				F4D38B2C24869EA1003F2FD4 /* CompetenceCollaborateurModels.swift in Sources */,
+				F47CA65A246AABC000C6ACB1 /* MenuFormationInteractor.swift in Sources */,
+				F4B5981324045B3300D0F935 /* DetailsMobiliteModels.swift in Sources */,
+				F4DD6B382474648B0042B062 /* FormateurCatalogueFormationInteractor.swift in Sources */,
+				F4C6933D23FEA7ED00980714 /* MobilitePresenter.swift in Sources */,
+				F47CA675246AE12100C6ACB1 /* CatalogueFormationInteractor.swift in Sources */,
+				F44614FE240EAF1E00D4F567 /* MobiliteCollaborateurDetailsWorker.swift in Sources */,
+				F4D38B2E24869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift in Sources */,
+				F4B5981424045B3300D0F935 /* DetailsMobiliteViewController.swift in Sources */,
+				F4C6934823FF187400980714 /* MobiliteAPI.swift in Sources */,
+				F44614EE240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift in Sources */,
+				F47CA68A246C586E00C6ACB1 /* PopUpWindow.swift in Sources */,
+				F4D38B2D24869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift in Sources */,
+				F4C6931723FD532200980714 /* LoginInteractor.swift in Sources */,
+				F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */,
+				F4F7EE63243345B900CDF58B /* MenuRouter.swift in Sources */,
+				F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */,
+				F487DB8524612AA2001CA320 /* CatalogueFormation.swift in Sources */,
+				F4C6931323FD532200980714 /* LoginWorker.swift in Sources */,
+				F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */,
+				F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */,
+				F44614F3240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift in Sources */,
+				F4B470D12456BF8200CFF242 /* FormationPresenter.swift in Sources */,
+				F4C6932D23FDB01D00980714 /* Constants.swift in Sources */,
+				F4B470A224569BD900CFF242 /* FormationAPI.swift in Sources */,
+				F47CA670246AE12100C6ACB1 /* CatalogueFormationPresenter.swift in Sources */,
+				F487DB8F24650AA8001CA320 /* FormationCollaborateurPresenter.swift in Sources */,
+				F4F7EE142431B56200CDF58B /* createPostulerModels.swift in Sources */,
+				F47CA656246AABC000C6ACB1 /* MenuFormationWorker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C692DE23FD522000980714 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C692E723FD522000980714 /* MakremAccretioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C692E923FD522100980714 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C692F223FD522100980714 /* MakremAccretioUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4C692E423FD522000980714 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4C692C823FD521F00980714 /* MakremAccretio */;
+			targetProxy = F4C692E323FD522000980714 /* PBXContainerItemProxy */;
+		};
+		F4C692EF23FD522100980714 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4C692C823FD521F00980714 /* MakremAccretio */;
+			targetProxy = F4C692EE23FD522100980714 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4C692DA23FD522000980714 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C692DB23FD522000980714 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4C692F423FD522100980714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F4C692F523FD522100980714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4C692F723FD522100980714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78C29C180CE1459575577D16 /* Pods-MakremAccretio.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MakremAccretio/MakremAccretio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZBD459SUGB;
+				INFOPLIST_FILE = MakremAccretio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tn.esprit;
+				PRODUCT_NAME = MakremAccretio;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4C692F823FD522100980714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72F817F1377D2F46A2F3E523 /* Pods-MakremAccretio.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MakremAccretio/MakremAccretio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZBD459SUGB;
+				INFOPLIST_FILE = MakremAccretio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tn.esprit;
+				PRODUCT_NAME = MakremAccretio;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F4C692FA23FD522100980714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0385E724F500D7345FF34C31 /* Pods-MakremAccretioTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TFDXX52M8J;
+				INFOPLIST_FILE = MakremAccretioTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Advyteam.MakremAccretioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MakremAccretio.app/MakremAccretio";
+			};
+			name = Debug;
+		};
+		F4C692FB23FD522100980714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47B417BA90C056779B979A64 /* Pods-MakremAccretioTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TFDXX52M8J;
+				INFOPLIST_FILE = MakremAccretioTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Advyteam.MakremAccretioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MakremAccretio.app/MakremAccretio";
+			};
+			name = Release;
+		};
+		F4C692FD23FD522100980714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01AF2C4B9421E6EBE3F30E93 /* Pods-MakremAccretio-MakremAccretioUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TFDXX52M8J;
+				INFOPLIST_FILE = MakremAccretioUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Advyteam.MakremAccretioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MakremAccretio;
+			};
+			name = Debug;
+		};
+		F4C692FE23FD522100980714 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TFDXX52M8J;
+				INFOPLIST_FILE = MakremAccretioUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Advyteam.MakremAccretioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MakremAccretio;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4C692C423FD521F00980714 /* Build configuration list for PBXProject "MakremAccretio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C692F423FD522100980714 /* Debug */,
+				F4C692F523FD522100980714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C692F623FD522100980714 /* Build configuration list for PBXNativeTarget "MakremAccretio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C692F723FD522100980714 /* Debug */,
+				F4C692F823FD522100980714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C692F923FD522100980714 /* Build configuration list for PBXNativeTarget "MakremAccretioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C692FA23FD522100980714 /* Debug */,
+				F4C692FB23FD522100980714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C692FC23FD522100980714 /* Build configuration list for PBXNativeTarget "MakremAccretioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C692FD23FD522100980714 /* Debug */,
+				F4C692FE23FD522100980714 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4C692D523FD521F00980714 /* MakremAccretio.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4C692D623FD521F00980714 /* MakremAccretio.xcdatamodel */,
+			);
+			currentVersion = F4C692D623FD521F00980714 /* MakremAccretio.xcdatamodel */;
+			path = MakremAccretio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F4C692C123FD521F00980714 /* Project object */;
+}
