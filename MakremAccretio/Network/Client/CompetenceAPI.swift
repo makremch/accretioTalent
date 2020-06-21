@@ -43,7 +43,6 @@ class CompetecenceAPI {
     
     static func showCompetenceLabelCollaborateur(token : String) -> Promise<[CompetenseLabelResponseElement]>{
         let url = "https://mobile-int.accretio.io/skills/api/skills"
-        //              let url = "http://0.0.0.0:8000/a.json"
         print(url)
         return  Promise<[CompetenseLabelResponseElement]> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [

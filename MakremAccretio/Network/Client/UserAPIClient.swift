@@ -25,10 +25,8 @@ class UserAPIClient: APIClient {
 //        let userDefault = UserDefaults.standard
 //        let authorization = "Basic YWR2eXRlYW06YWRtaW4="
         let Cookie = "hazelcast.sessionId=HZC283098FD7A34E428B9EB9FE66EE1C9E"
-        //               let baseURL = "https://mobile-int.accretio.io/uaa/oauth/token?grant_type=password&username=naimhoussemeddine.rihani@advyteam.com&password=mobile%262019&clientName=mobile-int"
-      
         let url = "https://mobile-int.accretio.io/core/api/users/me"
-//        let urlTNR = "https://accretio-2-tnr.advyteam.com/core/api/users/me"
+//      let url = "https://accretio-2-tnr.advyteam.com/core/api/users/me"
         return  Promise<User> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "authorization": "Bearer " + token,

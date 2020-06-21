@@ -149,29 +149,46 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     }
     
     
-
-    
-    var dataValueCompetenceCollaborateur : [ClassificationDto] = []
-    var values : [Double] = [40,21,45,64,32,92]
-
-    func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
-        print("---------------------------")
-//        dataValueCompetenceCollaborateur
+    func updateRadar(index : Int){
         let skills :[[Skill]]
+        var skillsLevels = [[String: Level]]()
+        
         let affectations :[ClassificationDto]
-        affectations = response.content![0].affectationSkillByClassificationDTOList.map {($0.skillsLevelClassificationDTO?.crSkillsLevels!) as! ClassificationDto}
+        affectations = self.response?.content![1].affectationSkillByClassificationDTOList.map {($0.skillsLevelClassificationDTO?.crSkillsLevels!) as! ClassificationDto} as! [ClassificationDto]
         
-        skills  = (response.content![0].affectationSkillByClassificationDTOList.map {($0.skills!)})
+        skills  = (self.response?.content![1].affectationSkillByClassificationDTOList.map {($0.skills!)}) as! [[Skill]]
 //        dataValueCompetenceCollaborateur = uniq(dataValueCompetenceCollaborateur)
-        
+        let affectationList = self.response?.content![1].affectationSkillByClassificationDTOList
+        for affectation in  affectationList! {
+            print("skilllevelyyyyyy")
+            print(skillsLevels)
+            var skillsLevel: [String: Level] = [:]
+            for level in affectation.skillsLevelClassificationDTO!.crSkillsLevels!.levels!{
+                skillsLevel[level.code!] = level
+            }
+            skillsLevels.append(skillsLevel)
+        }
+        print(skillsLevels)
         print("---------------------------", dataValueCompetenceCollaborateur )
         settingSpiderChart()
         var names : [String] = []
         print(response)
-        names = skills[0].map  { skillsLabel[$0.codeSkill!]! }
+        names = skills[index].map  { skillsLabel![$0.codeSkill!]! }
         activities = names
-        setChartData()
-print(dataValueCompetenceCollaborateur,"aaaaaaaaaa")
+        values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double}
+        setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
+    }
+    
+    var dataValueCompetenceCollaborateur : [ClassificationDto] = []
+    var values : [Double] = []
+    var response: CompetenseResponse? = nil
+    var skillsLabel:[String: String]? = nil
+    func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
+        self.response = response
+        self.skillsLabel = skillsLabel
+        print("---------------------------")
+        self.updateRadar(index: self.radarIndex)
+
     }
     
     
@@ -184,7 +201,7 @@ print(dataValueCompetenceCollaborateur,"aaaaaaaaaa")
     
     @IBOutlet var chartView: RadarChartView!
     
-    var activities = ["JAVA22", "Systémes", "QA", "Classification","makrem","kays","loumi"]
+    var activities : [String] = []
        var originalBarBgColor: UIColor!
        var originalBarTintColor: UIColor!
        var originalBarStyle: UIBarStyle!
@@ -195,10 +212,29 @@ print(dataValueCompetenceCollaborateur,"aaaaaaaaaa")
                return
            }
            
-           self.setChartData()
+//           self.setChartData(label: "Radar")
        }
        
-       func setChartData() {
+    var radarIndex : Int = 0
+    
+    @IBAction func nextButton(_ sender: Any) {
+        radarIndex+=1
+        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        updateRadar(index: radarIndex)
+    }
+    
+    
+    @IBAction func previousButton(_ sender: Any) {
+        radarIndex-=1
+        radarIndex = radarIndex +  (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        print("charmoula",radarIndex)
+        updateRadar(index: radarIndex)
+    }
+    
+    
+    
+    func setChartData(label  : String) {
            let mult: UInt32 = 80
            let min: UInt32 = 20
         
@@ -211,7 +247,7 @@ print(dataValueCompetenceCollaborateur,"aaaaaaaaaa")
         let entries1 = values.map { RadarChartDataEntry(value : $0) }
            let entries2 = (0..<cnt).map(block)
            
-           let set1 = RadarChartDataSet(entries: entries1)
+           let set1 = RadarChartDataSet(entries: entries1,label: label)
 //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
             set1.setColor(UIColor.cyan)
 //           set1.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
@@ -262,34 +298,6 @@ print(dataValueCompetenceCollaborateur,"aaaaaaaaaa")
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // MARK: - Chart Config

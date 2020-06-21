@@ -56,6 +56,7 @@ class CompetenceCollaborateurInteractor: CompetenceCollaborateurBusinessLogic, C
                     print("in Interactor getlistLabelCompetence collabb : *************************** count")
                     print(competenceLabelCollaborateurResponse)
                 var skillsLabel: [String: String] = [:]
+
                 for competence in competenceLabelCollaborateurResponse {
                     skillsLabel[competence.code!] = competence.label
                 }
