@@ -217,6 +217,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoP-pc-7Ns">
+                                <rect key="frame" x="109" y="742" width="196" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go To Manager Competence"/>
+                                <connections>
+                                    <segue destination="rqQ-HJ-ToF" kind="presentation" modalPresentationStyle="fullScreen" id="I3L-sE-6bG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="sRm-pX-9sb"/>
@@ -325,6 +333,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEq-Mu-7Zy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4521.739130434783" y="-1290.4017857142856"/>
+        </scene>
+        <!--Competence Manager View Controller-->
+        <scene sceneID="lgw-NS-T1E">
+            <objects>
+                <viewController id="rqQ-HJ-ToF" customClass="CompetenceManagerViewController" customModule="MakremAccretio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1rD-u1-uYa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aKO-O2-uyv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zcv-Mu-NFt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VvL-NG-iOQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6218" y="-1324"/>
         </scene>
         <!--Mobilite Collaborateur View Controller-->
         <scene sceneID="7h6-cJ-9VZ">

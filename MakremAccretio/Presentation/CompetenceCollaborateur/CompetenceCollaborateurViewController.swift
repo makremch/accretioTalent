@@ -228,7 +228,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         radarIndex-=1
         radarIndex = radarIndex +  (response?.content![1].affectationSkillByClassificationDTOList.count)!
         radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
-        print("charmoula",radarIndex)
+        print(radarIndex)
         updateRadar(index: radarIndex)
     }
     

@@ -15,6 +15,13 @@
 		F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */; };
 		F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42473A22487D92C00B27C6F /* CompetenceAPI.swift */; };
 		F445953F249D508000512E17 /* CompetenceCollabForLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */; };
+		F4459547249FD65400512E17 /* CompetenceManagerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */; };
+		F4459548249FD65400512E17 /* CompetenceManagerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */; };
+		F4459549249FD65400512E17 /* CompetenceManagerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459543249FD65400512E17 /* CompetenceManagerRouter.swift */; };
+		F445954A249FD65400512E17 /* CompetenceManagerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459544249FD65400512E17 /* CompetenceManagerModels.swift */; };
+		F445954B249FD65400512E17 /* CompetenceManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459545249FD65400512E17 /* CompetenceManagerViewController.swift */; };
+		F445954C249FD65400512E17 /* CompetenceManagerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459546249FD65400512E17 /* CompetenceManagerInteractor.swift */; };
+		F445954E249FD67A00512E17 /* ManagerCompetence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445954D249FD67A00512E17 /* ManagerCompetence.swift */; };
 		F44614D8240C098E00D4F567 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614D7240C098E00D4F567 /* UserEndpoint.swift */; };
 		F44614EE240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614E8240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift */; };
 		F44614EF240D16E900D4F567 /* MobiliteCollaborateurWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614E9240D16E900D4F567 /* MobiliteCollaborateurWorker.swift */; };
@@ -181,6 +188,13 @@
 		F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarChartViewController.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/Demos/RadarChartViewController.xib"; sourceTree = "<group>"; };
 		F42473A22487D92C00B27C6F /* CompetenceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceAPI.swift; sourceTree = "<group>"; };
 		F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollabForLabel.swift; sourceTree = "<group>"; };
+		F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerPresenter.swift; sourceTree = "<group>"; };
+		F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerWorker.swift; sourceTree = "<group>"; };
+		F4459543249FD65400512E17 /* CompetenceManagerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerRouter.swift; sourceTree = "<group>"; };
+		F4459544249FD65400512E17 /* CompetenceManagerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerModels.swift; sourceTree = "<group>"; };
+		F4459545249FD65400512E17 /* CompetenceManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerViewController.swift; sourceTree = "<group>"; };
+		F4459546249FD65400512E17 /* CompetenceManagerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerInteractor.swift; sourceTree = "<group>"; };
+		F445954D249FD67A00512E17 /* ManagerCompetence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCompetence.swift; sourceTree = "<group>"; };
 		F44614D7240C098E00D4F567 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
 		F44614E8240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurPresenter.swift; sourceTree = "<group>"; };
 		F44614E9240D16E900D4F567 /* MobiliteCollaborateurWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurWorker.swift; sourceTree = "<group>"; };
@@ -375,6 +389,19 @@
 				47B417BA90C056779B979A64 /* Pods-MakremAccretioTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F4459540249FD62800512E17 /* CompetenceManager */ = {
+			isa = PBXGroup;
+			children = (
+				F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */,
+				F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */,
+				F4459543249FD65400512E17 /* CompetenceManagerRouter.swift */,
+				F4459544249FD65400512E17 /* CompetenceManagerModels.swift */,
+				F4459545249FD65400512E17 /* CompetenceManagerViewController.swift */,
+				F4459546249FD65400512E17 /* CompetenceManagerInteractor.swift */,
+			);
+			path = CompetenceManager;
 			sourceTree = "<group>";
 		};
 		F44614E7240D16BA00D4F567 /* MobiliteCollaborateur */ = {
@@ -599,6 +626,7 @@
 				F487DB9524651429001CA320 /* FormationCollaborateur.swift */,
 				F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */,
 				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
+				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -623,6 +651,7 @@
 		F4C6932423FD56FB00980714 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F4459540249FD62800512E17 /* CompetenceManager */,
 				F4D38B2224869E05003F2FD4 /* CompetenceCollaborateur */,
 				F4B470CA2456BEE800CFF242 /* Formation */,
 				F4F7EE5824333BC900CDF58B /* Menu */,
@@ -998,6 +1027,7 @@
 				F4B470A0244E481700CFF242 /* Formation.swift in Sources */,
 				F47CA686246B032A00C6ACB1 /* FormationMyActionInteractor.swift in Sources */,
 				F47CA683246B032A00C6ACB1 /* FormationMyActionRouter.swift in Sources */,
+				F445954A249FD65400512E17 /* CompetenceManagerModels.swift in Sources */,
 				F487DB9224650AA8001CA320 /* FormationCollaborateurModels.swift in Sources */,
 				F4DD6B372474648B0042B062 /* FormateurCatalogueFormationViewController.swift in Sources */,
 				F4C692D123FD521F00980714 /* ViewController.swift in Sources */,
@@ -1017,11 +1047,13 @@
 				F4B470D62456BF8200CFF242 /* FormationInteractor.swift in Sources */,
 				F47CA673246AE12100C6ACB1 /* CatalogueFormationModels.swift in Sources */,
 				F4C6934A23FF1BE700980714 /* Mobilite.swift in Sources */,
+				F445954B249FD65400512E17 /* CompetenceManagerViewController.swift in Sources */,
 				F4DD6B332474648B0042B062 /* FormateurCatalogueFormationPresenter.swift in Sources */,
 				F4461502240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift in Sources */,
 				F4F7EE132431B56200CDF58B /* createPostulerRouter.swift in Sources */,
 				F4D38B302486AC84003F2FD4 /* CompetenceCollab.swift in Sources */,
 				F4C6934023FEA7ED00980714 /* MobiliteModels.swift in Sources */,
+				F445954C249FD65400512E17 /* CompetenceManagerInteractor.swift in Sources */,
 				F4B5981124045B3300D0F935 /* DetailsMobiliteWorker.swift in Sources */,
 				F4C6931523FD532200980714 /* LoginModels.swift in Sources */,
 				F47CA677246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift in Sources */,
@@ -1044,6 +1076,7 @@
 				F4B5981224045B3300D0F935 /* DetailsMobiliteRouter.swift in Sources */,
 				F4D5B160241A424F00249390 /* MobilitePostule.swift in Sources */,
 				F4C6932723FD578500980714 /* APIClient.swift in Sources */,
+				F445954E249FD67A00512E17 /* ManagerCompetence.swift in Sources */,
 				F4F7EE152431B56200CDF58B /* createPostulerViewController.swift in Sources */,
 				F47CA6922471957200C6ACB1 /* CatalogueFormationDetailsPresenter.swift in Sources */,
 				F47CA657246AABC000C6ACB1 /* MenuFormationRouter.swift in Sources */,
@@ -1070,11 +1103,13 @@
 				F4D38B2B24869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift in Sources */,
 				F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */,
 				F44614F0240D16E900D4F567 /* MobiliteCollaborateurRouter.swift in Sources */,
+				F4459549249FD65400512E17 /* CompetenceManagerRouter.swift in Sources */,
 				F4DD6B362474648B0042B062 /* FormateurCatalogueFormationModels.swift in Sources */,
 				F4F7EE112431B56200CDF58B /* createPostulerPresenter.swift in Sources */,
 				F4C6931423FD532200980714 /* LoginRouter.swift in Sources */,
 				F44614FD240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift in Sources */,
 				F47CA684246B032A00C6ACB1 /* FormationMyActionModels.swift in Sources */,
+				F4459547249FD65400512E17 /* CompetenceManagerPresenter.swift in Sources */,
 				F4D38B2C24869EA1003F2FD4 /* CompetenceCollaborateurModels.swift in Sources */,
 				F47CA65A246AABC000C6ACB1 /* MenuFormationInteractor.swift in Sources */,
 				F4B5981324045B3300D0F935 /* DetailsMobiliteModels.swift in Sources */,
@@ -1094,6 +1129,7 @@
 				F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */,
 				F487DB8524612AA2001CA320 /* CatalogueFormation.swift in Sources */,
 				F4C6931323FD532200980714 /* LoginWorker.swift in Sources */,
+				F4459548249FD65400512E17 /* CompetenceManagerWorker.swift in Sources */,
 				F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */,
 				F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */,
 				F44614F3240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift in Sources */,

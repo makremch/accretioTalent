@@ -93,7 +93,6 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             let userdefault = UserDefaults.standard
             userdefault.set(userSession.accessToken, forKey: "accessToken")
             self.worker?.me(token: userSession.accessToken).then { user in
-                print("3asba")
                 userdefault.set(user.listRoles, forKey: "listRoles")
                 userdefault.set(user.registrationNumber, forKey: "registrationNumber")
                 userdefault.set(user.employee.firstName, forKey: "nameOfUser")

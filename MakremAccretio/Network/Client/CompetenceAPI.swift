@@ -65,4 +65,29 @@ class CompetecenceAPI {
     
     
     
+    static func showCompetenceManager(token : String) -> Promise<CompetenseManagerResponse>{
+        let params: [String: String] = ["":""]
+        let url = "https://mobile-int.accretio.io/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=2&size=6"
+        return  Promise<CompetenseManagerResponse> { fulfill, reject in
+            AF.request(url, method: .post, parameters: params,  encoding: JSONEncoding.default, headers: [
+                "content-type":"application/json",
+                "Authorization": "Bearer " + token
+            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<CompetenseManagerResponse, AFError>) in
+                switch response.result {
+                    
+                case .success(let value):
+                    print(value)
+                    print(response)
+                    fulfill(value)
+                case .failure(let error):
+                    print(error)
+                    reject(error)
+                }
+            })
+        }
+    }
+    
+    
+    
+    
 }
