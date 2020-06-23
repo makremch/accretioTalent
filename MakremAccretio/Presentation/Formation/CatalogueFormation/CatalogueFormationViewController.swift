@@ -22,12 +22,37 @@ protocol CatalogueFormationDisplayLogic: class
 class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,CatalogueFormationDisplayLogic
 {
     
-    
+//    MARK:- Var & Let
     var interactor: CatalogueFormationBusinessLogic?
     var router: (NSObjectProtocol & CatalogueFormationRoutingLogic & CatalogueFormationDataPassing)?
+    lazy var popUpWindow : PopUpWindow = {
+        let view = PopUpWindow()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 15
+        view.delegate = self
+        return view
+    }()
+    
+//    MARK:- IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var TitleOfView: UILabel!
+    
+//    MARK:- Button actions
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func DemandeHorsCatalogue(_ sender: Any) {
+        designingPopUp()
+        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        popUpWindow.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 1
+            self.popUpWindow.alpha = 1
+            self.popUpWindow.transform = CGAffineTransform.identity
+        }
+    }
     
     // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,7 +66,6 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     }
     
     // MARK: Setup
-    
     private func setup()
     {
         let viewController = self
@@ -57,7 +81,6 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     }
     
     // MARK: Routing
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -69,7 +92,6 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     }
     
     // MARK: View lifecycle
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -82,25 +104,17 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         
     }
     
-    
-    
-    
-    
     // MARK: Manipulating TableView
-    
-    @IBOutlet weak var tableView: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataValueCatalogue.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "catalogueCell", for: indexPath) as?
             CatalogueFormationViewCell
             else {
                 return UITableViewCell()
         }
-        
         cell.formationNameLabel.text = dataValueCatalogue[indexPath.row].label
         cell.initiatorLabel.text = dataValueCatalogue[indexPath.row].initiator?.firstName
         cell.dateLabel.text = String(dataValueCatalogue[indexPath.row].creationDate!)
@@ -119,22 +133,7 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         }
     }
     
-    
-    
-    
-    @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
-    
-    
-    
     // MARK: Getting Data
-    
     var dataValueCatalogue : [FormationCatalogue] = []
     
     func doSomething()
@@ -148,36 +147,10 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         //nameTextField.text = viewModel.name
     }
     
-    
-    
     func getCatalogueData(response:ResponseCatalogue){
         print(response)
         dataValueCatalogue = response.content
         tableView.reloadData()
-    }
-    
-    
-    
-    @IBOutlet weak var TitleOfView: UILabel!
-    
-    
-    lazy var popUpWindow : PopUpWindow = {
-        let view = PopUpWindow()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 15
-        view.delegate = self
-        return view
-    }()
-    
-    @IBAction func DemandeHorsCatalogue(_ sender: Any) {
-        designingPopUp()
-        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        popUpWindow.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            self.visualEffectView.alpha = 1
-            self.popUpWindow.alpha = 1
-            self.popUpWindow.transform = CGAffineTransform.identity
-        }
     }
     
     func designingPopUp(){
@@ -202,12 +175,9 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         visualEffectView.alpha = 0
     }
-    
-    
 }
 
 extension CatalogueFormationViewController: PopUpDelegate{
-    
     func handleDismissAll() {
         UIView.animate(withDuration: 0.5, animations: {
             self.visualEffectView.alpha = 0
@@ -218,12 +188,9 @@ extension CatalogueFormationViewController: PopUpDelegate{
             print("Did remove pop up window..")
         }
     }
-    
-    
 }
 
 extension UIColor {
-    
     static func mainBlue() -> UIColor {
         return UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)
     }
