@@ -23,13 +23,13 @@ class CompetenceCollaborateurPresenter: CompetenceCollaborateurPresentationLogic
     weak var viewController: CompetenceCollaborateurDisplayLogic?
     
     // MARK: Do something
-    
     func presentSomething(response: CompetenceCollaborateur.Something.Response)
     {
         let viewModel = CompetenceCollaborateur.Something.ViewModel()
         viewController?.displaySomething(viewModel: viewModel)
     }
     
+//    MARK: -Afficher Competence Collaborateur
     func showCompetenceCollaborator(responses: CompetenseResponse,skillsLabel:[String: String]){
         viewController?.getDataCompetences(response: responses,skillsLabel: skillsLabel)
     }

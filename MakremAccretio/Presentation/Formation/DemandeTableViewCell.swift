@@ -28,8 +28,6 @@ class DemandeTableViewCell: UITableViewCell {
         cellViewDecoration.backgroundColor = UIColor.systemGray5
     }
     
-    
-    
     func addShadowView(width:CGFloat=0, height:CGFloat=1, Opacidade:Float=0.3, maskToBounds:Bool=false, radius:CGFloat=8){
          self.layer.shadowColor = UIColor.black.cgColor
          self.layer.shadowOffset = CGSize(width: width, height: height)
@@ -38,8 +36,5 @@ class DemandeTableViewCell: UITableViewCell {
          self.layer.shadowOpacity = Opacidade
          self.layer.masksToBounds = maskToBounds
     }
-    
-    
-
-    
+   
 }

@@ -25,13 +25,30 @@ protocol FormationDisplayLogic: class
 class FormationViewController: UIViewController, FormationDisplayLogic,UITableViewDataSource,UITableViewDelegate
 {
     
+    //MARK: -IBOutlets :
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var choiceSeg: UISegmentedControl!
     
-    
+//    MARK:- Var & Let
     var interactor: FormationBusinessLogic?
     var router: (NSObjectProtocol & FormationRoutingLogic & FormationDataPassing)?
+    var dataValueForValidation : [FormationEntity] = []
+    var dataValueMyDemandes : [FormationEntity] = []
+    
+//    MARK: - Action Button functions:
+    @IBAction func choiceSeg(_ sender: Any) {
+        let index = choiceSeg.selectedSegmentIndex
+        let title = choiceSeg.titleForSegment(at: index)!
+        if choiceSeg.selectedSegmentIndex == 0 {
+            
+            tableView.reloadData()
+        } else if title == "A valider" {
+            tableView.reloadData()
+        }
+        tableView.reloadData()
+    }
     
     // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -45,7 +62,6 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
     }
     
     // MARK: Setup
-    
     private func setup()
     {
         let viewController = self
@@ -61,7 +77,6 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
     }
     
     // MARK: Routing
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -71,17 +86,7 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
             }
         }
     }
-    
-    
-    
-    // MARK: Declaration of elements :
-    
-    
-    
-    
-    
-    
-    
+
     // MARK: View configuration  :
     let cellSpacingHeight: CGFloat = 5
     override func viewDidLoad()
@@ -100,28 +105,6 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
         tableView.separatorColor = UIColor.white
         
     }
-    @IBAction func choiceSeg(_ sender: Any) {
-        let index = choiceSeg.selectedSegmentIndex
-        let title = choiceSeg.titleForSegment(at: index)!
-        if choiceSeg.selectedSegmentIndex == 0 {
-            
-            tableView.reloadData()
-        } else if title == "A valider" {
-            tableView.reloadData()
-        }
-        tableView.reloadData()
-    }
-    
-    //MARK: Declaration TableView Liste des demandes Manager :
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var choiceSeg: UISegmentedControl!
-    
-    
-    var dataValueForValidation : [FormationEntity] = []
-    var dataValueMyDemandes : [FormationEntity] = []
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if choiceSeg.selectedSegmentIndex == 0 {
             if dataValueMyDemandes.count == 0 {
@@ -138,9 +121,6 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
                 tableView.restore()
             }
         }
-        print("asssssssssssss")
-        print(dataValueForValidation.count)
-        print("asssssssssssss")
         return dataValueForValidation.count
     }
     
@@ -149,23 +129,14 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
             else {
                 return UITableViewCell()
         }
-        
-        
         let index = choiceSeg.selectedSegmentIndex
         if (choiceSeg.titleForSegment(at: index))! == "Mes demandes" {
-            
-            print("Mes demandes   : ----------------------")
             if(dataValueMyDemandes.count == 0){
-//                print("No data available ! ")
             }else{
                 cell.NomFormationLabel.text = dataValueMyDemandes[indexPath.row].label ?? "Formation "
-                
-        
-                
                 cell.InitiateurLabel.text = dataValueMyDemandes[indexPath.row].initiator!.firstName + " " + dataValueMyDemandes[indexPath.row].initiator!.lastName
                 cell.dateCreationLabel.text = String(dataValueMyDemandes[indexPath.row].creationDate!)
                 cell.statusView.layer.cornerRadius = 2
-                
                 print(dataValueMyDemandes[indexPath.row].status!)
                 if dataValueMyDemandes[indexPath.row].status! == "PROGRESS"{
                     cell.statusView.backgroundColor = UIColor.orange
@@ -174,28 +145,18 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
                     cell.statusView.backgroundColor = UIColor.systemGreen
                     cell.statusLabel.text = "Validée"
                 }
-                
             }
             return cell
         }else{
-            
-            
-            
             dataValueMyDemandes.removeAll()
-            
             print("taille demandes a valider !")
             if dataValueForValidation.count == 0 {
                 print("no data ! ")
             }
             cell.NomFormationLabel.text = dataValueForValidation[indexPath.row].label ?? "Formation "
-            
-            //            cell.nbreParticipantsLabel.text =  String(dataValueMyDemandes[indexPath.row].numberParticipants!)
-            
-            
             cell.InitiateurLabel.text = dataValueForValidation[indexPath.row].initiator!.firstName + " " + dataValueForValidation[indexPath.row].initiator!.lastName
             cell.dateCreationLabel.text = String(dataValueForValidation[indexPath.row].creationDate!)
             cell.statusView.layer.cornerRadius = 2
-            
             print(dataValueForValidation[indexPath.row].status!)
             if dataValueForValidation[indexPath.row].status! == "PROGRESS"{
                 cell.statusView.backgroundColor = UIColor.orange
@@ -214,9 +175,7 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
     }
     
     
-    //MARK: Getting data from presenter :
-    
-    
+    //MARK: -Getting data from presenter :
     func doSomething()
     {
         let request = Formation.Something.Request()

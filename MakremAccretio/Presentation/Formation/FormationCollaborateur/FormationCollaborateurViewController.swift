@@ -21,15 +21,20 @@ protocol FormationCollaborateurDisplayLogic: class
 class FormationCollaborateurViewController: UIViewController, FormationCollaborateurDisplayLogic, UITableViewDataSource, UITableViewDelegate
 {
     
+    //    MARK:- IBOutlets
+    @IBOutlet weak var tableView: UITableView!
     
+    //    MARK:- Button actions
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
-    
-     
+    //    MARK:- Var & Let
     var interactor: FormationCollaborateurBusinessLogic?
     var router: (NSObjectProtocol & FormationCollaborateurRoutingLogic & FormationCollaborateurDataPassing)?
+    var dataValueDemandeCollaborateur : [CollaborateurFormation] = []
     
     // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -59,7 +64,6 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
     }
     
     // MARK: Routing
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -71,7 +75,6 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
     }
     
     // MARK: View lifecycle
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -81,13 +84,7 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorColor = UIColor.white
-        
-
     }
-    
-    // MARK: UI Declarations:
- 
-    @IBOutlet weak var tableView: UITableView!
     
     func doSomething()
     {
@@ -100,28 +97,16 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
         //nameTextField.text = viewModel.name
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    
-
-    
-    
-//    MARK: Affecting data to tableView
-    
-    var dataValueDemandeCollaborateur : [CollaborateurFormation] = []
+    //    MARK: Getting data from API
     func getData(response:ResponseFormationCollaborateur){
         dataValueDemandeCollaborateur = response.content
         tableView.reloadData()
     }
     
-//  MARK: Manipulating TableView
+    //  MARK: Manipulating TableView
     func numberOfSections(in tableView: UITableView) -> Int {
-         return 1
-     }
+        return 1
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -146,7 +131,7 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
         }
         cell.formationNameLabel.text = String(dataValueDemandeCollaborateur[indexPath.row].label!)
         if dataValueDemandeCollaborateur[indexPath.row].sessionStartDate == nil || String(dataValueDemandeCollaborateur[indexPath.row].sessionEndDate!)
-== nil || dataValueDemandeCollaborateur[indexPath.row].sessionLabel! == nil{
+            == nil || dataValueDemandeCollaborateur[indexPath.row].sessionLabel! == nil{
             cell.DateDebutLabel.text = "undefined date"
             cell.DateFinLabel.text = "undefined date"
             cell.sessionLabel.text = "undefined session"
@@ -155,21 +140,16 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
             cell.DateFinLabel.text = String(dataValueDemandeCollaborateur[indexPath.row].sessionEndDate!)
             cell.sessionLabel.text =  dataValueDemandeCollaborateur[indexPath.row].sessionLabel!
         }
-         
+        
         let initiatorname = String((dataValueDemandeCollaborateur[indexPath.row].initiator?.firstName)!)
-//        let initiatorLastname = String((dataValueDemandeCollaborateur[indexPath.row].initiator?.lastName)!)
+        //        let initiatorLastname = String((dataValueDemandeCollaborateur[indexPath.row].initiator?.lastName)!)
         cell.initiateurLabel.text = initiatorname
         
         return cell
     }
-
-
+    
+    
 }
-
-
-
-
-
 
 
 extension UITableView {

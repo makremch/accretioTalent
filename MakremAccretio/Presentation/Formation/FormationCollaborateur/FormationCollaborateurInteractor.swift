@@ -44,8 +44,7 @@ class FormationCollaborateurInteractor: FormationCollaborateurBusinessLogic, For
         worker = FormationCollaborateurWorker()
         worker?.getListFormationCollaborateur(token: token).then(){
             formationCollaborateur in
-            print("******************************")
-            print("In Interactor demande Collaborateur ! ")
+            print("In Interactor Formation Collaborateur ! ")
             print(formationCollaborateur)
             self.presenter?.sendDataFormationCollaborateur(response:formationCollaborateur)
         }.catch{

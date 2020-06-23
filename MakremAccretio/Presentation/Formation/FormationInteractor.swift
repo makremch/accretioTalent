@@ -49,11 +49,9 @@ class FormationInteractor: FormationBusinessLogic, FormationDataStore
             formationResponse in
             print("in Interactor Formation : ***************************")
             print(formationResponse)
-            print("***********************************************************")
             self.presenter?.showFormationForValidation(response: formationResponse)
         }.catch {error in
             print(error)
-            //            self.presenter?.presentSignInError(error: error)
         }
     }
     

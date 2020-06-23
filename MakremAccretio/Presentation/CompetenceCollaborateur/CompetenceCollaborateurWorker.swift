@@ -24,13 +24,7 @@ class CompetenceCollaborateurWorker
     func getCompetenceCollaborateur(token : String) -> Promise<CompetenseResponse> {
         return CompetecenceAPI.showCompetenceCollaborateur(token: token)
     }
-    
     func getCompetenceLabelCollaborateur(token : String) -> Promise<[CompetenseLabelResponseElement]> {
         return CompetecenceAPI.showCompetenceLabelCollaborateur(token: token)
     }
-    
-    
-    
-    
-    
 }

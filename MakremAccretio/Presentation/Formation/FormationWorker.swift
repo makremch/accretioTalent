@@ -21,22 +21,18 @@ class FormationWorker
     }
     
     func getListFormation(token : String) -> Promise<ResponseFormation> {
-        print("hello !")
         return FormationAPI.showListFormationManager(token:token)
     }
     
     func getListFormationMesDemandes(token : String) -> Promise<ResponseFormation> {
-        print("hello !")
         return FormationAPI.showListFormationManagerMesDemandes(token: token)
     }
     
     func showMyActions(token : String) -> Promise<ResponseAction>{
-        print("ee")
         return FormationAPI.showMyActions(token: token)
     }
     
     func showCatalogueFormation(token: String) ->Promise<ResponseCatalogue>{
-        print("worker Catalogue !")
         return FormationAPI.showCatalogueFormation(token: token)
     }
 }

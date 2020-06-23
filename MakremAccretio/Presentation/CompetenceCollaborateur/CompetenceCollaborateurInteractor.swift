@@ -31,7 +31,6 @@ class CompetenceCollaborateurInteractor: CompetenceCollaborateurBusinessLogic, C
     //var name: String = ""
     
     // MARK: Do something
-    
     func doSomething(request: CompetenceCollaborateur.Something.Request)
     {
         worker = CompetenceCollaborateurWorker()
@@ -42,15 +41,13 @@ class CompetenceCollaborateurInteractor: CompetenceCollaborateurBusinessLogic, C
     }
     
     
-    
+    // MARK: - Afficher Competence Collaborateur
     func getCompetence(token : String ) {
         worker = CompetenceCollaborateurWorker()
         worker?.getCompetenceCollaborateur(token: token).then() {
             competenceCollaborateurResponse in
-            print("in Interactor getlistMobility collabb : *************************** count")
+            print("Interactor getlistMobility collaborateur")
             print(competenceCollaborateurResponse)
-            print("***********************************************************")
-            
             self.worker?.getCompetenceLabelCollaborateur(token: token).then(){
                 competenceLabelCollaborateurResponse in
                     print("in Interactor getlistLabelCompetence collabb : *************************** count")
@@ -60,19 +57,12 @@ class CompetenceCollaborateurInteractor: CompetenceCollaborateurBusinessLogic, C
                 for competence in competenceLabelCollaborateurResponse {
                     skillsLabel[competence.code!] = competence.label
                 }
-                
-                
                 self.presenter?.showCompetenceCollaborator(responses: competenceCollaborateurResponse,skillsLabel: skillsLabel)
                 }.catch {error in
                     print(error)
                 }
-
-            
         }.catch {error in
             print(error)
         }
     }
-
-        
-    
 }
