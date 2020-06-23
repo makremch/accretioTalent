@@ -21,11 +21,46 @@ protocol CompetenceCollaborateurDisplayLogic: class
 
 class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceCollaborateurDisplayLogic, IAxisValueFormatter
 {
+    
+//    MARK:- IBOutlets
+    @IBOutlet var chartView: RadarChartView!
+    @IBOutlet weak var userView: UIView!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var NameLabel: UILabel!
+    
+    //    MARK:- Var & Let
     var interactor: CompetenceCollaborateurBusinessLogic?
     var router: (NSObjectProtocol & CompetenceCollaborateurRoutingLogic & CompetenceCollaborateurDataPassing)?
+    var dataValueCompetenceCollaborateur : [ClassificationDto] = []
+    var values : [Double] = []
+    var response: CompetenseResponse? = nil
+    var skillsLabel:[String: String]? = nil
+    var activities : [String] = []
+    var originalBarBgColor: UIColor!
+    var originalBarTintColor: UIColor!
+    var originalBarStyle: UIBarStyle!
+    var radarIndex : Int = 0
     
-    // MARK: Object lifecycle
     
+//    MARK:- Button Actions
+    @IBAction func nextButton(_ sender: Any) {
+        radarIndex+=1
+        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        updateRadar(index: radarIndex)
+    }
+    @IBAction func previousButton(_ sender: Any) {
+        radarIndex-=1
+        radarIndex = radarIndex +  (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        print(radarIndex)
+        updateRadar(index: radarIndex)
+    }
+    @IBAction func backButton(_ sender: Any) {
+          self.dismiss(animated: true, completion: nil)
+      }
+    
+    
+    // MARK:- Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -38,8 +73,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         setup()
     }
     
-    // MARK: Setup
-    
+    // MARK:- Setup
     private func setup()
     {
         let viewController = self
@@ -55,7 +89,6 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     }
     
     // MARK: Routing
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let scene = segue.identifier {
@@ -66,77 +99,51 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         }
     }
     
-    // MARK: View lifecycle
-    
+    // MARK:- View lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.getCompetence(token: token)
-        
-        print("xnxx", self.dataValueCompetenceCollaborateur)
-        print("----------------------------------------------------")
-        
-        
-        
-        
-        
-        
-        
+        print(self.dataValueCompetenceCollaborateur)
         // Do any additional setup after loading the view.
-                self.title = "Radar Chart"
-              
-                
-                chartView.delegate = self
-                
-                chartView.chartDescription?.enabled = false
-                chartView.webLineWidth = 1
-                chartView.innerWebLineWidth = 1
-                chartView.webColor = .lightGray
-                chartView.innerWebColor = .lightGray
-                chartView.webAlpha = 1
-                
-//        let marker = chartView
-
-//                marker.chartView = chartView
-//                chartView.marker = marker
-//
-                let xAxis = chartView.xAxis
-                xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
-                xAxis.xOffset = 0
-                xAxis.yOffset = 0
-                xAxis.valueFormatter = self
-                xAxis.labelTextColor = .white
-                
-                let yAxis = chartView.yAxis
-                yAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
-                yAxis.labelCount = 5
-                yAxis.axisMinimum = 0
-                yAxis.axisMaximum = 80
-                yAxis.drawLabelsEnabled = false
-                
-                let l = chartView.legend
-                l.horizontalAlignment = .center
-                l.verticalAlignment = .top
-                l.orientation = .horizontal
-                l.drawInside = false
-                l.font = .systemFont(ofSize: 10, weight: .light)
-                l.xEntrySpace = 7
-                l.yEntrySpace = 5
-                l.textColor = .white
-        //        chartView.legend = l
-
-                self.updateChartData()
-                
-                chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutBack)
+        self.title = "Radar Chart"
+        chartView.delegate = self
+        chartView.chartDescription?.enabled = false
+        chartView.webLineWidth = 1
+        chartView.innerWebLineWidth = 1
+        chartView.webColor = .lightGray
+        chartView.innerWebColor = .lightGray
+        chartView.webAlpha = 1
+        let xAxis = chartView.xAxis
+        xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
+        xAxis.xOffset = 0
+        xAxis.yOffset = 0
+        xAxis.valueFormatter = self
+        xAxis.labelTextColor = .white
+        let yAxis = chartView.yAxis
+        yAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
+        yAxis.labelCount = 5
+        yAxis.axisMinimum = 0
+        yAxis.axisMaximum = 80
+        yAxis.drawLabelsEnabled = false
+        let l = chartView.legend
+        l.horizontalAlignment = .center
+        l.verticalAlignment = .top
+        l.orientation = .horizontal
+        l.drawInside = false
+        l.font = .systemFont(ofSize: 10, weight: .light)
+        l.xEntrySpace = 7
+        l.yEntrySpace = 5
+        l.textColor = .white
+        self.updateChartData()
+        chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutBack)
         settingViewLabel()
     }
     
-    // MARK: Do something
     
-
-    
+    // MARK:- Do something
     func doSomething()
     {
         let request = CompetenceCollaborateur.Something.Request()
@@ -145,19 +152,15 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     
     func displaySomething(viewModel: CompetenceCollaborateur.Something.ViewModel)
     {
-        //nameTextField.text = viewModel.name
     }
     
-    
+    // MARK:- Update Radar function
     func updateRadar(index : Int){
         let skills :[[Skill]]
         var skillsLevels = [[String: Level]]()
-        
         let affectations :[ClassificationDto]
         affectations = self.response?.content![1].affectationSkillByClassificationDTOList.map {($0.skillsLevelClassificationDTO?.crSkillsLevels!) as! ClassificationDto} as! [ClassificationDto]
-        
         skills  = (self.response?.content![1].affectationSkillByClassificationDTOList.map {($0.skills!)}) as! [[Skill]]
-//        dataValueCompetenceCollaborateur = uniq(dataValueCompetenceCollaborateur)
         let affectationList = self.response?.content![1].affectationSkillByClassificationDTOList
         for affectation in  affectationList! {
             print("skilllevelyyyyyy")
@@ -170,7 +173,6 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         }
         print(skillsLevels)
         print("---------------------------", dataValueCompetenceCollaborateur )
-        settingSpiderChart()
         var names : [String] = []
         print(response)
         names = skills[index].map  { skillsLabel![$0.codeSkill!]! }
@@ -179,107 +181,57 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
     }
     
-    var dataValueCompetenceCollaborateur : [ClassificationDto] = []
-    var values : [Double] = []
-    var response: CompetenseResponse? = nil
-    var skillsLabel:[String: String]? = nil
+   
+//    MARK:- Getting data from API
     func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
         self.response = response
         self.skillsLabel = skillsLabel
-        print("---------------------------")
         self.updateRadar(index: self.radarIndex)
 
     }
-    
-    
-    func settingSpiderChart(){
-//        print(dataValueCompetenceCollaborateur.map{($0.value)!})
-      
-        
-    }
 
-    
-    @IBOutlet var chartView: RadarChartView!
-    
-    var activities : [String] = []
-       var originalBarBgColor: UIColor!
-       var originalBarTintColor: UIColor!
-       var originalBarStyle: UIBarStyle!
-    
     override func updateChartData() {
            if self.shouldHideData {
                chartView.data = nil
                return
            }
-           
-//           self.setChartData(label: "Radar")
        }
        
-    var radarIndex : Int = 0
-    
-    @IBAction func nextButton(_ sender: Any) {
-        radarIndex+=1
-        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
-        updateRadar(index: radarIndex)
-    }
-    
-    
-    @IBAction func previousButton(_ sender: Any) {
-        radarIndex-=1
-        radarIndex = radarIndex +  (response?.content![1].affectationSkillByClassificationDTOList.count)!
-        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
-        print(radarIndex)
-        updateRadar(index: radarIndex)
-    }
-    
-    
-    
     func setChartData(label  : String) {
-           let mult: UInt32 = 80
-           let min: UInt32 = 20
-        
-//        nombre competences :
-//        print("assssba",dataValueCompetenceCollaborateur)
+        let mult: UInt32 = 80
+        let min: UInt32 = 20
         let cnt = activities.count
-           
         let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
-//           let entries1 = (0..<cnt).map(block)
         let entries1 = values.map { RadarChartDataEntry(value : $0) }
-           let entries2 = (0..<cnt).map(block)
-           
-           let set1 = RadarChartDataSet(entries: entries1,label: label)
-//           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
-            set1.setColor(UIColor.cyan)
-//           set1.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
-           set1.fillColor = UIColor.cyan
-           set1.drawFilledEnabled = true
-           set1.fillAlpha = 0.5
-           set1.lineWidth = 1
-           set1.drawHighlightCircleEnabled = true
-           set1.setDrawHighlightIndicators(false)
-           
-           let set2 = RadarChartDataSet(entries: entries2, label: "--")
-           set2.setColor(UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1))
-           set2.fillColor = UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1)
-           set2.drawFilledEnabled = true
-           set2.fillAlpha = 0.7
-           set2.lineWidth = 2
-           set2.drawHighlightCircleEnabled = true
-           set2.setDrawHighlightIndicators(false)
-           
-           let data = RadarChartData(dataSets: [set1])
-           data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
-           data.setDrawValues(false)
-           data.setValueTextColor(.white)
-           chartView.data = data
+        let entries2 = (0..<cnt).map(block)
+        let set1 = RadarChartDataSet(entries: entries1,label: label)
+        //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
+        set1.setColor(UIColor.cyan)
+        //           set1.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
+        set1.fillColor = UIColor.cyan
+        set1.drawFilledEnabled = true
+        set1.fillAlpha = 0.5
+        set1.lineWidth = 1
+        set1.drawHighlightCircleEnabled = true
+        set1.setDrawHighlightIndicators(false)
+        
+        let set2 = RadarChartDataSet(entries: entries2, label: "--")
+        set2.setColor(UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1))
+        set2.fillColor = UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1)
+        set2.drawFilledEnabled = true
+        set2.fillAlpha = 0.7
+        set2.lineWidth = 2
+        set2.drawHighlightCircleEnabled = true
+        set2.setDrawHighlightIndicators(false)
+        
+        let data = RadarChartData(dataSets: [set1])
+        data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
+        data.setDrawValues(false)
+        data.setValueTextColor(.white)
+        chartView.data = data
        }
     
-    
-    
-    @IBOutlet weak var userView: UIView!
-    @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var NameLabel: UILabel!
-    
+   
     func settingViewLabel(){
         NameLabel.text! = UserDefaults.standard.string(forKey: "nameOfUser")!
         NameLabel.textColor = UIColor.white
@@ -290,27 +242,14 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         userView.layer.cornerRadius = 10
         userImage.layer.cornerRadius = 5
     }
-    
-    
-    @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
 }
 
 
 // MARK: - Chart Config
-
-
 extension CompetenceCollaborateurViewController {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return activities[Int(value) % activities.count]
-    }
-    
-    
-    
-    
+    }  
 }
 
 enum Option {
