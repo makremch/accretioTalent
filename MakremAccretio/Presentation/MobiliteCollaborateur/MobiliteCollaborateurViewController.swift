@@ -57,10 +57,6 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             else {
                 return UITableViewCell()
         }
-        
-//        print("---------------- ! ")
-//        print(dataValueCollaborateur[indexPath.row].publishedContractOffer as Any)
-        
         if !searchActive{
             print(searchBar.selectedScopeButtonIndex)
             searchActive = false

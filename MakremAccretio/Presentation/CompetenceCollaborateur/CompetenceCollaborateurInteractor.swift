@@ -58,7 +58,8 @@ class CompetenceCollaborateurInteractor: CompetenceCollaborateurBusinessLogic, C
                     skillsLabel[competence.code!] = competence.label
                 }
                 self.presenter?.showCompetenceCollaborator(responses: competenceCollaborateurResponse,skillsLabel: skillsLabel)
-                }.catch {error in
+                }.catch {
+                    error in
                     print(error)
                 }
         }.catch {error in

@@ -11,7 +11,7 @@ import UIKit
 class MobilityTableViewCell: UITableViewCell {
 
     
-    
+//    MARK:- IBOutlets :
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var libelleLabel: UILabel!
     @IBOutlet weak var mobiliteViewCell: UIView!
@@ -20,13 +20,11 @@ class MobilityTableViewCell: UITableViewCell {
     @IBOutlet weak var dateCreationLabel: UILabel!
     @IBOutlet weak var effectifLabel: UILabel!
     
+    //    MARK:- Configuration
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         mobiliteViewCell.layer.cornerRadius = 10
         addShadowView()
-//        mobiliteViewCell.layer.backgroundColor = (UIColor.blue as! CGColor)
-        // Initialization code
     }
 
     func addShadowView(width:CGFloat=0, height:CGFloat=1, Opacidade:Float=0.3, maskToBounds:Bool=false, radius:CGFloat=8){
@@ -42,7 +40,6 @@ class MobilityTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

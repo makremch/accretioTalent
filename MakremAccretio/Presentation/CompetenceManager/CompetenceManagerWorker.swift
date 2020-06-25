@@ -20,7 +20,10 @@ class CompetenceManagerWorker
   {
   }
     
-    func getCompetenceManager(token : String) -> Promise<CompetenseManagerResponse> {
+    func getCompetenceManager(token : String) -> Promise<CompetenseResponse> {
         return CompetecenceAPI.showCompetenceManager(token: token)
+    }
+    func getCompetenceLabelManager(token : String) -> Promise<[CompetenseLabelResponseElement]> {
+        return CompetecenceAPI.showCompetenceLabelManager(token: token)
     }
 }

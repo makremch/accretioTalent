@@ -15,7 +15,7 @@ import UIKit
 protocol CompetenceManagerPresentationLogic
 {
     func presentSomething(response: CompetenceManager.Something.Response)
-    func showCompetenceManager(response: CompetenseManagerResponse)
+    func showCompetenceManager(responses: CompetenseResponse,skillsLabel:[String: String])
 }
 
 class CompetenceManagerPresenter: CompetenceManagerPresentationLogic
@@ -29,7 +29,8 @@ class CompetenceManagerPresenter: CompetenceManagerPresentationLogic
         let viewModel = CompetenceManager.Something.ViewModel()
         viewController?.displaySomething(viewModel: viewModel)
     }
-    func showCompetenceManager(response: CompetenseManagerResponse){
-        viewController?.getDataCompetenceManager(response:response)
+   
+    func showCompetenceManager(responses: CompetenseResponse,skillsLabel:[String: String]){
+        viewController?.getDataCompetenceManager(response: responses,skillsLabel: skillsLabel)
     }
 }

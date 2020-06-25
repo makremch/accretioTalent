@@ -44,13 +44,26 @@ class CompetenceManagerInteractor: CompetenceManagerBusinessLogic, CompetenceMan
         worker = CompetenceManagerWorker()
         worker?.getCompetenceManager(token: token).then() {
             competenceManager in
-//            print("in Interactor Formation : ***************************")
-            print(competenceManager)
-//            print("***********************************************************")
-            self.presenter?.showCompetenceManager(response: competenceManager)
+           
+            
+            self.worker?.getCompetenceLabelManager(token: token).then(){
+           
+                
+                competenceLabelCollaborateurResponse in
+               print("in Interactor getlistLabelCompetence manager : *************************** count")
+               print(competenceLabelCollaborateurResponse)
+           var skillsLabel: [String: String] = [:]
+
+           for competence in competenceLabelCollaborateurResponse {
+               skillsLabel[competence.code!] = competence.label
+           }
+           self.presenter?.showCompetenceManager(responses: competenceManager,skillsLabel: skillsLabel)
+           }.catch {
+               error in
+               print(error)
+           }
         }.catch {error in
             print(error)
-            //            self.presenter?.presentSignInError(error: error)
         }
     }
     

@@ -15,16 +15,25 @@ import UIKit
 protocol CompetenceManagerDisplayLogic: class
 {
     func displaySomething(viewModel: CompetenceManager.Something.ViewModel)
-    func getDataCompetenceManager(response:CompetenseManagerResponse)
+    func getDataCompetenceManager(response: CompetenseResponse,skillsLabel:[String: String])
 }
 
-class CompetenceManagerViewController: UIViewController, CompetenceManagerDisplayLogic
+class CompetenceManagerViewController: UIViewController, CompetenceManagerDisplayLogic,UITableViewDataSource,UITableViewDelegate
 {
+    
+    
+    
+//    MARK:- Var & Let Declarations
     var interactor: CompetenceManagerBusinessLogic?
     var router: (NSObjectProtocol & CompetenceManagerRoutingLogic & CompetenceManagerDataPassing)?
+    var response: CompetenseResponse? = nil
+    var skillsLabel:[String: String]? = nil
+
+//    MARK:- IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    
     
     // MARK: Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -37,7 +46,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         setup()
     }
     
-    // MARK: Setup
+    // MARK: -Setup
     
     private func setup()
     {
@@ -53,7 +62,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         router.dataStore = interactor
     }
     
-    // MARK: Routing
+    // MARK: -Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -65,7 +74,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         }
     }
     
-    // MARK: View lifecycle
+    // MARK: View -lifecycle
     
     override func viewDidLoad()
     {
@@ -73,9 +82,11 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.getListCompetenceManager(token: token)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
-    // MARK: Do something
+    // MARK: -Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
     
@@ -92,10 +103,33 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
     
     
     
-    func getDataCompetenceManager(response:CompetenseManagerResponse){
+    func getDataCompetenceManager(response: CompetenseResponse,skillsLabel:[String: String]){
+        self.response = response
+        self.skillsLabel = skillsLabel
         print(response)
+        self.tableView.reloadData()
     }
     
+
+//    MARK:- Configuring TableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return response?.content?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "CompetenceTableViewCell", for: indexPath) as?
+            CompetenceTableViewCell
+            else {
+                return UITableViewCell()
+        }
+
+//        cell.CollaborateurNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")!
+        cell.CollaborateurNameLabel.text = (self.response?.content![indexPath.item].firstName ?? "") + " " +  (self.response?.content![indexPath.item].lastName ?? "")
+    
+        cell.competence = self.response?.content![indexPath.item]
+        cell.skillsLabel = self.skillsLabel
+       return cell
+    }
     
     
 }

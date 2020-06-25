@@ -14,6 +14,7 @@
 		F4216A1E248EC1FB00FAECD5 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1D248EC1FB00FAECD5 /* RadarMarkerView.xib */; };
 		F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */; };
 		F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42473A22487D92C00B27C6F /* CompetenceAPI.swift */; };
+		F442EA9E24A4FDB0000E0844 /* CompetenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442EA9D24A4FDB0000E0844 /* CompetenceTableViewCell.swift */; };
 		F445953F249D508000512E17 /* CompetenceCollabForLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */; };
 		F4459547249FD65400512E17 /* CompetenceManagerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */; };
 		F4459548249FD65400512E17 /* CompetenceManagerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */; };
@@ -187,6 +188,7 @@
 		F4216A1D248EC1FB00FAECD5 /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarMarkerView.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/RadarMarkerView.xib"; sourceTree = "<group>"; };
 		F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarChartViewController.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/Demos/RadarChartViewController.xib"; sourceTree = "<group>"; };
 		F42473A22487D92C00B27C6F /* CompetenceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceAPI.swift; sourceTree = "<group>"; };
+		F442EA9D24A4FDB0000E0844 /* CompetenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceTableViewCell.swift; sourceTree = "<group>"; };
 		F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollabForLabel.swift; sourceTree = "<group>"; };
 		F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerPresenter.swift; sourceTree = "<group>"; };
 		F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerWorker.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				F4459544249FD65400512E17 /* CompetenceManagerModels.swift */,
 				F4459545249FD65400512E17 /* CompetenceManagerViewController.swift */,
 				F4459546249FD65400512E17 /* CompetenceManagerInteractor.swift */,
+				F442EA9D24A4FDB0000E0844 /* CompetenceTableViewCell.swift */,
 			);
 			path = CompetenceManager;
 			sourceTree = "<group>";
@@ -1092,6 +1095,7 @@
 				F4C6931223FD532200980714 /* LoginPresenter.swift in Sources */,
 				F4D38B2924869EA1003F2FD4 /* CompetenceCollaborateurPresenter.swift in Sources */,
 				F47CA655246AABC000C6ACB1 /* MenuFormationPresenter.swift in Sources */,
+				F442EA9E24A4FDB0000E0844 /* CompetenceTableViewCell.swift in Sources */,
 				F445953F249D508000512E17 /* CompetenceCollabForLabel.swift in Sources */,
 				F4C6931F23FD55E300980714 /* User.swift in Sources */,
 				F4C6932923FD590000980714 /* CompanyConfig.swift in Sources */,

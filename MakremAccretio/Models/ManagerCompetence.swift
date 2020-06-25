@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: - CompetenseManager
 struct CompetenseManagerResponse: Codable {
-    let content: [Competence]?
+    let content: [Competences]?
     let totalPages, totalElements: Int?
     let last: Bool?
     let numberOfElements: Int?
@@ -21,10 +21,10 @@ struct CompetenseManagerResponse: Codable {
 }
 
 // MARK: - Competence
-struct Competence: Codable {
+struct Competences: Codable {
     let employees, labelComponent: String?
     let codeComponent, firstName, lastName, affectedJob: String?
     let affectedPosition: String?
     let profilePicture: String?
-//    let affectationSkillByClassificationDTOList: [String]?
+    let affectationSkillByClassificationDTOLists: [String]?
 }
