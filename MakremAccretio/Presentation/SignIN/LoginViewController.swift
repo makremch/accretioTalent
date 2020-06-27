@@ -24,17 +24,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     func showMobiliteCollaborator(){
     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let mobiliteCollaborateurviewController = storyBoard.instantiateViewController(withIdentifier: "mobiliteCollaborateurViewController") as! MobiliteCollaborateurViewController
-      mobiliteCollaborateurviewController.modalPresentationStyle = .fullScreen
-//
-              self.present(mobiliteCollaborateurviewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(mobiliteCollaborateurviewController, animated: true)
         }
     
     
     func showMenuAfterLogin(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-          let menu = storyBoard.instantiateViewController(withIdentifier: "menu") as! MenuViewController
+          let menu = storyBoard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
           menu.modalPresentationStyle = .fullScreen
-    //
+  
                   self.present(menu, animated: true, completion: nil)
             }
 

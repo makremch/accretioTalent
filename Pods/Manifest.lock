@@ -1,9 +1,12 @@
 PODS:
-  - Alamofire (5.1.0)
+  - Alamofire (5.2.1)
   - Charts (3.5.0):
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
   - DropDown (2.3.13)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
   - Promises (2.0.4)
   - SwiftyMimeTypes (2.1.0)
 
@@ -11,6 +14,7 @@ DEPENDENCIES:
   - Alamofire
   - Charts
   - DropDown
+  - Kingfisher
   - Promises
   - SwiftyMimeTypes
 
@@ -19,16 +23,18 @@ SPEC REPOS:
     - Alamofire
     - Charts
     - DropDown
+    - Kingfisher
     - Promises
     - SwiftyMimeTypes
 
 SPEC CHECKSUMS:
-  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
   Promises: fcb83dc6be43294a8d30c343636ed1a45a8d2e0a
   SwiftyMimeTypes: df2392d0f7b7c06bb3a65909e0d1efc09f5b6b6b
 
-PODFILE CHECKSUM: f046042df901ff0ec89b8d01d7c7e8538a892115
+PODFILE CHECKSUM: 0c42cdc48393a8dd0919a6fcc5bf8d49d8ab9ad9
 
 COCOAPODS: 1.9.1

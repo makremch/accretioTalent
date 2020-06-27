@@ -9,8 +9,8 @@
 import Foundation
 enum Keys {
     enum MobileIntegrationServer {
-        static let baseURL = "https://mobile-int.accretio.io/"
-//        static let baseURL = "https://accretio-2-tnr.advyteam.com"
+//        static let baseURL = "https://mobile-int.accretio.io/"
+        static let baseURL = "https://accretio-2-tnr.advyteam.com/"
     }
     enum FilesBaseUrl {
         fileprivate static let url = Connected.companyConfig!.url

@@ -21,14 +21,13 @@ protocol MobiliteCollaborateurDisplayLogic: class {
 class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborateurDisplayLogic, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
     
     
-    
     @IBAction func onClickManagerButton(_ sender: Any) {
 //        presentViewController(MobiliteViewController, animated: true, completion: nil)
     }
     
     @IBAction func backButton(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: nil)
     }
     //    MARK: - DECLARATION UI & var :
     
@@ -85,6 +84,28 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         return cellCollaborateur
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "detailVC") as! MobiliteCollaborateurDetailsViewController
+        if searchActive {
+            vc.content = currentDataValueArray[indexPath.row]
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }else {
+        
+        vc.content = dataValueCollaborateur[indexPath.row]
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        
+        
+//                   self.navigationController?.pushViewController(vc, animated: true)
+        }
+               
+        
+    }
+    
+    
+    
     
     func getDataCollaborator(response: Response) {
         print("response:", response )
@@ -133,15 +154,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     
     
     
-     func tableView(_ tableView: UITableView, didSelectRowAt content: Content) {
-        performSegue(withIdentifier: "ident", sender: content)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "MobiliteCollaborateurDetails") as! MobiliteCollaborateurDetailsViewController
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
-    }
+    
     
     
     
@@ -215,22 +228,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         return selectedScopeSearchButton
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     
     
     // MARK: - Properties

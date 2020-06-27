@@ -34,57 +34,57 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
     
     func designMenu(){
         // corner Radius
-        recrutementView.layer.cornerRadius = 10
-        MobiliteView.layer.cornerRadius = 10
-        competencesView.layer.cornerRadius = 10
-        formationView.layer.cornerRadius = 10
-        TitleView.layer.cornerRadius = 30
-        
-        recrutementView.layer.shadowColor = UIColor.gray.cgColor
-        recrutementView.layer.shadowOpacity = 10
-        recrutementView.layer.shadowOffset = .zero
-        recrutementView.layer.shadowRadius = 15
-        recrutementView.layer.shadowPath = UIBezierPath(rect: recrutementView.bounds).cgPath
-        recrutementView.layer.shouldRasterize = true
-        recrutementView.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        MobiliteView.layer.shadowColor = UIColor.gray.cgColor
-        MobiliteView.layer.shadowOpacity = 10
-        MobiliteView.layer.shadowOffset = .zero
-        MobiliteView.layer.shadowRadius = 15
-        MobiliteView.layer.shadowPath = UIBezierPath(rect: MobiliteView.bounds).cgPath
-        MobiliteView.layer.shouldRasterize = true
-        MobiliteView.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        competencesView.layer.shadowColor = UIColor.gray.cgColor
-        competencesView.layer.shadowOpacity = 10
-        competencesView.layer.shadowOffset = .zero
-        competencesView.layer.shadowRadius = 15
-        competencesView.layer.shadowPath = UIBezierPath(rect: competencesView.bounds).cgPath
-        competencesView.layer.shouldRasterize = true
-        competencesView.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        
-        formationView.layer.shadowColor = UIColor.gray.cgColor
-        formationView.layer.shadowOpacity = 10
-        formationView.layer.shadowOffset = .zero
-        formationView.layer.shadowRadius = 15
-        formationView.layer.shadowPath = UIBezierPath(rect: formationView.bounds).cgPath
-        formationView.layer.shouldRasterize = true
-        formationView.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        
-        TitleView.layer.shadowColor = UIColor.gray.cgColor
-        TitleView.layer.shadowOpacity = 10
-        TitleView.layer.shadowOffset = .zero
-        TitleView.layer.shadowRadius = 15
-        TitleView.layer.shadowPath = UIBezierPath(rect: TitleView.bounds).cgPath
-        TitleView.layer.shouldRasterize = true
-        TitleView.layer.rasterizationScale = UIScreen.main.scale
+//        recrutementView.layer.cornerRadius = 10
+//        MobiliteView.layer.cornerRadius = 10
+//        competencesView.layer.cornerRadius = 10
+//        formationView.layer.cornerRadius = 10
+//        TitleView.layer.cornerRadius = 30
+//        
+//        recrutementView.layer.shadowColor = UIColor.gray.cgColor
+//        recrutementView.layer.shadowOpacity = 10
+//        recrutementView.layer.shadowOffset = .zero
+//        recrutementView.layer.shadowRadius = 15
+//        recrutementView.layer.shadowPath = UIBezierPath(rect: recrutementView.bounds).cgPath
+//        recrutementView.layer.shouldRasterize = true
+//        recrutementView.layer.rasterizationScale = UIScreen.main.scale
+//        
+//        
+//        MobiliteView.layer.shadowColor = UIColor.gray.cgColor
+//        MobiliteView.layer.shadowOpacity = 10
+//        MobiliteView.layer.shadowOffset = .zero
+//        MobiliteView.layer.shadowRadius = 15
+//        MobiliteView.layer.shadowPath = UIBezierPath(rect: MobiliteView.bounds).cgPath
+//        MobiliteView.layer.shouldRasterize = true
+//        MobiliteView.layer.rasterizationScale = UIScreen.main.scale
+//        
+//        
+//        competencesView.layer.shadowColor = UIColor.gray.cgColor
+//        competencesView.layer.shadowOpacity = 10
+//        competencesView.layer.shadowOffset = .zero
+//        competencesView.layer.shadowRadius = 15
+//        competencesView.layer.shadowPath = UIBezierPath(rect: competencesView.bounds).cgPath
+//        competencesView.layer.shouldRasterize = true
+//        competencesView.layer.rasterizationScale = UIScreen.main.scale
+//        
+//        
+//        
+//        formationView.layer.shadowColor = UIColor.gray.cgColor
+//        formationView.layer.shadowOpacity = 10
+//        formationView.layer.shadowOffset = .zero
+//        formationView.layer.shadowRadius = 15
+//        formationView.layer.shadowPath = UIBezierPath(rect: formationView.bounds).cgPath
+//        formationView.layer.shouldRasterize = true
+//        formationView.layer.rasterizationScale = UIScreen.main.scale
+//        
+//        
+//        
+//        TitleView.layer.shadowColor = UIColor.gray.cgColor
+//        TitleView.layer.shadowOpacity = 10
+//        TitleView.layer.shadowOffset = .zero
+//        TitleView.layer.shadowRadius = 15
+//        TitleView.layer.shadowPath = UIBezierPath(rect: TitleView.bounds).cgPath
+//        TitleView.layer.shouldRasterize = true
+//        TitleView.layer.rasterizationScale = UIScreen.main.scale
         
        
     }
@@ -227,4 +227,22 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
         // route to next screen
         router?.routeToNext()
     }
+    
+    @IBAction func MobiliteInterneBtn(_ sender: Any) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+             let mobiliteC = storyBoard.instantiateViewController(withIdentifier: "mobiliteCollaborateurVC") as! MobiliteCollaborateurViewController
+        mobiliteC.modalPresentationStyle = .fullScreen
+        self.present(mobiliteC, animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutBtn(_ sender: Any) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+             let mobiliteC = storyBoard.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+        mobiliteC.modalPresentationStyle = .fullScreen
+        self.present(mobiliteC, animated: true, completion: nil)
+
+}
+    
 }

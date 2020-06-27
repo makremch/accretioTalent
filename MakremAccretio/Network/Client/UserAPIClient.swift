@@ -13,7 +13,7 @@ class UserAPIClient: APIClient {
     
     static func login(username: String, password: String, grantType: String, clientName: String) -> Promise<UserSession> {
 
-        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "mobile-int"))
+        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "accretio-2-tnr"))
 
 //        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "tnr"))
         
@@ -25,8 +25,7 @@ class UserAPIClient: APIClient {
 //        let userDefault = UserDefaults.standard
 //        let authorization = "Basic YWR2eXRlYW06YWRtaW4="
         let Cookie = "hazelcast.sessionId=HZC283098FD7A34E428B9EB9FE66EE1C9E"
-        let url = "https://mobile-int.accretio.io/core/api/users/me"
-//      let url = "https://accretio-2-tnr.advyteam.com/core/api/users/me"
+        let url = Keys.MobileIntegrationServer.baseURL+"core/api/users/me"
         return  Promise<User> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "authorization": "Bearer " + token,

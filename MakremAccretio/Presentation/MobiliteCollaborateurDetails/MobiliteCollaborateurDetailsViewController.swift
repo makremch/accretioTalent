@@ -8,7 +8,7 @@
 
 import UIKit
 import MobileCoreServices
-
+import Kingfisher
 
 protocol MobiliteCollaborateurDetailsDisplayLogic: class {
     func displayFetchFromLocalDataStore(with viewModel: MobiliteCollaborateurDetailsModels.FetchFromLocalDataStore.ViewModel)
@@ -59,6 +59,8 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
     @IBOutlet weak var localisationLabel: UILabel!
     @IBOutlet weak var viewWhiteContrat: UIView!
     @IBOutlet weak var viewWhiteLocalisation: UIView!
+    @IBOutlet weak var imgOffer: UIImageView!
+
     var choseFile = false
     var fileUrl: URL?
     var fileName = ""
@@ -152,11 +154,19 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         codeOffreLabel.text = content?.codeOffer
         ContratLabel.text = "CDD"
         localisationLabel.text = "Ariana"
+//        let url = URL(string: "https://mobile-int.accretio.io/assets/images/" + ()
+
+//            imgOffer.kf.setImage(with: content?.publishedPictureOffer?)
+        
         
         let codeoffre = content?.codeOffer
         titreLabel.text = content?.publishedLabelOffer
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.getCodeCvCollaborator(token: token, codeOffer: codeoffre!)
+        
+        let text = content?.documentsList
+        print("wgggg",text)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

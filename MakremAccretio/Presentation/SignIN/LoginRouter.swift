@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginRoutingLogic {
     func routeToNext()
+    func routeToMenu()
 }
 
 protocol LoginDataPassing {
@@ -30,6 +31,13 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
         // var destinationDS = destinationVC.router!.dataStore!
         // passDataTo(destinationDS, from: dataStore!)
         // viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    func routeToMenu(){
+        print("text")
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let menu = storyBoard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
+        //          self.present(menu,animated: true)
+        viewController?.navigationController?.pushViewController(menu, animated: true)
     }
 
     // MARK: - Data Passing
