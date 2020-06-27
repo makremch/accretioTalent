@@ -11,7 +11,7 @@ target 'MakremAccretio' do
   pod 'SwiftyMimeTypes'
   pod 'DropDown'
   pod 'Charts'
-  pod 'SwiftLint'
+  
   
   target 'MakremAccretioTests' do
     inherit! :search_paths

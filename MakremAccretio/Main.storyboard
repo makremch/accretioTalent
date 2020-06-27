@@ -354,46 +354,60 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="336"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CollaborateurNameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqr-UC-iiQ">
-                                                    <rect key="frame" x="27" y="11" width="360" height="21"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qHb-AW-k1p">
+                                                    <rect key="frame" x="20" y="11" width="374" height="314"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKw-NK-Uc4">
-                                                    <rect key="frame" x="341" y="288" width="53" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="next">
-                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="nextButton:" destination="Xa7-w0-hDZ" eventType="touchUpInside" id="e42-Ak-0sY"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jL-Qf-eyN">
-                                                    <rect key="frame" x="20" y="288" width="81" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="previous">
-                                                        <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="previousButton:" destination="Xa7-w0-hDZ" eventType="touchUpInside" id="p8Q-he-X6B"/>
-                                                    </connections>
-                                                </button>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZtC-vB-UJm" customClass="RadarChartView" customModule="Charts">
-                                                    <rect key="frame" x="38" y="40" width="338" height="229"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKw-NK-Uc4">
+                                                            <rect key="frame" x="330" y="43" width="34" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="nextRadar"/>
+                                                            <connections>
+                                                                <action selector="nextButton:" destination="Xa7-w0-hDZ" eventType="touchUpInside" id="e42-Ak-0sY"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jL-Qf-eyN">
+                                                            <rect key="frame" x="3" y="43" width="34" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="backRadar"/>
+                                                            <connections>
+                                                                <action selector="previousButton:" destination="Xa7-w0-hDZ" eventType="touchUpInside" id="p8Q-he-X6B"/>
+                                                            </connections>
+                                                        </button>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZtC-vB-UJm" customClass="RadarChartView" customModule="Charts">
+                                                            <rect key="frame" x="8" y="95" width="358" height="211"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-gK-s8x">
+                                                            <rect key="frame" x="170" y="43" width="34" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="add"/>
+                                                        </button>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ifv-WE-JMr">
+                                                            <rect key="frame" x="28" y="7" width="319" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CollaborateurNameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqr-UC-iiQ">
+                                                                    <rect key="frame" x="0.0" y="4" width="319" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </view>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="CollaborateurNameLabel" destination="eqr-UC-iiQ" id="lrZ-Mz-apq"/>
                                             <outlet property="chartView" destination="ZtC-vB-UJm" id="rw1-uT-Lvq"/>
+                                            <outlet property="viewCell" destination="qHb-AW-k1p" id="1BO-JI-CRa"/>
+                                            <outlet property="viewLabel" destination="ifv-WE-JMr" id="w1h-y1-tDR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -402,6 +416,22 @@
                                     <outlet property="delegate" destination="rqQ-HJ-ToF" id="h0p-Qw-NaM"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="862-TU-cP0">
+                                <rect key="frame" x="14" y="39" width="39" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="rqQ-HJ-ToF" eventType="touchUpInside" id="q80-Na-I6B"/>
+                                    <segue destination="1zw-yT-5Xm" kind="presentation" modalPresentationStyle="fullScreen" id="5t0-eg-C2u"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Competence Manager" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibr-tQ-cvO">
+                                <rect key="frame" x="103" y="48" width="209" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aKO-O2-uyv"/>
@@ -1948,12 +1978,13 @@
         <segue reference="aoz-mM-JFT"/>
         <segue reference="4X6-Mz-1Mc"/>
         <segue reference="cpj-s0-JQp"/>
-        <segue reference="6g2-si-ZLI"/>
+        <segue reference="5t0-eg-C2u"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="519" height="173"/>
         <image name="add" width="32" height="32"/>
         <image name="back" width="96" height="96"/>
+        <image name="backRadar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="book" catalog="system" width="128" height="101"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="cancel" width="75" height="75"/>
@@ -1971,6 +2002,7 @@
         <image name="map" width="32" height="32"/>
         <image name="mobilite" width="37.5" height="37.5"/>
         <image name="newjob" width="37.5" height="37.5"/>
+        <image name="nextRadar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="phone" width="80" height="80"/>
         <image name="pin" catalog="system" width="119" height="128"/>
         <image name="radar" width="80" height="80"/>

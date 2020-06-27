@@ -14,6 +14,9 @@ class CompetenceTableViewCell: UITableViewCell{
 //    MARK:- IBOutlets
     @IBOutlet weak var CollaborateurNameLabel: UILabel!
     @IBOutlet weak var chartView: RadarChartView!
+    @IBOutlet weak var viewCell: UIView!
+    @IBOutlet weak var viewLabel: UIView!
+    
     //    MARK:- var
     var competence: CompetenceCollab? = nil
     var values : [Double] = []
@@ -24,6 +27,8 @@ class CompetenceTableViewCell: UITableViewCell{
 //    MARK:- Configuration
      override func awakeFromNib() {
             super.awakeFromNib()
+        configuringViewCell()
+        configuringViewLabelCollaborateur()
 //        chartView.delegate = self
         chartView.chartDescription?.enabled = false
         chartView.webLineWidth = 1
@@ -58,6 +63,15 @@ class CompetenceTableViewCell: UITableViewCell{
        
     }
 
+//    MARK:- Configuring cell color and corner radius
+    func configuringViewCell() {
+        viewCell.layer.cornerRadius = 15
+        viewCell.backgroundColor = UIColor.systemGray3
+    }
+    func configuringViewLabelCollaborateur(){
+//        viewLabel.backgroundColor = UIColor.cyan
+        viewLabel.layer.cornerRadius = 5
+    }
     override func layoutSubviews() {
         self.updateRadar(index: 0)
     }
@@ -66,7 +80,10 @@ class CompetenceTableViewCell: UITableViewCell{
         super.setSelected(selected, animated: animated)
 
     }
-//competence
+    
+    
+    
+//MARK:- competence
     func updateRadar(index : Int){
            let skills :[[Skill]]
            var skillsLevels = [[String: Level]]()
@@ -77,6 +94,7 @@ class CompetenceTableViewCell: UITableViewCell{
         for affectation in  affectationList {
                print("skilllevelyyyyyy")
                print(skillsLevels)
+            
                var skillsLevel: [String: Level] = [:]
                for level in affectation.skillsLevelClassificationDTO!.crSkillsLevels!.levels!{
                    skillsLevel[level.code!] = level
@@ -85,13 +103,14 @@ class CompetenceTableViewCell: UITableViewCell{
            }
            print(skillsLevels)
            var names : [String] = []
-        if skills.isEmpty  || affectations.isEmpty {
+        if skills.isEmpty  || affectations.isEmpty || competence!.affectationSkillByClassificationDTOList.isEmpty {
             return
         }
            names = skills[index].map  { skillsLabel![$0.codeSkill!]! }
            activities = names
            values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double}
         print(values)
+        print("******")
            setChartData(label : (competence!.affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
        }
     
@@ -111,7 +130,7 @@ class CompetenceTableViewCell: UITableViewCell{
            set1.fillColor = UIColor.cyan
            set1.drawFilledEnabled = true
            set1.fillAlpha = 0.5
-           set1.lineWidth = 1
+           set1.lineWidth = 2
            set1.drawHighlightCircleEnabled = true
            set1.setDrawHighlightIndicators(false)
            
@@ -133,6 +152,9 @@ class CompetenceTableViewCell: UITableViewCell{
     
     
     @IBAction func nextButton(_ sender: Any) {
+        if self.competence!.affectationSkillByClassificationDTOList.isEmpty{
+            return
+        }
         radarIndex+=1
         radarIndex = radarIndex % (self.competence!.affectationSkillByClassificationDTOList.count)
         updateRadar(index: radarIndex)
@@ -141,6 +163,9 @@ class CompetenceTableViewCell: UITableViewCell{
     
     
     @IBAction func previousButton(_ sender: Any) {
+        if self.competence!.affectationSkillByClassificationDTOList.isEmpty{
+            return
+        }
         radarIndex-=1
         radarIndex = radarIndex +  (self.competence!.affectationSkillByClassificationDTOList.count)
         radarIndex = radarIndex %  (self.competence!.affectationSkillByClassificationDTOList.count)

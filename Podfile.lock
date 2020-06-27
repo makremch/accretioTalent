@@ -5,7 +5,6 @@ PODS:
   - Charts/Core (3.5.0)
   - DropDown (2.3.13)
   - Promises (2.0.4)
-  - SwiftLint (0.39.2)
   - SwiftyMimeTypes (2.1.0)
 
 DEPENDENCIES:
@@ -13,7 +12,6 @@ DEPENDENCIES:
   - Charts
   - DropDown
   - Promises
-  - SwiftLint
   - SwiftyMimeTypes
 
 SPEC REPOS:
@@ -22,7 +20,6 @@ SPEC REPOS:
     - Charts
     - DropDown
     - Promises
-    - SwiftLint
     - SwiftyMimeTypes
 
 SPEC CHECKSUMS:
@@ -30,9 +27,8 @@ SPEC CHECKSUMS:
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Promises: fcb83dc6be43294a8d30c343636ed1a45a8d2e0a
-  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyMimeTypes: df2392d0f7b7c06bb3a65909e0d1efc09f5b6b6b
 
-PODFILE CHECKSUM: cf28fa5d6b51d024b4e879d5ef8f92b462417d8b
+PODFILE CHECKSUM: f046042df901ff0ec89b8d01d7c7e8538a892115
 
 COCOAPODS: 1.9.1
