@@ -19,6 +19,8 @@ class CompetenceTableViewCell: UITableViewCell{
     var values : [Double] = []
     var skillsLabel:[String: String]? = nil
     var activities : [String] = []
+    var radarIndex : Int = 0
+    
 //    MARK:- Configuration
      override func awakeFromNib() {
             super.awakeFromNib()
@@ -83,12 +85,13 @@ class CompetenceTableViewCell: UITableViewCell{
            }
            print(skillsLevels)
            var names : [String] = []
-        if skills.isEmpty {
+        if skills.isEmpty  || affectations.isEmpty {
             return
         }
            names = skills[index].map  { skillsLabel![$0.codeSkill!]! }
            activities = names
            values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double}
+        print(values)
            setChartData(label : (competence!.affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
        }
     
@@ -97,8 +100,6 @@ class CompetenceTableViewCell: UITableViewCell{
     
     
     func setChartData(label  : String) {
-           let mult: UInt32 = 80
-           let min: UInt32 = 20
            let cnt = activities.count
            let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
            let entries1 = values.map { RadarChartDataEntry(value : $0) }
@@ -129,5 +130,22 @@ class CompetenceTableViewCell: UITableViewCell{
            data.setValueTextColor(.white)
            chartView.data = data
           }
+    
+    
+    @IBAction func nextButton(_ sender: Any) {
+        radarIndex+=1
+        radarIndex = radarIndex % (self.competence!.affectationSkillByClassificationDTOList.count)
+        updateRadar(index: radarIndex)
+    }
+    
+    
+    
+    @IBAction func previousButton(_ sender: Any) {
+        radarIndex-=1
+        radarIndex = radarIndex +  (self.competence!.affectationSkillByClassificationDTOList.count)
+        radarIndex = radarIndex %  (self.competence!.affectationSkillByClassificationDTOList.count)
+        print(radarIndex)
+        updateRadar(index: radarIndex)
+    }
 }
 
