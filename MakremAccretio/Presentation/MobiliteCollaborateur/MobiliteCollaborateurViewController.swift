@@ -27,7 +27,8 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     
     @IBAction func backButton(_ sender: Any) {
         
-    dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        
     }
     //    MARK: - DECLARATION UI & var :
     
@@ -89,15 +90,15 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         let vc = storyboard.instantiateViewController(identifier: "detailVC") as! MobiliteCollaborateurDetailsViewController
         if searchActive {
             vc.content = currentDataValueArray[indexPath.row]
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc,animated: false)
+            }
         }else {
         
         vc.content = dataValueCollaborateur[indexPath.row]
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
-        
-        
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(vc,animated: true)
+        }
 //                   self.navigationController?.pushViewController(vc, animated: true)
         }
                

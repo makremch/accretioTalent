@@ -7,16 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "895F05BA-0525-4410-AEFD-F07AB3846E77"
+            uuid = "DFEF0E3B-0721-4212-A84F-2A485357A813"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MakremAccretio/Presentation/MobiliteCollaborateurDetails/MobiliteCollaborateurDetailsViewController.swift"
+            filePath = "MakremAccretio/Presentation/CompetenceCollaborateur/CompetenceCollaborateurViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "updateRadar(index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DFEF0E3B-0721-4212-A84F-2A485357A813 - 608a0ab4f3ace9af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakremAccretio.CompetenceCollaborateurViewController.updateRadar(index: Swift.Int) -&gt; ()"
+                  moduleName = "MakremAccretio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makrem/Downloads/a/MakremAccretio/Presentation/CompetenceCollaborateur/CompetenceCollaborateurViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "9029">
+               </Location>
+               <Location
+                  uuid = "DFEF0E3B-0721-4212-A84F-2A485357A813 - 688a80289ad9d846"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (MakremAccretio.Skill) -&gt; Swift.Optional&lt;Swift.String&gt; in MakremAccretio.CompetenceCollaborateurViewController.updateRadar(index: Swift.Int) -&gt; ()"
+                  moduleName = "MakremAccretio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/makrem/Downloads/a/MakremAccretio/Presentation/CompetenceCollaborateur/CompetenceCollaborateurViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48AE6485-F546-4480-BC1B-D03EB75D13FD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakremAccretio/Presentation/CompetenceCollaborateur/CompetenceCollaborateurViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "updateRadar(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

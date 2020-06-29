@@ -26,7 +26,7 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
     
     //    MARK:- Button actions
     @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //    MARK:- Var & Let

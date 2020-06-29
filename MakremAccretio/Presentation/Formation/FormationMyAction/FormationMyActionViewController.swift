@@ -107,7 +107,9 @@ class FormationMyActionViewController: UIViewController, FormationMyActionDispla
     
     
     
-    
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     

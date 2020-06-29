@@ -94,7 +94,6 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
         super.viewDidLoad()
         
         let token = UserDefaults.standard.string(forKey: "accessToken")!
-        
         self.interactor?.getListFormationForValidation(token: token)
         self.interactor?.showListFormationManagerMesDemandes(token: token)
         //        self.interactor?.showMyActions(token: token)
@@ -207,7 +206,9 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
     }
     
     
-    
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     

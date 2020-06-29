@@ -232,17 +232,40 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
              let mobiliteC = storyBoard.instantiateViewController(withIdentifier: "mobiliteCollaborateurVC") as! MobiliteCollaborateurViewController
-        mobiliteC.modalPresentationStyle = .fullScreen
-        self.present(mobiliteC, animated: true, completion: nil)
+               self.navigationController?.pushViewController(mobiliteC, animated: true)
+
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
              let mobiliteC = storyBoard.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-        mobiliteC.modalPresentationStyle = .fullScreen
-        self.present(mobiliteC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(mobiliteC, animated: true)
 
 }
+     @IBAction func MobiliteCollabBtn(_ sender: Any) {
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                 let mobiliteCC = storyBoard.instantiateViewController(withIdentifier: "mobiliteVC") as! MobiliteViewController
+            self.navigationController?.pushViewController(mobiliteCC, animated: true)
+
+    }
+    
+    @IBAction func formationBtn(_ sender: Any) {
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                 let formationC = storyBoard.instantiateViewController(withIdentifier: "MenuFormation") as! MenuFormationViewController
+       formationC.titleScreen = "Formations"
+            self.navigationController?.pushViewController(formationC, animated: true)
+
+    }
+    @IBAction func CompetenceCollabBtn(_ sender: Any) {
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                 let comptenceC = storyBoard.instantiateViewController(withIdentifier: "MenuFormation") as! MenuFormationViewController
+       comptenceC.titleScreen = "Competences"
+            self.navigationController?.pushViewController(comptenceC, animated: true)
+
+    }
     
 }

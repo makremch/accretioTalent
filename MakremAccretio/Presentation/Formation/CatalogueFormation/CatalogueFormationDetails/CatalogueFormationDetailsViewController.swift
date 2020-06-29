@@ -144,7 +144,7 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     @IBOutlet weak var demanderButton: UIButton!
     
     @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -169,6 +169,8 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         formationTitleLabel.text = "android"
         
     }
+    
+    
     
     
 }

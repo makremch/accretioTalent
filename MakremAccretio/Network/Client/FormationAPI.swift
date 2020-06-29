@@ -21,10 +21,8 @@ class FormationAPI {
 //    MARK: affichage liste formation du manager
     
     static func showListFormationManager(token : String) -> Promise<ResponseFormation>{
-        let url = "https://mobile-int.accretio.io/training/api/training-participation-requests/initiator/dert?size=10&page=0&sort=creationDate,DESC"
-     
-//     https://mobile-int.accretio.io/training/api/training-action/participants?targetEmployees=dert&size=10&page=0
-  
+//        let url = "https://mobile-int.accretio.io/training/api/training-participation-requests/initiator/dert?size=10&page=0&sort=creationDate,DESC"
+     let url = ""
      print(url)
         return  Promise<ResponseFormation> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [

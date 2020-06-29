@@ -14,66 +14,68 @@ import UIKit
 
 protocol MenuFormationDisplayLogic: class
 {
-  func displaySomething(viewModel: MenuFormation.Something.ViewModel)
+    func displaySomething(viewModel: MenuFormation.Something.ViewModel)
 }
 
 class MenuFormationViewController: UIViewController, MenuFormationDisplayLogic
 {
-  var interactor: MenuFormationBusinessLogic?
-  var router: (NSObjectProtocol & MenuFormationRoutingLogic & MenuFormationDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = MenuFormationInteractor()
-    let presenter = MenuFormationPresenter()
-    let router = MenuFormationRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    var titleScreen = ""
+    var interactor: MenuFormationBusinessLogic?
+    var router: (NSObjectProtocol & MenuFormationRoutingLogic & MenuFormationDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-    designingElements()
-  }
-  
-  // MARK: Declarations
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = MenuFormationInteractor()
+        let presenter = MenuFormationPresenter()
+        let router = MenuFormationRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    @IBOutlet weak var titleNames: UILabel!
+    
+    // MARK: View lifecycle
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        doSomething()
+        titleNames.text = titleScreen
+        designingElements()
+    }
+    
+    // MARK: Declarations
     
     
     
@@ -92,18 +94,44 @@ class MenuFormationViewController: UIViewController, MenuFormationDisplayLogic
     @IBOutlet weak var ManagerButton: UIButton!
     
     @IBAction func backToFirstMenu(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: Do something
-  func doSomething()
-  {
-    let request = MenuFormation.Something.Request()
-    interactor?.doSomething(request: request)
-  }
+    func doSomething()
+    {
+        let request = MenuFormation.Something.Request()
+        interactor?.doSomething(request: request)
+    }
+    
+    func displaySomething(viewModel: MenuFormation.Something.ViewModel)
+    {
+        //nameTextField.text = viewModel.name
+    }
+    @IBAction func managerBtn(_ sender: Any) {
+        if titleScreen == "Formations"{
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let formationC = storyBoard.instantiateViewController(withIdentifier: "catalogueTabBar") as! CatalogueViewController
+                       self.navigationController?.pushViewController(formationC, animated: true)
+        }else{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                 let formationC = storyBoard.instantiateViewController(withIdentifier: "competence") as! CompetenceManagerViewController
+            self.navigationController?.pushViewController(formationC, animated: true)
+        }
+        
+    }
+    @IBAction func collaborateurBtn(_ sender: Any) {
+        if titleScreen == "Competences"{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let formationC = storyBoard.instantiateViewController(withIdentifier: "CompetenceCollab") as! CompetenceCollaborateurViewController
+                       self.navigationController?.pushViewController(formationC, animated: true)
+        }else{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                 let formationC = storyBoard.instantiateViewController(withIdentifier: "FormationCollab") as! FormationCollaborateurViewController
+            self.navigationController?.pushViewController(formationC, animated: true)
+        }
   
-  func displaySomething(viewModel: MenuFormation.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+}
+
 }

@@ -27,7 +27,7 @@ class MobiliteViewController: UIViewController, MobiliteDisplayLogic, UITableVie
     
     
     @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

@@ -24,7 +24,7 @@ class MobiliteAPI {
     
     static func showListMobilityForValidation(token : String) -> Promise<DemandeResponse>{
         let url = "https://mobile-int.accretio.io/recruitment/api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
-        
+//        let url="https://accretio-2-tnr.advyteam.com/recruitment/api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
         return  Promise<DemandeResponse> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token

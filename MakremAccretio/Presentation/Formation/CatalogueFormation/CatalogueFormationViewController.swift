@@ -22,7 +22,7 @@ protocol CatalogueFormationDisplayLogic: class
 class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,CatalogueFormationDisplayLogic
 {
     
-//    MARK:- Var & Let
+    //    MARK:- Var & Let
     var interactor: CatalogueFormationBusinessLogic?
     var router: (NSObjectProtocol & CatalogueFormationRoutingLogic & CatalogueFormationDataPassing)?
     lazy var popUpWindow : PopUpWindow = {
@@ -33,23 +33,84 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         return view
     }()
     
-//    MARK:- IBOutlets
+    //    MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var TitleOfView: UILabel!
+    @IBOutlet weak var viewDemande: UIView!
+    @IBOutlet weak var viewDemandePopUp: UIView!
+    @IBOutlet weak var PopulationButton: UIButton!
+    @IBOutlet weak var ImportanceButton: UIButton!
+    @IBOutlet weak var DateButton: UIButton!
     
-//    MARK:- Button actions
+    
+    
+    
+    
+    //    MARK:- Button actions
     @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
+    }
+    @IBAction func DateButton(_ sender: Any) {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        let alert = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+        alert.view.addSubview(datePicker)
+        
+        
+        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateString = dateFormatter.string(from: datePicker.date)
+            self.DateButton.setTitle(dateString, for: .normal)
+        }
+        let cancel = UIAlertAction(title: "Concel", style: .destructive, handler: nil)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)    }
+    
+    @IBAction func ImportanceButton(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Selectionnez importance foramation ", message: nil, preferredStyle: .actionSheet)
+        let q1 = UIAlertAction(title: "Q1", style: .default, handler: { _ in
+            self.ImportanceButton.setTitle("Q1", for: .normal)
+        })
+        let q2 = UIAlertAction(title: "Q2", style: .default,handler: { _ in
+            self.ImportanceButton.setTitle("Q2", for: .normal)
+        })
+        let q3 = UIAlertAction(title: "Q3", style: .default,handler: { _ in
+            self.ImportanceButton.setTitle("Q3", for: .normal)
+        })
+        let q4 = UIAlertAction(title: "Q4", style: .default,handler: { _ in
+            self.ImportanceButton.setTitle("Q4", for: .normal)
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        actionSheet.addAction(q1)
+        actionSheet.addAction(q2)
+        actionSheet.addAction(q3)
+        actionSheet.addAction(q4)
+        actionSheet.addAction(cancelAction)
+        
+        // 5
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    @IBAction func AnnulerButton(_ sender: Any) {
+        viewDemande.isHidden = true
+    }
+    @IBAction func PopulationButton(_ sender: Any) {
+        
+    }
+    @IBAction func ConfirmerButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: false)
     }
     @IBAction func DemandeHorsCatalogue(_ sender: Any) {
-        designingPopUp()
-        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        popUpWindow.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            self.visualEffectView.alpha = 1
-            self.popUpWindow.alpha = 1
-            self.popUpWindow.transform = CGAffineTransform.identity
-        }
+        viewDemande.isHidden = false
+        //        designingPopUp()
+        //        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        //        popUpWindow.alpha = 0
+        //        UIView.animate(withDuration: 0.5) {
+        //            self.visualEffectView.alpha = 1
+        //            self.popUpWindow.alpha = 1
+        //            self.popUpWindow.transform = CGAffineTransform.identity
+        //        }
     }
     
     // MARK: Object lifecycle
@@ -95,6 +156,7 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        viewDemande.isHidden = true
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         print(token)
@@ -123,14 +185,13 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "identCatalogue", sender: indexPath)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CatalogueFormationDetailsViewController") as!
         CatalogueFormationDetailsViewController
-//        vc.formationTitleLabel.text! = dataValueCatalogue[indexPath.row].code!
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(vc,animated: true)
-        }
+        
+        self.navigationController?.pushViewController(vc,animated: true)
+        
     }
     
     // MARK: Getting Data
@@ -175,6 +236,8 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         visualEffectView.alpha = 0
     }
+    
+    
 }
 
 extension CatalogueFormationViewController: PopUpDelegate{
@@ -194,4 +257,6 @@ extension UIColor {
     static func mainBlue() -> UIColor {
         return UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)
     }
+    
+    
 }

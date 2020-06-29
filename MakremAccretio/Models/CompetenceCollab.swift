@@ -17,7 +17,7 @@ struct CompetenseResponse: Codable {
     let last: Bool?
     let numberOfElements: Int?
     let first: Bool?
-//    let sort: JSONNull?
+    let sort: JSONNull?
     let size, number: Int?
 }
 

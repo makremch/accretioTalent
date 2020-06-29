@@ -17,17 +17,17 @@ protocol MobiliteCollaborateurDetailsDisplayLogic: class {
     func displayPerformMobiliteCollaborateurDetails(with viewModel: MobiliteCollaborateurDetailsModels.PerformMobiliteCollaborateurDetails.ViewModel)
     func getCodeViewController(response:CodeCv)
     func hidePostuler(hide:Bool)
-        func sucessUpload(response: Content)
+    func sucessUpload(response: Content)
 }
 
 class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteCollaborateurDetailsDisplayLogic, UIDocumentPickerDelegate {
     
     
     
-   // MARK: - UIDocumentPickerDelegate Methods
+    // MARK: - UIDocumentPickerDelegate Methods
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("view was cancelled")
-      
+        
     }
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let myURL = urls.first else {
@@ -41,11 +41,11 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         interactor?.postulerMobilite(fileUrl: myURL)
         print(fileName)
     }
-
+    
     func sucessUpload(response: Content) {
         print("view resp !!!!!!!!!!! ")
-             print(response)
-         }
+        print(response)
+    }
     
     
     var content : Content?
@@ -60,11 +60,12 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
     @IBOutlet weak var viewWhiteContrat: UIView!
     @IBOutlet weak var viewWhiteLocalisation: UIView!
     @IBOutlet weak var imgOffer: UIImageView!
-
+    
     var choseFile = false
     var fileUrl: URL?
     var fileName = ""
     @IBOutlet weak var popUpView: UIView!
+    
     
     @IBAction func candidateButton(_ sender: Any) {
         popUpView.layer.isHidden = true
@@ -79,7 +80,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
     }
     
     @IBAction func backButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func postulerButton(_ sender: Any) {
@@ -87,7 +88,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.present(documentPicker, animated: true, completion: nil)
-
+        
     }
     
     func hidePostuler(hide:Bool){
@@ -148,15 +149,16 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         
         let tap = UITapGestureRecognizer(target : self.view,action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
-        
+        let url = URL(string: "https://mobile-int.accretio.io/assets/images/default-img-recruitment.jpg")
+        imgOffer.kf.setImage(with: url)
         
         messageLabel.isHidden = true
         codeOffreLabel.text = content?.codeOffer
         ContratLabel.text = "CDD"
         localisationLabel.text = "Ariana"
-//        let url = URL(string: "https://mobile-int.accretio.io/assets/images/" + ()
-
-//            imgOffer.kf.setImage(with: content?.publishedPictureOffer?)
+        //        let url = URL(string: "https://mobile-int.accretio.io/assets/images/" + ()
+        
+        //            imgOffer.kf.setImage(with: content?.publishedPictureOffer?)
         
         
         let codeoffre = content?.codeOffer

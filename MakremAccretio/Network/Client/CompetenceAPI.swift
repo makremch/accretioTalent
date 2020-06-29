@@ -17,9 +17,8 @@ class CompetecenceAPI {
     
     static func showCompetenceCollaborateur(token : String) -> Promise<CompetenseResponse>{
         let params: [String: String] = ["":""]
-        let url = "https://mobile-int.accretio.io/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=6"
-        //            let url2 = "https://accretio-2-tnr.advyteam.com/skills/api/skills"
-        //        let url = "https://accretio-2-tnr.advyteam.com/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=10"
+//        let url = "https://mobile-int.accretio.io/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=6"
+       let url="https://accretio-2-tnr.advyteam.com/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=6"
         print(url)
         return  Promise<CompetenseResponse> { fulfill, reject in
             AF.request(url, method: .post, parameters: params,  encoding: JSONEncoding.default, headers: [

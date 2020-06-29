@@ -19,6 +19,10 @@ protocol LoginDisplayLogic: class {
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
+    
+   
+
+
    
     
     func showMobiliteCollaborator(){
@@ -31,9 +35,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     func showMenuAfterLogin(){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
           let menu = storyBoard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
-          menu.modalPresentationStyle = .fullScreen
+//          menu.modalPresentationStyle = .fullScreen
   
-                  self.present(menu, animated: true, completion: nil)
+//                  self.present(menu, animated: true, completion: nil)
+        self.navigationController?.pushViewController(menu, animated: true)
             }
 
     
@@ -117,12 +122,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+
         trackScreenViewAnalytics()
         registerNotifications()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+
         unregisterNotifications()
     }
 

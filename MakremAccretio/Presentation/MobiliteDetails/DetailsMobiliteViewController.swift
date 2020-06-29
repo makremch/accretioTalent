@@ -29,7 +29,7 @@ class DetailsMobiliteViewController: UIViewController, DetailsMobiliteDisplayLog
    
     
     @IBAction func backToAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
