@@ -18,7 +18,7 @@ class CompetecenceAPI {
     static func showCompetenceCollaborateur(token : String) -> Promise<CompetenseResponse>{
         let params: [String: String] = ["":""]
 //        let url = "https://mobile-int.accretio.io/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=6"
-       let url="https://accretio-2-tnr.advyteam.com/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=6"
+       let url = "https://accretio-2-tnr.advyteam.com/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=9"
         print(url)
         return  Promise<CompetenseResponse> { fulfill, reject in
             AF.request(url, method: .post, parameters: params,  encoding: JSONEncoding.default, headers: [
@@ -41,7 +41,8 @@ class CompetecenceAPI {
     
     
     static func showCompetenceLabelCollaborateur(token : String) -> Promise<[CompetenseLabelResponseElement]>{
-        let url = "https://mobile-int.accretio.io/skills/api/skills"
+//        let url = "https://mobile-int.accretio.io/skills/api/skills"
+        let url = "https://accretio-2-tnr.advyteam.com/skills/api/skills"
         print(url)
         return  Promise<[CompetenseLabelResponseElement]> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
@@ -66,7 +67,8 @@ class CompetecenceAPI {
     
     static func showCompetenceManager(token : String) -> Promise<CompetenseResponse>{
         let params: [String: String] = ["":""]
-        let url = "https://mobile-int.accretio.io/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=10"
+//        let url = "https://mobile-int.accretio.io/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=10"
+        let url = "https://accretio-2-tnr.advyteam.com/skills/api/affectation-skills-card?skillAffectationType=EMPLOYEE&referenceAffectationType=POSITION&page=0&size=30"
         return  Promise<CompetenseResponse> { fulfill, reject in
             AF.request(url, method: .post, parameters: params,  encoding: JSONEncoding.default, headers: [
                 "content-type":"application/json",
@@ -87,7 +89,8 @@ class CompetecenceAPI {
     }
     
     static func showCompetenceLabelManager(token : String) -> Promise<[CompetenseLabelResponseElement]>{
-           let url = "https://mobile-int.accretio.io/skills/api/skills"
+//           let url = "https://mobile-int.accretio.io/skills/api/skills"
+        let url = "https://accretio-2-tnr.advyteam.com/skills/api/skills"
            print(url)
            return  Promise<[CompetenseLabelResponseElement]> { fulfill, reject in
                AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [

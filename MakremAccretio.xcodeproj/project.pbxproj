@@ -146,6 +146,7 @@
 		F4DD6B372474648B0042B062 /* FormateurCatalogueFormationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B312474648B0042B062 /* FormateurCatalogueFormationViewController.swift */; };
 		F4DD6B382474648B0042B062 /* FormateurCatalogueFormationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */; };
 		F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */; };
+		F4E1CACF24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */; };
 		F4F7EE072431AFBA00CDF58B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */; };
 		F4F7EE092431B02000CDF58B /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */; };
 		F4F7EE112431B56200CDF58B /* createPostulerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0B2431B56200CDF58B /* createPostulerPresenter.swift */; };
@@ -337,6 +338,7 @@
 		F4DD6B312474648B0042B062 /* FormateurCatalogueFormationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationViewController.swift; sourceTree = "<group>"; };
 		F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationInteractor.swift; sourceTree = "<group>"; };
 		F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationViewControllerCell.swift; sourceTree = "<group>"; };
+		F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesImageDownloaderPlugin.swift; sourceTree = "<group>"; };
 		F4F7EE0524319CFA00CDF58B /* MakremAccretio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MakremAccretio.entitlements; sourceTree = "<group>"; };
 		F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
@@ -675,6 +677,7 @@
 				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
 				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
 				F43624CF24A8DD6300200E7A /* AddCatalogueFormation.swift */,
+				F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1192,6 +1195,7 @@
 				F4459548249FD65400512E17 /* CompetenceManagerWorker.swift in Sources */,
 				F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */,
 				F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */,
+				F4E1CACF24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift in Sources */,
 				F44614F3240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift in Sources */,
 				F4B470D12456BF8200CFF242 /* FormationPresenter.swift in Sources */,
 				F4C6932D23FDB01D00980714 /* Constants.swift in Sources */,

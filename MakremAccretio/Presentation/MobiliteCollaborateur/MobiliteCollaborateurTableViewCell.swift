@@ -17,9 +17,8 @@ class MobiliteCollaborateurTableViewCell : UITableViewCell {
     @IBOutlet weak var codeCollaborateurLabel: UILabel!
     @IBOutlet weak var offreTitre: UILabel!
     @IBOutlet weak var viewForData: UIView!
-    
-    
     @IBOutlet weak var imase: UIImageView!
+    
     func designForView(){
         viewForData.layer.cornerRadius = 15
         viewForData.layer.shadowColor = UIColor.gray.cgColor

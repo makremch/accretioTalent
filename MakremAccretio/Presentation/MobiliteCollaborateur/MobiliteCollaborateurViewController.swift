@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol MobiliteCollaborateurDisplayLogic: class {
     func displayFetchFromLocalDataStore(with viewModel: MobiliteCollaborateurModels.FetchFromLocalDataStore.ViewModel)
@@ -60,6 +61,24 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         if !searchActive{
             print(searchBar.selectedScopeButtonIndex)
             searchActive = false
+            if dataValueCollaborateur[indexPath.row].publishedPictureOffer != nil {
+                let imageFromUrl = (dataValueCollaborateur[indexPath.row].publishedPictureOffer)!
+                let urlImage = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
+                cellCollaborateur.imageView?.kf.setImage(with: urlImage){
+                    result in
+                    switch result {
+                    case .success:
+                        print(result)
+                        print("5edmet : ",result)
+                        break
+                    case .failure:
+                        print("l3asba ken te5dem :      " ,result)
+                        cellCollaborateur.imageView?.image = UIImage(named: "noImageAvailable")!
+                    }
+                }
+            }else{
+                cellCollaborateur.imageView?.image = UIImage(named: "noImageAvailable")!
+            }
             cellCollaborateur.offreTitre.text=dataValueCollaborateur[indexPath.row].publishedLabelOffer
             cellCollaborateur.codeCollaborateurLabel.text=dataValueCollaborateur[indexPath.row].codeOffer
 //            cellCollaborateur.RegionLabel.text = (dataValueCollaborateur[indexPath.row].publishedLocalisationOffer as Any) as? String

@@ -149,28 +149,33 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         
         let tap = UITapGestureRecognizer(target : self.view,action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
-        let url = URL(string: "https://mobile-int.accretio.io/assets/images/default-img-recruitment.jpg")
-        imgOffer.kf.setImage(with: url)
-        
         messageLabel.isHidden = true
         codeOffreLabel.text = content?.codeOffer
         ContratLabel.text = "CDD"
         localisationLabel.text = "Ariana"
-        //        let url = URL(string: "https://mobile-int.accretio.io/assets/images/" + ()
-        
-        //            imgOffer.kf.setImage(with: content?.publishedPictureOffer?)
-        
-        
-        let codeoffre = content?.codeOffer
-        titreLabel.text = content?.publishedLabelOffer
+        print((content?.publishedPictureOffer!)!)
+        let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + (content?.publishedPictureOffer!)!)
+        print("url : ##", url!)
         let token = UserDefaults.standard.string(forKey: "accessToken")!
-        self.interactor?.getCodeCvCollaborator(token: token, codeOffer: codeoffre!)
-        
+        imgOffer.kf.setImage(with: url){
+            result in
+            switch result {
+            case .success:
+                print(result)
+                print("5edmet : ",result)
+                break
+            case .failure:
+                print("l3asba ken te5dem :      " ,result)
+                self.imgOffer.image = UIImage(named: "noImageAvailable")!
+            }
+        }
+        titreLabel.text = content?.publishedLabelOffer
+        print("code offer :",content?.codeOffer ,"published status offer : ",content?.publishedStatusOffer,"#")
+        print("#################################")
+//        self.interactor?.getCodeCvCollaborator(token: token, codeOffer: (content?.codeoffre)!)
         let text = content?.documentsList
-        print("wgggg",text)
-        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchFromRemoteDataStore()

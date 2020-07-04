@@ -32,9 +32,11 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     var interactor: CompetenceCollaborateurBusinessLogic?
     var router: (NSObjectProtocol & CompetenceCollaborateurRoutingLogic & CompetenceCollaborateurDataPassing)?
     var dataValueCompetenceCollaborateur : [ClassificationDto] = []
-    var values : [Double] = []
+//    20,40,60,30,15
+    var values : [Double] = [22,42,22,82,22,12,22]
     var response: CompetenseResponse? = nil
     var skillsLabel:[String: String]? = nil
+//    "9a7ba","nikommk","dirrabek","zeb","asba"
     var activities : [String] = []
     var originalBarBgColor: UIColor!
     var originalBarTintColor: UIColor!
@@ -46,6 +48,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     @IBAction func nextButton(_ sender: Any) {
         radarIndex+=1
         radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        print("3assba")
         updateRadar(index: radarIndex)
     }
     @IBAction func previousButton(_ sender: Any) {
@@ -56,7 +59,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         updateRadar(index: radarIndex)
     }
     @IBAction func backButton(_ sender: Any) {
-          self.dismiss(animated: true, completion: nil)
+          self.navigationController?.popViewController(animated: true)
       }
     
     
@@ -116,6 +119,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         chartView.webColor = .lightGray
         chartView.innerWebColor = .lightGray
         chartView.webAlpha = 1
+        print("tttttt")
         let xAxis = chartView.xAxis
         xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
         xAxis.xOffset = 0
@@ -137,6 +141,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         l.xEntrySpace = 7
         l.yEntrySpace = 5
         l.textColor = .white
+        print("qqqqq")
         self.updateChartData()
         chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutBack)
         settingViewLabel()
@@ -174,20 +179,25 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         print(skillsLevels)
         print("---------------------------", dataValueCompetenceCollaborateur )
         var names : [String] = []
-        print(response)
-        names = skills[index].map  { skillsLabel![$0.codeSkill!]! }
+        print((response?.content?.count)!)
+        print("+++++++++++++++++++++++++++++++++++++")
+        names = skills[index].map  {(skillsLabel![$0.codeSkill!])! }
         activities = names
-        values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double}
+        values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double * 20 }
         setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
+       
     }
     
    
 //    MARK:- Getting data from API
     func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
+        print("nikomk0")
         self.response = response
+        print("nikomk1")
         self.skillsLabel = skillsLabel
+         print("nikomk")
         self.updateRadar(index: self.radarIndex)
-
+       
     }
 
     override func updateChartData() {
@@ -200,9 +210,13 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     func setChartData(label  : String) {
         let mult: UInt32 = 80
         let min: UInt32 = 20
-        let cnt = activities.count
+        var cnt = 0
+        cnt = activities.count
+        print("somme:",activities.count)
         let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
         let entries1 = values.map { RadarChartDataEntry(value : $0) }
+        print(entries1)
+        print(99)
         let entries2 = (0..<cnt).map(block)
         let set1 = RadarChartDataSet(entries: entries1,label: label)
         //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
@@ -228,7 +242,9 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
         data.setDrawValues(false)
         data.setValueTextColor(.white)
+        
         chartView.data = data
+        
        }
     
    
@@ -237,7 +253,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         NameLabel.textColor = UIColor.white
         NameLabel.alpha = 1
         userImage.alpha = 1
-        userView.alpha = 0.3
+        userView.alpha = 1
 //        userView.isOpaque = false
         userView.layer.cornerRadius = 10
         userImage.layer.cornerRadius = 5
@@ -248,6 +264,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
 // MARK: - Chart Config
 extension CompetenceCollaborateurViewController {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        print(activities[Int(value) % activities.count])
         return activities[Int(value) % activities.count]
     }  
 }

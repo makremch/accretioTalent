@@ -45,7 +45,8 @@ class CatalogueFormationInteractor: CatalogueFormationBusinessLogic, CatalogueFo
         worker?.showCatalogueFormation(token: token).then(){
             formationCatalogue in
             print("in interractor formation Catalogue **************************")
-            print(formationCatalogue)
+            print(formationCatalogue.content[1].picture!)
+            print("wwww")
             self.presenter?.showCatalogue(response : formationCatalogue)
         }.catch{
             error in

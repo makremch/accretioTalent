@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 protocol LoginBusinessLogic {
     func fetchFromLocalDataStore(with request: LoginModels.FetchFromLocalDataStore.Request)
@@ -96,6 +98,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 userdefault.set(user.listRoles, forKey: "listRoles")
                 userdefault.set(user.registrationNumber, forKey: "registrationNumber")
                 userdefault.set(user.employee.firstName, forKey: "nameOfUser")
+                KingfisherManager.shared.defaultOptions = [.requestModifier(CookiesImageDownloaderPlugin(authToken: userSession.accessToken, docToken: Connected.documentToken, bnesDocToken: Connected.bnesDocumentToken))]
                 self.presenter?.presentSignInSuccess()
 
             }
