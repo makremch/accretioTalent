@@ -38,7 +38,7 @@ struct FormationEntity: Codable {
 struct Initiator: Codable {
     let id, firstName, lastName, registrationNumber: String
     let profilePicture, email: String
-    let affectation: Affectation
+//    let affectation: Affectation
 }
 
 

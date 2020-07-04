@@ -49,7 +49,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
     
     
     var content : Content?
-    
+    @IBOutlet weak var postedByLabel: UILabel!
     @IBOutlet weak var codeOffreLabel: UILabel!
     @IBOutlet weak var titreLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
@@ -60,6 +60,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
     @IBOutlet weak var viewWhiteContrat: UIView!
     @IBOutlet weak var viewWhiteLocalisation: UIView!
     @IBOutlet weak var imgOffer: UIImageView!
+    @IBOutlet weak var missionTextView: UITextView!
     
     var choseFile = false
     var fileUrl: URL?
@@ -150,30 +151,42 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         let tap = UITapGestureRecognizer(target : self.view,action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
         messageLabel.isHidden = true
-        codeOffreLabel.text = content?.codeOffer
+        codeOffreLabel.text = content?.offerCode
         ContratLabel.text = "CDD"
         localisationLabel.text = "Ariana"
         print((content?.publishedPictureOffer!)!)
         let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + (content?.publishedPictureOffer!)!)
-        print("url : ##", url!)
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         imgOffer.kf.setImage(with: url){
             result in
             switch result {
             case .success:
                 print(result)
-                print("5edmet : ",result)
                 break
             case .failure:
-                print("l3asba ken te5dem :      " ,result)
                 self.imgOffer.image = UIImage(named: "noImageAvailable")!
             }
         }
+        imgOffer.layer.cornerRadius = 10
+        print((content?.publishedLocalisationOffer)!)
+        print("##")
+        if content?.publishedLocalisationOffer.count != 0 {
+            print(content?.publishedLocalisationOffer[0])
+            print(content?.documentsList)
+            print("###########################")
+            localisationLabel.text = String((content?.publishedLocalisationOffer[0])!)
+        }else{
+            localisationLabel.text = "non précisé"
+        }
+        
         titreLabel.text = content?.publishedLabelOffer
-        print("code offer :",content?.codeOffer ,"published status offer : ",content?.publishedStatusOffer,"#")
-        print("#################################")
-//        self.interactor?.getCodeCvCollaborator(token: token, codeOffer: (content?.codeoffre)!)
-        let text = content?.documentsList
+        let publishedMissionOfferWithBalise  = (content?.publishedMissionOffer)!
+        let publishedMissionWithoutBalises = publishedMissionOfferWithBalise.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        missionTextView.text = publishedMissionWithoutBalises
+        //        self.interactor?.getCodeCvCollaborator(token: token, codeOffer: (content?.codeoffre)!)
+        if (content?.initiator?.firstName) != nil || (content?.initiator?.lastName) != nil {
+            postedByLabel.text = (content?.initiator?.firstName)! + " " + (content?.initiator?.lastName)!
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

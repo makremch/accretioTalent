@@ -64,7 +64,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             if dataValueCollaborateur[indexPath.row].publishedPictureOffer != nil {
                 let imageFromUrl = (dataValueCollaborateur[indexPath.row].publishedPictureOffer)!
                 let urlImage = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
-                cellCollaborateur.imageView?.kf.setImage(with: urlImage){
+                cellCollaborateur.imase?.kf.setImage(with: urlImage){
                     result in
                     switch result {
                     case .success:
@@ -73,21 +73,21 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
                         break
                     case .failure:
                         print("l3asba ken te5dem :      " ,result)
-                        cellCollaborateur.imageView?.image = UIImage(named: "noImageAvailable")!
+                        cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
                     }
                 }
             }else{
-                cellCollaborateur.imageView?.image = UIImage(named: "noImageAvailable")!
+                cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
             }
             cellCollaborateur.offreTitre.text=dataValueCollaborateur[indexPath.row].publishedLabelOffer
-            cellCollaborateur.codeCollaborateurLabel.text=dataValueCollaborateur[indexPath.row].codeOffer
+            cellCollaborateur.codeCollaborateurLabel.text=dataValueCollaborateur[indexPath.row].offerCode
 //            cellCollaborateur.RegionLabel.text = (dataValueCollaborateur[indexPath.row].publishedLocalisationOffer as Any) as? String
             let test = dataValueCollaborateur[indexPath.row]
             if test.publishedLocalisationOffer != [] {
                  cellCollaborateur.RegionLabel.text = (test.publishedLocalisationOffer[0])
             }
             if test.publishedContractOffer != [] {
-                cellCollaborateur.offreContrat.text = (test .publishedContractOffer?[0])
+                cellCollaborateur.offreContrat.text = (test.publishedContractOffer[0])
             }
         }
         else if searchActive {
@@ -95,7 +95,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             let scope = searchBar.selectedScopeButtonIndex
             
             cellCollaborateur.offreTitre.text = currentDataValueArray[indexPath.row].publishedLabelOffer
-            cellCollaborateur.codeCollaborateurLabel.text = currentDataValueArray[indexPath.row].codeOffer
+            cellCollaborateur.codeCollaborateurLabel.text = currentDataValueArray[indexPath.row].offerCode
 //            cellCollaborateur.RegionLabel.text = currentDataValueArray[indexPath.row].publishedLocalisationOffer[0] ?? ""
         }
 //        cellCollaborateur.bgImage.layer.cornerRadius = 15
@@ -219,7 +219,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     private func findByOfferName(text : String) {
         currentDataValueArray = dataValueCollaborateur.filter({
             data -> Bool in
-            return (data.publishedLabelOffer?.contains(text))!
+            return (data.publishedOfferCode.contains(text))
         })
     }
     
@@ -234,7 +234,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     private func findByOfferContrat(text : String) {
         currentDataValueArray = dataValueCollaborateur.filter({
             data -> Bool in
-            return (data.publishedContractOffer?.contains(text))!
+            return (data.publishedContractOffer.contains(text))
         })
     }
     
