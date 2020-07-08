@@ -15,6 +15,7 @@ import UIKit
 protocol EvaluationCollaborateurBusinessLogic
 {
   func doSomething(request: EvaluationCollaborateur.Something.Request)
+    func showEvaluationsCollaborateur(token : String)
 }
 
 protocol EvaluationCollaborateurDataStore
@@ -38,4 +39,17 @@ class EvaluationCollaborateurInteractor: EvaluationCollaborateurBusinessLogic, E
     let response = EvaluationCollaborateur.Something.Response()
     presenter?.presentSomething(response: response)
   }
+    
+    
+    func showEvaluationsCollaborateur(token : String) {
+        worker = EvaluationCollaborateurWorker()
+        worker?.showCollaborateurEvaluations(token: token).then(){
+            evaluation in
+            print(evaluation.content)
+            self.presenter?.showEvaluationCollaborateur(responses: evaluation)
+        }.catch{
+            error in
+            print(error)
+        }
+    }
 }

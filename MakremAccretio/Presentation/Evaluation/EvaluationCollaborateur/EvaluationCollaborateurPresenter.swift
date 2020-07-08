@@ -14,18 +14,24 @@ import UIKit
 
 protocol EvaluationCollaborateurPresentationLogic
 {
-  func presentSomething(response: EvaluationCollaborateur.Something.Response)
+    func presentSomething(response: EvaluationCollaborateur.Something.Response)
+    func showEvaluationCollaborateur(responses:EvaluationResponse)
 }
 
 class EvaluationCollaborateurPresenter: EvaluationCollaborateurPresentationLogic
 {
-  weak var viewController: EvaluationCollaborateurDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: EvaluationCollaborateur.Something.Response)
-  {
-    let viewModel = EvaluationCollaborateur.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: EvaluationCollaborateurDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentSomething(response: EvaluationCollaborateur.Something.Response)
+    {
+        let viewModel = EvaluationCollaborateur.Something.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
+    }
+    
+    func showEvaluationCollaborateur(responses: EvaluationResponse){
+        viewController?.displayData(response : responses)
+    }
+    
 }

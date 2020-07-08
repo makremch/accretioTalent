@@ -103,15 +103,12 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     }
     @IBAction func DemandeHorsCatalogue(_ sender: Any) {
         viewDemande.isHidden = false
-        //        designingPopUp()
-        //        popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        //        popUpWindow.alpha = 0
-        //        UIView.animate(withDuration: 0.5) {
-        //            self.visualEffectView.alpha = 1
-        //            self.popUpWindow.alpha = 1
-        //            self.popUpWindow.transform = CGAffineTransform.identity
-        //        }
+        
+//        view.layer.opacity = 0.1
     }
+    
+    @IBOutlet weak var bgView: UIView!
+    
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -157,6 +154,15 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     {
         super.viewDidLoad()
         viewDemande.isHidden = true
+        viewDemandePopUp.layer.cornerRadius = 15
+        PopulationButton.layer.borderColor = UIColor.black.cgColor
+        PopulationButton.layer.borderWidth = 1
+        PopulationButton.layer.cornerRadius = 15
+        PopulationButton.layer.backgroundColor = UIColor.systemGray3.cgColor
+        ImportanceButton.layer.cornerRadius = 15
+        ImportanceButton.layer.borderColor = UIColor.black.cgColor
+        ImportanceButton.layer.borderWidth = 1
+        ImportanceButton.layer.backgroundColor = UIColor.systemGray3.cgColor
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         print(token)

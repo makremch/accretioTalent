@@ -11,10 +11,17 @@
 //
 
 import UIKit
+import Foundation
+import Promise
+
 
 class EvaluationCollaborateurWorker
 {
   func doSomeWork()
   {
   }
+    
+    func showCollaborateurEvaluations(token : String) -> Promise<EvaluationResponse> {
+        return EvaluationAPI.showEvaluationCollaborateur(token: token)
+    }
 }

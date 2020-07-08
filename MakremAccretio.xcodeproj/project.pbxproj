@@ -147,6 +147,15 @@
 		F4DD6B382474648B0042B062 /* FormateurCatalogueFormationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */; };
 		F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */; };
 		F4E1CACF24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */; };
+		F4E1CAE324B23573002D9672 /* CompanyLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CADD24B23573002D9672 /* CompanyLoginPresenter.swift */; };
+		F4E1CAE424B23573002D9672 /* CompanyLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CADE24B23573002D9672 /* CompanyLoginWorker.swift */; };
+		F4E1CAE524B23573002D9672 /* CompanyLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CADF24B23573002D9672 /* CompanyLoginRouter.swift */; };
+		F4E1CAE624B23573002D9672 /* CompanyLoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CAE024B23573002D9672 /* CompanyLoginModels.swift */; };
+		F4E1CAE724B23573002D9672 /* CompanyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CAE124B23573002D9672 /* CompanyLoginViewController.swift */; };
+		F4E1CAE824B23573002D9672 /* CompanyLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CAE224B23573002D9672 /* CompanyLoginInteractor.swift */; };
+		F4E1CAEA24B25816002D9672 /* EvaluationViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CAE924B25816002D9672 /* EvaluationViewControllerCell.swift */; };
+		F4E1CAEC24B25DBF002D9672 /* EvaluationCollaborateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */; };
+		F4E1CAEE24B25E3A002D9672 /* EvaluationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E1CAED24B25E3A002D9672 /* EvaluationAPI.swift */; };
 		F4F7EE072431AFBA00CDF58B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */; };
 		F4F7EE092431B02000CDF58B /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */; };
 		F4F7EE112431B56200CDF58B /* createPostulerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE0B2431B56200CDF58B /* createPostulerPresenter.swift */; };
@@ -339,6 +348,15 @@
 		F4DD6B322474648B0042B062 /* FormateurCatalogueFormationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationInteractor.swift; sourceTree = "<group>"; };
 		F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormateurCatalogueFormationViewControllerCell.swift; sourceTree = "<group>"; };
 		F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesImageDownloaderPlugin.swift; sourceTree = "<group>"; };
+		F4E1CADD24B23573002D9672 /* CompanyLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLoginPresenter.swift; sourceTree = "<group>"; };
+		F4E1CADE24B23573002D9672 /* CompanyLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLoginWorker.swift; sourceTree = "<group>"; };
+		F4E1CADF24B23573002D9672 /* CompanyLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLoginRouter.swift; sourceTree = "<group>"; };
+		F4E1CAE024B23573002D9672 /* CompanyLoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLoginModels.swift; sourceTree = "<group>"; };
+		F4E1CAE124B23573002D9672 /* CompanyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLoginViewController.swift; sourceTree = "<group>"; };
+		F4E1CAE224B23573002D9672 /* CompanyLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyLoginInteractor.swift; sourceTree = "<group>"; };
+		F4E1CAE924B25816002D9672 /* EvaluationViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationViewControllerCell.swift; sourceTree = "<group>"; };
+		F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateur.swift; sourceTree = "<group>"; };
+		F4E1CAED24B25E3A002D9672 /* EvaluationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationAPI.swift; sourceTree = "<group>"; };
 		F4F7EE0524319CFA00CDF58B /* MakremAccretio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MakremAccretio.entitlements; sourceTree = "<group>"; };
 		F4F7EE062431AFBA00CDF58B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F4F7EE082431B02000CDF58B /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
@@ -547,6 +565,7 @@
 				F4A59B3D24A89CFF00513676 /* EvaluationCollaborateurModels.swift */,
 				F4A59B3E24A89CFF00513676 /* EvaluationCollaborateurViewController.swift */,
 				F4A59B3F24A89CFF00513676 /* EvaluationCollaborateurInteractor.swift */,
+				F4E1CAE924B25816002D9672 /* EvaluationViewControllerCell.swift */,
 			);
 			path = EvaluationCollaborateur;
 			sourceTree = "<group>";
@@ -646,6 +665,7 @@
 		F4C6930B23FD52F500980714 /* SignIN */ = {
 			isa = PBXGroup;
 			children = (
+				F4E1CADC24B23547002D9672 /* CompanyLogin */,
 				F4C6930C23FD532200980714 /* LoginPresenter.swift */,
 				F4C6930D23FD532200980714 /* LoginWorker.swift */,
 				F4C6930E23FD532200980714 /* LoginRouter.swift */,
@@ -678,6 +698,7 @@
 				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
 				F43624CF24A8DD6300200E7A /* AddCatalogueFormation.swift */,
 				F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */,
+				F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -734,6 +755,7 @@
 				F4C6934723FF187400980714 /* MobiliteAPI.swift */,
 				F4B470A124569BD900CFF242 /* FormationAPI.swift */,
 				F42473A22487D92C00B27C6F /* CompetenceAPI.swift */,
+				F4E1CAED24B25E3A002D9672 /* EvaluationAPI.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -787,6 +809,19 @@
 				F4DD6B39247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift */,
 			);
 			path = FormateurCatalogue;
+			sourceTree = "<group>";
+		};
+		F4E1CADC24B23547002D9672 /* CompanyLogin */ = {
+			isa = PBXGroup;
+			children = (
+				F4E1CADD24B23573002D9672 /* CompanyLoginPresenter.swift */,
+				F4E1CADE24B23573002D9672 /* CompanyLoginWorker.swift */,
+				F4E1CADF24B23573002D9672 /* CompanyLoginRouter.swift */,
+				F4E1CAE024B23573002D9672 /* CompanyLoginModels.swift */,
+				F4E1CAE124B23573002D9672 /* CompanyLoginViewController.swift */,
+				F4E1CAE224B23573002D9672 /* CompanyLoginInteractor.swift */,
+			);
+			path = CompanyLogin;
 			sourceTree = "<group>";
 		};
 		F4F7EE0A2431B52900CDF58B /* Postuler */ = {
@@ -1068,14 +1103,18 @@
 				F4C6933E23FEA7ED00980714 /* MobiliteWorker.swift in Sources */,
 				F4C6932B23FD7AC900980714 /* AccretioModule.swift in Sources */,
 				F44614FF240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift in Sources */,
+				F4E1CAE824B23573002D9672 /* CompanyLoginInteractor.swift in Sources */,
 				F4B470D42456BF8200CFF242 /* FormationModels.swift in Sources */,
 				F4B470D52456BF8200CFF242 /* FormationViewController.swift in Sources */,
 				F4DD6B352474648B0042B062 /* FormateurCatalogueFormationRouter.swift in Sources */,
 				F4C6931623FD532200980714 /* LoginViewController.swift in Sources */,
+				F4E1CAEE24B25E3A002D9672 /* EvaluationAPI.swift in Sources */,
 				F47CA6962471957200C6ACB1 /* CatalogueFormationDetailsViewController.swift in Sources */,
 				F4C6933023FDB62200980714 /* UserAPIClient.swift in Sources */,
 				F47CA671246AE12100C6ACB1 /* CatalogueFormationWorker.swift in Sources */,
+				F4E1CAE624B23573002D9672 /* CompanyLoginModels.swift in Sources */,
 				F4F7EE65243345B900CDF58B /* MenuViewController.swift in Sources */,
+				F4E1CAE324B23573002D9672 /* CompanyLoginPresenter.swift in Sources */,
 				F4F7EE64243345B900CDF58B /* MenuModels.swift in Sources */,
 				F47CA6932471957200C6ACB1 /* CatalogueFormationDetailsWorker.swift in Sources */,
 				F4B470A0244E481700CFF242 /* Formation.swift in Sources */,
@@ -1086,6 +1125,7 @@
 				F4DD6B372474648B0042B062 /* FormateurCatalogueFormationViewController.swift in Sources */,
 				F4C692D123FD521F00980714 /* ViewController.swift in Sources */,
 				F4461500240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift in Sources */,
+				F4E1CAEA24B25816002D9672 /* EvaluationViewControllerCell.swift in Sources */,
 				F487DB9024650AA8001CA320 /* FormationCollaborateurWorker.swift in Sources */,
 				F47CA6952471957200C6ACB1 /* CatalogueFormationDetailsModels.swift in Sources */,
 				F487DB9324650AA8001CA320 /* FormationCollaborateurViewController.swift in Sources */,
@@ -1094,6 +1134,7 @@
 				F487DB9A24657FFC001CA320 /* DemandeTableViewCell.swift in Sources */,
 				F4A59B4024A89CFF00513676 /* EvaluationCollaborateurPresenter.swift in Sources */,
 				F4B470D32456BF8200CFF242 /* FormationRouter.swift in Sources */,
+				F4E1CAE724B23573002D9672 /* CompanyLoginViewController.swift in Sources */,
 				F4C6932323FD564E00980714 /* StatusEmployeeByManager.swift in Sources */,
 				F4A59B4524A89CFF00513676 /* EvaluationCollaborateurInteractor.swift in Sources */,
 				F4F7EE62243345B900CDF58B /* MenuWorker.swift in Sources */,
@@ -1171,6 +1212,7 @@
 				F44614FD240EAF1E00D4F567 /* MobiliteCollaborateurDetailsPresenter.swift in Sources */,
 				F47CA684246B032A00C6ACB1 /* FormationMyActionModels.swift in Sources */,
 				F4459547249FD65400512E17 /* CompetenceManagerPresenter.swift in Sources */,
+				F4E1CAE524B23573002D9672 /* CompanyLoginRouter.swift in Sources */,
 				F4D38B2C24869EA1003F2FD4 /* CompetenceCollaborateurModels.swift in Sources */,
 				F47CA65A246AABC000C6ACB1 /* MenuFormationInteractor.swift in Sources */,
 				F4B5981324045B3300D0F935 /* DetailsMobiliteModels.swift in Sources */,
@@ -1188,6 +1230,7 @@
 				F4D38B2D24869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift in Sources */,
 				F4C6931723FD532200980714 /* LoginInteractor.swift in Sources */,
 				F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */,
+				F4E1CAE424B23573002D9672 /* CompanyLoginWorker.swift in Sources */,
 				F4F7EE63243345B900CDF58B /* MenuRouter.swift in Sources */,
 				F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */,
 				F487DB8524612AA2001CA320 /* CatalogueFormation.swift in Sources */,
@@ -1196,6 +1239,7 @@
 				F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */,
 				F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */,
 				F4E1CACF24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift in Sources */,
+				F4E1CAEC24B25DBF002D9672 /* EvaluationCollaborateur.swift in Sources */,
 				F44614F3240D16E900D4F567 /* MobiliteCollaborateurInteractor.swift in Sources */,
 				F4B470D12456BF8200CFF242 /* FormationPresenter.swift in Sources */,
 				F4C6932D23FDB01D00980714 /* Constants.swift in Sources */,

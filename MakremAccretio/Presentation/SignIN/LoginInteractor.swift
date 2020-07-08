@@ -98,6 +98,10 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 userdefault.set(user.listRoles, forKey: "listRoles")
                 userdefault.set(user.registrationNumber, forKey: "registrationNumber")
                 userdefault.set(user.employee.firstName, forKey: "nameOfUser")
+                userdefault.set(user.employee.lastName, forKey: "lastNameOfUser")
+                userdefault.set((user.employee.employeeType?.employeeType)!, forKey: "employeType")
+                print((user.employee.employeeType?.employeeType)!)
+                print("3asba")
                 KingfisherManager.shared.defaultOptions = [.requestModifier(CookiesImageDownloaderPlugin(authToken: userSession.accessToken, docToken: Connected.documentToken, bnesDocToken: Connected.bnesDocumentToken))]
                 self.presenter?.presentSignInSuccess()
 
