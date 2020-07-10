@@ -122,8 +122,15 @@ class EvaluationCollaborateurViewController: UIViewController, EvaluationCollabo
         return cell
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let storyboard = UIStoryboard(name: "Evaluation", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "evalCollabDetails") as! EvaluationCollaborateurDetailsViewController
+                vc.content = evaluationCollab[indexPath.row]
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc,animated: false)
+                }
+        UserDefaults.standard.set(evaluationCollab[indexPath.row].code, forKey: "codeEvaluation")
+        }
 //    MARK:- Getting data from API
     func displayData(response : EvaluationResponse){
         evaluationCollab = response.content

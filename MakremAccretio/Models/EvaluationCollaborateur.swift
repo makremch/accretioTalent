@@ -22,12 +22,19 @@ struct EvaluationResponse: Codable {
 
 // MARK: - Content
 struct EvaluationCollab: Codable {
-    let id, code, campaignCode, label: String
-    let startDate, endDate: String
-    let participants: [String]
+    let id, code, label, contentDescription: String
     let ratingScale: String
-    let finalNote: JSONNull?
-    let evaluatedRegistrationNumber: String
+    let startDate, endDate: String
+    let status: String
+    let evaluationPeriod, targetsSettingPeriod: Bool
+    let steps: JSONNull?
+    let participants: [String]
+    let workflowVersion: Int
+    let decisionRequired: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case id, code, label
+        case contentDescription = "description"
+        case ratingScale, startDate, endDate, status, evaluationPeriod, targetsSettingPeriod, steps, participants, workflowVersion, decisionRequired
+    }
 }
-
-

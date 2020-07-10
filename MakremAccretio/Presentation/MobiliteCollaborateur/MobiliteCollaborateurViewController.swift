@@ -91,8 +91,8 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             }
         }
         else if searchActive {
-            print(searchBar.scopeButtonTitles)
-            let scope = searchBar.selectedScopeButtonIndex
+           
+
             
             cellCollaborateur.offreTitre.text = currentDataValueArray[indexPath.row].publishedLabelOffer
             cellCollaborateur.codeCollaborateurLabel.text = currentDataValueArray[indexPath.row].offerCode

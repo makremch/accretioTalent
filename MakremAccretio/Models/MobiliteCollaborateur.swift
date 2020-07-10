@@ -67,15 +67,11 @@ struct DocumentsList: Codable {
 }
 
 
-
-
 // MARK: - Status
 struct Status: Codable {
     let id: JSONNull?
     let statusEffectiveDate, effectiveStatus: String
 }
-
-
 
 struct ErreurAbsence: Codable {
     let validateField: String?

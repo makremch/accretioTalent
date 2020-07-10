@@ -84,12 +84,15 @@ class CompanyLoginViewController: UIViewController, CompanyLoginDisplayLogic
     }
   }
   
-  // MARK: View lifecycle
+    @IBOutlet weak var scrollView: UIScrollView!
+    // MARK: View lifecycle
   
   override func viewDidLoad()
   {
     super.viewDidLoad()
     doSomething()
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     settingViews()
   }
   
@@ -116,5 +119,21 @@ class CompanyLoginViewController: UIViewController, CompanyLoginDisplayLogic
         viewLogoAccretio.layer.opacity = 20
     }
     
+    @objc func keyboardWillShow(notification:NSNotification){
+
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
+    }
+
+    @objc func keyboardWillHide(notification:NSNotification){
+
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+    }
     
 }
