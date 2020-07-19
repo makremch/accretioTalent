@@ -10,6 +10,7 @@
 		19F0B022D1A9099D35513DA2 /* Pods_MakremAccretio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */; };
 		485FE8B8ED9E585F31F7B467 /* Pods_MakremAccretio_MakremAccretioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */; };
 		F15DFF70CA376D5145EE16D5 /* Pods_MakremAccretioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */; };
+		F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */; };
 		F4216A1C248EC1C100FAECD5 /* radar_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */; };
 		F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */; };
 		F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42473A22487D92C00B27C6F /* CompetenceAPI.swift */; };
@@ -91,6 +92,7 @@
 		F4A59B4324A89CFF00513676 /* EvaluationCollaborateurModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A59B3D24A89CFF00513676 /* EvaluationCollaborateurModels.swift */; };
 		F4A59B4424A89CFF00513676 /* EvaluationCollaborateurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A59B3E24A89CFF00513676 /* EvaluationCollaborateurViewController.swift */; };
 		F4A59B4524A89CFF00513676 /* EvaluationCollaborateurInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A59B3F24A89CFF00513676 /* EvaluationCollaborateurInteractor.swift */; };
+		F4B39B3D24B9FADA004E3B86 /* EvaluationCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */; };
 		F4B470A0244E481700CFF242 /* Formation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B4709F244E481700CFF242 /* Formation.swift */; };
 		F4B470A224569BD900CFF242 /* FormationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470A124569BD900CFF242 /* FormationAPI.swift */; };
 		F4B470D12456BF8200CFF242 /* FormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B470CB2456BF8200CFF242 /* FormationPresenter.swift */; };
@@ -212,6 +214,7 @@
 		78C29C180CE1459575577D16 /* Pods-MakremAccretio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio.debug.xcconfig"; path = "Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio.debug.xcconfig"; sourceTree = "<group>"; };
 		D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectifCommunTableViewCell.swift; sourceTree = "<group>"; };
 		F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radar_marker@3x.png"; path = "../../../../Charts-master/ChartsDemo-iOS/Resources/markers/radar_marker@3x.png"; sourceTree = "<group>"; };
 		F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarChartViewController.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/Demos/RadarChartViewController.xib"; sourceTree = "<group>"; };
 		F42473A22487D92C00B27C6F /* CompetenceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceAPI.swift; sourceTree = "<group>"; };
@@ -293,6 +296,7 @@
 		F4A59B3D24A89CFF00513676 /* EvaluationCollaborateurModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurModels.swift; sourceTree = "<group>"; };
 		F4A59B3E24A89CFF00513676 /* EvaluationCollaborateurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurViewController.swift; sourceTree = "<group>"; };
 		F4A59B3F24A89CFF00513676 /* EvaluationCollaborateurInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurInteractor.swift; sourceTree = "<group>"; };
+		F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCards.swift; sourceTree = "<group>"; };
 		F4B4709F244E481700CFF242 /* Formation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formation.swift; sourceTree = "<group>"; };
 		F4B470A124569BD900CFF242 /* FormationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationAPI.swift; sourceTree = "<group>"; };
 		F4B470CB2456BF8200CFF242 /* FormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationPresenter.swift; sourceTree = "<group>"; };
@@ -571,6 +575,7 @@
 				F491644B24B80E7500629F14 /* EvaluationCollaborateurDetailsModels.swift */,
 				F491644C24B80E7500629F14 /* EvaluationCollaborateurDetailsViewController.swift */,
 				F491644D24B80E7500629F14 /* EvaluationCollaborateurDetailsInteractor.swift */,
+				F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */,
 			);
 			path = EvaluationCollaborateurDetails;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */,
 				F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */,
 				F4816DC624B8E9C100890B31 /* EvaluationDetails.swift */,
+				F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1220,6 +1226,7 @@
 				F47CA688246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift in Sources */,
 				F47CA682246B032A00C6ACB1 /* FormationMyActionWorker.swift in Sources */,
 				F47CA65C246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift in Sources */,
+				F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */,
 				F487DB832460E657001CA320 /* SessionAction.swift in Sources */,
 				F612197124367F0C005029CD /* MobiliteEndpoint.swift in Sources */,
 				F4C6931223FD532200980714 /* LoginPresenter.swift in Sources */,
@@ -1236,6 +1243,7 @@
 				F4F7EE61243345B900CDF58B /* MenuPresenter.swift in Sources */,
 				F4C6932123FD560E00980714 /* Employee.swift in Sources */,
 				F4D38B2B24869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift in Sources */,
+				F4B39B3D24B9FADA004E3B86 /* EvaluationCards.swift in Sources */,
 				F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */,
 				F44614F0240D16E900D4F567 /* MobiliteCollaborateurRouter.swift in Sources */,
 				F4459549249FD65400512E17 /* CompetenceManagerRouter.swift in Sources */,

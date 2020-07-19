@@ -16,18 +16,110 @@ protocol EvaluationCollaborateurDetailsDisplayLogic: class
 {
     func displaySomething(viewModel: EvaluationCollaborateurDetails.Something.ViewModel)
     func displayDetails(responses : EvaluationDetailsResponse)
+    func displayCards(responses : EvaluationCardsResponse)
+    func diplayCardsError()
 }
 
 class EvaluationCollaborateurDetailsViewController: UIViewController, EvaluationCollaborateurDetailsDisplayLogic
 {
     var interactor: EvaluationCollaborateurDetailsBusinessLogic?
     var router: (NSObjectProtocol & EvaluationCollaborateurDetailsRoutingLogic & EvaluationCollaborateurDetailsDataPassing)?
-    var content : EvaluationCollab? = nil
+    var evaluationData : EvaluationCollab? = nil
+    var evaluationCards : EvaluationCardsResponse?
+    var content : EvaluationCollab?
+    @IBOutlet weak var tableView: UITableView!
+    
     
     
 //    MARK:- IBOutlets
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var closeButtonCommentaireView: UIButton!
+    @IBOutlet weak var closeButtonObjCommuns: UIButton!
+    @IBOutlet weak var SoumettreCommentaire: UIButton!
     @IBOutlet weak var UserNameLAbel: UILabel!
     @IBOutlet weak var EmployeTypeLabel: UILabel!
+    @IBOutlet weak var NameEvaluator: UILabel!
+    @IBOutlet weak var blackView: UIView!
+    @IBOutlet weak var objectifsIndividuelsView: UIView!
+    @IBOutlet weak var commentairesView: UIView!
+    @IBOutlet weak var competencesView: UIView!
+    @IBOutlet weak var fixationView: UIView!
+    @IBOutlet weak var formationView: UIView!
+    @IBOutlet weak var objectifsCommunView: UIView!
+    @IBOutlet weak var ProjetProfessionnelView: UIView!
+    
+   
+    @IBOutlet weak var ObjCommunButton: UIButton!
+    @IBOutlet weak var ObjIndivButton: UIButton!
+    @IBOutlet weak var formationButton: UIButton!
+    @IBOutlet weak var projetProfessionnelButton: UIButton!
+    @IBOutlet weak var fixationButton: UIButton!
+    @IBOutlet weak var CompetencesButton: UIButton!
+    @IBOutlet weak var CommentaireButton: UIButton!
+    
+    
+    //    MARK:- Button Action
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        UserDefaults.standard.removeObject(forKey: "codeEvaluation")
+    }
+    
+    
+    @IBAction func ObjectifCommunOnclick(_ sender: Any) {
+        closeButtonObjCommuns.layer.cornerRadius = 5
+        closeButtonObjCommuns.layer.borderColor = UIColor.systemGray3.cgColor
+        closeButtonObjCommuns.layer.borderWidth = 1
+        blackView.isHidden = false
+        objectifsCommunView.isHidden = false
+        objectifsCommunView.layer.cornerRadius = 15
+    }
+    
+    @IBAction func closeOnClickObjCommunView(_ sender: Any) {
+        objectifsCommunView.isHidden = true
+        blackView.isHidden = true
+    }
+    
+    
+    @IBAction func closeViewObjectifIndivButton(_ sender: Any) {
+        blackView.isHidden = true
+        objectifsIndividuelsView.isHidden = true
+
+    }
+    @IBAction func ObjectifIndividuelsOnclick(_ sender: Any) {
+        blackView.isHidden = false
+        objectifsIndividuelsView.isHidden = false
+        objectifsIndividuelsView.layer.cornerRadius = 15
+        closeButton.layer.cornerRadius = 5
+        closeButton.backgroundColor = UIColor.systemGray6
+    }
+    
+    @IBAction func FormationOnclick(_ sender: Any) {
+        blackView.isHidden = false
+        formationView.isHidden = false
+    }
+    
+    @IBAction func ProjetProfessionnelOnclick(_ sender: Any) {
+        blackView.isHidden = false
+        ProjetProfessionnelView.isHidden = false
+    }
+    
+    
+    @IBAction func FixationOnclick(_ sender: Any) {
+        blackView.isHidden = false
+        fixationView.isHidden = false
+    }
+    
+    
+    @IBAction func CompetencesOnclick(_ sender: Any) {
+        blackView.isHidden = false
+        competencesView.isHidden = false
+    }
+    
+    
+    @IBAction func CommentairesOnclick(_ sender: Any) {
+        blackView.isHidden = false
+        commentairesView.isHidden = false
+    }
     
     
     // MARK: Object lifecycle
@@ -42,6 +134,17 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
         super.init(coder: aDecoder)
         setup()
     }
+    
+    func designingButton(){
+        ObjCommunButton.layer.cornerRadius = 10
+        ObjIndivButton.layer.cornerRadius = 10
+        formationButton.layer.cornerRadius = 10
+        projetProfessionnelButton.layer.cornerRadius = 10
+        fixationButton.layer.cornerRadius = 10
+        CompetencesButton.layer.cornerRadius = 10
+        CommentaireButton.layer.cornerRadius = 10
+    }
+    
     
     // MARK: Setup
     private func setup()
@@ -69,24 +172,37 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
         }
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        UserDefaults.standard.removeObject(forKey: "codeEvaluation")
+    func hiddenViews(){
+        objectifsIndividuelsView.isHidden = true
+        formationView.isHidden = true
+        commentairesView.isHidden = true
+        fixationView.isHidden = true
+        objectifsCommunView.isHidden = true
+        competencesView.isHidden = true
+        ProjetProfessionnelView.isHidden = true
+        blackView.isHidden = true
     }
+    
     // MARK: View lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         doSomething()
+        designingButton()
+        hiddenViews()
         let userName = UserDefaults.standard.string(forKey: "nameOfUser")!
         let userLastName = UserDefaults.standard.string(forKey: "lastNameOfUser")!
         let typeUser = UserDefaults.standard.string(forKey: "employeType")!
-        
         UserNameLAbel.text = userName + " " + userLastName
         EmployeTypeLabel.text = typeUser
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         let code = UserDefaults.standard.string(forKey: "codeEvaluation")!
+//        MARK:- calling interactor to run API :
         self.interactor?.showEvaluationDetails(token: token, code: code)
+        self.interactor?.showEvaluationCardsDetails(token: token, code: code)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
     // MARK: Do something
     
@@ -106,4 +222,39 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     func displayDetails(responses : EvaluationDetailsResponse){
         print(responses)
     }
+    
+    func displayCards(responses : EvaluationCardsResponse){
+        print(responses)
+        evaluationCards = responses
+        print(evaluationCards!)
+        print("zebbbbb")
+        tableView.reloadData()
+    }
+    func diplayCardsError(){
+        print("no cards !")
+        print("zebbbbb")
+    }
+    
+}
+
+
+extension EvaluationCollaborateurDetailsViewController : UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let  cellObj = tableView.dequeueReusableCell(withIdentifier: "cellObj", for: indexPath) as?
+            ObjectifCommunTableViewCell
+            else {
+                return UITableViewCell()
+        }
+        cellObj.labelCard.text = evaluationCards?.communTargetsCard![0].label
+        cellObj.descriptionLabel.text = evaluationCards?.communTargetsCard![0].communTargetsCardDescription
+//        cellObj.weightLabel.text = String((evaluationCards?.communTargetsCard![0].weight)!)
+        return cellObj
+    }
+    
+    
+    
 }

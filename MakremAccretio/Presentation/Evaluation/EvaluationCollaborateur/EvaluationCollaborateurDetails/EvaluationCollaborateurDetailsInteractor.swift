@@ -16,6 +16,7 @@ protocol EvaluationCollaborateurDetailsBusinessLogic
 {
     func doSomething(request: EvaluationCollaborateurDetails.Something.Request)
     func showEvaluationDetails(token : String , code : String)
+    func showEvaluationCardsDetails(token : String , code : String)
 }
 
 protocol EvaluationCollaborateurDetailsDataStore
@@ -52,4 +53,30 @@ class EvaluationCollaborateurDetailsInteractor: EvaluationCollaborateurDetailsBu
             print(error)
         }
     }
+    
+    func showEvaluationCardsDetails(token : String , code : String){
+        worker = EvaluationCollaborateurDetailsWorker()
+        worker?.showCollaborateurCardsEvaluations(token: token, code: code).then(){
+            evaluationCards in
+            print(evaluationCards.count)
+            print("22222")
+            if evaluationCards.count != 0 {
+           print("many rows")
+                for e in evaluationCards{
+                    print(e)
+                    print("-----------------------")
+                    self.presenter?.showEvaluationDetailsCardsCollaborateur(responses: e)
+                    print("-----------------------")
+                }
+            
+            }else{
+                self.presenter?.showEvaluationDetailsCardsCollaborateurError()
+            }
+        }.catch{
+            error in
+            print(error)
+        }
+    }
+    
+    
 }

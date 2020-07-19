@@ -24,5 +24,10 @@ class EvaluationCollaborateurDetailsWorker
         return EvaluationAPI.showEvaluationDetailsCollaborateur(token : token, code : code)
     }
     
+    func showCollaborateurCardsEvaluations(token : String, code : String) -> Promise<[EvaluationCardsResponse]>
+    {
+        return EvaluationAPI.showEvaluationDetailsAxisCardsCollaborateur(token: token, code: code)
+    }
+    
     
 }

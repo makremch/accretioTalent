@@ -16,6 +16,8 @@ protocol EvaluationCollaborateurDetailsPresentationLogic
 {
     func presentSomething(response: EvaluationCollaborateurDetails.Something.Response)
     func showEvaluationDetailsCollaborateur(responses : EvaluationDetailsResponse)
+    func showEvaluationDetailsCardsCollaborateur(responses: EvaluationCardsResponse)
+    func showEvaluationDetailsCardsCollaborateurError()
 }
 
 class EvaluationCollaborateurDetailsPresenter: EvaluationCollaborateurDetailsPresentationLogic
@@ -31,5 +33,11 @@ class EvaluationCollaborateurDetailsPresenter: EvaluationCollaborateurDetailsPre
     }
     func showEvaluationDetailsCollaborateur(responses : EvaluationDetailsResponse){
         viewController?.displayDetails(responses: responses)
+    }
+    func showEvaluationDetailsCardsCollaborateur(responses: EvaluationCardsResponse){
+        viewController?.displayCards(responses : responses)
+    }
+    func showEvaluationDetailsCardsCollaborateurError(){
+        viewController?.diplayCardsError()
     }
 }

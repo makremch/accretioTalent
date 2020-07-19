@@ -63,5 +63,26 @@ class EvaluationAPI {
         }
     }
     
+    static func showEvaluationDetailsAxisCardsCollaborateur(token : String , code : String) -> Promise<[EvaluationCardsResponse]>{
+        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
+        let url = baseURL + "evaluation/api/evaluation-cards/campaign/" + code + "/evaluated/" + registrationNumber + "/axiscard"
+        print(url)
+        return  Promise<[EvaluationCardsResponse]> { fulfill, reject in
+            AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
+                "Authorization": "Bearer " + token
+            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<[EvaluationCardsResponse], AFError>) in
+                print(response)
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                    fulfill(value)
+                case .failure(let error):
+                    print(error)
+                    reject(error)
+                }
+            })
+        }
+    }
     
 }
