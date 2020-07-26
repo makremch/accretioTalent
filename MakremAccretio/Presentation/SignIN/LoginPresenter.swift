@@ -76,8 +76,7 @@ class LoginPresenter: LoginPresentationLogic {
     }
     
     func presentSignInError(error: Error) {
-        
         print("erreur ! ")
-        //        viewController?.displaySignInError(viewModel: error)
+                viewController?.displaySignInError(viewModel: error)
     }
 }

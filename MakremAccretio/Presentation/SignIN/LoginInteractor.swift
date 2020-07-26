@@ -109,6 +109,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
 //            self.getMyProfile()
         }.catch {error in
             print(error)
+            self.presenter?.presentSignInError(error: error)
 
 //            self.presenter?.presentSignInError(error: error)
         }

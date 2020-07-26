@@ -1,40 +1,48 @@
 PODS:
-  - Alamofire (5.2.1)
+  - Alamofire (5.2.2)
+  - CDAlertView (0.10.0)
   - Charts (3.5.0):
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
   - DropDown (2.3.13)
-  - Kingfisher (5.14.0):
-    - Kingfisher/Core (= 5.14.0)
-  - Kingfisher/Core (5.14.0)
+  - Kingfisher (5.14.1):
+    - Kingfisher/Core (= 5.14.1)
+  - Kingfisher/Core (5.14.1)
   - Promises (2.0.4)
+  - SVProgressHUD (2.2.5)
   - SwiftyMimeTypes (2.1.0)
 
 DEPENDENCIES:
   - Alamofire
+  - CDAlertView
   - Charts
   - DropDown
   - Kingfisher
   - Promises
+  - SVProgressHUD
   - SwiftyMimeTypes
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CDAlertView
     - Charts
     - DropDown
     - Kingfisher
     - Promises
+    - SVProgressHUD
     - SwiftyMimeTypes
 
 SPEC CHECKSUMS:
-  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  CDAlertView: ee6a87c90c4283c8d316d55633db1a6981f1cc51
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
-  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   Promises: fcb83dc6be43294a8d30c343636ed1a45a8d2e0a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyMimeTypes: df2392d0f7b7c06bb3a65909e0d1efc09f5b6b6b
 
-PODFILE CHECKSUM: 0c42cdc48393a8dd0919a6fcc5bf8d49d8ab9ad9
+PODFILE CHECKSUM: 72fdae8befa4eabff0621b167330ec416b8fa0a1
 
 COCOAPODS: 1.9.1

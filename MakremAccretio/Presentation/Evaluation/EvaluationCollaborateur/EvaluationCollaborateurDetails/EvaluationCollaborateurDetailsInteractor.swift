@@ -47,7 +47,9 @@ class EvaluationCollaborateurDetailsInteractor: EvaluationCollaborateurDetailsBu
         worker?.showCollaborateurDetailsEvaluations(token: token, code: code).then(){
             evaluationDetails in
             print(evaluationDetails)
+            
             self.presenter?.showEvaluationDetailsCollaborateur(responses: evaluationDetails)
+            print("wwww")
         }.catch{
             error in
             print(error)
@@ -61,22 +63,18 @@ class EvaluationCollaborateurDetailsInteractor: EvaluationCollaborateurDetailsBu
             print(evaluationCards.count)
             print("22222")
             if evaluationCards.count != 0 {
-           print("many rows")
-                for e in evaluationCards{
-                    print(e)
-                    print("-----------------------")
-                    self.presenter?.showEvaluationDetailsCardsCollaborateur(responses: e)
-                    print("-----------------------")
-                }
-            
-            }else{
-                self.presenter?.showEvaluationDetailsCardsCollaborateurError()
+                print("many rows")
+                self.presenter?.showEvaluationDetailsCardsCollaborateur(responses:  evaluationCards.flatMap { $0.communTargetsCard! })
             }
-        }.catch{
-            error in
-            print(error)
+        else{
+//            self.presenter?.showEvaluationDetailsCardsCollaborateurError()
+            }
         }
+    .catch{
+    error in
+    print(error)
     }
-    
-    
+
+    }
+
 }

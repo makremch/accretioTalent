@@ -156,7 +156,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         searchActive = true;
     }
     
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar){
+    private func searchBarShouldBeginEditing(_ searchBar: UISearchBar){
         searchActive = true
     }
     

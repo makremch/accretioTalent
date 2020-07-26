@@ -75,8 +75,6 @@ class APIClient{
              return Promise<AFDataResponse<String>> { fulfill, reject in
              
                    AF.upload(multipartFormData: multipartFormData, with: route).responseString { response in
-                                print(response.response?.statusCode)
-                              print(response)
                               switch response.result {
                               case .success:
                                   fulfill(response)
@@ -93,9 +91,6 @@ class APIClient{
                
                    print(multipartFormData.contentType)
                    AF.upload(multipartFormData: multipartFormData, with: route).responseDecodable(decoder: decoder, completionHandler: { (response: DataResponse<T, AFError>) in
-                                           print(response.response?.statusCode)
-                                           print(response)
-                                           print(response.result)
                                            switch response.result {
                                            case .success(let value):
                                                fulfill(value)

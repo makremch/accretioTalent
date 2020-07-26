@@ -12,6 +12,9 @@ target 'MakremAccretio' do
   pod 'DropDown'
   pod 'Charts'
   pod 'Kingfisher'
+  pod 'CDAlertView'
+  pod 'SVProgressHUD'
+  
   
   target 'MakremAccretioTests' do
     inherit! :search_paths

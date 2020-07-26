@@ -11,6 +11,27 @@
 		485FE8B8ED9E585F31F7B467 /* Pods_MakremAccretio_MakremAccretioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */; };
 		F15DFF70CA376D5145EE16D5 /* Pods_MakremAccretioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */; };
 		F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */; };
+		F41E1A7924C89EF100CE4AD0 /* menuEvalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */; };
+		F41E1A7A24C89EF100CE4AD0 /* menuEvalWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */; };
+		F41E1A7B24C89EF100CE4AD0 /* menuEvalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7524C89EF100CE4AD0 /* menuEvalRouter.swift */; };
+		F41E1A7C24C89EF100CE4AD0 /* menuEvalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7624C89EF100CE4AD0 /* menuEvalModels.swift */; };
+		F41E1A7D24C89EF100CE4AD0 /* menuEvalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7724C89EF100CE4AD0 /* menuEvalViewController.swift */; };
+		F41E1A7E24C89EF100CE4AD0 /* menuEvalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7824C89EF100CE4AD0 /* menuEvalInteractor.swift */; };
+		F41E1A8624C89F6500CE4AD0 /* EvaluationManagerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8024C89F6500CE4AD0 /* EvaluationManagerPresenter.swift */; };
+		F41E1A8724C89F6500CE4AD0 /* EvaluationManagerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8124C89F6500CE4AD0 /* EvaluationManagerWorker.swift */; };
+		F41E1A8824C89F6500CE4AD0 /* EvaluationManagerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8224C89F6500CE4AD0 /* EvaluationManagerRouter.swift */; };
+		F41E1A8924C89F6500CE4AD0 /* EvaluationManagerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8324C89F6500CE4AD0 /* EvaluationManagerModels.swift */; };
+		F41E1A8A24C89F6500CE4AD0 /* EvaluationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8424C89F6500CE4AD0 /* EvaluationManagerViewController.swift */; };
+		F41E1A8B24C89F6500CE4AD0 /* EvaluationManagerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8524C89F6500CE4AD0 /* EvaluationManagerInteractor.swift */; };
+		F41E1A8D24C8A62F00CE4AD0 /* EvaluationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */; };
+		F41E1A9124C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A9024C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift */; };
+		F41E1A9324C9D90C00CE4AD0 /* EvaluationManagerDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */; };
+		F41E1AA724C9DF1700CE4AD0 /* ManagerEvaluationDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1AA124C9DF1700CE4AD0 /* ManagerEvaluationDetailsPresenter.swift */; };
+		F41E1AA824C9DF1700CE4AD0 /* ManagerEvaluationDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1AA224C9DF1700CE4AD0 /* ManagerEvaluationDetailsWorker.swift */; };
+		F41E1AA924C9DF1700CE4AD0 /* ManagerEvaluationDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1AA324C9DF1700CE4AD0 /* ManagerEvaluationDetailsRouter.swift */; };
+		F41E1AAA24C9DF1700CE4AD0 /* ManagerEvaluationDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1AA424C9DF1700CE4AD0 /* ManagerEvaluationDetailsModels.swift */; };
+		F41E1AAB24C9DF1700CE4AD0 /* ManagerEvaluationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1AA524C9DF1700CE4AD0 /* ManagerEvaluationDetailsViewController.swift */; };
+		F41E1AAC24C9DF1700CE4AD0 /* ManagerEvaluationDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1AA624C9DF1700CE4AD0 /* ManagerEvaluationDetailsInteractor.swift */; };
 		F4216A1C248EC1C100FAECD5 /* radar_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */; };
 		F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */; };
 		F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42473A22487D92C00B27C6F /* CompetenceAPI.swift */; };
@@ -39,6 +60,12 @@
 		F4461501240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614FB240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift */; };
 		F4461502240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44614FC240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift */; };
 		F4461504240FF37600D4F567 /* TalentEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4461503240FF37600D4F567 /* TalentEndpoint.swift */; };
+		F44AB25024CA15FB0063E9B9 /* DetailsManagerEvalDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24A24CA15FB0063E9B9 /* DetailsManagerEvalDetailsPresenter.swift */; };
+		F44AB25124CA15FB0063E9B9 /* DetailsManagerEvalDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24B24CA15FB0063E9B9 /* DetailsManagerEvalDetailsWorker.swift */; };
+		F44AB25224CA15FB0063E9B9 /* DetailsManagerEvalDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24C24CA15FB0063E9B9 /* DetailsManagerEvalDetailsRouter.swift */; };
+		F44AB25324CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24D24CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift */; };
+		F44AB25424CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24E24CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift */; };
+		F44AB25524CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */; };
 		F47CA655246AABC000C6ACB1 /* MenuFormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */; };
 		F47CA656246AABC000C6ACB1 /* MenuFormationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */; };
 		F47CA657246AABC000C6ACB1 /* MenuFormationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */; };
@@ -183,6 +210,7 @@
 		F4FA44FB24A8B6B70071AABC /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */; };
 		F4FA44FC24A8B6B70071AABC /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */; };
 		F4FA44FD24A8B6B70071AABC /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */; };
+		F4FD4F6924CD90B60086C493 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FD4F6824CD90B60086C493 /* ProgressView.swift */; };
 		F612196F24365478005029CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F612196E24365478005029CD /* Main.storyboard */; };
 		F612197124367F0C005029CD /* MobiliteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612197024367F0C005029CD /* MobiliteEndpoint.swift */; };
 /* End PBXBuildFile section */
@@ -215,6 +243,27 @@
 		D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectifCommunTableViewCell.swift; sourceTree = "<group>"; };
+		F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalPresenter.swift; sourceTree = "<group>"; };
+		F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalWorker.swift; sourceTree = "<group>"; };
+		F41E1A7524C89EF100CE4AD0 /* menuEvalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalRouter.swift; sourceTree = "<group>"; };
+		F41E1A7624C89EF100CE4AD0 /* menuEvalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalModels.swift; sourceTree = "<group>"; };
+		F41E1A7724C89EF100CE4AD0 /* menuEvalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalViewController.swift; sourceTree = "<group>"; };
+		F41E1A7824C89EF100CE4AD0 /* menuEvalInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalInteractor.swift; sourceTree = "<group>"; };
+		F41E1A8024C89F6500CE4AD0 /* EvaluationManagerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerPresenter.swift; sourceTree = "<group>"; };
+		F41E1A8124C89F6500CE4AD0 /* EvaluationManagerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerWorker.swift; sourceTree = "<group>"; };
+		F41E1A8224C89F6500CE4AD0 /* EvaluationManagerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerRouter.swift; sourceTree = "<group>"; };
+		F41E1A8324C89F6500CE4AD0 /* EvaluationManagerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerModels.swift; sourceTree = "<group>"; };
+		F41E1A8424C89F6500CE4AD0 /* EvaluationManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerViewController.swift; sourceTree = "<group>"; };
+		F41E1A8524C89F6500CE4AD0 /* EvaluationManagerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerInteractor.swift; sourceTree = "<group>"; };
+		F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManager.swift; sourceTree = "<group>"; };
+		F41E1A9024C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerTableViewCell.swift; sourceTree = "<group>"; };
+		F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationManagerDetails.swift; sourceTree = "<group>"; };
+		F41E1AA124C9DF1700CE4AD0 /* ManagerEvaluationDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerEvaluationDetailsPresenter.swift; sourceTree = "<group>"; };
+		F41E1AA224C9DF1700CE4AD0 /* ManagerEvaluationDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerEvaluationDetailsWorker.swift; sourceTree = "<group>"; };
+		F41E1AA324C9DF1700CE4AD0 /* ManagerEvaluationDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerEvaluationDetailsRouter.swift; sourceTree = "<group>"; };
+		F41E1AA424C9DF1700CE4AD0 /* ManagerEvaluationDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerEvaluationDetailsModels.swift; sourceTree = "<group>"; };
+		F41E1AA524C9DF1700CE4AD0 /* ManagerEvaluationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerEvaluationDetailsViewController.swift; sourceTree = "<group>"; };
+		F41E1AA624C9DF1700CE4AD0 /* ManagerEvaluationDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerEvaluationDetailsInteractor.swift; sourceTree = "<group>"; };
 		F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radar_marker@3x.png"; path = "../../../../Charts-master/ChartsDemo-iOS/Resources/markers/radar_marker@3x.png"; sourceTree = "<group>"; };
 		F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarChartViewController.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/Demos/RadarChartViewController.xib"; sourceTree = "<group>"; };
 		F42473A22487D92C00B27C6F /* CompetenceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceAPI.swift; sourceTree = "<group>"; };
@@ -243,6 +292,12 @@
 		F44614FB240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsViewController.swift; sourceTree = "<group>"; };
 		F44614FC240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteCollaborateurDetailsInteractor.swift; sourceTree = "<group>"; };
 		F4461503240FF37600D4F567 /* TalentEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalentEndpoint.swift; sourceTree = "<group>"; };
+		F44AB24A24CA15FB0063E9B9 /* DetailsManagerEvalDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsPresenter.swift; sourceTree = "<group>"; };
+		F44AB24B24CA15FB0063E9B9 /* DetailsManagerEvalDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsWorker.swift; sourceTree = "<group>"; };
+		F44AB24C24CA15FB0063E9B9 /* DetailsManagerEvalDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsRouter.swift; sourceTree = "<group>"; };
+		F44AB24D24CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsModels.swift; sourceTree = "<group>"; };
+		F44AB24E24CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsViewController.swift; sourceTree = "<group>"; };
+		F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsInteractor.swift; sourceTree = "<group>"; };
 		F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationPresenter.swift; sourceTree = "<group>"; };
 		F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationWorker.swift; sourceTree = "<group>"; };
 		F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationRouter.swift; sourceTree = "<group>"; };
@@ -392,6 +447,7 @@
 		F4F7EE60243345B900CDF58B /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
 		F4FA44F424A8ACDE0071AABC /* CatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueViewController.swift; sourceTree = "<group>"; };
 		F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
+		F4FD4F6824CD90B60086C493 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F612196E24365478005029CD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F612197024367F0C005029CD /* MobiliteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -451,6 +507,47 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F41E1A7224C89EB400CE4AD0 /* menuEvaluation */ = {
+			isa = PBXGroup;
+			children = (
+				F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */,
+				F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */,
+				F41E1A7524C89EF100CE4AD0 /* menuEvalRouter.swift */,
+				F41E1A7624C89EF100CE4AD0 /* menuEvalModels.swift */,
+				F41E1A7724C89EF100CE4AD0 /* menuEvalViewController.swift */,
+				F41E1A7824C89EF100CE4AD0 /* menuEvalInteractor.swift */,
+			);
+			path = menuEvaluation;
+			sourceTree = "<group>";
+		};
+		F41E1A7F24C89EFA00CE4AD0 /* EvaluationManager */ = {
+			isa = PBXGroup;
+			children = (
+				F41E1A8024C89F6500CE4AD0 /* EvaluationManagerPresenter.swift */,
+				F41E1A8124C89F6500CE4AD0 /* EvaluationManagerWorker.swift */,
+				F41E1A8224C89F6500CE4AD0 /* EvaluationManagerRouter.swift */,
+				F41E1A8324C89F6500CE4AD0 /* EvaluationManagerModels.swift */,
+				F41E1A8424C89F6500CE4AD0 /* EvaluationManagerViewController.swift */,
+				F41E1A8524C89F6500CE4AD0 /* EvaluationManagerInteractor.swift */,
+				F41E1A9024C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift */,
+			);
+			path = EvaluationManager;
+			sourceTree = "<group>";
+		};
+		F41E1A9424C9DEC400CE4AD0 /* EvaluationManagerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F44AB24924CA15D00063E9B9 /* OngletDetails */,
+				F41E1AA124C9DF1700CE4AD0 /* ManagerEvaluationDetailsPresenter.swift */,
+				F41E1AA224C9DF1700CE4AD0 /* ManagerEvaluationDetailsWorker.swift */,
+				F41E1AA324C9DF1700CE4AD0 /* ManagerEvaluationDetailsRouter.swift */,
+				F41E1AA424C9DF1700CE4AD0 /* ManagerEvaluationDetailsModels.swift */,
+				F41E1AA524C9DF1700CE4AD0 /* ManagerEvaluationDetailsViewController.swift */,
+				F41E1AA624C9DF1700CE4AD0 /* ManagerEvaluationDetailsInteractor.swift */,
+			);
+			path = EvaluationManagerDetails;
+			sourceTree = "<group>";
+		};
 		F4459540249FD62800512E17 /* CompetenceManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +589,19 @@
 				F44614FC240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift */,
 			);
 			path = MobiliteCollaborateurDetails;
+			sourceTree = "<group>";
+		};
+		F44AB24924CA15D00063E9B9 /* OngletDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F44AB24A24CA15FB0063E9B9 /* DetailsManagerEvalDetailsPresenter.swift */,
+				F44AB24B24CA15FB0063E9B9 /* DetailsManagerEvalDetailsWorker.swift */,
+				F44AB24C24CA15FB0063E9B9 /* DetailsManagerEvalDetailsRouter.swift */,
+				F44AB24D24CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift */,
+				F44AB24E24CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift */,
+				F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */,
+			);
+			path = OngletDetails;
 			sourceTree = "<group>";
 		};
 		F47CA64E246AABA800C6ACB1 /* MenuFormation */ = {
@@ -583,6 +693,9 @@
 		F4A59B3824A89CBB00513676 /* Evaluation */ = {
 			isa = PBXGroup;
 			children = (
+				F41E1A9424C9DEC400CE4AD0 /* EvaluationManagerDetails */,
+				F41E1A7F24C89EFA00CE4AD0 /* EvaluationManager */,
+				F41E1A7224C89EB400CE4AD0 /* menuEvaluation */,
 				F4A59B3924A89CCF00513676 /* EvaluationCollaborateur */,
 			);
 			path = Evaluation;
@@ -659,6 +772,7 @@
 		F4C692CB23FD521F00980714 /* MakremAccretio */ = {
 			isa = PBXGroup;
 			children = (
+				F4FD4F6724CD909E0086C493 /* Helpers */,
 				F4F7EE0524319CFA00CDF58B /* MakremAccretio.entitlements */,
 				F4C692CC23FD521F00980714 /* AppDelegate.swift */,
 				F4C692D823FD522000980714 /* Assets.xcassets */,
@@ -730,10 +844,11 @@
 				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
 				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
 				F43624CF24A8DD6300200E7A /* AddCatalogueFormation.swift */,
-				F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */,
 				F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */,
 				F4816DC624B8E9C100890B31 /* EvaluationDetails.swift */,
 				F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */,
+				F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */,
+				F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -883,6 +998,15 @@
 				F4F7EE60243345B900CDF58B /* MenuInteractor.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		F4FD4F6724CD909E0086C493 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4E1CACE24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift */,
+				F4FD4F6824CD90B60086C493 /* ProgressView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1140,28 +1264,37 @@
 				F491645124B80E7500629F14 /* EvaluationCollaborateurDetailsModels.swift in Sources */,
 				F4C6932B23FD7AC900980714 /* AccretioModule.swift in Sources */,
 				F44614FF240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift in Sources */,
+				F41E1A8624C89F6500CE4AD0 /* EvaluationManagerPresenter.swift in Sources */,
+				F41E1A7A24C89EF100CE4AD0 /* menuEvalWorker.swift in Sources */,
 				F4E1CAE824B23573002D9672 /* CompanyLoginInteractor.swift in Sources */,
 				F4B470D42456BF8200CFF242 /* FormationModels.swift in Sources */,
 				F4B470D52456BF8200CFF242 /* FormationViewController.swift in Sources */,
 				F4DD6B352474648B0042B062 /* FormateurCatalogueFormationRouter.swift in Sources */,
 				F4C6931623FD532200980714 /* LoginViewController.swift in Sources */,
 				F4E1CAEE24B25E3A002D9672 /* EvaluationAPI.swift in Sources */,
+				F41E1A9324C9D90C00CE4AD0 /* EvaluationManagerDetails.swift in Sources */,
+				F41E1A7D24C89EF100CE4AD0 /* menuEvalViewController.swift in Sources */,
 				F47CA6962471957200C6ACB1 /* CatalogueFormationDetailsViewController.swift in Sources */,
 				F4C6933023FDB62200980714 /* UserAPIClient.swift in Sources */,
 				F47CA671246AE12100C6ACB1 /* CatalogueFormationWorker.swift in Sources */,
 				F4E1CAE624B23573002D9672 /* CompanyLoginModels.swift in Sources */,
 				F4F7EE65243345B900CDF58B /* MenuViewController.swift in Sources */,
+				F41E1AA924C9DF1700CE4AD0 /* ManagerEvaluationDetailsRouter.swift in Sources */,
+				F41E1A7C24C89EF100CE4AD0 /* menuEvalModels.swift in Sources */,
 				F4E1CAE324B23573002D9672 /* CompanyLoginPresenter.swift in Sources */,
 				F4F7EE64243345B900CDF58B /* MenuModels.swift in Sources */,
 				F47CA6932471957200C6ACB1 /* CatalogueFormationDetailsWorker.swift in Sources */,
 				F4B470A0244E481700CFF242 /* Formation.swift in Sources */,
 				F491644F24B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift in Sources */,
+				F41E1AAA24C9DF1700CE4AD0 /* ManagerEvaluationDetailsModels.swift in Sources */,
+				F41E1AAB24C9DF1700CE4AD0 /* ManagerEvaluationDetailsViewController.swift in Sources */,
 				F47CA686246B032A00C6ACB1 /* FormationMyActionInteractor.swift in Sources */,
 				F47CA683246B032A00C6ACB1 /* FormationMyActionRouter.swift in Sources */,
 				F445954A249FD65400512E17 /* CompetenceManagerModels.swift in Sources */,
 				F487DB9224650AA8001CA320 /* FormationCollaborateurModels.swift in Sources */,
 				F4DD6B372474648B0042B062 /* FormateurCatalogueFormationViewController.swift in Sources */,
 				F4C692D123FD521F00980714 /* ViewController.swift in Sources */,
+				F41E1A7E24C89EF100CE4AD0 /* menuEvalInteractor.swift in Sources */,
 				F4461500240EAF1E00D4F567 /* MobiliteCollaborateurDetailsModels.swift in Sources */,
 				F4E1CAEA24B25816002D9672 /* EvaluationViewControllerCell.swift in Sources */,
 				F487DB9024650AA8001CA320 /* FormationCollaborateurWorker.swift in Sources */,
@@ -1171,8 +1304,10 @@
 				F47CA658246AABC000C6ACB1 /* MenuFormationModels.swift in Sources */,
 				F487DB9A24657FFC001CA320 /* DemandeTableViewCell.swift in Sources */,
 				F4A59B4024A89CFF00513676 /* EvaluationCollaborateurPresenter.swift in Sources */,
+				F41E1AA824C9DF1700CE4AD0 /* ManagerEvaluationDetailsWorker.swift in Sources */,
 				F4B470D32456BF8200CFF242 /* FormationRouter.swift in Sources */,
 				F4E1CAE724B23573002D9672 /* CompanyLoginViewController.swift in Sources */,
+				F44AB25124CA15FB0063E9B9 /* DetailsManagerEvalDetailsWorker.swift in Sources */,
 				F4C6932323FD564E00980714 /* StatusEmployeeByManager.swift in Sources */,
 				F4A59B4524A89CFF00513676 /* EvaluationCollaborateurInteractor.swift in Sources */,
 				F4F7EE62243345B900CDF58B /* MenuWorker.swift in Sources */,
@@ -1182,19 +1317,25 @@
 				F4B470D62456BF8200CFF242 /* FormationInteractor.swift in Sources */,
 				F47CA673246AE12100C6ACB1 /* CatalogueFormationModels.swift in Sources */,
 				F4C6934A23FF1BE700980714 /* Mobilite.swift in Sources */,
+				F44AB25324CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift in Sources */,
 				F445954B249FD65400512E17 /* CompetenceManagerViewController.swift in Sources */,
+				F41E1AA724C9DF1700CE4AD0 /* ManagerEvaluationDetailsPresenter.swift in Sources */,
 				F491645224B80E7500629F14 /* EvaluationCollaborateurDetailsViewController.swift in Sources */,
 				F4DD6B332474648B0042B062 /* FormateurCatalogueFormationPresenter.swift in Sources */,
 				F4461502240EAF1E00D4F567 /* MobiliteCollaborateurDetailsInteractor.swift in Sources */,
+				F44AB25024CA15FB0063E9B9 /* DetailsManagerEvalDetailsPresenter.swift in Sources */,
 				F4F7EE132431B56200CDF58B /* createPostulerRouter.swift in Sources */,
 				F4D38B302486AC84003F2FD4 /* CompetenceCollab.swift in Sources */,
 				F4C6934023FEA7ED00980714 /* MobiliteModels.swift in Sources */,
 				F445954C249FD65400512E17 /* CompetenceManagerInteractor.swift in Sources */,
 				F4B5981124045B3300D0F935 /* DetailsMobiliteWorker.swift in Sources */,
 				F4C6931523FD532200980714 /* LoginModels.swift in Sources */,
+				F41E1A8A24C89F6500CE4AD0 /* EvaluationManagerViewController.swift in Sources */,
 				F47CA677246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift in Sources */,
+				F41E1A7B24C89EF100CE4AD0 /* menuEvalRouter.swift in Sources */,
 				F4C692CD23FD521F00980714 /* AppDelegate.swift in Sources */,
 				F43624D024A8DD6300200E7A /* AddCatalogueFormation.swift in Sources */,
+				F41E1AAC24C9DF1700CE4AD0 /* ManagerEvaluationDetailsInteractor.swift in Sources */,
 				F4DD6B342474648B0042B062 /* FormateurCatalogueFormationWorker.swift in Sources */,
 				F4C692D723FD521F00980714 /* MakremAccretio.xcdatamodeld in Sources */,
 				F4D38B2A24869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift in Sources */,
@@ -1207,6 +1348,8 @@
 				F4C692CF23FD521F00980714 /* SceneDelegate.swift in Sources */,
 				F487DB9124650AA8001CA320 /* FormationCollaborateurRouter.swift in Sources */,
 				F4C6931D23FD557F00980714 /* UserSession.swift in Sources */,
+				F41E1A8B24C89F6500CE4AD0 /* EvaluationManagerInteractor.swift in Sources */,
+				F41E1A9124C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift in Sources */,
 				F44614F1240D16E900D4F567 /* MobiliteCollaborateurModels.swift in Sources */,
 				F4B5981524045B3300D0F935 /* DetailsMobiliteInteractor.swift in Sources */,
 				F4B5981024045B3300D0F935 /* DetailsMobilitePresenter.swift in Sources */,
@@ -1226,6 +1369,7 @@
 				F47CA688246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift in Sources */,
 				F47CA682246B032A00C6ACB1 /* FormationMyActionWorker.swift in Sources */,
 				F47CA65C246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift in Sources */,
+				F41E1A8824C89F6500CE4AD0 /* EvaluationManagerRouter.swift in Sources */,
 				F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */,
 				F487DB832460E657001CA320 /* SessionAction.swift in Sources */,
 				F612197124367F0C005029CD /* MobiliteEndpoint.swift in Sources */,
@@ -1237,6 +1381,7 @@
 				F4C6931F23FD55E300980714 /* User.swift in Sources */,
 				F4C6932923FD590000980714 /* CompanyConfig.swift in Sources */,
 				F4461501240EAF1E00D4F567 /* MobiliteCollaborateurDetailsViewController.swift in Sources */,
+				F41E1A8724C89F6500CE4AD0 /* EvaluationManagerWorker.swift in Sources */,
 				F4A59B4224A89CFF00513676 /* EvaluationCollaborateurRouter.swift in Sources */,
 				F47CA659246AABC000C6ACB1 /* MenuFormationViewController.swift in Sources */,
 				F47CA672246AE12100C6ACB1 /* CatalogueFormationRouter.swift in Sources */,
@@ -1245,6 +1390,7 @@
 				F4D38B2B24869EA1003F2FD4 /* CompetenceCollaborateurRouter.swift in Sources */,
 				F4B39B3D24B9FADA004E3B86 /* EvaluationCards.swift in Sources */,
 				F4DD6B3A247465830042B062 /* FormateurCatalogueFormationViewControllerCell.swift in Sources */,
+				F41E1A8D24C8A62F00CE4AD0 /* EvaluationManager.swift in Sources */,
 				F44614F0240D16E900D4F567 /* MobiliteCollaborateurRouter.swift in Sources */,
 				F4459549249FD65400512E17 /* CompetenceManagerRouter.swift in Sources */,
 				F4DD6B362474648B0042B062 /* FormateurCatalogueFormationModels.swift in Sources */,
@@ -1255,16 +1401,19 @@
 				F47CA684246B032A00C6ACB1 /* FormationMyActionModels.swift in Sources */,
 				F4459547249FD65400512E17 /* CompetenceManagerPresenter.swift in Sources */,
 				F4E1CAE524B23573002D9672 /* CompanyLoginRouter.swift in Sources */,
+				F41E1A7924C89EF100CE4AD0 /* menuEvalPresenter.swift in Sources */,
 				F4D38B2C24869EA1003F2FD4 /* CompetenceCollaborateurModels.swift in Sources */,
 				F47CA65A246AABC000C6ACB1 /* MenuFormationInteractor.swift in Sources */,
 				F4B5981324045B3300D0F935 /* DetailsMobiliteModels.swift in Sources */,
 				F4DD6B382474648B0042B062 /* FormateurCatalogueFormationInteractor.swift in Sources */,
 				F4A59B4424A89CFF00513676 /* EvaluationCollaborateurViewController.swift in Sources */,
+				F41E1A8924C89F6500CE4AD0 /* EvaluationManagerModels.swift in Sources */,
 				F4C6933D23FEA7ED00980714 /* MobilitePresenter.swift in Sources */,
 				F47CA675246AE12100C6ACB1 /* CatalogueFormationInteractor.swift in Sources */,
 				F44614FE240EAF1E00D4F567 /* MobiliteCollaborateurDetailsWorker.swift in Sources */,
 				F4D38B2E24869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift in Sources */,
 				F4B5981424045B3300D0F935 /* DetailsMobiliteViewController.swift in Sources */,
+				F44AB25524CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift in Sources */,
 				F4A59B4124A89CFF00513676 /* EvaluationCollaborateurWorker.swift in Sources */,
 				F4C6934823FF187400980714 /* MobiliteAPI.swift in Sources */,
 				F44614EE240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift in Sources */,
@@ -1273,6 +1422,7 @@
 				F491645024B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift in Sources */,
 				F4C6931723FD532200980714 /* LoginInteractor.swift in Sources */,
 				F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */,
+				F44AB25424CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift in Sources */,
 				F4E1CAE424B23573002D9672 /* CompanyLoginWorker.swift in Sources */,
 				F4F7EE63243345B900CDF58B /* MenuRouter.swift in Sources */,
 				F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */,
@@ -1280,6 +1430,7 @@
 				F4C6931323FD532200980714 /* LoginWorker.swift in Sources */,
 				F4459548249FD65400512E17 /* CompetenceManagerWorker.swift in Sources */,
 				F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */,
+				F44AB25224CA15FB0063E9B9 /* DetailsManagerEvalDetailsRouter.swift in Sources */,
 				F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */,
 				F4E1CACF24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift in Sources */,
 				F4E1CAEC24B25DBF002D9672 /* EvaluationCollaborateur.swift in Sources */,
@@ -1290,6 +1441,7 @@
 				F4B470A224569BD900CFF242 /* FormationAPI.swift in Sources */,
 				F47CA670246AE12100C6ACB1 /* CatalogueFormationPresenter.swift in Sources */,
 				F487DB8F24650AA8001CA320 /* FormationCollaborateurPresenter.swift in Sources */,
+				F4FD4F6924CD90B60086C493 /* ProgressView.swift in Sources */,
 				F4F7EE142431B56200CDF58B /* createPostulerModels.swift in Sources */,
 				F47CA656246AABC000C6ACB1 /* MenuFormationWorker.swift in Sources */,
 			);

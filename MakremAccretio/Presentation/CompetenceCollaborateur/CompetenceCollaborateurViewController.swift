@@ -33,7 +33,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     var router: (NSObjectProtocol & CompetenceCollaborateurRoutingLogic & CompetenceCollaborateurDataPassing)?
     var dataValueCompetenceCollaborateur : [ClassificationDto] = []
 //    20,40,60,30,15
-    var values : [Double] = [22,42,22,82,22,12,22]
+    var values : [Double] = []
     var response: CompetenseResponse? = nil
     var skillsLabel:[String: String]? = nil
 //    "9a7ba","nikommk","dirrabek","zeb","asba"
@@ -41,14 +41,13 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     var originalBarBgColor: UIColor!
     var originalBarTintColor: UIColor!
     var originalBarStyle: UIBarStyle!
-    var radarIndex : Int = 0
+    var radarIndex : Int = 2
     
     
 //    MARK:- Button Actions
     @IBAction func nextButton(_ sender: Any) {
         radarIndex+=1
         radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
-        print("3assba")
         updateRadar(index: radarIndex)
     }
     @IBAction func previousButton(_ sender: Any) {
@@ -183,7 +182,8 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         print("+++++++++++++++++++++++++++++++++++++")
         names = skills[index].map  {(skillsLabel![$0.codeSkill!])! }
         activities = names
-        values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double * 20 }
+        values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double  }
+        print(values)
         setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
        
     }
@@ -191,11 +191,11 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
    
 //    MARK:- Getting data from API
     func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
-        print("nikomk0")
+        
         self.response = response
-        print("nikomk1")
+        
         self.skillsLabel = skillsLabel
-         print("nikomk")
+         
         self.updateRadar(index: self.radarIndex)
        
     }
@@ -208,16 +208,11 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
        }
        
     func setChartData(label  : String) {
-        let mult: UInt32 = 80
-        let min: UInt32 = 20
-        var cnt = 0
-        cnt = activities.count
+//        let mult: UInt32 = 80
+//        let min: UInt32 = 20
         print("somme:",activities.count)
         let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
         let entries1 = values.map { RadarChartDataEntry(value : $0) }
-        print(entries1)
-        print(99)
-        let entries2 = (0..<cnt).map(block)
         let set1 = RadarChartDataSet(entries: entries1,label: label)
         //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
         set1.setColor(UIColor.cyan)
@@ -228,16 +223,6 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         set1.lineWidth = 1
         set1.drawHighlightCircleEnabled = true
         set1.setDrawHighlightIndicators(false)
-        
-        let set2 = RadarChartDataSet(entries: entries2, label: "--")
-        set2.setColor(UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1))
-        set2.fillColor = UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1)
-        set2.drawFilledEnabled = true
-        set2.fillAlpha = 0.7
-        set2.lineWidth = 2
-        set2.drawHighlightCircleEnabled = true
-        set2.setDrawHighlightIndicators(false)
-        
         let data = RadarChartData(dataSets: [set1])
         data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
         data.setDrawValues(false)

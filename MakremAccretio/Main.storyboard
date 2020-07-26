@@ -121,17 +121,26 @@
                                     <action selector="seConnecterButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ekl-H0-Qpw"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logoFinal" translatesAutoresizingMaskIntoConstraints="NO" id="4ds-yx-MFv">
-                                <rect key="frame" x="62.666666666666657" y="118" width="289" height="195"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFinal" translatesAutoresizingMaskIntoConstraints="NO" id="4ds-yx-MFv">
+                                <rect key="frame" x="62.666666666666657" y="64" width="289" height="195"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4ds-yx-MFv" secondAttribute="height" multiplier="289:195" id="tf6-Pr-xMh"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7AO-R1-RLO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1HH-cb-fwA"/>
+                            <constraint firstItem="7AO-R1-RLO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7KB-r0-xSS"/>
                             <constraint firstItem="7AO-R1-RLO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BwZ-9i-MTX"/>
+                            <constraint firstItem="4ds-yx-MFv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ecz-Wi-jtl"/>
                             <constraint firstItem="7AO-R1-RLO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Kip-nU-4Is"/>
+                            <constraint firstItem="7AO-R1-RLO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PSY-XJ-3Kg"/>
                             <constraint firstAttribute="bottom" secondItem="7AO-R1-RLO" secondAttribute="bottom" id="VcF-Ot-r93"/>
+                            <constraint firstItem="4ds-yx-MFv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="YOA-lb-FS7"/>
+                            <constraint firstItem="4ds-yx-MFv" firstAttribute="width" secondItem="7AO-R1-RLO" secondAttribute="width" multiplier="0.698068" id="pBo-GH-zDb"/>
+                            <constraint firstItem="7AO-R1-RLO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tT8-9l-jIK"/>
+                            <constraint firstAttribute="bottom" secondItem="7AO-R1-RLO" secondAttribute="bottom" id="xMo-dh-rdO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

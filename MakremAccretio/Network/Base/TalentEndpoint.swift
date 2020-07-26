@@ -37,7 +37,7 @@ enum TalentEndpoint: APIConfiguration {
         case .mobiliteCollaborateur:
             return TalentEndpoint.endpointBaseUrlTalent + TalentEndpoint.getListMobilityAsCollaborator
         
-        case .mobiliteManager(let pagh, let size, let sort):
+        case .mobiliteManager( _, let size, let sort):
             return TalentEndpoint.endpointBaseUrlTalent + TalentEndpoint.getListMobilityAsManager
         }
     }
@@ -58,7 +58,7 @@ enum TalentEndpoint: APIConfiguration {
     
     
     func asURLRequest() throws -> URLRequest {
-        var url = ""
+        let url = ""
         // let url = try (Connected.getCompanyConfig().url + path).asURL()
         var urlRequest = URLRequest(url: try! url.asURL())
         // HTTP Method

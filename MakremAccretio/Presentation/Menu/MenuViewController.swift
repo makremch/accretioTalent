@@ -219,7 +219,7 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
     @IBAction func EvaluationBtn(_ sender: Any) {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Evaluation", bundle: nil)
-        let evaluationC = storyBoard.instantiateViewController(withIdentifier: "EvaluationCollabC") as! EvaluationCollaborateurViewController
+        let evaluationC = storyBoard.instantiateViewController(withIdentifier: "MenuEval") as! menuEvalViewController
         self.navigationController?.pushViewController(evaluationC, animated: true)
         
     }

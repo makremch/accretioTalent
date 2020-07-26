@@ -14,38 +14,37 @@ import UIKit
 
 protocol EvaluationCollaborateurBusinessLogic
 {
-  func doSomething(request: EvaluationCollaborateur.Something.Request)
+    func doSomething(request: EvaluationCollaborateur.Something.Request)
     func showEvaluationsCollaborateur(token : String)
 }
 
 protocol EvaluationCollaborateurDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class EvaluationCollaborateurInteractor: EvaluationCollaborateurBusinessLogic, EvaluationCollaborateurDataStore
 {
-  var presenter: EvaluationCollaborateurPresentationLogic?
-  var worker: EvaluationCollaborateurWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: EvaluationCollaborateur.Something.Request)
-  {
-    worker = EvaluationCollaborateurWorker()
-    worker?.doSomeWork()
+    var presenter: EvaluationCollaborateurPresentationLogic?
+    var worker: EvaluationCollaborateurWorker?
+    //var name: String = ""
     
-    let response = EvaluationCollaborateur.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func doSomething(request: EvaluationCollaborateur.Something.Request)
+    {
+        worker = EvaluationCollaborateurWorker()
+        worker?.doSomeWork()
+        
+        let response = EvaluationCollaborateur.Something.Response()
+        presenter?.presentSomething(response: response)
+    }
     
     
     func showEvaluationsCollaborateur(token : String) {
         worker = EvaluationCollaborateurWorker()
         worker?.showCollaborateurEvaluations(token: token).then(){
             evaluation in
-            print(evaluation.content)
             self.presenter?.showEvaluationCollaborateur(responses: evaluation)
         }.catch{
             error in

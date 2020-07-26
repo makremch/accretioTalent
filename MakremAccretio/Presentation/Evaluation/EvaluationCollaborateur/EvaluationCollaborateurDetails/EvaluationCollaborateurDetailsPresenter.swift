@@ -16,7 +16,7 @@ protocol EvaluationCollaborateurDetailsPresentationLogic
 {
     func presentSomething(response: EvaluationCollaborateurDetails.Something.Response)
     func showEvaluationDetailsCollaborateur(responses : EvaluationDetailsResponse)
-    func showEvaluationDetailsCardsCollaborateur(responses: EvaluationCardsResponse)
+    func showEvaluationDetailsCardsCollaborateur(responses: [CommunTargetsCard])
     func showEvaluationDetailsCardsCollaborateurError()
 }
 
@@ -34,7 +34,7 @@ class EvaluationCollaborateurDetailsPresenter: EvaluationCollaborateurDetailsPre
     func showEvaluationDetailsCollaborateur(responses : EvaluationDetailsResponse){
         viewController?.displayDetails(responses: responses)
     }
-    func showEvaluationDetailsCardsCollaborateur(responses: EvaluationCardsResponse){
+    func showEvaluationDetailsCardsCollaborateur(responses: [CommunTargetsCard]){
         viewController?.displayCards(responses : responses)
     }
     func showEvaluationDetailsCardsCollaborateurError(){

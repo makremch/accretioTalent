@@ -16,7 +16,7 @@ protocol EvaluationCollaborateurDetailsDisplayLogic: class
 {
     func displaySomething(viewModel: EvaluationCollaborateurDetails.Something.ViewModel)
     func displayDetails(responses : EvaluationDetailsResponse)
-    func displayCards(responses : EvaluationCardsResponse)
+    func displayCards(responses : [CommunTargetsCard])
     func diplayCardsError()
 }
 
@@ -24,9 +24,10 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
 {
     var interactor: EvaluationCollaborateurDetailsBusinessLogic?
     var router: (NSObjectProtocol & EvaluationCollaborateurDetailsRoutingLogic & EvaluationCollaborateurDetailsDataPassing)?
-    var evaluationData : EvaluationCollab? = nil
-    var evaluationCards : EvaluationCardsResponse?
+    var evaluationData : EvaluationCollab?
+    var evaluationCards : [CommunTargetsCard] = []
     var content : EvaluationCollab?
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -48,7 +49,9 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     @IBOutlet weak var objectifsCommunView: UIView!
     @IBOutlet weak var ProjetProfessionnelView: UIView!
     
-   
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+    
     @IBOutlet weak var ObjCommunButton: UIButton!
     @IBOutlet weak var ObjIndivButton: UIButton!
     @IBOutlet weak var formationButton: UIButton!
@@ -57,6 +60,10 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     @IBOutlet weak var CompetencesButton: UIButton!
     @IBOutlet weak var CommentaireButton: UIButton!
     
+    @IBOutlet weak var inProgressImage: UIImageView!
+    @IBOutlet weak var perCentImage: UIImageView!
+    
+    @IBOutlet weak var registerNumberLabel: UILabel!
     
     //    MARK:- Button Action
     @IBAction func backButton(_ sender: Any) {
@@ -119,6 +126,7 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     @IBAction func CommentairesOnclick(_ sender: Any) {
         blackView.isHidden = false
         commentairesView.isHidden = false
+        closeButtonCommentaireView.layer.cornerRadius = 10
     }
     
     
@@ -200,9 +208,12 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
 //        MARK:- calling interactor to run API :
         self.interactor?.showEvaluationDetails(token: token, code: code)
         self.interactor?.showEvaluationCardsDetails(token: token, code: code)
+        NameEvaluator.text = "Evaluateur : "
+        registerNumberLabel.text = UserDefaults.standard.string(forKey: "registrationNumber")!
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.reloadData()
     }
     // MARK: Do something
     
@@ -218,21 +229,34 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     {
         //nameTextField.text = viewModel.name
     }
-    
+    var evalDetails : EvaluationDetailsResponse?
     func displayDetails(responses : EvaluationDetailsResponse){
+        evalDetails = responses
+        NameEvaluator.text = "Evaluateur : " + (evalDetails?.evaluator?.firstName)! + " " + (evalDetails?.evaluator?.lastName)!
+        let clearedDateStart = (content?.startDate)!.components(separatedBy: "T")
+        let clearedDateEnd = (content?.endDate)!.components(separatedBy: "T")
+        print(clearedDateStart,clearedDateEnd)
+        print("w")
+        startDateLabel.text = clearedDateStart[0]
+        endDateLabel.text = clearedDateEnd[0]
+        print(evalDetails?.campaignStatus)
+        print("www")
+        if (evalDetails?.campaignStatus)! == "INP" {
+            inProgressImage.image = UIImage(named: "progress")
+            perCentImage.image = UIImage(named: "50")
+        }else{
+            inProgressImage.image = UIImage(named: "done")
+            perCentImage.image = UIImage(named: "100")
+        }
         print(responses)
     }
     
-    func displayCards(responses : EvaluationCardsResponse){
-        print(responses)
+    func displayCards(responses :[CommunTargetsCard]){
         evaluationCards = responses
-        print(evaluationCards!)
-        print("zebbbbb")
         tableView.reloadData()
     }
     func diplayCardsError(){
         print("no cards !")
-        print("zebbbbb")
     }
     
 }
@@ -240,7 +264,7 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
 
 extension EvaluationCollaborateurDetailsViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        return evaluationCards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -249,9 +273,16 @@ extension EvaluationCollaborateurDetailsViewController : UITableViewDataSource, 
             else {
                 return UITableViewCell()
         }
-        cellObj.labelCard.text = evaluationCards?.communTargetsCard![0].label
-        cellObj.descriptionLabel.text = evaluationCards?.communTargetsCard![0].communTargetsCardDescription
-//        cellObj.weightLabel.text = String((evaluationCards?.communTargetsCard![0].weight)!)
+        print(evaluationCards)
+        print("ewewe")
+        cellObj.labelCard.text = evaluationCards[indexPath.row].label
+        cellObj.descriptionLabel.text = evaluationCards[indexPath.row].communTargetsCardDescription!
+        cellObj.weightLabel.text = String((evaluationCards[indexPath.row].weight)!)
+        cellObj.ValeurCibleLabel.text = "Valeur cible: " + String((evaluationCards[indexPath.row].indicatorsCard![0].targetValue)!)
+        cellObj.remarqueLabel.text = evaluationCards[indexPath.row].indicatorsCard![0].label
+        if String((evaluationCards[indexPath.row].indicatorsCard![0].targetValue)!) == "NA"{
+            cellObj.remarqueLabel.text = "NA"
+        }
         return cellObj
     }
     

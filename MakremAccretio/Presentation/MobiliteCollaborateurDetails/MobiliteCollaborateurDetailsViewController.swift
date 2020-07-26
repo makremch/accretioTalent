@@ -156,7 +156,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         localisationLabel.text = "Ariana"
         print((content?.publishedPictureOffer!)!)
         let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + (content?.publishedPictureOffer!)!)
-        let token = UserDefaults.standard.string(forKey: "accessToken")!
+//        let token = UserDefaults.standard.string(forKey: "accessToken")!
         imgOffer.kf.setImage(with: url){
             result in
             switch result {
@@ -171,9 +171,6 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         print((content?.publishedLocalisationOffer)!)
         print("##")
         if content?.publishedLocalisationOffer.count != 0 {
-            print(content?.publishedLocalisationOffer[0])
-            print(content?.documentsList)
-            print("###########################")
             localisationLabel.text = String((content?.publishedLocalisationOffer[0])!)
         }else{
             localisationLabel.text = "non précisé"

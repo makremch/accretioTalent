@@ -131,7 +131,7 @@ class FormationCollaborateurViewController: UIViewController, FormationCollabora
         }
         cell.formationNameLabel.text = String(dataValueDemandeCollaborateur[indexPath.row].label!)
         if dataValueDemandeCollaborateur[indexPath.row].sessionStartDate == nil || String(dataValueDemandeCollaborateur[indexPath.row].sessionEndDate!)
-            == nil || dataValueDemandeCollaborateur[indexPath.row].sessionLabel! == nil{
+            == "" || dataValueDemandeCollaborateur[indexPath.row].sessionLabel! == ""{
             cell.DateDebutLabel.text = "undefined date"
             cell.DateFinLabel.text = "undefined date"
             cell.sessionLabel.text = "undefined session"
