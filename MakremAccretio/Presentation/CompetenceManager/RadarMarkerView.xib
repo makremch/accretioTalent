@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RadarMarkerView" customModule="MakremAccretio" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="tXh-8s-oaQ" customClass="RadarMarkerView" customModule="MakremAccretio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="66" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radar_marker.png" translatesAutoresizingMaskIntoConstraints="NO" id="YhF-9y-Um2">
+                    <rect key="frame" x="0.0" y="0.0" width="66" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="val" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Bru-YL-nvP">
+                    <rect key="frame" x="25.5" y="5.5" width="15.5" height="15.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bru-YL-nvP" secondAttribute="trailing" constant="5" id="3GS-mx-Nvo"/>
+                <constraint firstItem="Bru-YL-nvP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tXh-8s-oaQ" secondAttribute="leading" constant="5" id="jf2-TH-CNY"/>
+                <constraint firstItem="Bru-YL-nvP" firstAttribute="centerX" secondItem="tXh-8s-oaQ" secondAttribute="centerX" id="sHf-Cx-RRB"/>
+                <constraint firstItem="Bru-YL-nvP" firstAttribute="centerY" secondItem="tXh-8s-oaQ" secondAttribute="centerY" constant="-12" id="zNT-Fa-gOx"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="bFP-J3-gow"/>
+            <connections>
+                <outlet property="label" destination="Bru-YL-nvP" id="Fh2-E5-xtD"/>
+            </connections>
+            <point key="canvasLocation" x="-292" y="8"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="radar_marker.png" width="133.33332824707031" height="100"/>
+    </resources>
+</document>

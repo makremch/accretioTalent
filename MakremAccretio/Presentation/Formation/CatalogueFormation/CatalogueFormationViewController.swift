@@ -17,10 +17,12 @@ protocol CatalogueFormationDisplayLogic: class
     func displaySomething(viewModel: CatalogueFormation.Something.ViewModel)
     func getCatalogueData(response:ResponseCatalogue)
     func handleDismissAll()
+    func showDataPopulation(response:Population)
 }
 
-class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,CatalogueFormationDisplayLogic
+class CatalogueFormationViewController: UIViewController,CatalogueFormationDisplayLogic
 {
+    
     
     //    MARK:- Var & Let
     var interactor: CatalogueFormationBusinessLogic?
@@ -33,6 +35,9 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         return view
     }()
     
+    var dataValueForPopulation :  [PopulationElement] = []
+    
+    
     //    MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var TitleOfView: UILabel!
@@ -41,10 +46,19 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     @IBOutlet weak var PopulationButton: UIButton!
     @IBOutlet weak var ImportanceButton: UIButton!
     @IBOutlet weak var DateButton: UIButton!
+    @IBOutlet weak var urgenceSwitch: UISwitch!
+    @IBOutlet weak var populationConcerneView: UIView!
+    @IBOutlet weak var populationCollectionView: UICollectionView!
+    @IBOutlet weak var bgView: UIView!
+    @IBAction func onclickSwitch(_ sender: Any) {
+    }
+    @IBOutlet weak var validerButton: UIButton!
+    @IBOutlet weak var annulerButton: UIButton!
     
     
-    
-    
+    @IBAction func closeView(_ sender: Any) {
+        populationConcerneView.isHidden = true
+    }
     
     //    MARK:- Button actions
     @IBAction func backButton(_ sender: Any) {
@@ -63,13 +77,14 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
             let dateString = dateFormatter.string(from: datePicker.date)
             self.DateButton.setTitle(dateString, for: .normal)
         }
-        let cancel = UIAlertAction(title: "Concel", style: .destructive, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         alert.addAction(ok)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)    }
     
     @IBAction func ImportanceButton(_ sender: Any) {
         let actionSheet = UIAlertController(title: "Selectionnez importance foramation ", message: nil, preferredStyle: .actionSheet)
+        let title = self.ImportanceButton.currentTitle
         let q1 = UIAlertAction(title: "Q1", style: .default, handler: { _ in
             self.ImportanceButton.setTitle("Q1", for: .normal)
         })
@@ -92,10 +107,9 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         // 5
         self.present(actionSheet, animated: true, completion: nil)
     }
-    @IBAction func AnnulerButton(_ sender: Any) {
-        viewDemande.isHidden = true
-    }
+   
     @IBAction func PopulationButton(_ sender: Any) {
+        populationConcerneView.isHidden = false
         
     }
     @IBAction func ConfirmerButton(_ sender: Any) {
@@ -104,10 +118,16 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     @IBAction func DemandeHorsCatalogue(_ sender: Any) {
         viewDemande.isHidden = false
         
-//        view.layer.opacity = 0.1
+        //        view.layer.opacity = 0.1
     }
     
-    @IBOutlet weak var bgView: UIView!
+    
+    
+    @IBAction func ClosePopUpAddFormation(_ sender: Any) {
+        viewDemande.isHidden = true
+    }
+    
+    
     
     
     // MARK: Object lifecycle
@@ -154,6 +174,8 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
     {
         super.viewDidLoad()
         viewDemande.isHidden = true
+        populationConcerneView.isHidden = true
+        populationConcerneView.layer.cornerRadius = 15
         viewDemandePopUp.layer.cornerRadius = 15
         PopulationButton.layer.borderColor = UIColor.black.cgColor
         PopulationButton.layer.borderWidth = 1
@@ -163,42 +185,23 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         ImportanceButton.layer.borderColor = UIColor.black.cgColor
         ImportanceButton.layer.borderWidth = 1
         ImportanceButton.layer.backgroundColor = UIColor.systemGray3.cgColor
+        DateButton.layer.cornerRadius = 15
+        DateButton.layer.borderColor = UIColor.black.cgColor
+        DateButton.layer.borderWidth = 1
+        DateButton.layer.backgroundColor = UIColor.systemGray3.cgColor
+        
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         print(token)
         self.interactor?.showCatalogueFormation(token: token)
+        self.interactor?.showListPopulation(token: token)
         view.addSubview(visualEffectView)
         designingEffectView()
-        
+        validerButton.layer.cornerRadius = 5
+        annulerButton.layer.cornerRadius = 5
     }
     
-    // MARK: Manipulating TableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataValueCatalogue.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "catalogueCell", for: indexPath) as?
-            CatalogueFormationViewCell
-            else {
-                return UITableViewCell()
-        }
-        cell.formationNameLabel.text = dataValueCatalogue[indexPath.row].label
-        cell.initiatorLabel.text = dataValueCatalogue[indexPath.row].initiator?.firstName
-        cell.dateLabel.text = String(dataValueCatalogue[indexPath.row].creationDate!)
-        cell.themeLabel.text = dataValueCatalogue[indexPath.row].theme
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "CatalogueFormationDetailsViewController") as!
-        CatalogueFormationDetailsViewController
-        
-        self.navigationController?.pushViewController(vc,animated: true)
-        
-    }
     
     // MARK: Getting Data
     var dataValueCatalogue : [FormationCatalogue] = []
@@ -218,6 +221,11 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         print(response)
         dataValueCatalogue = response.content
         tableView.reloadData()
+    }
+    
+    func showDataPopulation(response:Population){
+        self.dataValueForPopulation = response
+        self.populationCollectionView.reloadData()
     }
     
     func designingPopUp(){
@@ -243,7 +251,6 @@ class CatalogueFormationViewController: UIViewController, UITableViewDelegate,UI
         visualEffectView.alpha = 0
     }
     
-    
 }
 
 extension CatalogueFormationViewController: PopUpDelegate{
@@ -264,5 +271,82 @@ extension UIColor {
         return UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)
     }
     
+    
+}
+
+
+//MARK:- Extension for tableView
+extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+            return dataValueCatalogue.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+       
+        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "catalogueCell", for: indexPath) as?
+            CatalogueFormationViewCell
+            else {
+                return UITableViewCell()
+        }
+        cell.formationNameLabel.text = dataValueCatalogue[indexPath.row].label
+        cell.initiatorLabel.text = dataValueCatalogue[indexPath.row].initiator?.firstName
+        cell.dateLabel.text = String(dataValueCatalogue[indexPath.row].creationDate!)
+        cell.themeLabel.text = dataValueCatalogue[indexPath.row].theme
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "CatalogueFormationDetailsViewController") as!
+        CatalogueFormationDetailsViewController
+        self.navigationController?.pushViewController(vc,animated: true)
+        
+        
+    }
+    
+}
+
+//  MARK: EXtension for population collectionViw:
+extension CatalogueFormationViewController : UICollectionViewDelegate, UICollectionViewDataSource , PopulationCollectionViewCellDelegate{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataValueForPopulation.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let  cell = populationCollectionView.dequeueReusableCell(withReuseIdentifier: "population", for: indexPath) as?
+            PopulationCollectionViewCell
+            else {
+                return UICollectionViewCell()
+        }
+        
+        cell.nomParticipant.text = dataValueForPopulation[indexPath.row].firstName! + " " + dataValueForPopulation[indexPath.row].lastName!
+        cell.populationLabel.text = dataValueForPopulation[indexPath.row].registrationNumber
+        cell.participant = dataValueForPopulation[indexPath.row]
+        return cell
+    }
+   
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = populationCollectionView.dequeueReusableCell(withReuseIdentifier: "population", for: indexPath) as! PopulationCollectionViewCell
+        //initialize cell and get back the actual Value of the switch and set it to my object???
+        
+        if cell.switcherOn.isOn{
+            print("switch on " )
+        }else{
+            print("switch off ")
+        }
+        cell.delegate = self
+        didChangeSwitchValue(value: false, participant: dataValueForPopulation[indexPath.row])
+    }
+    
+    func didChangeSwitchValue(value: Bool, participant: PopulationElement) {
+        print("qqq")
+    }
     
 }

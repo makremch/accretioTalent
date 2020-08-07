@@ -15,7 +15,7 @@ import UIKit
 protocol DetailsManagerEvalDetailsPresentationLogic
 {
     func presentSomething(response: DetailsManagerEvalDetails.Something.Response)
-    func showEvaluationManagerDetails(responses: EvaluationManagerDetailsResponse)
+    func showEvaluationManagerDetails(responses: EvaluationManagerDetailsResponse, steps:StepsDetailsResponse)
 }
 
 class DetailsManagerEvalDetailsPresenter: DetailsManagerEvalDetailsPresentationLogic
@@ -29,8 +29,8 @@ class DetailsManagerEvalDetailsPresenter: DetailsManagerEvalDetailsPresentationL
         let viewModel = DetailsManagerEvalDetails.Something.ViewModel()
         viewController?.displaySomething(viewModel: viewModel)
     }
-    
-    func showEvaluationManagerDetails(responses: EvaluationManagerDetailsResponse){
-        viewController?.displayDataManagerDetails(responses : responses)
+    func showEvaluationManagerDetails(responses: EvaluationManagerDetailsResponse, steps:StepsDetailsResponse)
+    {
+        viewController?.displayDataManagerDetails(responses : responses, steps : steps)
     }
 }

@@ -129,14 +129,14 @@ class EvaluationAPI {
         }
     }
     
-    static func showEvaluationManagerStepsDetails(token : String, id : String) -> Promise<StepsDetailsResponseElement>{
+    static func showEvaluationManagerStepsDetails(token : String, id : String) -> Promise<StepsDetailsResponse>{
         //https://accretio-2-tnr.advyteam.com/
         let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "workflow/api/step-instance/statistics?workflowType=EVALUATION&requestCode=" + id + "&version=2"
         print(url)
-        return  Promise<StepsDetailsResponseElement> { fulfill, reject in
+        return  Promise<StepsDetailsResponse> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
-                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<StepsDetailsResponseElement, AFError>) in
+                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<StepsDetailsResponse, AFError>) in
                     print(response)
                     switch response.result {
                     case .success(let value):

@@ -44,9 +44,16 @@ class DetailsManagerEvalDetailsInteractor: DetailsManagerEvalDetailsBusinessLogi
         worker = DetailsManagerEvalDetailsWorker()
         worker?.showManagerEvaluationsDetails(token: token, code: code).then(){
             evaluationManagerDetails in
+            self.worker?.showManagerEvaluationsStepsDetails(token: token, id: (evaluationManagerDetails.id)!).then(){
+                steps in
+                print(steps)
+                
+                print("wwww")
+                self.presenter?.showEvaluationManagerDetails(responses: evaluationManagerDetails, steps : steps)
+            }
             print("success !")
             print("eval manager details  interactor ! ")
-            self.presenter?.showEvaluationManagerDetails(responses: evaluationManagerDetails)
+            
         }.catch{
             error in
             print(error)
@@ -56,3 +63,5 @@ class DetailsManagerEvalDetailsInteractor: DetailsManagerEvalDetailsBusinessLogi
     
     
 }
+
+

@@ -10,6 +10,7 @@
 		19F0B022D1A9099D35513DA2 /* Pods_MakremAccretio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */; };
 		485FE8B8ED9E585F31F7B467 /* Pods_MakremAccretio_MakremAccretioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */; };
 		F15DFF70CA376D5145EE16D5 /* Pods_MakremAccretioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */; };
+		F402689C24D92A8900AA4A7F /* PopulationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402689B24D92A8900AA4A7F /* PopulationCollectionViewCell.swift */; };
 		F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */; };
 		F41E1A7924C89EF100CE4AD0 /* menuEvalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */; };
 		F41E1A7A24C89EF100CE4AD0 /* menuEvalWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */; };
@@ -66,6 +67,8 @@
 		F44AB25324CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24D24CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift */; };
 		F44AB25424CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24E24CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift */; };
 		F44AB25524CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */; };
+		F44F72F324CDA130004BA958 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F72F124CDA130004BA958 /* RadarMarkerView.swift */; };
+		F44F72F424CDA130004BA958 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44F72F224CDA130004BA958 /* RadarMarkerView.xib */; };
 		F47CA655246AABC000C6ACB1 /* MenuFormationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */; };
 		F47CA656246AABC000C6ACB1 /* MenuFormationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */; };
 		F47CA657246AABC000C6ACB1 /* MenuFormationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */; };
@@ -112,6 +115,7 @@
 		F491645124B80E7500629F14 /* EvaluationCollaborateurDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644B24B80E7500629F14 /* EvaluationCollaborateurDetailsModels.swift */; };
 		F491645224B80E7500629F14 /* EvaluationCollaborateurDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644C24B80E7500629F14 /* EvaluationCollaborateurDetailsViewController.swift */; };
 		F491645324B80E7500629F14 /* EvaluationCollaborateurDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644D24B80E7500629F14 /* EvaluationCollaborateurDetailsInteractor.swift */; };
+		F49623D524D590A700BABEF1 /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49623D424D590A700BABEF1 /* Population.swift */; };
 		F4A59B3724A89C5200513676 /* Evaluation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A59B3624A89C5200513676 /* Evaluation.storyboard */; };
 		F4A59B4024A89CFF00513676 /* EvaluationCollaborateurPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A59B3A24A89CFF00513676 /* EvaluationCollaborateurPresenter.swift */; };
 		F4A59B4124A89CFF00513676 /* EvaluationCollaborateurWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A59B3B24A89CFF00513676 /* EvaluationCollaborateurWorker.swift */; };
@@ -207,9 +211,6 @@
 		F4F7EE65243345B900CDF58B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE5F243345B900CDF58B /* MenuViewController.swift */; };
 		F4F7EE66243345B900CDF58B /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7EE60243345B900CDF58B /* MenuInteractor.swift */; };
 		F4FA44F524A8ACDE0071AABC /* CatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA44F424A8ACDE0071AABC /* CatalogueViewController.swift */; };
-		F4FA44FB24A8B6B70071AABC /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */; };
-		F4FA44FC24A8B6B70071AABC /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */; };
-		F4FA44FD24A8B6B70071AABC /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */; };
 		F4FD4F6924CD90B60086C493 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FD4F6824CD90B60086C493 /* ProgressView.swift */; };
 		F612196F24365478005029CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F612196E24365478005029CD /* Main.storyboard */; };
 		F612197124367F0C005029CD /* MobiliteEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F612197024367F0C005029CD /* MobiliteEndpoint.swift */; };
@@ -242,6 +243,7 @@
 		78C29C180CE1459575577D16 /* Pods-MakremAccretio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio.debug.xcconfig"; path = "Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio.debug.xcconfig"; sourceTree = "<group>"; };
 		D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F402689B24D92A8900AA4A7F /* PopulationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationCollectionViewCell.swift; sourceTree = "<group>"; };
 		F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectifCommunTableViewCell.swift; sourceTree = "<group>"; };
 		F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalPresenter.swift; sourceTree = "<group>"; };
 		F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalWorker.swift; sourceTree = "<group>"; };
@@ -298,6 +300,8 @@
 		F44AB24D24CA15FB0063E9B9 /* DetailsManagerEvalDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsModels.swift; sourceTree = "<group>"; };
 		F44AB24E24CA15FB0063E9B9 /* DetailsManagerEvalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsViewController.swift; sourceTree = "<group>"; };
 		F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsInteractor.swift; sourceTree = "<group>"; };
+		F44F72F124CDA130004BA958 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		F44F72F224CDA130004BA958 /* RadarMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
 		F47CA64F246AABC000C6ACB1 /* MenuFormationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationPresenter.swift; sourceTree = "<group>"; };
 		F47CA650246AABC000C6ACB1 /* MenuFormationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationWorker.swift; sourceTree = "<group>"; };
 		F47CA651246AABC000C6ACB1 /* MenuFormationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormationRouter.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 		F491644B24B80E7500629F14 /* EvaluationCollaborateurDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsModels.swift; sourceTree = "<group>"; };
 		F491644C24B80E7500629F14 /* EvaluationCollaborateurDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsViewController.swift; sourceTree = "<group>"; };
 		F491644D24B80E7500629F14 /* EvaluationCollaborateurDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsInteractor.swift; sourceTree = "<group>"; };
+		F49623D424D590A700BABEF1 /* Population.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
 		F4A59B3624A89C5200513676 /* Evaluation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Evaluation.storyboard; sourceTree = "<group>"; };
 		F4A59B3A24A89CFF00513676 /* EvaluationCollaborateurPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurPresenter.swift; sourceTree = "<group>"; };
 		F4A59B3B24A89CFF00513676 /* EvaluationCollaborateurWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurWorker.swift; sourceTree = "<group>"; };
@@ -446,7 +451,6 @@
 		F4F7EE5F243345B900CDF58B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F4F7EE60243345B900CDF58B /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
 		F4FA44F424A8ACDE0071AABC /* CatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueViewController.swift; sourceTree = "<group>"; };
-		F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
 		F4FD4F6824CD90B60086C493 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F612196E24365478005029CD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F612197024367F0C005029CD /* MobiliteEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiliteEndpoint.swift; sourceTree = "<group>"; };
@@ -551,7 +555,6 @@
 		F4459540249FD62800512E17 /* CompetenceManager */ = {
 			isa = PBXGroup;
 			children = (
-				F4FA44FA24A8B6B70071AABC /* RadarMarkerView.xib */,
 				F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */,
 				F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */,
 				F4459543249FD65400512E17 /* CompetenceManagerRouter.swift */,
@@ -559,6 +562,8 @@
 				F4459545249FD65400512E17 /* CompetenceManagerViewController.swift */,
 				F4459546249FD65400512E17 /* CompetenceManagerInteractor.swift */,
 				F442EA9D24A4FDB0000E0844 /* CompetenceTableViewCell.swift */,
+				F44F72F124CDA130004BA958 /* RadarMarkerView.swift */,
+				F44F72F224CDA130004BA958 /* RadarMarkerView.xib */,
 			);
 			path = CompetenceManager;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				F47CA66F246AE12100C6ACB1 /* CatalogueFormationInteractor.swift */,
 				F47CA676246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift */,
 				F47CA689246C586E00C6ACB1 /* PopUpWindow.swift */,
+				F402689B24D92A8900AA4A7F /* PopulationCollectionViewCell.swift */,
 			);
 			path = CatalogueFormation;
 			sourceTree = "<group>";
@@ -849,6 +855,7 @@
 				F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */,
 				F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */,
 				F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */,
+				F49623D424D590A700BABEF1 /* Population.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1121,7 +1128,7 @@
 				F4216A1C248EC1C100FAECD5 /* radar_marker@3x.png in Resources */,
 				F4A59B3724A89C5200513676 /* Evaluation.storyboard in Resources */,
 				F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */,
-				F4FA44FB24A8B6B70071AABC /* RadarMarkerView.xib in Resources */,
+				F44F72F424CDA130004BA958 /* RadarMarkerView.xib in Resources */,
 				F4C692DC23FD522000980714 /* LaunchScreen.storyboard in Resources */,
 				F4C692D923FD522000980714 /* Assets.xcassets in Resources */,
 				F612196F24365478005029CD /* Main.storyboard in Resources */,
@@ -1132,7 +1139,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FA44FC24A8B6B70071AABC /* RadarMarkerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,7 +1146,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FA44FD24A8B6B70071AABC /* RadarMarkerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1282,6 +1287,7 @@
 				F41E1AA924C9DF1700CE4AD0 /* ManagerEvaluationDetailsRouter.swift in Sources */,
 				F41E1A7C24C89EF100CE4AD0 /* menuEvalModels.swift in Sources */,
 				F4E1CAE324B23573002D9672 /* CompanyLoginPresenter.swift in Sources */,
+				F44F72F324CDA130004BA958 /* RadarMarkerView.swift in Sources */,
 				F4F7EE64243345B900CDF58B /* MenuModels.swift in Sources */,
 				F47CA6932471957200C6ACB1 /* CatalogueFormationDetailsWorker.swift in Sources */,
 				F4B470A0244E481700CFF242 /* Formation.swift in Sources */,
@@ -1353,6 +1359,7 @@
 				F44614F1240D16E900D4F567 /* MobiliteCollaborateurModels.swift in Sources */,
 				F4B5981524045B3300D0F935 /* DetailsMobiliteInteractor.swift in Sources */,
 				F4B5981024045B3300D0F935 /* DetailsMobilitePresenter.swift in Sources */,
+				F402689C24D92A8900AA4A7F /* PopulationCollectionViewCell.swift in Sources */,
 				F4816DC724B8E9C100890B31 /* EvaluationDetails.swift in Sources */,
 				F4B5981224045B3300D0F935 /* DetailsMobiliteRouter.swift in Sources */,
 				F4FA44F524A8ACDE0071AABC /* CatalogueViewController.swift in Sources */,
@@ -1430,6 +1437,7 @@
 				F4C6931323FD532200980714 /* LoginWorker.swift in Sources */,
 				F4459548249FD65400512E17 /* CompetenceManagerWorker.swift in Sources */,
 				F4F7EE122431B56200CDF58B /* createPostulerWorker.swift in Sources */,
+				F49623D524D590A700BABEF1 /* Population.swift in Sources */,
 				F44AB25224CA15FB0063E9B9 /* DetailsManagerEvalDetailsRouter.swift in Sources */,
 				F4C6934123FEA7ED00980714 /* MobiliteViewController.swift in Sources */,
 				F4E1CACF24B0C393002D9672 /* CookiesImageDownloaderPlugin.swift in Sources */,

@@ -170,6 +170,33 @@ class FormationAPI {
         }
     }
     
+        static func showListPopulation(token : String) -> Promise<Population>{
+            let baseURL = "https://accretio-2-tnr.advyteam.com/"
+    //        let base = "https://mobile-int.accretio.io/"
+            let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
+            let url = baseURL + "core/api/employees/employeeforabsence/manager/" + registrationNumber + "/100"
+            return  Promise<Population> { fulfill, reject in
+                AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
+                    "Authorization": "Bearer " + token
+                ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<Population, AFError>) in
+                    switch response.result {
+                        
+                    case .success(let value):
+                        
+                        print(response.response?.statusCode as Any)
+                        print("________________________________")
+                        print(value)
+                        
+                        fulfill(value)
+                        
+                    case .failure(let error):
+                        print(error)
+                        reject(error)
+                    }
+                })
+            }
+        }
+    
 }
 
 

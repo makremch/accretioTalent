@@ -33,7 +33,7 @@ struct CollaborateurFormation: Codable {
     let targetEmployee, trainingManager, targetEmployeeManager: InitiatorCollab?
     let organisationalEntity: JSONNull?
     let unit: String?
-    let duration, costs: Int?
+    let duration: Int?
 //    let creationDate:String?
     let statusAction: String?
     let registrarionTrainersSessions: [String]?

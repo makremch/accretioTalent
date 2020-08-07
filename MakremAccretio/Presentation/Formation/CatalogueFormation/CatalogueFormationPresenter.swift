@@ -14,25 +14,28 @@ import UIKit
 
 protocol CatalogueFormationPresentationLogic
 {
-  func presentSomething(response: CatalogueFormation.Something.Response)
+    func presentSomething(response: CatalogueFormation.Something.Response)
     func showCatalogue(response : ResponseCatalogue)
+    func showPopulation(response : Population)
 }
 
 class CatalogueFormationPresenter: CatalogueFormationPresentationLogic
 {
-  weak var viewController: CatalogueFormationDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: CatalogueFormation.Something.Response)
-  {
-    let viewModel = CatalogueFormation.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: CatalogueFormationDisplayLogic?
     
-    func showCatalogue(response : ResponseCatalogue){
-         viewController?.getCatalogueData(response: response)
+    // MARK: Do something
+    
+    func presentSomething(response: CatalogueFormation.Something.Response)
+    {
+        let viewModel = CatalogueFormation.Something.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
     }
     
+    func showCatalogue(response : ResponseCatalogue){
+        viewController?.getCatalogueData(response: response)
+    }
     
+    func showPopulation(response : Population){
+        viewController?.showDataPopulation(response:response)
+    }
 }

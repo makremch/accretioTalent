@@ -91,9 +91,11 @@ class CompanyLoginViewController: UIViewController, CompanyLoginDisplayLogic
   {
     super.viewDidLoad()
     doSomething()
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+   
     settingViews()
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    setupKeyboardDismissRecognizer()
   }
   
   // MARK: Do something
@@ -119,21 +121,26 @@ class CompanyLoginViewController: UIViewController, CompanyLoginDisplayLogic
         viewLogoAccretio.layer.opacity = 20
     }
     
-    @objc func keyboardWillShow(notification:NSNotification){
-
-        let userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-
-        var contentInset:UIEdgeInsets = self.scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height + 20
-        scrollView.contentInset = contentInset
+   @objc func keyboardWillShow(notification: NSNotification) {
+       if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+           if self.view.frame.origin.y == 0 {
+               self.view.frame.origin.y -= keyboardSize.height/2
+           }
+       }
+   }
+   @objc func keyboardWillHide(notification: NSNotification) {
+       if self.view.frame.origin.y != 0 {
+           self.view.frame.origin.y = 0
+       }
+   }
+    func setupKeyboardDismissRecognizer(){
+        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapRecognizer)
     }
-
-    @objc func keyboardWillHide(notification:NSNotification){
-
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInset
+    @objc func dismissKeyboard(_ views: UIView)
+    {
+        view.endEditing(true)
     }
-    
 }

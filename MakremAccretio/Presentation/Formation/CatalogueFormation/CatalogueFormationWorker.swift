@@ -24,5 +24,8 @@ class CatalogueFormationWorker
         return FormationAPI.showCatalogueFormation(token: token)
     }
     
-    
+    func showListPopulation(token : String) -> Promise<Population>{
+        print("worker Population function ")
+        return FormationAPI.showListPopulation(token: token)
+    }
 }

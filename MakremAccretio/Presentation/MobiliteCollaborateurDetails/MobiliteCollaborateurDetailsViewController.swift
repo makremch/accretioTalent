@@ -150,7 +150,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         
         let tap = UITapGestureRecognizer(target : self.view,action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
-        messageLabel.isHidden = true
+//        messageLabel.isHidden = true
         codeOffreLabel.text = content?.offerCode
         ContratLabel.text = "CDD"
         localisationLabel.text = "Ariana"

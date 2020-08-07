@@ -48,6 +48,7 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
         EvaluationView.layer.cornerRadius = 20
         
         TitleView.layer.cornerRadius = TitleView.frame.size.width/2
+        TitleView.layer.masksToBounds = false
         TitleView.clipsToBounds = true
         TitleView.layer.borderColor = UIColor.white.cgColor
         TitleView.layer.borderWidth = 1.0
@@ -68,7 +69,10 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
         view.layer.shadowOffset = CGSize(width: 0 , height:2)
     }
     
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        designMenu()
+    }
     // MARK: - Properties
     
     typealias Models = MenuModels
@@ -110,7 +114,7 @@ class MenuViewController: UIViewController, MenuDisplayLogic {
         setupFetchFromLocalDataStore()
         userNameLabel.text = (UserDefaults.standard.string(forKey: "nameOfUser")!) + " " + (UserDefaults.standard.string(forKey: "lastNameOfUser")!)
         employeTypeLabel.text = (UserDefaults.standard.string(forKey: "employeType"))!
-        designMenu()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {

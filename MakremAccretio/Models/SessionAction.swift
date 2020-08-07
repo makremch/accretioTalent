@@ -30,7 +30,7 @@ struct ActionSession: Codable {
     let targetEmployee, trainingManager, targetEmployeeManager: InitiatorSession?
     let organisationalEntity: JSONNull?
     let unit: String?
-    let duration, costs: Int?
+    let duration: Int?
     let creationDate, statusAction: String?
     let registrarionTrainersSessions: [String]?
     let outOfCatalogue: Bool?

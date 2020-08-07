@@ -17,7 +17,7 @@ import Charts
 protocol DetailsManagerEvalDetailsDisplayLogic: class
 {
     func displaySomething(viewModel: DetailsManagerEvalDetails.Something.ViewModel)
-    func displayDataManagerDetails(responses : EvaluationManagerDetailsResponse)
+    func displayDataManagerDetails(responses: EvaluationManagerDetailsResponse, steps:StepsDetailsResponse)
 }
 
 class DetailsManagerEvalDetailsViewController: UIViewController, DetailsManagerEvalDetailsDisplayLogic
@@ -120,8 +120,9 @@ class DetailsManagerEvalDetailsViewController: UIViewController, DetailsManagerE
         evaluationView.layer.cornerRadius = 10
         
     }
-    func displayDataManagerDetails(responses : EvaluationManagerDetailsResponse){
+    func displayDataManagerDetails(responses: EvaluationManagerDetailsResponse, steps:StepsDetailsResponse){
         print(responses)
+        print(steps)
         label.text = String((responses.evaluated?.count)!)
         evaluateurLabel.text = String((responses.evaluators?.count)!)
         autoEvalLabel.text = String((responses.evaluated?.count)!)

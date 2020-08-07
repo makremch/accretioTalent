@@ -23,7 +23,7 @@ class DetailsManagerEvalDetailsWorker
         return EvaluationAPI.showEvaluationManagerDetails(token:token , code:code)
     }
     
-    func showManagerEvaluationsStepsDetails(token : String , id : String) -> Promise<StepsDetailsResponseElement> {
+    func showManagerEvaluationsStepsDetails(token : String , id : String) -> Promise<StepsDetailsResponse> {
         return EvaluationAPI.showEvaluationManagerStepsDetails(token: token, id: id)
     }
     

@@ -16,6 +16,7 @@ protocol CatalogueFormationBusinessLogic
 {
     func doSomething(request: CatalogueFormation.Something.Request)
     func showCatalogueFormation(token : String)
+    func showListPopulation(token : String)
 }
 
 protocol CatalogueFormationDataStore
@@ -53,4 +54,20 @@ class CatalogueFormationInteractor: CatalogueFormationBusinessLogic, CatalogueFo
             print(error)
         }
     }
+    
+    func showListPopulation(token : String){
+        worker = CatalogueFormationWorker()
+        worker?.showListPopulation(token: token).then(){
+            population in
+            print("in interractor formation Catalogue **************************")
+            print(population)
+            print("wwww")
+            self.presenter?.showPopulation(response : population)
+        }.catch{
+            error in
+            print(error)
+        }
+    }
+    
+    
 }

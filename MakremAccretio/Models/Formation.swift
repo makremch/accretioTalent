@@ -22,12 +22,12 @@ struct FormationEntity: Codable {
     let theme, creationDate: String?
     let initiator: Initiator?
     let trainer: [Trainer]?
-    let costs, duration: Int?
+    let duration: Int?
     let unit: String?
     let numberParticipants: Int?
     let trainingOrganization: [String]?
     let trainingManager: Initiator?
-    let average: String?
+//    let average: JSONNull?
     let status : String?
     
 }
@@ -62,5 +62,5 @@ struct Trainer: Codable {
     let affectation: String?
     let phone: String?
     let skills: [String]
-    let average: Int
+//    let average: JSONNull
 }

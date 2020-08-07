@@ -23,12 +23,12 @@ struct FormationCatalogue: Codable {
     let theme, creationDate: String?
     let initiator: InitiatorCatalogue?
     let trainer: [TrainerCatalogue]?
-    let costs, duration: Int?
+    let  duration: Int?
     let unit: String?
     let numberParticipants: JSONNull?
     let trainingOrganization: [String]?
     let trainingManager: InitiatorCatalogue?
-    let average: Int?
+//    let average: JSONNull?
 }
 
 // MARK: - Initiator
@@ -55,7 +55,7 @@ struct TrainerCatalogue: Codable {
     let affectation: JSONNull?
     let phone: String?
     let skills: [JSONAny]?
-    let average: Int?
+//    let average: JSONNull?
 }
 
 

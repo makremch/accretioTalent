@@ -23,11 +23,8 @@ protocol LoginDisplayLogic: class {
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
     
-    
-    
-    
-    
-    
+    var  iconClick = false
+
     func showMobiliteCollaborator(){
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -78,14 +75,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     //    UI Definitions
     
     @IBOutlet weak var usernameField: UITextField!
-    
     @IBOutlet weak var passwordField: UITextField!
-    
     @IBOutlet weak var seConnecterButton: UIButton!
-    
     @IBOutlet weak var logoImageView: UIImageView!
-    
     @IBAction func seConnecterButtonClicked(_ sender: Any) {
+        
         DispatchQueue.main.async {
             let _username = self.usernameField.text!
             let _password = self.passwordField.text!
@@ -136,6 +130,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         seConnecterButton.layer.cornerRadius = 7
         super.viewDidLoad()
         setupFetchFromLocalDataStore()
+        
+        let icon_pw = UIImage(systemName: "lock")
+        let but_pw = UIImage(systemName: "eye.slash")
+        let iconMail = UIImage(systemName: "person.circle")
+        styleTextFields(passwordField, andImage: icon_pw!, andrightbut: but_pw)
+        styleTextFields(usernameField, andImage: iconMail!, andrightbut:nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setupKeyboardDismissRecognizer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -236,4 +240,96 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         // route to next screen
         router?.routeToNext()
     }
+}
+
+extension LoginViewController{
+    
+    func styleTextFields(_ textfield:UITextField, andImage img: UIImage,andrightbut butImg: UIImage?) {
+        
+        let textfieldLine = CALayer()
+        textfieldLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
+        
+        
+        textfield.tintColor             = .black
+        textfield.textColor             = .black
+        textfield.backgroundColor       = UIColor(red: 28/255, green: 123/255, blue: 161/255, alpha: 1)
+        textfield.autocorrectionType    = .no
+        textfield.layer.cornerRadius    = 5
+        textfield.layer.borderWidth     = 0
+        textfield.clipsToBounds         = true
+        textfield.clearButtonMode = .always
+        textfield.clearButtonMode = .whileEditing
+        
+        
+        textfield.layer.addSublayer(textfieldLine)
+        
+        
+        let iconView = UIImageView(frame:
+            CGRect(x:20, y: 0, width: 20, height: 20))
+        iconView.image = img
+        
+        let iconContainerView: UIView = UIView(frame:
+            CGRect(x:0, y: 0, width: 45, height: 20))
+        iconContainerView.addSubview(iconView)
+        
+        textfield.leftView = iconContainerView
+        textfield.leftViewMode          = .always
+        
+        
+        
+        let button = UIButton(type: .custom)
+        button.tintColor = .black
+        button.setImage(butImg, for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right:10)
+        button.frame = CGRect(x: CGFloat(textfield.frame.size.width - 15), y: CGFloat(5), width: CGFloat(10), height: CGFloat(10))
+        button.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
+        
+        
+        textfield.rightView = button
+        textfield.rightViewMode = .always
+    }
+    
+    @objc  func showPassword(){
+        
+        if(iconClick == true) {
+            passwordField.isSecureTextEntry = false
+            let icon_pw = UIImage(systemName: "lock")
+            let but_pw = UIImage(systemName: "eye")
+            
+            styleTextFields(passwordField, andImage: icon_pw!, andrightbut: but_pw)
+            
+        } else {
+            passwordField.isSecureTextEntry = true
+            let icon_pw = UIImage(systemName: "lock")
+            let but_pw = UIImage(systemName: "eye.slash")
+            styleTextFields(passwordField, andImage: icon_pw!, andrightbut: but_pw)
+        }
+        
+        iconClick = !iconClick
+        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+          if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+              if self.view.frame.origin.y == 0 {
+                  self.view.frame.origin.y -= keyboardSize.height/2
+              }
+          }
+      }
+      @objc func keyboardWillHide(notification: NSNotification) {
+          if self.view.frame.origin.y != 0 {
+              self.view.frame.origin.y = 0
+          }
+      }
+       func setupKeyboardDismissRecognizer(){
+           let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+               target: self,
+               action: #selector(dismissKeyboard))
+           view.addGestureRecognizer(tapRecognizer)
+       }
+       @objc func dismissKeyboard(_ views: UIView)
+       {
+           view.endEditing(true)
+       }
+    
 }
