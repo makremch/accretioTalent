@@ -15,7 +15,7 @@ class MobiliteAPI {
     
     static func showListMobilityForValidation(token : String) -> Promise<DemandeResponse>{
 //        let base = "https://mobile-int.accretio.io/"
-        let base = "https://accretio-2-tnr.advyteam.com/"
+        let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
         let url = base + "recruitment/api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
         print("url")
         return  Promise<DemandeResponse> { fulfill, reject in
@@ -41,7 +41,7 @@ class MobiliteAPI {
     
     static func showListMobility(token: String , isManager : Bool = false) -> Promise<DemandeResponse> {
         //        let base = "https://mobile-int.accretio.io/"
-        let base = "https://accretio-2-tnr.advyteam.com/"
+        let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
 //
         let url = base + "recruitment/api/recruitment-offers/initiator?size=50&page=0"
         print("url")
@@ -76,7 +76,7 @@ class MobiliteAPI {
     
     static func showListMobilityCollaborator(token: String) -> Promise<Response>{
 //        let base = "https://mobile-int.accretio.io/"
-        let base = "https://accretio-2-tnr.advyteam.com/"
+        let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
         let url = base + "recruitment/api/published-recruitment-offers"
         print(url)
         let params: [String: String] = ["":""]
@@ -104,7 +104,7 @@ class MobiliteAPI {
     static func getCodeCV(token: String) -> Promise<CodeCv>{
         let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
 //        let base = "https://mobile-int.accretio.io/"
-        let base = "https://accretio-2-tnr.advyteam.com/"
+        let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
     let urlCodeCV = base + "recruitment/api/curriculumVitae/read/registrationNumber?registrationNumber=" + registrationNumber
         print(urlCodeCV)
         return Promise<CodeCv>{
@@ -130,7 +130,7 @@ class MobiliteAPI {
     			
     static func verifPostulerOffreByCollaborator(token : String, codeCV : String) -> Promise<ResponseVerif>{
 //        let base = "https://mobile-int.accretio.io/"
-        let base = "https://accretio-2-tnr.advyteam.com/"
+        let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
         let url = base + "recruitment/api/candidatures/cv/"+codeCV
 //        recruitment/api/candidatures/cv/{cvCode}
         print(url)
@@ -158,7 +158,7 @@ class MobiliteAPI {
     
     static func showListMobilityByManager(token: String) -> Promise<DemandeResponse> {
         //        let base = "https://mobile-int.accretio.io/"
-        let base = "https://accretio-2-tnr.advyteam.com/"
+        let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
         let url = base + "recruitment/api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
         print("url")
         return  Promise<DemandeResponse> { fulfill, reject in

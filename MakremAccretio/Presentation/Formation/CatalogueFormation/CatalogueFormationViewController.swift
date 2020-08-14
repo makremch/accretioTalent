@@ -55,6 +55,9 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     @IBOutlet weak var validerButton: UIButton!
     @IBOutlet weak var annulerButton: UIButton!
     
+    @IBOutlet weak var formationNameField: UITextField!
+    @IBAction func formationTextField(_ sender: Any) {
+    }
     
     @IBAction func closeView(_ sender: Any) {
         populationConcerneView.isHidden = true
@@ -113,6 +116,22 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         
     }
     @IBAction func ConfirmerButton(_ sender: Any) {
+        let newArrayOfParticipant = PopulationCollectionViewCell.participants.map{ InitiatorSessionRequest(registrationNumber: $0.registrationNumber) }
+        var newObject = TrainingRequestModelAdd()
+        newObject.importance = (ImportanceButton.titleLabel?.text)!
+        newObject.targetEmployees = newArrayOfParticipant
+        newObject.trainingRequestModelDescription = formationNameField.text
+        newObject.priority = false
+        newObject.status = "PROGRESS"
+        newObject.creationDate = "2020-08-10T18:17:39.111Z"
+        newObject.limitDate = "2020-08-10T18:17:39.111Z"
+        
+        
+        
+        
+        
+        
+        
         self.navigationController?.popViewController(animated: false)
     }
     @IBAction func DemandeHorsCatalogue(_ sender: Any) {
@@ -293,9 +312,26 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
                 return UITableViewCell()
         }
         cell.formationNameLabel.text = dataValueCatalogue[indexPath.row].label
-        cell.initiatorLabel.text = dataValueCatalogue[indexPath.row].initiator?.firstName
-        cell.dateLabel.text = String(dataValueCatalogue[indexPath.row].creationDate!)
+        cell.initiatorLabel.text = (dataValueCatalogue[indexPath.row].initiator?.firstName)! + " " + (dataValueCatalogue[indexPath.row].initiator?.lastName)!
+        let clearedStartDate =  dataValueCatalogue[indexPath.row].creationDate!.components(separatedBy: "T")
+        cell.dateLabel.text = clearedStartDate[0]
         cell.themeLabel.text = dataValueCatalogue[indexPath.row].theme
+        let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (dataValueCatalogue[indexPath.row].picture)!)
+        //        let token = UserDefaults.standard.string(forKey: "accessToken")!
+        cell.formationImageView.kf.setImage(with: url){
+                    result in
+                    switch result {
+                    case .success:
+                        print(result)
+                        cell.formationImageView.contentMode = UIView.ContentMode.scaleToFill
+                        cell.formationImageView.clipsToBounds = true
+                        break
+                    case .failure:
+                        cell.formationImageView.image = UIImage(named: "noImageAvailable")!
+                        cell.formationImageView.contentMode = UIView.ContentMode.scaleAspectFit
+                    }
+                }
+        cell.formationImageView.layer.cornerRadius = 15
         return cell
     }
     

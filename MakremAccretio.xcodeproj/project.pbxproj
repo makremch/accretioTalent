@@ -11,6 +11,7 @@
 		485FE8B8ED9E585F31F7B467 /* Pods_MakremAccretio_MakremAccretioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953E814E8C6D306C9882CD7 /* Pods_MakremAccretio_MakremAccretioUITests.framework */; };
 		F15DFF70CA376D5145EE16D5 /* Pods_MakremAccretioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06124B9AB8C1BAE7901CBD6B /* Pods_MakremAccretioTests.framework */; };
 		F402689C24D92A8900AA4A7F /* PopulationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402689B24D92A8900AA4A7F /* PopulationCollectionViewCell.swift */; };
+		F402689E24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402689D24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift */; };
 		F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */; };
 		F41E1A7924C89EF100CE4AD0 /* menuEvalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */; };
 		F41E1A7A24C89EF100CE4AD0 /* menuEvalWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */; };
@@ -36,7 +37,7 @@
 		F4216A1C248EC1C100FAECD5 /* radar_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */; };
 		F4216A20248EC23200FAECD5 /* RadarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */; };
 		F42473A32487D92C00B27C6F /* CompetenceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42473A22487D92C00B27C6F /* CompetenceAPI.swift */; };
-		F43624D024A8DD6300200E7A /* AddCatalogueFormation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43624CF24A8DD6300200E7A /* AddCatalogueFormation.swift */; };
+		F43624D024A8DD6300200E7A /* AddCatalogueFormationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43624CF24A8DD6300200E7A /* AddCatalogueFormationResponse.swift */; };
 		F442EA9E24A4FDB0000E0844 /* CompetenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442EA9D24A4FDB0000E0844 /* CompetenceTableViewCell.swift */; };
 		F445953F249D508000512E17 /* CompetenceCollabForLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */; };
 		F4459547249FD65400512E17 /* CompetenceManagerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */; };
@@ -244,6 +245,7 @@
 		D81732309AC6F991C4BB65BF /* Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; path = "Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE6F26F9D274B13FF901F35C /* Pods_MakremAccretio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakremAccretio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F402689B24D92A8900AA4A7F /* PopulationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationCollectionViewCell.swift; sourceTree = "<group>"; };
+		F402689D24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatalogueFormationRequest.swift; sourceTree = "<group>"; };
 		F41E1A7024C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectifCommunTableViewCell.swift; sourceTree = "<group>"; };
 		F41E1A7324C89EF100CE4AD0 /* menuEvalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalPresenter.swift; sourceTree = "<group>"; };
 		F41E1A7424C89EF100CE4AD0 /* menuEvalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuEvalWorker.swift; sourceTree = "<group>"; };
@@ -269,7 +271,7 @@
 		F4216A1B248EC1C100FAECD5 /* radar_marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radar_marker@3x.png"; path = "../../../../Charts-master/ChartsDemo-iOS/Resources/markers/radar_marker@3x.png"; sourceTree = "<group>"; };
 		F4216A1F248EC23200FAECD5 /* RadarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadarChartViewController.xib; path = "../../../../Charts-master/ChartsDemo-iOS/XIBs/Demos/RadarChartViewController.xib"; sourceTree = "<group>"; };
 		F42473A22487D92C00B27C6F /* CompetenceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceAPI.swift; sourceTree = "<group>"; };
-		F43624CF24A8DD6300200E7A /* AddCatalogueFormation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatalogueFormation.swift; sourceTree = "<group>"; };
+		F43624CF24A8DD6300200E7A /* AddCatalogueFormationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatalogueFormationResponse.swift; sourceTree = "<group>"; };
 		F442EA9D24A4FDB0000E0844 /* CompetenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceTableViewCell.swift; sourceTree = "<group>"; };
 		F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceCollabForLabel.swift; sourceTree = "<group>"; };
 		F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetenceManagerPresenter.swift; sourceTree = "<group>"; };
@@ -849,13 +851,14 @@
 				F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */,
 				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
 				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
-				F43624CF24A8DD6300200E7A /* AddCatalogueFormation.swift */,
+				F43624CF24A8DD6300200E7A /* AddCatalogueFormationResponse.swift */,
 				F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */,
 				F4816DC624B8E9C100890B31 /* EvaluationDetails.swift */,
 				F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */,
 				F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */,
 				F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */,
 				F49623D424D590A700BABEF1 /* Population.swift */,
+				F402689D24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1027,7 +1030,7 @@
 				F4C692C523FD521F00980714 /* Sources */,
 				F4C692C623FD521F00980714 /* Frameworks */,
 				F4C692C723FD521F00980714 /* Resources */,
-				29C67E501F6D715D61AA748D /* [CP] Embed Pods Frameworks */,
+				540B13D4AC7D42392B20DAC5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1065,7 +1068,7 @@
 				F4C692E923FD522100980714 /* Sources */,
 				F4C692EA23FD522100980714 /* Frameworks */,
 				F4C692EB23FD522100980714 /* Resources */,
-				E747BDD7E68298D621F52786 /* [CP] Embed Pods Frameworks */,
+				5CECA1EC0130C72788F547F0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1174,23 +1177,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		29C67E501F6D715D61AA748D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		32379EB5D39CA54FF3F0F6F5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1213,6 +1199,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		540B13D4AC7D42392B20DAC5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio/Pods-MakremAccretio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CECA1EC0130C72788F547F0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C1728824BAEBD4797CC78552 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1233,23 +1253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E747BDD7E68298D621F52786 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MakremAccretio-MakremAccretioUITests/Pods-MakremAccretio-MakremAccretioUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1340,7 +1343,7 @@
 				F47CA677246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift in Sources */,
 				F41E1A7B24C89EF100CE4AD0 /* menuEvalRouter.swift in Sources */,
 				F4C692CD23FD521F00980714 /* AppDelegate.swift in Sources */,
-				F43624D024A8DD6300200E7A /* AddCatalogueFormation.swift in Sources */,
+				F43624D024A8DD6300200E7A /* AddCatalogueFormationResponse.swift in Sources */,
 				F41E1AAC24C9DF1700CE4AD0 /* ManagerEvaluationDetailsInteractor.swift in Sources */,
 				F4DD6B342474648B0042B062 /* FormateurCatalogueFormationWorker.swift in Sources */,
 				F4C692D723FD521F00980714 /* MakremAccretio.xcdatamodeld in Sources */,
@@ -1354,6 +1357,7 @@
 				F4C692CF23FD521F00980714 /* SceneDelegate.swift in Sources */,
 				F487DB9124650AA8001CA320 /* FormationCollaborateurRouter.swift in Sources */,
 				F4C6931D23FD557F00980714 /* UserSession.swift in Sources */,
+				F402689E24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift in Sources */,
 				F41E1A8B24C89F6500CE4AD0 /* EvaluationManagerInteractor.swift in Sources */,
 				F41E1A9124C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift in Sources */,
 				F44614F1240D16E900D4F567 /* MobiliteCollaborateurModels.swift in Sources */,

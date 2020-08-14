@@ -31,8 +31,8 @@ struct Content: Codable {
     let publishedDocumentsOffer: [String]?
     let publishedPictureOffer: String?
     let initiator: Initiator?
-    let type: String?
-    let configuration: Configuration?
+//    let type: String?
+//    let configuration: Configuration?
 }
 
 // MARK: - Configuration

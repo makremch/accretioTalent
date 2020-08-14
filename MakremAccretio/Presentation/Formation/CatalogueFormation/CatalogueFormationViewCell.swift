@@ -20,9 +20,8 @@ class CatalogueFormationViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var initiatorLabel: UILabel!
     @IBOutlet weak var themeLabel: UILabel!
-    @IBOutlet weak var imageViewFormation: UIImageView!
     @IBOutlet weak var viewCell: UIView!
-    
+    @IBOutlet weak var formationImageView: UIImageView!
     
     
     override func awakeFromNib() {
