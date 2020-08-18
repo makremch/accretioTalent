@@ -19,7 +19,7 @@ class CatalogueFormationDetailsWorker
     {
     }
     
-    func gettingFormationCatalogueById(token: String, code : String) ->Promise<FormationCatalogue>{
+    func gettingFormationCatalogueById(token: String, code : String) ->Promise<FormationCatalogueDetails>{
         print("worker formation catalogue Catalogue !")
         return FormationAPI.gettingFormationCatalogueById(token: token, code: code)
     }

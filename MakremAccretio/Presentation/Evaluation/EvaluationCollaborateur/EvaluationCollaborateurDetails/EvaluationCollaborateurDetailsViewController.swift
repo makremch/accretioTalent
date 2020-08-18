@@ -64,7 +64,7 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     @IBOutlet weak var perCentImage: UIImageView!
     
     @IBOutlet weak var registerNumberLabel: UILabel!
-    
+
     //    MARK:- Button Action
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -180,16 +180,16 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
         }
     }
     
-    func hiddenViews(){
-        objectifsIndividuelsView.isHidden = true
-        formationView.isHidden = true
-        commentairesView.isHidden = true
-        fixationView.isHidden = true
-        objectifsCommunView.isHidden = true
-        competencesView.isHidden = true
-        ProjetProfessionnelView.isHidden = true
-        blackView.isHidden = true
-    }
+//    func hiddenViews(){
+//        objectifsIndividuelsView.isHidden = true
+//        formationView.isHidden = true
+//        commentairesView.isHidden = true
+//        fixationView.isHidden = true
+//        objectifsCommunView.isHidden = true
+//        competencesView.isHidden = true
+//        ProjetProfessionnelView.isHidden = true
+//        blackView.isHidden = true
+//    }
     
     // MARK: View lifecycle
     override func viewDidLoad()
@@ -197,7 +197,7 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
         super.viewDidLoad()
         doSomething()
         designingButton()
-        hiddenViews()
+//        hiddenViews()
         let userName = UserDefaults.standard.string(forKey: "nameOfUser")!
         let userLastName = UserDefaults.standard.string(forKey: "lastNameOfUser")!
         let typeUser = UserDefaults.standard.string(forKey: "employeType")!
@@ -210,10 +210,10 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
         self.interactor?.showEvaluationCardsDetails(token: token, code: code)
         NameEvaluator.text = "Evaluateur : "
         registerNumberLabel.text = UserDefaults.standard.string(forKey: "registrationNumber")!
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.reloadData()
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.separatorStyle = .none
+//        tableView.reloadData()
     }
     // MARK: Do something
     
@@ -253,7 +253,7 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
     
     func displayCards(responses :[CommunTargetsCard]){
         evaluationCards = responses
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     func diplayCardsError(){
         print("no cards !")
@@ -262,30 +262,30 @@ class EvaluationCollaborateurDetailsViewController: UIViewController, Evaluation
 }
 
 
-extension EvaluationCollaborateurDetailsViewController : UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return evaluationCards.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let  cellObj = tableView.dequeueReusableCell(withIdentifier: "cellObj", for: indexPath) as?
-            ObjectifCommunTableViewCell
-            else {
-                return UITableViewCell()
-        }
-        print(evaluationCards)
-        print("ewewe")
-        cellObj.labelCard.text = evaluationCards[indexPath.row].label
-        cellObj.descriptionLabel.text = evaluationCards[indexPath.row].communTargetsCardDescription!
-        cellObj.weightLabel.text = String((evaluationCards[indexPath.row].weight)!)
-        cellObj.ValeurCibleLabel.text = "Valeur cible: " + String((evaluationCards[indexPath.row].indicatorsCard![0].targetValue)!)
-        cellObj.remarqueLabel.text = evaluationCards[indexPath.row].indicatorsCard![0].label
-        if String((evaluationCards[indexPath.row].indicatorsCard![0].targetValue)!) == "NA"{
-            cellObj.remarqueLabel.text = "NA"
-        }
-        return cellObj
-    }
-    
-    
-    
-}
+//extension EvaluationCollaborateurDetailsViewController : UITableViewDataSource, UITableViewDelegate{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return evaluationCards.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let  cellObj = tableView.dequeueReusableCell(withIdentifier: "cellObj", for: indexPath) as?
+//            ObjectifCommunTableViewCell
+//            else {
+//                return UITableViewCell()
+//        }
+//        print(evaluationCards)
+//        print("ewewe")
+//        cellObj.labelCard.text = evaluationCards[indexPath.row].label
+//        cellObj.descriptionLabel.text = evaluationCards[indexPath.row].communTargetsCardDescription!
+//        cellObj.weightLabel.text = String((evaluationCards[indexPath.row].weight)!)
+//        cellObj.ValeurCibleLabel.text = "Valeur cible: " + String((evaluationCards[indexPath.row].indicatorsCard![0].targetValue)!)
+//        cellObj.remarqueLabel.text = evaluationCards[indexPath.row].indicatorsCard![0].label
+//        if String((evaluationCards[indexPath.row].indicatorsCard![0].targetValue)!) == "NA"{
+//            cellObj.remarqueLabel.text = "NA"
+//        }
+//        return cellObj
+//    }
+//
+//
+//
+//}

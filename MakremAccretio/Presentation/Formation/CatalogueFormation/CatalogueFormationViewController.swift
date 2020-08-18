@@ -340,6 +340,8 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CatalogueFormationDetailsViewController") as!
         CatalogueFormationDetailsViewController
+        vc.content = dataValueCatalogue[indexPath.row]
+        vc.code = dataValueCatalogue[indexPath.row].code!
         self.navigationController?.pushViewController(vc,animated: true)
         
         

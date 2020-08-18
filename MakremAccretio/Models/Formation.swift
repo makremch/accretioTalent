@@ -61,6 +61,4 @@ struct Trainer: Codable {
     let profilePicture, email: String?
     let affectation: String?
     let phone: String?
-    let skills: [String]
-//    let average: JSONNull
 }

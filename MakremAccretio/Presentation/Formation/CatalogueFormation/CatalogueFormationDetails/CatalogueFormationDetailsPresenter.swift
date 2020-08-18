@@ -15,17 +15,15 @@ import UIKit
 protocol CatalogueFormationDetailsPresentationLogic
 {
     func presentSomething(response: CatalogueFormationDetails.Something.Response)
-    func showCatalogueById(response : FormationCatalogue)
+    func showCatalogueById(response : FormationCatalogueDetails)
     
 }
 
 class CatalogueFormationDetailsPresenter: CatalogueFormationDetailsPresentationLogic
 {
-    func showCatalogueById(response: FormationCatalogue) {
-        viewController?.getCatalogueData(response: response)
-    }
-    
     weak var viewController: CatalogueFormationDetailsDisplayLogic?
+ 
+    
     
     // MARK: Do something
     
@@ -35,5 +33,7 @@ class CatalogueFormationDetailsPresenter: CatalogueFormationDetailsPresentationL
         viewController?.displaySomething(viewModel: viewModel)
     }
     
-    
+    func showCatalogueById(response: FormationCatalogueDetails) {
+        viewController?.getCatalogueDataDetails(response: response)
+    }
 }

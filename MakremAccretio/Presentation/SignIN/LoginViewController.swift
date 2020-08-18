@@ -34,12 +34,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     
     func showMenuAfterLogin(){
-        //        ProgressView.StopLoding()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let menu = storyBoard.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
-        //          menu.modalPresentationStyle = .fullScreen
-        
-        //                  self.present(menu, animated: true, completion: nil)
+        let menu = storyBoard.instantiateViewController(withIdentifier: "menuVC2") as! Menu2ViewController
         self.navigationController?.pushViewController(menu, animated: true)
     }
     
@@ -127,7 +123,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
-        seConnecterButton.layer.cornerRadius = 7
+        seConnecterButton.layer.cornerRadius = 5
         super.viewDidLoad()
         setupFetchFromLocalDataStore()
         
@@ -252,7 +248,7 @@ extension LoginViewController{
         
         textfield.tintColor             = .black
         textfield.textColor             = .black
-        textfield.backgroundColor       = UIColor(red: 28/255, green: 123/255, blue: 161/255, alpha: 1)
+        textfield.backgroundColor       = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         textfield.autocorrectionType    = .no
         textfield.layer.cornerRadius    = 5
         textfield.layer.borderWidth     = 0

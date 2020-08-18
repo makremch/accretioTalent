@@ -83,6 +83,8 @@ class EvaluationManagerViewController: UIViewController, EvaluationManagerDispla
         self.interactor?.showEvaluationsManager(token: token)
         tableView.delegate = self
         tableView.dataSource = self
+        let cellNib = UINib(nibName: "CompetencesCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "CompetencesCell")
     }
     
     // MARK: Do something
@@ -115,7 +117,7 @@ extension EvaluationManagerViewController : UITableViewDataSource , UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "cellManager", for: indexPath) as? EvaluationManagerTableViewCell
+        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "CompetencesCell", for: indexPath) as? CompetencesCell
             else {
                 return UITableViewCell()
         }

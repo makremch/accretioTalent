@@ -10,9 +10,7 @@ import Foundation
 
 import UIKit
 class EvaluationManagerTableViewCell: UITableViewCell {
-    
-    
-    
+  
     @IBOutlet weak var TitreLabel: UILabel!
     @IBOutlet weak var viewCell: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!

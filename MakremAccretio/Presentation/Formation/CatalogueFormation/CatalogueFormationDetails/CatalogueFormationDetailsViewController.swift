@@ -15,7 +15,7 @@ import UIKit
 protocol CatalogueFormationDetailsDisplayLogic: class
 {
     func displaySomething(viewModel: CatalogueFormationDetails.Something.ViewModel)
-    func getCatalogueData(response: FormationCatalogue)
+    func getCatalogueDataDetails(response: FormationCatalogueDetails)
 }
 
 class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormationDetailsDisplayLogic
@@ -26,6 +26,42 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     var interactor: CatalogueFormationDetailsBusinessLogic?
     var router: (NSObjectProtocol & CatalogueFormationDetailsRoutingLogic & CatalogueFormationDetailsDataPassing)?
     
+    
+    //    MARK: var declarations
+    var content : FormationCatalogue? = nil
+    var code : String = ""
+    
+    //    MARK: - Declaration UI:
+    @IBOutlet weak var formateurView: UIView!
+    @IBOutlet weak var objectifView: UIView!
+    @IBOutlet weak var programmeView: UIView!
+    @IBOutlet weak var segChoiceRubrique: UISegmentedControl!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var formationTitleLabel: UILabel!
+    @IBOutlet weak var responsableNameLabel: UILabel!
+    @IBOutlet weak var certificationLabel: UILabel!
+    @IBOutlet weak var interExternLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var initiatorNameLastname: UILabel!
+    @IBOutlet weak var effectifNumber: UILabel!
+    @IBOutlet weak var sessionDuration: UILabel!
+    
+    
+    @IBAction func sgmentationControllerChangingView(_ sender: Any) {
+        if segChoiceRubrique.selectedSegmentIndex == 0 {
+            objectifView.alpha = 1
+            programmeView.alpha = 0
+            formateurView.alpha = 0
+        }else if segChoiceRubrique.selectedSegmentIndex == 1 {
+            objectifView.alpha = 0
+            programmeView.alpha = 1
+            formateurView.alpha = 0
+        } else{
+            objectifView.alpha = 0
+            programmeView.alpha = 0
+            formateurView.alpha = 1
+        }
+    }
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -69,14 +105,36 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     }
     
     // MARK: View lifecycle
-  var formation : FormationCatalogue?
+  var formation : FormationCatalogueDetails?
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         doSomething()
         designImage ()
-        settingLabelWithDataFromAPI()
+        let token = UserDefaults.standard.string(forKey: "accessToken")!
+        self.interactor?.gettingFormationCatalogueById(token: token, code: self.code)
+        let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (content!.picture)!)
+        imageView.kf.setImage(with: url){
+                    result in
+                    switch result {
+                    case .success:
+                        print(result)
+                        self.imageView.contentMode = UIView.ContentMode.scaleToFill
+                        self.imageView.clipsToBounds = true
+                        break
+                    case .failure:
+                        self.imageView.image = UIImage(named: "noImageAvailable")!
+                        self.imageView.contentMode = UIView.ContentMode.scaleAspectFit
+                    }
+                }
+        imageView.layer.cornerRadius = 15
+        formationTitleLabel.text = content?.label
+        if content?.duration == nil{
+            sessionDuration.text = "undefined"
+        }else{
+            sessionDuration.text = String((content?.duration)!)
+        }
+        initiatorNameLastname.text = (content?.initiator?.firstName)! + " " + (content?.initiator?.lastName)!
     }
     
     // MARK: Do something
@@ -92,49 +150,6 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     func displaySomething(viewModel: CatalogueFormationDetails.Something.ViewModel)
     {
         //nameTextField.text = viewModel.name
-    }
-    
-    
-    //    MARK: - Declaration UI:
-    
-    
-    @IBOutlet weak var formateurView: UIView!
-    @IBOutlet weak var objectifView: UIView!
-    @IBOutlet weak var programmeView: UIView!
-    @IBOutlet weak var segChoiceRubrique: UISegmentedControl!
-    @IBOutlet weak var imageView: UIImageView!
-    
-    
-    @IBOutlet weak var formationTitleLabel: UILabel!
-    @IBOutlet weak var responsableNameLabel: UILabel!
-    @IBOutlet weak var certificationLabel: UILabel!
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func sgmentationControllerChangingView(_ sender: Any) {
-        if segChoiceRubrique.selectedSegmentIndex == 0 {
-            objectifView.alpha = 1
-            programmeView.alpha = 0
-            formateurView.alpha = 0
-        }else if segChoiceRubrique.selectedSegmentIndex == 1 {
-            objectifView.alpha = 0
-            programmeView.alpha = 1
-            formateurView.alpha = 0
-        } else{
-            objectifView.alpha = 0
-            programmeView.alpha = 0
-            formateurView.alpha = 1
-        }
     }
     
     
@@ -160,15 +175,18 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     
     
     //    MARK: - Getting data for formation by ID
-    func getCatalogueData(response: FormationCatalogue){
-        print(response)
-    }
-    
-    
-    func settingLabelWithDataFromAPI (){
-        formationTitleLabel.text = "android"
+    func getCatalogueDataDetails(response: FormationCatalogueDetails){
+        print("3assssba")
+        print(response.capacity)
+        print("3assssba")
+        formation = response
+        locationLabel.text = formation?.place
+        certificationLabel.text = "certification: " + String((formation?.certification)!)
         
     }
+    
+    
+    
     
     
     

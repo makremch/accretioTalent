@@ -116,8 +116,8 @@ class CompanyLoginViewController: UIViewController, CompanyLoginDisplayLogic
     
     func settingViews(){
         backgroundImageView.layer.opacity = 40
-        codeClientTextField.layer.cornerRadius = 10
-        SeConnecterButton.layer.cornerRadius = 10
+        codeClientTextField.layer.cornerRadius = 5
+        SeConnecterButton.layer.cornerRadius = 5
         viewLogoAccretio.layer.opacity = 20
     }
     

@@ -144,14 +144,14 @@ class FormationAPI {
         }
     }
     
-    static func gettingFormationCatalogueById(token : String, code : String) -> Promise<FormationCatalogue>{
+    static func gettingFormationCatalogueById(token : String, code : String) -> Promise<FormationCatalogueDetails>{
         let base = "https://accretio-2-tnr.advyteam.com/"
         //        let base = "https://mobile-int.accretio.io/"
         let url = base + "training/api/training-offers/code/"+code
-        return  Promise<FormationCatalogue> { fulfill, reject in
+        return  Promise<FormationCatalogueDetails> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token
-            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<FormationCatalogue, AFError>) in
+            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<FormationCatalogueDetails, AFError>) in
                 switch response.result {
                     
                 case .success(let value):

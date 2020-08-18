@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pRg-5v-WDF" customClass="MenuCollection" customModule="MakremAccretio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="291" height="411"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="291" height="411"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDf-Rb-XIp">
+                        <rect key="frame" x="0.0" y="0.0" width="291" height="411"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ModuleName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZE-Ub-TsC">
+                                <rect key="frame" x="2" y="342" width="287" height="51"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarUserCartoon" translatesAutoresizingMaskIntoConstraints="NO" id="Htz-VN-LXB">
+                                <rect key="frame" x="14.5" y="21" width="262" height="301"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Htz-VN-LXB" secondAttribute="height" multiplier="262:301" id="7vA-wa-p5K"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5ZE-Ub-TsC" firstAttribute="leading" secondItem="eDf-Rb-XIp" secondAttribute="leading" constant="2" id="3PF-6V-KO4"/>
+                            <constraint firstItem="5ZE-Ub-TsC" firstAttribute="top" secondItem="Htz-VN-LXB" secondAttribute="bottom" constant="20" id="A59-OY-qwA"/>
+                            <constraint firstItem="Htz-VN-LXB" firstAttribute="width" secondItem="eDf-Rb-XIp" secondAttribute="width" multiplier="0.9" id="Eqy-Uf-1ix"/>
+                            <constraint firstItem="Htz-VN-LXB" firstAttribute="top" secondItem="eDf-Rb-XIp" secondAttribute="top" constant="21" id="K9X-NM-PUL"/>
+                            <constraint firstAttribute="trailing" secondItem="5ZE-Ub-TsC" secondAttribute="trailing" constant="2" id="RSa-LI-eaS"/>
+                            <constraint firstItem="5ZE-Ub-TsC" firstAttribute="centerX" secondItem="eDf-Rb-XIp" secondAttribute="centerX" id="gIt-gz-z6N"/>
+                            <constraint firstItem="Htz-VN-LXB" firstAttribute="centerX" secondItem="eDf-Rb-XIp" secondAttribute="centerX" id="iDp-lw-H3M"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="eDf-Rb-XIp" firstAttribute="top" secondItem="pRg-5v-WDF" secondAttribute="top" id="4O7-nP-YJn"/>
+                <constraint firstItem="eDf-Rb-XIp" firstAttribute="leading" secondItem="pRg-5v-WDF" secondAttribute="leading" id="KKg-Qa-0tt"/>
+                <constraint firstAttribute="bottom" secondItem="eDf-Rb-XIp" secondAttribute="bottom" id="cOJ-37-1DS"/>
+                <constraint firstAttribute="trailing" secondItem="eDf-Rb-XIp" secondAttribute="trailing" id="dnc-y3-aEY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="t8c-Fh-2yC"/>
+            <size key="customSize" width="291" height="411"/>
+            <connections>
+                <outlet property="cntView" destination="eDf-Rb-XIp" id="v4z-l3-fWu"/>
+                <outlet property="imgvWalkthrough" destination="Htz-VN-LXB" id="jXL-Kc-vU4"/>
+                <outlet property="lblTitle" destination="5ZE-Ub-TsC" id="myL-bn-gw2"/>
+            </connections>
+            <point key="canvasLocation" x="-47.10144927536232" y="20.424107142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="avatarUserCartoon" width="916" height="836"/>
+    </resources>
+</document>

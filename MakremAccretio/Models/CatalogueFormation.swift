@@ -25,7 +25,7 @@ struct FormationCatalogue: Codable {
     let trainer: [TrainerCatalogue]?
     let  duration: Int?
     let unit: String?
-    let numberParticipants: JSONNull?
+    let numberParticipants: String?
     let trainingOrganization: [String]?
     let trainingManager: InitiatorCatalogue?
 //    let average: JSONNull?
