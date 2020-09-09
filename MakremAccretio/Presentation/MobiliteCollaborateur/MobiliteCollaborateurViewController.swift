@@ -84,10 +84,10 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
 //            cellCollaborateur.RegionLabel.text = (dataValueCollaborateur[indexPath.row].publishedLocalisationOffer as Any) as? String
             let test = dataValueCollaborateur[indexPath.row]
             if test.publishedLocalisationOffer != [] {
-                 cellCollaborateur.RegionLabel.text = (test.publishedLocalisationOffer[0])
+                cellCollaborateur.RegionLabel.text = (test.publishedLocalisationOffer?[0])
             }
             if test.publishedContractOffer != [] {
-                cellCollaborateur.offreContrat.text = (test.publishedContractOffer[0])
+                cellCollaborateur.offreContrat.text = (test.publishedContractOffer?[0])
             }
         }
         else if searchActive {
@@ -113,36 +113,21 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
                 self.navigationController?.pushViewController(vc,animated: false)
             }
         }else {
-        
         vc.content = dataValueCollaborateur[indexPath.row]
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(vc,animated: true)
         }
 //                   self.navigationController?.pushViewController(vc, animated: true)
         }
-               
-        
     }
-    
-    
     
     
     func getDataCollaborator(response: Response) {
-        print("response:", response )
-        dataValueCollaborateur = response.content
+        dataValueCollaborateur = response.content!
         tableView.reloadData()
-        
-        
     }
     
-    
-    
-    
-    
     //    MARK: - Onclick cell row
-    		
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let mobiliteCollaborateurDetails = segue.destination as? MobiliteCollaborateurDetailsViewController,
             let index = tableView.indexPathForSelectedRow?.row
@@ -217,25 +202,16 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     }
     
     private func findByOfferName(text : String) {
-        currentDataValueArray = dataValueCollaborateur.filter({
-            data -> Bool in
-            return (data.publishedOfferCode.contains(text))
-        })
+        
     }
     
     
     private func findByOfferRegion(text : String) {
-        currentDataValueArray = dataValueCollaborateur.filter({
-            data -> Bool in
-            return (data.publishedLocalisationOffer.contains(text))
-        })
+        
     }
     
     private func findByOfferContrat(text : String) {
-        currentDataValueArray = dataValueCollaborateur.filter({
-            data -> Bool in
-            return (data.publishedContractOffer.contains(text))
-        })
+        
     }
     
     

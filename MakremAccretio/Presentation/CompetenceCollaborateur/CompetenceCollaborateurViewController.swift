@@ -32,17 +32,13 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     var interactor: CompetenceCollaborateurBusinessLogic?
     var router: (NSObjectProtocol & CompetenceCollaborateurRoutingLogic & CompetenceCollaborateurDataPassing)?
     var dataValueCompetenceCollaborateur : [ClassificationDto] = []
-//    20,40,60,30,15
-    var values : [Double] = []
     var response: CompetenseResponse? = nil
     var skillsLabel:[String: String]? = nil
-//    "9a7ba","nikommk","dirrabek","zeb","asba"
-    var activities : [String] = []
+    var activities : [String] = ["","","","","","","","","","","","","","","","","","","","","","",""]
     var originalBarBgColor: UIColor!
     var originalBarTintColor: UIColor!
     var originalBarStyle: UIBarStyle!
-    var radarIndex : Int = 2
-    
+    var radarIndex : Int = 0
     
 //    MARK:- Button Actions
     @IBAction func nextButton(_ sender: Any) {
@@ -50,12 +46,14 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
         updateRadar(index: radarIndex)
     }
+    
     @IBAction func previousButton(_ sender: Any) {
         radarIndex-=1
         radarIndex = radarIndex +  (response?.content![1].affectationSkillByClassificationDTOList.count)!
         radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
         print(radarIndex)
         updateRadar(index: radarIndex)
+
     }
     @IBAction func backButton(_ sender: Any) {
           self.navigationController?.popViewController(animated: true)
@@ -110,39 +108,10 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         self.interactor?.getCompetence(token: token)
         print(self.dataValueCompetenceCollaborateur)
         // Do any additional setup after loading the view.
-        self.title = "Radar Chart"
-        chartView.delegate = self
-        chartView.chartDescription?.enabled = false
-        chartView.webLineWidth = 1
-        chartView.innerWebLineWidth = 1
-        chartView.webColor = .lightGray
-        chartView.innerWebColor = .lightGray
-        chartView.webAlpha = 1
-        print("tttttt")
-        let xAxis = chartView.xAxis
-        xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
-        xAxis.xOffset = 0
-        xAxis.yOffset = 0
-        xAxis.valueFormatter = self
-        xAxis.labelTextColor = .white
-        let yAxis = chartView.yAxis
-        yAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
-        yAxis.labelCount = 5
-        yAxis.axisMinimum = 0
-        yAxis.axisMaximum = 80
-        yAxis.drawLabelsEnabled = false
-        let l = chartView.legend
-        l.horizontalAlignment = .center
-        l.verticalAlignment = .top
-        l.orientation = .horizontal
-        l.drawInside = false
-        l.font = .systemFont(ofSize: 10, weight: .light)
-        l.xEntrySpace = 7
-        l.yEntrySpace = 5
-        l.textColor = .white
+
         print("qqqqq")
-        self.updateChartData()
-        chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutBack)
+        setChartData(label: "Waiting for data", values: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+//        self.updateChartData()
         settingViewLabel()
     }
     
@@ -181,13 +150,34 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         print((response?.content?.count)!)
         print("+++++++++++++++++++++++++++++++++++++")
         names = skills[index].map  {(skillsLabel![$0.codeSkill!])! }
-        activities = names
-        values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double  }
-        print(values)
-        setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)!)
-       
+        activities = names.map  { formatName(name: $0) }
+        let values = scaledValues( values:  skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double  } )
+        setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)! , values: values)
+
     }
     
+    func formatName(name : String) ->  String {
+        if(name.count < 6) {
+            return name
+        }
+        let words = name.split(separator: " ")
+        if (words.count == 1 ) {
+            return String(name.prefix(5))
+        }
+        if (words.count == 2 ) {
+            return words.map{ $0.prefix(2) }.joined()
+        }
+        return words.map{ $0.prefix(1) }.joined()
+    }
+    
+    func scaledValues(values: [Double]) ->  [Double] {
+        if values.max()! < 5.0 {
+            return values.map { $0 * 25 }
+        }
+        return values
+    }
+
+
    
 //    MARK:- Getting data from API
     func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
@@ -207,11 +197,15 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
            }
        }
        
-    func setChartData(label  : String) {
+    func setChartData(label  : String , values : [Double] ) {
+
 //        let mult: UInt32 = 80
 //        let min: UInt32 = 20
         print("somme:",activities.count)
-        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
+        chartView.clear()
+        chartView.clearValues()
+        chartView.updateConstraints()
+//        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
         let entries1 = values.map { RadarChartDataEntry(value : $0) }
         let set1 = RadarChartDataSet(entries: entries1,label: label)
         //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
@@ -227,8 +221,40 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
         data.setDrawValues(false)
         data.setValueTextColor(.white)
-        
+        self.title = "Radar Chart"
+        chartView.delegate = self
+        chartView.chartDescription?.enabled = false
+        chartView.webLineWidth = 1
+        chartView.innerWebLineWidth = 1
+        chartView.webColor = .lightGray
+        chartView.innerWebColor = .lightGray
+        chartView.webAlpha = 1
+        let l = chartView.legend
+        l.horizontalAlignment = .center
+        l.verticalAlignment = .top
+        l.orientation = .horizontal
+        l.drawInside = false
+        l.font = .systemFont(ofSize: 10, weight: .light)
+        l.xEntrySpace = 7
+        l.yEntrySpace = 5
+        l.textColor = .white
+        let xAxis = chartView.xAxis
+        xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
+        xAxis.xOffset = 0
+        xAxis.yOffset = 0
+        xAxis.valueFormatter = self
+        xAxis.labelTextColor = .white
+        let yAxis = chartView.yAxis
+        yAxis.drawLabelsEnabled = false
+        yAxis.labelCount = 5
+        yAxis.axisMinimum = 0
+        yAxis.axisMaximum = 80
         chartView.data = data
+        chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutExpo)
+        chartView.isHidden = false
+        if(values.count == 23) {
+            chartView.isHidden = true
+        }
         
        }
     

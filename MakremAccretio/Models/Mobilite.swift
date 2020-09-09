@@ -26,7 +26,7 @@ struct Demande: Codable {
 
 
 struct DemandeResponse: Codable {
-    let content : [Demande]
+    let content : [Demande]?
     let totalElements : Int?
     let last : Bool?
     let totalPages : Int?

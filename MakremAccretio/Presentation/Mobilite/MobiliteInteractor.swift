@@ -101,7 +101,7 @@ class MobiliteInteractor: MobiliteBusinessLogic, MobiliteDataStore {
         worker.getListMobility(token: token , isManager: isManager).then() {
             demandeResponse in
             print("in Interactor getlistMobility : ***************************")
-            print(demandeResponse)
+            print(demandeResponse.content?.count)
             print("***********************************************************")
             self.presenter?.showMobilities(responses: demandeResponse, choix: 0)
         }.catch {error in
@@ -121,6 +121,7 @@ class MobiliteInteractor: MobiliteBusinessLogic, MobiliteDataStore {
         }.catch {
             error in
             print(error)
+            self.presenter?.showMobilitiesForValidationError()
         }
         
     }

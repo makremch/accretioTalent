@@ -32,7 +32,7 @@ class FormationWorker
         return FormationAPI.showMyActions(token: token)
     }
     
-    func showCatalogueFormation(token: String) ->Promise<ResponseCatalogue>{
-        return FormationAPI.showCatalogueFormation(token: token)
+    func showCatalogueFormation(token: String, page : Int, size: Int) ->Promise<ResponseCatalogue>{
+        return FormationAPI.showCatalogueFormation(token: token, page : page, size: size)
     }
 }

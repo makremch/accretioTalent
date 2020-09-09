@@ -15,7 +15,7 @@ import UIKit
 protocol CatalogueFormationBusinessLogic
 {
     func doSomething(request: CatalogueFormation.Something.Request)
-    func showCatalogueFormation(token : String)
+    func showCatalogueFormation(token : String, page : Int, size: Int)
     func showListPopulation(token : String)
 }
 
@@ -41,14 +41,12 @@ class CatalogueFormationInteractor: CatalogueFormationBusinessLogic, CatalogueFo
         presenter?.presentSomething(response: response)
     }
     
-    func showCatalogueFormation(token : String){
+    func showCatalogueFormation(token : String, page : Int, size: Int){
         worker = CatalogueFormationWorker()
-        worker?.showCatalogueFormation(token: token).then(){
+        worker?.showCatalogueFormation(token: token, page : page, size: size).then(){
             formationCatalogue in
-            print("in interractor formation Catalogue **************************")
-            print(formationCatalogue.content[1].picture!)
-            print("wwww")
-            self.presenter?.showCatalogue(response : formationCatalogue)
+            print(formationCatalogue.numberOfElements)
+            self.presenter?.showCatalogue(response : formationCatalogue, page : page, size: size)
         }.catch{
             error in
             print(error)

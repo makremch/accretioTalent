@@ -92,10 +92,11 @@ class FormationAPI {
     }
     
     
-    static func showCatalogueFormation(token : String) ->Promise<ResponseCatalogue>{
+    static func showCatalogueFormation(token : String, page : Int, size: Int) ->Promise<ResponseCatalogue>{
 //        let base = "https://mobile-int.accretio.io/"
         let base = "https://accretio-2-tnr.advyteam.com/"
-        let url = base + "training/api/training-offers/search?page=0&size=10&sort=creationDate,DESC"
+        let url = base + "training/api/training-offers/search?page=" + String(page) + "&size=" + String(size) + "&sort=creationDate,DESC"
+        print(url)
         let params: [String: String] = ["":""]
         return  Promise<ResponseCatalogue> { fulfill, reject in
             AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: [

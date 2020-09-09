@@ -88,7 +88,7 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
         setupiCarosel()
         userNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
         postLabel.text = "DFG_Responsable atelier"
-
+        iCarosel.showsHorizontalScrollIndicator = false
     }
     
     // MARK: Do something

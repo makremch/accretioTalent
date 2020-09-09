@@ -18,7 +18,7 @@ protocol FormationBusinessLogic
     func getListFormationForValidation(token : String )
     func showListFormationManagerMesDemandes(token : String)
     func showMyActions(token : String)
-    func showCatalogueFormation(token : String)
+    func showCatalogueFormation(token : String, page : Int, size: Int)
 }
 
 protocol FormationDataStore
@@ -84,9 +84,9 @@ class FormationInteractor: FormationBusinessLogic, FormationDataStore
     }
     
     
-    func showCatalogueFormation(token : String){
+    func showCatalogueFormation(token : String, page : Int, size: Int){
         worker = FormationWorker()
-        worker?.showCatalogueFormation(token: token).then(){
+        worker?.showCatalogueFormation(token: token, page : page, size: size).then(){
             formationCatalogue in
             print("in interractor formation Catalogue **************************")
             print(formationCatalogue)

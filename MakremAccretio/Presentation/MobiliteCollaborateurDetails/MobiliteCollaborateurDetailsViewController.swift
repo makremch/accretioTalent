@@ -170,8 +170,8 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         imgOffer.layer.cornerRadius = 10
         print((content?.publishedLocalisationOffer)!)
         print("##")
-        if content?.publishedLocalisationOffer.count != 0 {
-            localisationLabel.text = String((content?.publishedLocalisationOffer[0])!)
+        if content?.publishedLocalisationOffer?.count != 0 {
+            localisationLabel.text = String((content?.publishedLocalisationOffer?[0])!)
         }else{
             localisationLabel.text = "non précisé"
         }

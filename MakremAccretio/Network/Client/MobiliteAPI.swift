@@ -14,46 +14,41 @@ import Promise
 class MobiliteAPI {
     
     static func showListMobilityForValidation(token : String) -> Promise<DemandeResponse>{
-//        let base = "https://mobile-int.accretio.io/"
+        //        let base = "https://mobile-int.accretio.io/recruitment/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
-        let url = base + "recruitment/api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
+        let url = base + "api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
         print("url")
         return  Promise<DemandeResponse> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token
             ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<DemandeResponse, AFError>) in
-                    print("Demande API")
-                    print(response.response?.statusCode as Any)
-                    switch response.result {
-                        
-                    case .success(let value):
-                        print(value)
-                        fulfill(value)
-                        
-                    case .failure(let error):
-                        print(error)
-                        reject(error)
-                    }
-                })
+                print("Demande API")
+                print(response.response?.statusCode as Any)
+                switch response.result {
+                    
+                case .success(let value):
+                    print(value)
+                    fulfill(value)
+                    print("3asba for validation ")
+                    
+                case .failure(let error):
+                    print(error)
+                    reject(error)
+                    print("3asbtin")
+                }
+            })
         }
     }
-  
+    
     
     static func showListMobility(token: String , isManager : Bool = false) -> Promise<DemandeResponse> {
-        //        let base = "https://mobile-int.accretio.io/"
+        //        let base = "https://mobile-int.accretio.io/recruitment/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
-//
-        let url = base + "recruitment/api/recruitment-offers/initiator?size=50&page=0"
-        print("url")
+        let url = base + "api/recruitment-offers/initiator?size=50&page=0"
         return  Promise<DemandeResponse> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token
-                //"Content-Type": contentType,
             ])
-                //                .responseJSON(completionHandler: { (response) in
-                //                    print(response)
-                //            })
-                
                 .responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<DemandeResponse, AFError>) in
                     print("Demande API")
                     print(response.response?.statusCode as Any)
@@ -62,10 +57,11 @@ class MobiliteAPI {
                     case .success(let value):
                         print(value)
                         fulfill(value)
-                        
+                        print("3sba mobility ")
                     case .failure(let error):
                         print(error)
                         reject(error)
+                        print("3sbtin mobility ")
                     }
                 })
         }
@@ -75,9 +71,9 @@ class MobiliteAPI {
     
     
     static func showListMobilityCollaborator(token: String) -> Promise<Response>{
-//        let base = "https://mobile-int.accretio.io/"
+        //        let base = "https://mobile-int.accretio.io/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
-        let url = base + "recruitment/api/published-recruitment-offers"
+        let url = base + "api/published-recruitment-offers"
         print(url)
         let params: [String: String] = ["":""]
         return Promise<Response>{ fulfill, reject in
@@ -103,9 +99,9 @@ class MobiliteAPI {
     
     static func getCodeCV(token: String) -> Promise<CodeCv>{
         let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
-//        let base = "https://mobile-int.accretio.io/"
+        //        let base = "https://mobile-int.accretio.io/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
-    let urlCodeCV = base + "recruitment/api/curriculumVitae/read/registrationNumber?registrationNumber=" + registrationNumber
+        let urlCodeCV = base + "recruitment/api/curriculumVitae/read/registrationNumber?registrationNumber=" + registrationNumber
         print(urlCodeCV)
         return Promise<CodeCv>{
             fulfill, reject in
@@ -127,12 +123,12 @@ class MobiliteAPI {
         
     }
     
-    			
+    
     static func verifPostulerOffreByCollaborator(token : String, codeCV : String) -> Promise<ResponseVerif>{
-//        let base = "https://mobile-int.accretio.io/"
+        //        let base = "https://mobile-int.accretio.io/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
         let url = base + "recruitment/api/candidatures/cv/"+codeCV
-//        recruitment/api/candidatures/cv/{cvCode}
+        //        recruitment/api/candidatures/cv/{cvCode}
         print(url)
         return Promise<ResponseVerif> {
             fulfill, reject in
@@ -166,24 +162,24 @@ class MobiliteAPI {
                 "Authorization": "Bearer " + token
                 //"Content-Type": contentType,
             ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<DemandeResponse, AFError>) in
-                    print("Demande API")
-                    print(response.response?.statusCode as Any)
-                    switch response.result {
-                        
-                    case .success(let value):
-                        print(value)
-                        fulfill(value)
-                        
-                    case .failure(let error):
-                        print(error)
-                        reject(error)
-                    }
-                })
+                print("Demande API")
+                print(response.response?.statusCode as Any)
+                switch response.result {
+                    
+                case .success(let value):
+                    print(value)
+                    fulfill(value)
+                    
+                case .failure(let error):
+                    print(error)
+                    reject(error)
+                }
+            })
         }
         
     }
 }
-    
-   
-    
+
+
+
 

@@ -16,6 +16,7 @@ protocol MobilitePresentationLogic {
     func presentListView(inputArray:Array<Demande>)
     func showMobilities(responses: DemandeResponse, choix : Int)
     func showMobilitiesForValidation(responses : DemandeResponse)
+    func showMobilitiesForValidationError()
 }
 
 class MobilitePresenter: MobilitePresentationLogic {
@@ -81,5 +82,7 @@ class MobilitePresenter: MobilitePresentationLogic {
         mobiliteViewController?.getDataForValidation(response: responses)
     }
     
-    
+    func showMobilitiesForValidationError(){
+        print("error -- 1 ")
+    }
 }

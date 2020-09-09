@@ -59,14 +59,14 @@ class MobiliteViewController: UIViewController, MobiliteDisplayLogic, UITableVie
     var dataValue2 : [Demande] = []
     
     func getData(response: DemandeResponse, choix : Int) {
-        print("response:", response.content.count )
-        dataValue = response.content
+        print("response:", response.content!.count )
+        dataValue = response.content!
         tableView.reloadData()
     }
     
     func getDataForValidation(response : DemandeResponse){
-        print("response :", response.content.count)
-        dataValue2 = response.content
+        print(response.content!)
+        dataValue2 = response.content!
         tableView.reloadData()
     }
     
@@ -74,7 +74,6 @@ class MobiliteViewController: UIViewController, MobiliteDisplayLogic, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let index = choiceSeg.selectedSegmentIndex
         if (choiceSeg.titleForSegment(at: index))! == "Mes demandes" {
-            
             return dataValue.count
         }
         else  {

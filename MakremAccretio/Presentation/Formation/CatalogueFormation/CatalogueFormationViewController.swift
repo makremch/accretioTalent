@@ -36,8 +36,10 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     }()
     
     var dataValueForPopulation :  [PopulationElement] = []
-    
-    
+    var dataValueCatalogue : [FormationCatalogue] = []
+    var page = 0
+    var size = 1
+    var totalPages = 0
     //    MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var TitleOfView: UILabel!
@@ -212,7 +214,7 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         print(token)
-        self.interactor?.showCatalogueFormation(token: token)
+        self.interactor?.showCatalogueFormation(token: token,page: self.page , size: self.size)
         self.interactor?.showListPopulation(token: token)
         view.addSubview(visualEffectView)
         designingEffectView()
@@ -223,7 +225,6 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     
     
     // MARK: Getting Data
-    var dataValueCatalogue : [FormationCatalogue] = []
     
     func doSomething()
     {
@@ -238,7 +239,9 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     
     func getCatalogueData(response:ResponseCatalogue){
         print(response)
-        dataValueCatalogue = response.content
+        dataValueCatalogue.append(contentsOf : response.content)
+        self.totalPages = response.totalPages!
+        self.page+=1
         tableView.reloadData()
     }
     
@@ -316,7 +319,8 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
         let clearedStartDate =  dataValueCatalogue[indexPath.row].creationDate!.components(separatedBy: "T")
         cell.dateLabel.text = clearedStartDate[0]
         cell.themeLabel.text = dataValueCatalogue[indexPath.row].theme
-        let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (dataValueCatalogue[indexPath.row].picture)!)
+        let BaseURL = "https://accretio-2-tnr.advyteam.com/"
+        let url = URL(string: BaseURL + "documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (dataValueCatalogue[indexPath.row].picture)!)
         //        let token = UserDefaults.standard.string(forKey: "accessToken")!
         cell.formationImageView.kf.setImage(with: url){
                     result in
@@ -332,6 +336,8 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
                     }
                 }
         cell.formationImageView.layer.cornerRadius = 15
+        
+        
         return cell
     }
     
@@ -344,8 +350,19 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
         vc.code = dataValueCatalogue[indexPath.row].code!
         self.navigationController?.pushViewController(vc,animated: true)
         
-        
     }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (self.dataValueCatalogue.count) - 1 {
+            let token = UserDefaults.standard.string(forKey: "accessToken")!
+            print(indexPath.row)
+            print(dataValueCatalogue[indexPath.row].id)
+            print("------------")
+            self.interactor?.showCatalogueFormation(token: token,page: self.page , size: self.size)
+        }
+    }
+
     
 }
 

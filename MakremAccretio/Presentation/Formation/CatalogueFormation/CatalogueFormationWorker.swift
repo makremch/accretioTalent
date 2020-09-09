@@ -19,9 +19,9 @@ class CatalogueFormationWorker
   {
   }
    
-    func showCatalogueFormation(token: String) ->Promise<ResponseCatalogue>{
+    func showCatalogueFormation(token: String, page : Int, size: Int) ->Promise<ResponseCatalogue>{
         print("worker Catalogue !")
-        return FormationAPI.showCatalogueFormation(token: token)
+        return FormationAPI.showCatalogueFormation(token: token, page : page, size: size)
     }
     
     func showListPopulation(token : String) -> Promise<Population>{

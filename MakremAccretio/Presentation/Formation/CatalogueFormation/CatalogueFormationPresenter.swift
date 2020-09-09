@@ -15,7 +15,7 @@ import UIKit
 protocol CatalogueFormationPresentationLogic
 {
     func presentSomething(response: CatalogueFormation.Something.Response)
-    func showCatalogue(response : ResponseCatalogue)
+    func showCatalogue(response : ResponseCatalogue, page : Int, size: Int)
     func showPopulation(response : Population)
 }
 
@@ -31,7 +31,7 @@ class CatalogueFormationPresenter: CatalogueFormationPresentationLogic
         viewController?.displaySomething(viewModel: viewModel)
     }
     
-    func showCatalogue(response : ResponseCatalogue){
+    func showCatalogue(response : ResponseCatalogue, page : Int, size: Int){
         viewController?.getCatalogueData(response: response)
     }
     

@@ -109,7 +109,7 @@ class EvaluationAPI {
     }
     
     static func showEvaluationManagerDetails(token : String, code : String) -> Promise<EvaluationManagerDetailsResponse>{
-        //https://accretio-2-tnr.advyteam.com/
+        //        let baseURL = "https://mobile-int.accretio.io/"
         let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "evaluation/api/campaign-statisticals/codeCampaign/" + code
         print(url)
@@ -130,7 +130,7 @@ class EvaluationAPI {
     }
     
     static func showEvaluationManagerStepsDetails(token : String, id : String) -> Promise<StepsDetailsResponse>{
-        //https://accretio-2-tnr.advyteam.com/
+        //        let baseURL = "https://mobile-int.accretio.io/"
         let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "workflow/api/step-instance/statistics?workflowType=EVALUATION&requestCode=" + id + "&version=2"
         print(url)
@@ -150,6 +150,28 @@ class EvaluationAPI {
         }
     }
     
+    
+    static func showEvaluationManagerEvaluated(token : String) -> Promise<EvaluatedResponse>{
+        let code : String = UserDefaults.standard.string(forKey: "codeEvalManager")!
+        //https://accretio-2-tnr.advyteam.com/
+        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let url = baseURL + "evaluation/api/evaluation-cards/campaign/" + code + "/manager?size=5&page=0&level=1"
+        print(url)
+        return  Promise<EvaluatedResponse> { fulfill, reject in
+            AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
+                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluatedResponse, AFError>) in
+                    print(response)
+                    switch response.result {
+                    case .success(let value):
+                        print(value)
+                        fulfill(value)
+                    case .failure(let error):
+                        print(error)
+                        reject(error)
+                    }
+                })
+        }
+    }
     
     
 }

@@ -52,8 +52,6 @@ class MobiliteCollaborateurInteractor: MobiliteCollaborateurBusinessLogic, Mobil
     // MARK: - Use Case - Track Analytics
     
     func trackAnalytics(with request: MobiliteCollaborateurModels.TrackAnalytics.Request) {
-        // call analytics library/wrapper here to track analytics
-        // <#Analytics Worker Instance#>.trackAnalytics(event: request.event)
         
         let response = Models.TrackAnalytics.Response()
         presenter?.presentTrackAnalytics(with: response)
@@ -70,9 +68,7 @@ class MobiliteCollaborateurInteractor: MobiliteCollaborateurBusinessLogic, Mobil
             return
         }
         
-        // <#Network Worker Instance#>.performMobiliteCollaborateur(completion: { [weak self, weak request] isSuccessful, error in
-        //     self?.completion(request?.exampleVariable, isSuccessful, error)
-        // })
+       
     }
     
     private func completion(_ exampleVariable: String?, _ isSuccessful: Bool, _ error: Models.MobiliteCollaborateurError?) {
@@ -93,9 +89,6 @@ class MobiliteCollaborateurInteractor: MobiliteCollaborateurBusinessLogic, Mobil
         worker = MobiliteCollaborateurWorker()
         worker.getListMobilityCollaborator(token: token).then() {
             demandeCollaborateurResponse in
-            print("in Interactor getlistMobility collabb : *************************** count")
-            print(demandeCollaborateurResponse.content.count)
-            print("***********************************************************")
             self.presenter?.showMobilitiesCollaborator(responses: demandeCollaborateurResponse)
         }.catch {error in
             print(error)
