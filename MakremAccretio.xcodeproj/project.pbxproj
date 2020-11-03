@@ -70,6 +70,7 @@
 		F44AB25524CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */; };
 		F44F72F324CDA130004BA958 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F72F124CDA130004BA958 /* RadarMarkerView.swift */; };
 		F44F72F424CDA130004BA958 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44F72F224CDA130004BA958 /* RadarMarkerView.xib */; };
+		F472C01B250D54FB00A8F7E1 /* responseOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */; };
 		F472FCC224E6E9C20014A773 /* FormationCollaborateurDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */; };
 		F472FCCA24E81B970014A773 /* Menu2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC424E81B970014A773 /* Menu2Presenter.swift */; };
 		F472FCCB24E81B970014A773 /* Menu2Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC524E81B970014A773 /* Menu2Worker.swift */; };
@@ -324,6 +325,7 @@
 		F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsInteractor.swift; sourceTree = "<group>"; };
 		F44F72F124CDA130004BA958 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		F44F72F224CDA130004BA958 /* RadarMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
+		F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = responseOfAdd.swift; sourceTree = "<group>"; };
 		F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurDetail.swift; sourceTree = "<group>"; };
 		F472FCC424E81B970014A773 /* Menu2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu2Presenter.swift; sourceTree = "<group>"; };
 		F472FCC524E81B970014A773 /* Menu2Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu2Worker.swift; sourceTree = "<group>"; };
@@ -907,33 +909,34 @@
 		F4C6931823FD537800980714 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F4C6931C23FD557F00980714 /* UserSession.swift */,
-				F4C6931E23FD55E300980714 /* User.swift */,
-				F4C6932023FD560E00980714 /* Employee.swift */,
-				F4C6932223FD564E00980714 /* StatusEmployeeByManager.swift */,
-				F4C6932823FD590000980714 /* CompanyConfig.swift */,
 				F4C6932A23FD7AC900980714 /* AccretioModule.swift */,
+				F402689D24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift */,
+				F43624CF24A8DD6300200E7A /* AddCatalogueFormationResponse.swift */,
+				F487DB8424612AA2001CA320 /* CatalogueFormation.swift */,
+				F4C6932823FD590000980714 /* CompanyConfig.swift */,
+				F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */,
+				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
+				F4C6932023FD560E00980714 /* Employee.swift */,
+				F4B7803924ED7BE1007F24F2 /* EvaluatedManager.swift */,
+				F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */,
+				F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */,
+				F4816DC624B8E9C100890B31 /* EvaluationDetails.swift */,
+				F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */,
+				F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */,
+				F4B4709F244E481700CFF242 /* Formation.swift */,
+				F487DB9524651429001CA320 /* FormationCollaborateur.swift */,
+				F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */,
+				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
 				F4C6934923FF1BE700980714 /* Mobilite.swift */,
 				F44614F4240D4F8A00D4F567 /* MobiliteCollaborateur.swift */,
 				F4D5B15F241A424F00249390 /* MobilitePostule.swift */,
-				F4B4709F244E481700CFF242 /* Formation.swift */,
-				F487DB822460E657001CA320 /* SessionAction.swift */,
-				F487DB8424612AA2001CA320 /* CatalogueFormation.swift */,
 				F487DB86246157E0001CA320 /* NewFormation.swift */,
-				F487DB9524651429001CA320 /* FormationCollaborateur.swift */,
-				F4D38B2F2486AC84003F2FD4 /* CompetenceCollab.swift */,
-				F445953E249D508000512E17 /* CompetenceCollabForLabel.swift */,
-				F445954D249FD67A00512E17 /* ManagerCompetence.swift */,
-				F43624CF24A8DD6300200E7A /* AddCatalogueFormationResponse.swift */,
-				F4E1CAEB24B25DBF002D9672 /* EvaluationCollaborateur.swift */,
-				F4816DC624B8E9C100890B31 /* EvaluationDetails.swift */,
-				F4B39B3C24B9FADA004E3B86 /* EvaluationCards.swift */,
-				F41E1A8C24C8A62F00CE4AD0 /* EvaluationManager.swift */,
-				F41E1A9224C9D90C00CE4AD0 /* EvaluationManagerDetails.swift */,
 				F49623D424D590A700BABEF1 /* Population.swift */,
-				F402689D24E1D6A600AA4A7F /* AddCatalogueFormationRequest.swift */,
-				F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */,
-				F4B7803924ED7BE1007F24F2 /* EvaluatedManager.swift */,
+				F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */,
+				F487DB822460E657001CA320 /* SessionAction.swift */,
+				F4C6932223FD564E00980714 /* StatusEmployeeByManager.swift */,
+				F4C6931E23FD55E300980714 /* User.swift */,
+				F4C6931C23FD557F00980714 /* UserSession.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1467,6 +1470,7 @@
 				F4B764B1241142AA00BE3DF0 /* MobiliteCollaborateurTableViewCell.swift in Sources */,
 				F47CA688246B05AF00C6ACB1 /* FormationMyActionViewControllerCell.swift in Sources */,
 				F47CA682246B032A00C6ACB1 /* FormationMyActionWorker.swift in Sources */,
+				F472C01B250D54FB00A8F7E1 /* responseOfAdd.swift in Sources */,
 				F47CA65C246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift in Sources */,
 				F41E1A8824C89F6500CE4AD0 /* EvaluationManagerRouter.swift in Sources */,
 				F41E1A7124C487CB00CE4AD0 /* ObjectifCommunTableViewCell.swift in Sources */,

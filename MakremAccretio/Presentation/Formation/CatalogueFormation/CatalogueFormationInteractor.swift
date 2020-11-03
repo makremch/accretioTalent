@@ -17,6 +17,7 @@ protocol CatalogueFormationBusinessLogic
     func doSomething(request: CatalogueFormation.Something.Request)
     func showCatalogueFormation(token : String, page : Int, size: Int)
     func showListPopulation(token : String)
+    func addCatalogue(token : String, param : TrainingRequestModelAdd)
 }
 
 protocol CatalogueFormationDataStore
@@ -45,7 +46,7 @@ class CatalogueFormationInteractor: CatalogueFormationBusinessLogic, CatalogueFo
         worker = CatalogueFormationWorker()
         worker?.showCatalogueFormation(token: token, page : page, size: size).then(){
             formationCatalogue in
-            print(formationCatalogue.numberOfElements)
+//            print(formationCatalogue.numberOfElements)
             self.presenter?.showCatalogue(response : formationCatalogue, page : page, size: size)
         }.catch{
             error in
@@ -64,6 +65,21 @@ class CatalogueFormationInteractor: CatalogueFormationBusinessLogic, CatalogueFo
         }.catch{
             error in
             print(error)
+        }
+    }
+    func addCatalogue(token : String, param : TrainingRequestModelAdd){
+        worker = CatalogueFormationWorker()
+        worker?.addCatalogue(token: token, param: param).then(){
+            add in
+            print("in interractor formation Catalogue **************************")
+            print(add)
+            print("wwww")
+            let response : Bool
+            self.presenter?.addingSuccess(response:true)
+        }.catch{
+            error in
+            print(error)
+            self.presenter?.addingFailure(response: false)
         }
     }
     

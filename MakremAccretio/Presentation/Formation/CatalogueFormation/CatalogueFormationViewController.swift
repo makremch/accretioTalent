@@ -18,10 +18,14 @@ protocol CatalogueFormationDisplayLogic: class
     func getCatalogueData(response:ResponseCatalogue)
     func handleDismissAll()
     func showDataPopulation(response:Population)
+    func addingSuccess(response : Bool)
+    func addingFailure(response: Bool)
 }
 
 class CatalogueFormationViewController: UIViewController,CatalogueFormationDisplayLogic
 {
+    
+    
     
     
     //    MARK:- Var & Let
@@ -37,9 +41,9 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     
     var dataValueForPopulation :  [PopulationElement] = []
     var dataValueCatalogue : [FormationCatalogue] = []
-    var page = 0
-    var size = 1
-    var totalPages = 0
+//    var page = 0
+//    var size = 1
+//    var totalPages = 0
     //    MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var TitleOfView: UILabel!
@@ -63,6 +67,14 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     
     @IBAction func closeView(_ sender: Any) {
         populationConcerneView.isHidden = true
+        if PopulationCollectionViewCell.participants.count <= 3 &&  PopulationCollectionViewCell.participants.count > 0 {
+            PopulationButton.setTitle(PopulationCollectionViewCell.participants.map{$0.firstName!}.joined(separator: " et "), for: .normal)
+        }else if PopulationCollectionViewCell.participants.count > 3 {
+            PopulationButton.setTitle(String(PopulationCollectionViewCell.participants.count) + " Participants", for: .normal)
+        } else{
+            PopulationButton.setTitle("Population concernée", for: .normal)
+        }
+        
     }
     
     //    MARK:- Button actions
@@ -115,7 +127,8 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
    
     @IBAction func PopulationButton(_ sender: Any) {
         populationConcerneView.isHidden = false
-        
+       
+        print("ww")
     }
     @IBAction func ConfirmerButton(_ sender: Any) {
         let newArrayOfParticipant = PopulationCollectionViewCell.participants.map{ InitiatorSessionRequest(registrationNumber: $0.registrationNumber) }
@@ -128,14 +141,21 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         newObject.creationDate = "2020-08-10T18:17:39.111Z"
         newObject.limitDate = "2020-08-10T18:17:39.111Z"
         
-        
-        
-        
-        
-        
-        
-        self.navigationController?.popViewController(animated: false)
+        let token = UserDefaults.standard.string(forKey: "accessToken")!
+        self.interactor?.addCatalogue(token: token, param: newObject)
+//        self.navigationController?.popViewController(animated: false)
     }
+    
+    
+    func addingSuccess(response: Bool) {
+        print("Adding true")
+    }
+    
+    func addingFailure(response: Bool) {
+        print("adding false ")
+    }
+    
+    
     @IBAction func DemandeHorsCatalogue(_ sender: Any) {
         viewDemande.isHidden = false
         
@@ -214,7 +234,7 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         print(token)
-        self.interactor?.showCatalogueFormation(token: token,page: self.page , size: self.size)
+        self.interactor?.showCatalogueFormation(token: token,page: 0, size: 10)
         self.interactor?.showListPopulation(token: token)
         view.addSubview(visualEffectView)
         designingEffectView()
@@ -240,8 +260,8 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     func getCatalogueData(response:ResponseCatalogue){
         print(response)
         dataValueCatalogue.append(contentsOf : response.content)
-        self.totalPages = response.totalPages!
-        self.page+=1
+//        self.totalPages = response.totalPages!
+//        self.page+=1
         tableView.reloadData()
     }
     
@@ -353,15 +373,7 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
     }
     
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == (self.dataValueCatalogue.count) - 1 {
-            let token = UserDefaults.standard.string(forKey: "accessToken")!
-            print(indexPath.row)
-            print(dataValueCatalogue[indexPath.row].id)
-            print("------------")
-            self.interactor?.showCatalogueFormation(token: token,page: self.page , size: self.size)
-        }
-    }
+
 
     
 }

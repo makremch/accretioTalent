@@ -23,13 +23,13 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
     
     
     
-//    MARK:- Var & Let Declarations
+    //    MARK:- Var & Let Declarations
     var interactor: CompetenceManagerBusinessLogic?
     var router: (NSObjectProtocol & CompetenceManagerRoutingLogic & CompetenceManagerDataPassing)?
     var response: CompetenseResponse? = nil
     var skillsLabel:[String: String]? = nil
-
-//    MARK:- IBOutlets
+    
+    //    MARK:- IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -106,12 +106,14 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
     func getDataCompetenceManager(response: CompetenseResponse,skillsLabel:[String: String]){
         self.response = response
         self.skillsLabel = skillsLabel
+        print((response.content?.count)!)
         print(response)
+        
         self.tableView.reloadData()
     }
     
-
-//    MARK:- Configuring TableView
+    
+    //    MARK:- Configuring TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return response?.content?.count ?? 0
     }
@@ -122,17 +124,18 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
             else {
                 return UITableViewCell()
         }
-
-//        cell.CollaborateurNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")!
-        cell.CollaborateurNameLabel.text = (self.response?.content![indexPath.item].firstName ?? "") + " " +  (self.response?.content![indexPath.item].lastName ?? "")
-    
-        cell.competence = self.response?.content![indexPath.item]
+        print(indexPath.row)
+        //        cell.CollaborateurNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")!
+        cell.CollaborateurNameLabel.text = (self.response?.content![indexPath.row].firstName ?? "") + " " +  (self.response?.content![indexPath.row].lastName ?? "")
+        
+        cell.competence = self.response?.content![indexPath.row]
         cell.skillsLabel = self.skillsLabel
-       return cell
+        
+        return cell
     }
     
     
-//    MARK:- Back Button
+    //    MARK:- Back Button
     
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

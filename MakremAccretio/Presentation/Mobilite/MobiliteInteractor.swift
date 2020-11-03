@@ -98,12 +98,12 @@ class MobiliteInteractor: MobiliteBusinessLogic, MobiliteDataStore {
         let ud = UserDefaults.standard
         let roles = ud.stringArray(forKey: "listRoles") ?? [String]()
         let isManager = roles.contains("ROLE_MANAGER")
-        worker.getListMobility(token: token , isManager: isManager).then() {
+        worker.getListMobility(token: token).then() {
             demandeResponse in
             print("in Interactor getlistMobility : ***************************")
             print(demandeResponse.content?.count)
             print("***********************************************************")
-            self.presenter?.showMobilities(responses: demandeResponse, choix: 0)
+            self.presenter?.showMobilities(responses: demandeResponse)
         }.catch {error in
             print(error)
 //            self.presenter?.presentSignInError(error: error)

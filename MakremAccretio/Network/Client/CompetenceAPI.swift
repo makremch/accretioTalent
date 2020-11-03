@@ -79,7 +79,8 @@ class CompetecenceAPI {
                     
                 case .success(let value):
                     print(value)
-                    print(response)
+                    print(value.content?.count)
+                    
                     fulfill(value)
                 case .failure(let error):
                     print(error)

@@ -12,7 +12,7 @@
 
 import UIKit
 import Charts
-
+import Foundation
 protocol CompetenceCollaborateurDisplayLogic: class
 {
     func displaySomething(viewModel: CompetenceCollaborateur.Something.ViewModel)
@@ -27,6 +27,9 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
+    
+    
+    @IBOutlet weak var chartViewBar: HorizontalBarChartView!
     
     //    MARK:- Var & Let
     var interactor: CompetenceCollaborateurBusinessLogic?
@@ -111,8 +114,79 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
 
         print("qqqqq")
         setChartData(label: "Waiting for data", values: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        // Do any additional setup after loading the view.
+        self.title = "Horizontal Bar Char"
+        self.options = [.toggleValues,
+                        .toggleIcons,
+                        .toggleHighlight,
+                        .animateX,
+                        .animateY,
+                        .animateXY,
+                        .saveToGallery,
+                        .togglePinchZoom,
+                        .toggleAutoScaleMinMax,
+                        .toggleData,
+                        .toggleBarBorders]
+        
+        self.setup(barLineChartView: chartViewBar)
+
+        chartViewBar.delegate = self
+        
+        chartViewBar.drawBarShadowEnabled = false
+        chartViewBar.drawValueAboveBarEnabled = true
+        
+        chartViewBar.maxVisibleCount = 60
+        
+        let xAxis = chartViewBar.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = .systemFont(ofSize: 10)
+        xAxis.drawAxisLineEnabled = true
+        xAxis.granularity = 10
+        
+        let leftAxis = chartViewBar.leftAxis
+        leftAxis.labelFont = .systemFont(ofSize: 10)
+        leftAxis.drawAxisLineEnabled = true
+        leftAxis.drawGridLinesEnabled = true
+        leftAxis.axisMinimum = 0
+
+        let rightAxis = chartViewBar.rightAxis
+        rightAxis.enabled = true
+        rightAxis.labelFont = .systemFont(ofSize: 10)
+        rightAxis.drawAxisLineEnabled = true
+        rightAxis.axisMinimum = 0
+
+        let l = chartViewBar.legend
+        l.horizontalAlignment = .left
+        l.verticalAlignment = .bottom
+        l.orientation = .horizontal
+        l.drawInside = false
+        l.form = .square
+        l.formSize = 8
+        l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
+        l.xEntrySpace = 4
+//        chartView.legend = l
+
+        chartViewBar.fitBars = true
+
+        
+        chartViewBar.animate(yAxisDuration: 2.5)
+        self.setDataCount(values: [0] , labels: ["0"])
+
 //        self.updateChartData()
         settingViewLabel()
+    }
+    
+    func setDataCount(values : [Double] , labels : [String]   ) {
+
+        let d = values.enumerated().map { BarChartDataEntry(x:Double($0 * 10) , y : $1 ) }
+        let set1 = BarChartDataSet(entries: d)
+        set1.drawIconsEnabled = false
+        
+        let data = BarChartData(dataSet: set1)
+        data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
+        let xAxis = chartViewBar.xAxis
+        xAxis.valueFormatter = ValueFormatter(chart: chartViewBar,skills: labels)
+        chartViewBar.data = data
     }
     
     
@@ -151,8 +225,16 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         print("+++++++++++++++++++++++++++++++++++++")
         names = skills[index].map  {(skillsLabel![$0.codeSkill!])! }
         activities = names.map  { formatName(name: $0) }
-        let values = scaledValues( values:  skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double  } )
+        print((skillsLevels[index]))
+        for skill in skills[index] {
+            if skill.skillLevel == nil {
+                return
+            }
+        }
+        
+        let values = scaledValues( values:  skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!)  } )
         setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)! , values: values)
+        setDataCount(values: values, labels: names)
 
     }
     
@@ -197,7 +279,63 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
            }
        }
        
-    func setChartData(label  : String , values : [Double] ) {
+    func setBarChartData(label  : String , values : [Double]) {
+
+//        let mult: UInt32 = 80
+//        let min: UInt32 = 20
+        print("somme:",activities.count)
+        chartViewBar.clear()
+        chartViewBar.clearValues()
+        chartViewBar.updateConstraints()
+//        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
+        let entries1 = values.map { RadarChartDataEntry(value : $0) }
+        let set1 = RadarChartDataSet(entries: entries1,label: label)
+        //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
+        set1.setColor(UIColor.cyan)
+        //           set1.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
+        set1.fillColor = UIColor.cyan
+        set1.drawFilledEnabled = true
+        set1.fillAlpha = 0.5
+        set1.lineWidth = 1
+        set1.drawHighlightCircleEnabled = true
+        set1.setDrawHighlightIndicators(false)
+        let data = RadarChartData(dataSets: [set1])
+        data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
+        data.setDrawValues(false)
+        data.setValueTextColor(.white)
+        self.title = "Radar Chart"
+        chartViewBar.delegate = self
+        chartViewBar.chartDescription?.enabled = false
+        let l = chartView.legend
+        l.horizontalAlignment = .center
+        l.verticalAlignment = .top
+        l.orientation = .horizontal
+        l.drawInside = false
+        l.font = .systemFont(ofSize: 10, weight: .light)
+        l.xEntrySpace = 7
+        l.yEntrySpace = 5
+        l.textColor = .white
+        let xAxis = chartView.xAxis
+        xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
+        xAxis.xOffset = 0
+        xAxis.yOffset = 0
+        xAxis.valueFormatter = self
+        xAxis.labelTextColor = .white
+        let yAxis = chartView.yAxis
+        yAxis.drawLabelsEnabled = false
+        yAxis.labelCount = 5
+        yAxis.axisMinimum = 0
+        yAxis.axisMaximum = 80
+        chartViewBar.data = data
+        chartViewBar.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutExpo)
+        chartViewBar.isHidden = false
+        if(values.count == 23) {
+            chartViewBar.isHidden = true
+        }
+        
+       }
+    
+    func setChartData(label  : String , values : [Double]) {
 
 //        let mult: UInt32 = 80
 //        let min: UInt32 = 20
@@ -633,3 +771,17 @@ extension DemoBaseViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+public class ValueFormatter: NSObject,IAxisValueFormatter {
+    weak var chart: BarLineChartViewBase?
+    var skills : [String]
+    init(chart: BarLineChartViewBase , skills : [String] ) {
+        self.chart = chart
+        self.skills = skills
+    }
+    
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        print(value)
+        return skills[Int(value / 10)]
+    }
+        
+}

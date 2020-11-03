@@ -17,6 +17,8 @@ protocol CatalogueFormationPresentationLogic
     func presentSomething(response: CatalogueFormation.Something.Response)
     func showCatalogue(response : ResponseCatalogue, page : Int, size: Int)
     func showPopulation(response : Population)
+    func addingSuccess(response : Bool)
+    func addingFailure(response: Bool)
 }
 
 class CatalogueFormationPresenter: CatalogueFormationPresentationLogic
@@ -37,5 +39,11 @@ class CatalogueFormationPresenter: CatalogueFormationPresentationLogic
     
     func showPopulation(response : Population){
         viewController?.showDataPopulation(response:response)
+    }
+    func addingSuccess(response : Bool){
+        viewController?.addingSuccess(response : response)
+    }
+    func addingFailure(response: Bool){
+        viewController?.addingFailure(response:response)
     }
 }

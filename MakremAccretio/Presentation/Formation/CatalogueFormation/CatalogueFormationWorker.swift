@@ -28,4 +28,8 @@ class CatalogueFormationWorker
         print("worker Population function ")
         return FormationAPI.showListPopulation(token: token)
     }
+    func addCatalogue(token : String,param : TrainingRequestModelAdd) -> Promise<ResponseAdding>{
+        print("worker Population function ")
+        return FormationAPI.addFormation(token: token, param: param)
+    }
 }

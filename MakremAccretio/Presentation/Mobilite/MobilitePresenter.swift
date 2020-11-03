@@ -14,7 +14,7 @@ protocol MobilitePresentationLogic {
     func presentTrackAnalytics(with response: MobiliteModels.TrackAnalytics.Response)
     func presentPerformMobilite(with response: MobiliteModels.PerformMobilite.Response)
     func presentListView(inputArray:Array<Demande>)
-    func showMobilities(responses: DemandeResponse, choix : Int)
+    func showMobilities(responses: DemandeResponse)
     func showMobilitiesForValidation(responses : DemandeResponse)
     func showMobilitiesForValidationError()
 }
@@ -73,9 +73,8 @@ class MobilitePresenter: MobilitePresentationLogic {
     }
     
     
-    func showMobilities(responses: DemandeResponse, choix : Int){
-        
-        mobiliteViewController?.getData(response:responses, choix:choix)
+    func showMobilities(responses: DemandeResponse){
+        mobiliteViewController?.getData(response:responses)
     }
     
     func showMobilitiesForValidation(responses : DemandeResponse){

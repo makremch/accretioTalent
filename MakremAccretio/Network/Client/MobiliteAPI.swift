@@ -16,6 +16,7 @@ class MobiliteAPI {
     static func showListMobilityForValidation(token : String) -> Promise<DemandeResponse>{
         //        let base = "https://mobile-int.accretio.io/recruitment/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
+//        let url = base + "api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
         let url = base + "api/recruitment-request/validator?roles=ROLE_MANAGER&size=5&page=0"
         print("url")
         return  Promise<DemandeResponse> { fulfill, reject in
@@ -41,27 +42,30 @@ class MobiliteAPI {
     }
     
     
-    static func showListMobility(token: String , isManager : Bool = false) -> Promise<DemandeResponse> {
+    static func showListMobility(token: String) -> Promise<DemandeResponse> {
         //        let base = "https://mobile-int.accretio.io/recruitment/"
         let base = "https://accretio-2-tnr.advyteam.com/ms-talent/"
+//        let url = base + "api/recruitment-offers/initiator?size=50&page=0"
         let url = base + "api/recruitment-offers/initiator?size=50&page=0"
+        print(url)
         return  Promise<DemandeResponse> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token
             ])
                 .responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<DemandeResponse, AFError>) in
                     print("Demande API")
-                    print(response.response?.statusCode as Any)
+                    let statusCode = response.response?.statusCode
+                    print(statusCode!)
                     switch response.result {
                         
                     case .success(let value):
-                        print(value)
+                        let valueSuccess : String = "bien"
+                        print(valueSuccess,value)
                         fulfill(value)
-                        print("3sba mobility ")
                     case .failure(let error):
-                        print(error)
+                        let valueSuccess : String = "el 3asba"
+                        print(error,valueSuccess)
                         reject(error)
-                        print("3sbtin mobility ")
                     }
                 })
         }

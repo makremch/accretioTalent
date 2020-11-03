@@ -19,7 +19,7 @@ struct Demande: Codable {
     let numberToCover:Int?
     let localisationOffer:[String?]?
     let startDate:String?
-    let numberOfCandidatures:String?
+    let numberOfCandidatures:Int?
     let recruitmentStaff:String?
 
 }
@@ -27,13 +27,13 @@ struct Demande: Codable {
 
 struct DemandeResponse: Codable {
     let content : [Demande]?
-    let totalElements : Int?
-    let last : Bool?
-    let totalPages : Int?
-    let first : Bool?
-    let sort : String?
-    let numberOfElements :Int?
-    let size :Int?
-    let number :Int?
+//    let totalElements : Int?
+//    let last : Bool?
+//    let totalPages : Int?
+//    let first : Bool?
+//    let sort : String?
+//    let numberOfElements :Int?
+//    let size :Int?
+//    let number :Int?
 }
 

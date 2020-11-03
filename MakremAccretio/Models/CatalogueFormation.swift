@@ -14,7 +14,7 @@ struct ResponseCatalogue: Codable {
     let content: [FormationCatalogue]
     let totalPages: Int?
 //    let first: Int
-    let numberOfElements, size, number: String
+//    let numberOfElements, size, number: String
 }
 
 // MARK: - Catalogue

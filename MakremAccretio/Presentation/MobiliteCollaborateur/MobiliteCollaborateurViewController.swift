@@ -270,7 +270,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         setupFetchFromLocalDataStore()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let token = ud.string(forKey: "accessToken")!
-        
+        print("break ...",token)
         self.interactor?.getListMobilityCollaborator(token: token)
         
         //        currentDataValueArray = dataValueCollaborateur

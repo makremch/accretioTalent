@@ -13,7 +13,7 @@ protocol MobiliteDisplayLogic: class {
     func displayFetchFromRemoteDataStore(with viewModel: MobiliteModels.FetchFromRemoteDataStore.ViewModel)
     func displayTrackAnalytics(with viewModel: MobiliteModels.TrackAnalytics.ViewModel)
     func displayPerformMobilite(with viewModel: MobiliteModels.PerformMobilite.ViewModel)
-    func getData(response: DemandeResponse, choix : Int)
+    func getData(response: DemandeResponse)
     func getDataForValidation(response : DemandeResponse)
     
 }
@@ -58,7 +58,7 @@ class MobiliteViewController: UIViewController, MobiliteDisplayLogic, UITableVie
     var dataValue : [Demande] = []
     var dataValue2 : [Demande] = []
     
-    func getData(response: DemandeResponse, choix : Int) {
+    func getData(response: DemandeResponse) {
         print("response:", response.content!.count )
         dataValue = response.content!
         tableView.reloadData()
@@ -191,6 +191,7 @@ class MobiliteViewController: UIViewController, MobiliteDisplayLogic, UITableVie
         super.viewDidLoad()
         //        designcell()
         let token = ud.string(forKey: "accessToken")!
+        print("break", token)
         self.interactor?.getListMobility(token: token)
         self.interactor?.getListMobilityForValidation(token: token)
         setupFetchFromLocalDataStore()

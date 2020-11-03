@@ -41,8 +41,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func displaySignInError(viewModel: Error){
         //        ProgressView.StopLoding()
-        let alert = CDAlertView(title: "Title", message: "Message", type: .error)
-        let action = CDAlertViewAction(title: "DONE")
+        let alert = CDAlertView(title: "Èchec d'autentification !", message: "Vérifier l'e-mail ou le mot de passe ", type: .error)
+        let action = CDAlertViewAction(title: "OK")
         alert.isTextFieldHidden = true
         alert.add(action: action)
         alert.hideAnimations = { (center, transform, alpha) in

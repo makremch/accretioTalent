@@ -80,6 +80,7 @@ class CompetenceTableViewCell: UITableViewCell{
         if skills.isEmpty  || affectations.isEmpty || competence!.affectationSkillByClassificationDTOList.isEmpty {
             return
         }
+        
         names = skills[index].map  { skillsLabel![$0.codeSkill!]! }
         activities = names
         values = skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!) as Double}
@@ -145,8 +146,6 @@ class CompetenceTableViewCell: UITableViewCell{
     
     
     @IBAction func nextButton(_ sender: Any) {
-        print("3qsbq")
-        
         if self.competence!.affectationSkillByClassificationDTOList.isEmpty{
             return
         }
@@ -171,4 +170,3 @@ class CompetenceTableViewCell: UITableViewCell{
         updateRadar(index: radarIndex)
     }
 }
-
