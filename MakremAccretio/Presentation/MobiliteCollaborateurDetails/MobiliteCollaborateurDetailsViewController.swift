@@ -61,23 +61,44 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
     @IBOutlet weak var viewWhiteLocalisation: UIView!
     @IBOutlet weak var imgOffer: UIImageView!
     @IBOutlet weak var missionTextView: UITextView!
+    @IBOutlet weak var postulerOpenPopup: UIButton!
+    @IBOutlet weak var blackViewBg: UIView!
+    
+    @IBOutlet weak var fileButton: UIButton!
+    
+    
+    @IBAction func postulerButtonopening(_ sender: Any) {
+        blackViewBg.isHidden = false
+        viewBlue.isHidden = false
+        viewBlue.layer.cornerRadius = 15
+        postulerButton.layer.cornerRadius = 5
+        fileButton.layer.cornerRadius = 5
+    }
+    
+    
+    
+    
     
     var choseFile = false
     var fileUrl: URL?
     var fileName = ""
     @IBOutlet weak var popUpView: UIView!
     
+    @IBAction func cancelButton(_ sender: Any) {
+        viewBlue.isHidden = true
+        blackViewBg.isHidden = true
+    }
     
     @IBAction func candidateButton(_ sender: Any) {
-        popUpView.layer.isHidden = true
+//        popUpView.layer.isHidden = true
     }
     
     func designViewBlue(){
         viewBlue.layer.cornerRadius = 15
-        viewWhiteContrat.layer.cornerRadius = 5
-        viewWhiteLocalisation.layer.cornerRadius = 5
-        postulerButton.layer.cornerRadius = 10
-        viewBlue.layer.opacity = 0.81
+//        viewWhiteContrat.layer.cornerRadius = 5
+//        viewWhiteLocalisation.layer.cornerRadius = 5
+//        postulerButton.layer.cornerRadius = 10
+//        viewBlue.layer.opacity = 0.81
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -89,7 +110,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         documentPicker.delegate = self
         documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.present(documentPicker, animated: true, completion: nil)
-        
+        blackViewBg.isHidden = true
     }
     
     func hidePostuler(hide:Bool){
@@ -142,20 +163,22 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         
     }
     // MARK: - View Lifecycle
-    
+//    let baseURL = "https://accretio-2-tnr.advyteam.com/"
+    let baseURL : String = "https://mobile-int.accretio.io/"
     override func viewDidLoad() {
         super.viewDidLoad()
+        postulerOpenPopup.layer.cornerRadius = 5
         setupFetchFromLocalDataStore()
         designViewBlue()
-        
+        blackViewBg.isHidden = true
         let tap = UITapGestureRecognizer(target : self.view,action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
 //        messageLabel.isHidden = true
-        codeOffreLabel.text = content?.offerCode
-        ContratLabel.text = "CDD"
+        codeOffreLabel.text = "Référence : " + String((content?.offerCode)!)
+        ContratLabel.text = "Contrat : CDD"
         localisationLabel.text = "Ariana"
         print((content?.publishedPictureOffer!)!)
-        let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + (content?.publishedPictureOffer!)!)
+        let url = URL(string: baseURL + "documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + (content?.publishedPictureOffer!)!)
 //        let token = UserDefaults.standard.string(forKey: "accessToken")!
         imgOffer.kf.setImage(with: url){
             result in
@@ -182,7 +205,7 @@ class MobiliteCollaborateurDetailsViewController: UIViewController, MobiliteColl
         missionTextView.text = publishedMissionWithoutBalises
         //        self.interactor?.getCodeCvCollaborator(token: token, codeOffer: (content?.codeoffre)!)
         if (content?.initiator?.firstName) != nil || (content?.initiator?.lastName) != nil {
-            postedByLabel.text = (content?.initiator?.firstName)! + " " + (content?.initiator?.lastName)!
+            postedByLabel.text = "Publié par : " + (content?.initiator?.firstName)! + " " + (content?.initiator?.lastName)!
         }
     }
 

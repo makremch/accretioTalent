@@ -41,7 +41,8 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     var searchActive : Bool = false
     var selectedScopeSearchButton : Int = 0
     
-    
+    let baseURL = "https://mobile-int.accretio.io/"
+//    let baseURL = "https://accretio-2-tnr.advyteam.com/"
     //    MARK: - TableView insert Data
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
@@ -63,7 +64,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             searchActive = false
             if dataValueCollaborateur[indexPath.row].publishedPictureOffer != nil {
                 let imageFromUrl = (dataValueCollaborateur[indexPath.row].publishedPictureOffer)!
-                let urlImage = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
+                let urlImage = URL(string: baseURL + "documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
                 cellCollaborateur.imase?.kf.setImage(with: urlImage){
                     result in
                     switch result {
@@ -84,6 +85,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
 //            cellCollaborateur.RegionLabel.text = (dataValueCollaborateur[indexPath.row].publishedLocalisationOffer as Any) as? String
             let test = dataValueCollaborateur[indexPath.row]
             if test.publishedLocalisationOffer != [] {
+                
                 cellCollaborateur.RegionLabel.text = (test.publishedLocalisationOffer?[0])
             }
             if test.publishedContractOffer != [] {

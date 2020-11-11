@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: - CompetenseResponse
 struct CompetenseResponse: Codable {
-    let content: [CompetenceCollab]?
+    var content: [CompetenceCollab]?
     let totalPages, totalElements: Int?
     let last: Bool?
     let numberOfElements: Int?

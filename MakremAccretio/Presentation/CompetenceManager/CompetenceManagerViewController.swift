@@ -130,7 +130,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         
         cell.competence = self.response?.content![indexPath.row]
         cell.skillsLabel = self.skillsLabel
-        
+        print(9)
         return cell
     }
     
@@ -140,5 +140,30 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+        print("asssba")
+        print(indexPath.item)
+        print(indexPath)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "CompetenceCollab") as!
+        CompetenceCollaborateurViewController
+        vc.response = self.response
+        vc.skillsLabel = self.skillsLabel
+        vc.index = indexPath.item
+        let posteLabel = (self.response?.content![indexPath.item].affectedPosition)!
+        print(posteLabel)
+        if (self.response?.content![indexPath.item].affectedPosition)! == ""{
+            vc.managerPoste = "undefined"
+        }else{
+            vc.managerPoste = ((self.response?.content![indexPath.item].affectedPosition)! )
+        }
+        
+        vc.nameAndLastNameFromManager = (self.response?.content![indexPath.item].firstName ?? "") + " " +  (self.response?.content![indexPath.item].lastName ?? "")
+     
+        self.navigationController?.pushViewController(vc,animated: true)
+    }
+    
     
 }

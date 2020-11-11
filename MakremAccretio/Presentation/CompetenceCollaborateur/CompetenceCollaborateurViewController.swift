@@ -28,8 +28,21 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
     
+    @IBOutlet weak var viewBgBoth: UIView!
+    
+    @IBOutlet weak var PosteLabel: UILabel!
+    
+    @IBOutlet weak var nextButtonBO: UIButton!
+    @IBOutlet weak var precedentButtonBO: UIButton!
+    
+    @IBOutlet weak var noDataMessage: UILabel!
     
     @IBOutlet weak var chartViewBar: HorizontalBarChartView!
+    
+    
+    @IBOutlet weak var addCompetenceButton: UIButton!
+    
+    
     
     //    MARK:- Var & Let
     var interactor: CompetenceCollaborateurBusinessLogic?
@@ -42,18 +55,24 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     var originalBarTintColor: UIColor!
     var originalBarStyle: UIBarStyle!
     var radarIndex : Int = 0
+    var index = 0
+    var managerPoste = ""
+    var nameAndLastNameFromManager = ""
     
 //    MARK:- Button Actions
     @IBAction func nextButton(_ sender: Any) {
         radarIndex+=1
-        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        let count = (response?.content![self.index].affectationSkillByClassificationDTOList.count) != nil ? response?.content![self.index].affectationSkillByClassificationDTOList.count : 1
+        radarIndex = radarIndex % (count)!
         updateRadar(index: radarIndex)
+        chartViewBar.animate(xAxisDuration: 3)
+        chartViewBar.animate(yAxisDuration: 9)
     }
     
     @IBAction func previousButton(_ sender: Any) {
         radarIndex-=1
-        radarIndex = radarIndex +  (response?.content![1].affectationSkillByClassificationDTOList.count)!
-        radarIndex = radarIndex % (response?.content![1].affectationSkillByClassificationDTOList.count)!
+        radarIndex = radarIndex +  (response?.content![self.index].affectationSkillByClassificationDTOList.count)!
+        radarIndex = radarIndex % (response?.content![self.index].affectationSkillByClassificationDTOList.count)!
         print(radarIndex)
         updateRadar(index: radarIndex)
 
@@ -105,11 +124,59 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     // MARK:- View lifecycle
     override func viewDidLoad()
     {
+        
         super.viewDidLoad()
         doSomething()
+//        PosteLabel.text = (UserDefaults.standard.string(forKey: "poste"))!
+        noDataMessage.isHidden = true
+        nextButtonBO.layer.cornerRadius = 5
+        precedentButtonBO.layer.cornerRadius = 5
+        nextButtonBO.layer.cornerCurve = CALayerCornerCurve.continuous
+        
+        nextButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
+        nextButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
+        nextButtonBO.layer.shadowOpacity = 1
+        nextButtonBO.layer.shadowOffset = .zero
+        nextButtonBO.layer.shadowRadius = 2
+        nextButtonBO.layer.shadowPath = UIBezierPath(rect: nextButtonBO.bounds).cgPath
+        nextButtonBO.layer.shouldRasterize = true
+        nextButtonBO.layer.rasterizationScale = UIScreen.main.scale
+        
+        precedentButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
+        precedentButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
+        precedentButtonBO.layer.shadowOpacity = 1
+        precedentButtonBO.layer.shadowOffset = .zero
+        precedentButtonBO.layer.shadowRadius = 2
+        precedentButtonBO.layer.shadowPath = UIBezierPath(rect: precedentButtonBO.bounds).cgPath
+        precedentButtonBO.layer.shouldRasterize = true
+        precedentButtonBO.layer.rasterizationScale = UIScreen.main.scale
+        
+        
+        viewBgBoth.layer.cornerRadius = 15
+        viewBgBoth.backgroundColor = UIColor.white
+        viewBgBoth.layer.shadowColor = UIColor.systemGray4.cgColor
+        viewBgBoth.layer.shadowColor = UIColor.systemGray4.cgColor
+        viewBgBoth.layer.shadowOpacity = 1
+        viewBgBoth.layer.shadowOffset = .zero
+        viewBgBoth.layer.shadowRadius = 10
+        viewBgBoth.layer.shadowPath = UIBezierPath(rect: viewBgBoth.bounds).cgPath
+        viewBgBoth.layer.shouldRasterize = true
+        viewBgBoth.layer.rasterizationScale = UIScreen.main.scale
+        
         let token = UserDefaults.standard.string(forKey: "accessToken")!
-        self.interactor?.getCompetence(token: token)
-        print(self.dataValueCompetenceCollaborateur)
+        if(self.response == nil) {
+            self.interactor?.getCompetence(token: token)
+            addCompetenceButton.isHidden  = true
+            PosteLabel.text = UserDefaults.standard.string(forKey: "poste")
+            NameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")!
+        }
+        else {
+            self.updateRadar(index: self.radarIndex)
+            print(managerPoste,nameAndLastNameFromManager)
+            print("assba")
+            PosteLabel.text = managerPoste
+            NameLabel.text = nameAndLastNameFromManager
+        }
         // Do any additional setup after loading the view.
 
         print("qqqqq")
@@ -132,7 +199,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
 
         chartViewBar.delegate = self
         
-        chartViewBar.drawBarShadowEnabled = false
+        chartViewBar.drawBarShadowEnabled = true
         chartViewBar.drawValueAboveBarEnabled = true
         
         chartViewBar.maxVisibleCount = 60
@@ -140,19 +207,20 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         let xAxis = chartViewBar.xAxis
         xAxis.labelPosition = .bottom
         xAxis.labelFont = .systemFont(ofSize: 10)
-        xAxis.drawAxisLineEnabled = true
+        xAxis.drawAxisLineEnabled = false
         xAxis.granularity = 10
         
+        
         let leftAxis = chartViewBar.leftAxis
-        leftAxis.labelFont = .systemFont(ofSize: 10)
-        leftAxis.drawAxisLineEnabled = true
-        leftAxis.drawGridLinesEnabled = true
+        leftAxis.labelFont = .systemFont(ofSize: 0)
+        leftAxis.drawAxisLineEnabled = false
+        leftAxis.drawGridLinesEnabled = false
         leftAxis.axisMinimum = 0
 
         let rightAxis = chartViewBar.rightAxis
-        rightAxis.enabled = true
+        rightAxis.enabled = false
         rightAxis.labelFont = .systemFont(ofSize: 10)
-        rightAxis.drawAxisLineEnabled = true
+        rightAxis.drawAxisLineEnabled = false
         rightAxis.axisMinimum = 0
 
         let l = chartViewBar.legend
@@ -162,28 +230,28 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         l.drawInside = false
         l.form = .square
         l.formSize = 8
-        l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
+        l.font = UIFont(name: "Arial Rounded MT Bold", size: 11)!
         l.xEntrySpace = 4
 //        chartView.legend = l
 
-        chartViewBar.fitBars = true
+        chartViewBar.fitBars = false
 
         
-        chartViewBar.animate(yAxisDuration: 2.5)
-        self.setDataCount(values: [0] , labels: ["0"])
+        chartViewBar.animate(yAxisDuration: 1.5)
+        self.setChartBarData(values: [0] , labels: ["0"])
 
 //        self.updateChartData()
         settingViewLabel()
     }
     
-    func setDataCount(values : [Double] , labels : [String]   ) {
+    func setChartBarData(values : [Double] , labels : [String]   ) {
 
         let d = values.enumerated().map { BarChartDataEntry(x:Double($0 * 10) , y : $1 ) }
-        let set1 = BarChartDataSet(entries: d)
+        let set1 = BarChartDataSet(entries: d,label: "")
         set1.drawIconsEnabled = false
         
         let data = BarChartData(dataSet: set1)
-        data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
+        data.setValueFont(UIFont(name:"Arial Rounded MT Bold", size:10)!)
         let xAxis = chartViewBar.xAxis
         xAxis.valueFormatter = ValueFormatter(chart: chartViewBar,skills: labels)
         chartViewBar.data = data
@@ -206,9 +274,18 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         let skills :[[Skill]]
         var skillsLevels = [[String: Level]]()
         let affectations :[ClassificationDto]
-        affectations = self.response?.content![1].affectationSkillByClassificationDTOList.map {($0.skillsLevelClassificationDTO?.crSkillsLevels!) as! ClassificationDto} as! [ClassificationDto]
-        skills  = (self.response?.content![1].affectationSkillByClassificationDTOList.map {($0.skills!)}) as! [[Skill]]
-        let affectationList = self.response?.content![1].affectationSkillByClassificationDTOList
+        let a = self.response
+        affectations = (self.response?.content![self.index].affectationSkillByClassificationDTOList.map {($0.skillsLevelClassificationDTO?.crSkillsLevels!)!})!
+        skills  = (self.response?.content![self.index].affectationSkillByClassificationDTOList.map {($0.skills!)})!
+        if skills.count == 0 {
+            chartView.isHidden = true
+            chartViewBar.isHidden = true
+            nextButtonBO.isHidden = true
+            precedentButtonBO.isHidden = true
+            noDataMessage.isHidden = false
+            return
+        }
+        let affectationList = self.response?.content![self.index].affectationSkillByClassificationDTOList
         for affectation in  affectationList! {
             print("skilllevelyyyyyy")
             print(skillsLevels)
@@ -225,17 +302,20 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         print("+++++++++++++++++++++++++++++++++++++")
         names = skills[index].map  {(skillsLabel![$0.codeSkill!])! }
         activities = names.map  { formatName(name: $0) }
-        print((skillsLevels[index]))
+        var values_ : [Double] = []
         for skill in skills[index] {
             if skill.skillLevel == nil {
-                return
+                values_.append(0)
+            } else {
+                values_.append(Double((skillsLevels[index][skill.skillLevel!]?.value!)!))
             }
         }
         
-        let values = scaledValues( values:  skills[index].map{ Double((skillsLevels[index][$0.skillLevel!]?.value!)!)  } )
-        setChartData(label : (response?.content![1].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)! , values: values)
-        setDataCount(values: values, labels: names)
-
+        let values = scaledValues( values: values_ )
+        setChartData(label : (response?.content![self.index].affectationSkillByClassificationDTOList[index].skillsLevelClassificationDTO?.classificationDTO?.value)! , values: values)
+        setChartBarData(values: values, labels: names)
+        print(values)
+        print(names)
     }
     
     func formatName(name : String) ->  String {
@@ -278,63 +358,12 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
                return
            }
        }
-       
-    func setBarChartData(label  : String , values : [Double]) {
-
-//        let mult: UInt32 = 80
-//        let min: UInt32 = 20
-        print("somme:",activities.count)
-        chartViewBar.clear()
-        chartViewBar.clearValues()
-        chartViewBar.updateConstraints()
-//        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
-        let entries1 = values.map { RadarChartDataEntry(value : $0) }
-        let set1 = RadarChartDataSet(entries: entries1,label: label)
-        //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
-        set1.setColor(UIColor.cyan)
-        //           set1.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
-        set1.fillColor = UIColor.cyan
-        set1.drawFilledEnabled = true
-        set1.fillAlpha = 0.5
-        set1.lineWidth = 1
-        set1.drawHighlightCircleEnabled = true
-        set1.setDrawHighlightIndicators(false)
-        let data = RadarChartData(dataSets: [set1])
-        data.setValueFont(.systemFont(ofSize: 18, weight: .bold))
-        data.setDrawValues(false)
-        data.setValueTextColor(.white)
-        self.title = "Radar Chart"
-        chartViewBar.delegate = self
-        chartViewBar.chartDescription?.enabled = false
-        let l = chartView.legend
-        l.horizontalAlignment = .center
-        l.verticalAlignment = .top
-        l.orientation = .horizontal
-        l.drawInside = false
-        l.font = .systemFont(ofSize: 10, weight: .light)
-        l.xEntrySpace = 7
-        l.yEntrySpace = 5
-        l.textColor = .white
-        let xAxis = chartView.xAxis
-        xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
-        xAxis.xOffset = 0
-        xAxis.yOffset = 0
-        xAxis.valueFormatter = self
-        xAxis.labelTextColor = .white
-        let yAxis = chartView.yAxis
-        yAxis.drawLabelsEnabled = false
-        yAxis.labelCount = 5
-        yAxis.axisMinimum = 0
-        yAxis.axisMaximum = 80
-        chartViewBar.data = data
-        chartViewBar.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutExpo)
-        chartViewBar.isHidden = false
-        if(values.count == 23) {
-            chartViewBar.isHidden = true
-        }
-        
-       }
     
+    func hideRadar()  {
+        chartView.isHidden = true
+        chartViewBar.isHidden =  true
+    }
+       
     func setChartData(label  : String , values : [Double]) {
 
 //        let mult: UInt32 = 80
@@ -364,24 +393,24 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         chartView.chartDescription?.enabled = false
         chartView.webLineWidth = 1
         chartView.innerWebLineWidth = 1
-        chartView.webColor = .lightGray
-        chartView.innerWebColor = .lightGray
+        chartView.webColor = .systemGray4
+        chartView.innerWebColor = .systemGray4
         chartView.webAlpha = 1
         let l = chartView.legend
         l.horizontalAlignment = .center
         l.verticalAlignment = .top
         l.orientation = .horizontal
         l.drawInside = false
-        l.font = .systemFont(ofSize: 10, weight: .light)
+        l.font = .systemFont(ofSize: 10, weight: .bold)
         l.xEntrySpace = 7
         l.yEntrySpace = 5
-        l.textColor = .white
+        l.textColor = .black
         let xAxis = chartView.xAxis
-        xAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
+        xAxis.labelFont = .systemFont(ofSize: 9, weight: .bold)
         xAxis.xOffset = 0
         xAxis.yOffset = 0
         xAxis.valueFormatter = self
-        xAxis.labelTextColor = .white
+        xAxis.labelTextColor = .black
         let yAxis = chartView.yAxis
         yAxis.drawLabelsEnabled = false
         yAxis.labelCount = 5
@@ -390,6 +419,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         chartView.data = data
         chartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutExpo)
         chartView.isHidden = false
+        
         if(values.count == 23) {
             chartView.isHidden = true
         }
@@ -398,14 +428,25 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     
    
     func settingViewLabel(){
-        NameLabel.text! = UserDefaults.standard.string(forKey: "nameOfUser")!
-        NameLabel.textColor = UIColor.white
+//        NameLabel.text! = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
+        NameLabel.textColor = UIColor.black
         NameLabel.alpha = 1
         userImage.alpha = 1
         userView.alpha = 1
 //        userView.isOpaque = false
+        
+        userImage.layer.cornerRadius = 1
+        
         userView.layer.cornerRadius = 10
-        userImage.layer.cornerRadius = 5
+        userView.backgroundColor = UIColor.white
+        userView.layer.shadowColor = UIColor.systemGray4.cgColor
+        userView.layer.shadowColor = UIColor.systemGray4.cgColor
+        userView.layer.shadowOpacity = 1
+        userView.layer.shadowOffset = .zero
+        userView.layer.shadowRadius = 10
+        userView.layer.shadowPath = UIBezierPath(rect: userView.bounds).cgPath
+        userView.layer.shouldRasterize = true
+        userView.layer.rasterizationScale = UIScreen.main.scale
     }
 }
 
@@ -658,9 +699,9 @@ class DemoBaseViewController: UIViewController, ChartViewDelegate {
         centerText.setAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 13)!,
                                   .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
         centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-                                  .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
+                                  .foregroundColor : UIColor.black], range: NSRange(location: 10, length: centerText.length - 10))
         centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-                                  .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
+                                  .foregroundColor : UIColor(red: 1/255, green: 1/255, blue: 1/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
         chartView.centerAttributedText = centerText;
         
         chartView.drawHoleEnabled = true
@@ -696,6 +737,7 @@ class DemoBaseViewController: UIViewController, ChartViewDelegate {
         xAxis.labelPosition = .bottom
         
         chartView.rightAxis.enabled = false
+        
     }
     // TODO: Cannot override from extensions
     //extension DemoBaseViewController: ChartViewDelegate {

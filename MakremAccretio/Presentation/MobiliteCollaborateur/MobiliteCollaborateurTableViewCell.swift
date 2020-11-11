@@ -21,15 +21,15 @@ class MobiliteCollaborateurTableViewCell : UITableViewCell {
     
     func designForView(){
         viewForData.layer.cornerRadius = 15
-        viewForData.layer.shadowColor = UIColor.gray.cgColor
-        viewForData.layer.shadowOpacity = 10
+        viewForData.layer.shadowColor = UIColor.systemGray5.cgColor
+        viewForData.layer.shadowOpacity = 1
         viewForData.layer.shadowOffset = .zero
-        viewForData.layer.shadowRadius = 15
+        viewForData.layer.shadowRadius = 10
         viewForData.layer.shadowPath = UIBezierPath(rect: viewForData.bounds).cgPath
         viewForData.layer.shouldRasterize = true
         viewForData.layer.rasterizationScale = UIScreen.main.scale
         
-        imase.layer.cornerRadius = 20
+        imase.layer.cornerRadius = 10
 //        imase.layer.shadowColor = UIColor.gray.cgColor
 //        imase.layer.shadowOpacity = 10
 //        imase.layer.shadowOffset = .zero

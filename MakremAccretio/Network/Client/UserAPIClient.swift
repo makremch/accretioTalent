@@ -13,8 +13,10 @@ class UserAPIClient: APIClient {
     
     static func login(username: String, password: String, grantType: String, clientName: String) -> Promise<UserSession> {
 
-        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "accretio-2-tnr"))
-
+//        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "accretio-2-tnr"))
+        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "mobile-int"))
+        
+//mobile-int
 //        return performRequest(route: UserEndpoint.login(username: username, password: password, grantType: grantType, clientName: "tnr"))
         
     }
@@ -38,7 +40,9 @@ class UserAPIClient: APIClient {
                 case .success(let value):
                     print(value)
                     fulfill(value)
-                    
+                    print("--------------------------------------------------")
+                    print(response.description)
+                    print("----------------------------------------")
                 case .failure(let error):
                     
                     reject(error)
@@ -46,6 +50,32 @@ class UserAPIClient: APIClient {
             })
         }
         
+    }
+    
+    static func profile (token : String, id : String) -> Promise<Profile>{
+        let Cookie = "hazelcast.sessionId=HZC283098FD7A34E428B9EB9FE66EE1C9E"
+        let url = "https://mobile-int.accretio.io/core/api/smartEmployeeProfile/" + id
+        return  Promise<Profile> { fulfill, reject in
+            AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
+                "authorization": "Bearer " + token,
+                //"Content-Type": contentType,
+                "Cookie": Cookie
+            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<Profile, AFError>) in
+                print("me API")
+                print(response.response?.statusCode as Any)
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                    fulfill(value)
+                    print("--------------------------------------------------")
+                    print(response)
+                    print("----------------------------------------")
+                case .failure(let error):
+                    
+                    reject(error)
+                }
+            })
+        }
     }
     
     

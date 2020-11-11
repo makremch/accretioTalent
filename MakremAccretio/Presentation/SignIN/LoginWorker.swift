@@ -17,7 +17,12 @@ class LoginWorker {
     }
     
     func me(token : String) -> Promise<User> {
+        
         return UserAPIClient.me(token: token)
+    }
+    
+    func profile(token:String , id : String)-> Promise<Profile>{
+        return UserAPIClient.profile(token: token, id : id)
     }
     // MARK: - Properties
 

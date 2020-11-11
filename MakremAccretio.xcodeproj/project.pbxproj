@@ -121,6 +121,7 @@
 		F487DB9424650AA8001CA320 /* FormationCollaborateurInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB8E24650AA8001CA320 /* FormationCollaborateurInteractor.swift */; };
 		F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB9524651429001CA320 /* FormationCollaborateur.swift */; };
 		F487DB9A24657FFC001CA320 /* DemandeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */; };
+		F48A9055255ACBC500FAACA4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9054255ACBC500FAACA4 /* Profile.swift */; };
 		F491644E24B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644824B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift */; };
 		F491644F24B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644924B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift */; };
 		F491645024B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644A24B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift */; };
@@ -376,6 +377,7 @@
 		F487DB8E24650AA8001CA320 /* FormationCollaborateurInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurInteractor.swift; sourceTree = "<group>"; };
 		F487DB9524651429001CA320 /* FormationCollaborateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateur.swift; sourceTree = "<group>"; };
 		F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandeTableViewCell.swift; sourceTree = "<group>"; };
+		F48A9054255ACBC500FAACA4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F491644824B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsPresenter.swift; sourceTree = "<group>"; };
 		F491644924B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsWorker.swift; sourceTree = "<group>"; };
 		F491644A24B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsRouter.swift; sourceTree = "<group>"; };
@@ -937,6 +939,7 @@
 				F4C6932223FD564E00980714 /* StatusEmployeeByManager.swift */,
 				F4C6931E23FD55E300980714 /* User.swift */,
 				F4C6931C23FD557F00980714 /* UserSession.swift */,
+				F48A9054255ACBC500FAACA4 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1510,6 +1513,7 @@
 				F4E1CAE524B23573002D9672 /* CompanyLoginRouter.swift in Sources */,
 				F41E1A7924C89EF100CE4AD0 /* menuEvalPresenter.swift in Sources */,
 				F472FCCF24E81B970014A773 /* Menu2Interactor.swift in Sources */,
+				F48A9055255ACBC500FAACA4 /* Profile.swift in Sources */,
 				F4B7803A24ED7BE1007F24F2 /* EvaluatedManager.swift in Sources */,
 				F4D38B2C24869EA1003F2FD4 /* CompetenceCollaborateurModels.swift in Sources */,
 				F47CA65A246AABC000C6ACB1 /* MenuFormationInteractor.swift in Sources */,
