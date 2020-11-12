@@ -122,6 +122,14 @@
 		F487DB9624651429001CA320 /* FormationCollaborateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB9524651429001CA320 /* FormationCollaborateur.swift */; };
 		F487DB9A24657FFC001CA320 /* DemandeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */; };
 		F48A9055255ACBC500FAACA4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9054255ACBC500FAACA4 /* Profile.swift */; };
+		F48A9120255C970500FAACA4 /* AjouterCompetencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911A255C970400FAACA4 /* AjouterCompetencePresenter.swift */; };
+		F48A9121255C970500FAACA4 /* AjouterCompetenceWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911B255C970400FAACA4 /* AjouterCompetenceWorker.swift */; };
+		F48A9122255C970500FAACA4 /* AjouterCompetenceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911C255C970400FAACA4 /* AjouterCompetenceRouter.swift */; };
+		F48A9123255C970500FAACA4 /* AjouterCompetenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911D255C970400FAACA4 /* AjouterCompetenceModels.swift */; };
+		F48A9124255C970500FAACA4 /* AjouterCompetenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911E255C970400FAACA4 /* AjouterCompetenceViewController.swift */; };
+		F48A9125255C970500FAACA4 /* AjouterCompetenceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911F255C970400FAACA4 /* AjouterCompetenceInteractor.swift */; };
+		F48A912A255D578C00FAACA4 /* CompetencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9129255D578C00FAACA4 /* CompetencesTableViewCell.swift */; };
+		F48A9152255D9B1900FAACA4 /* LevelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9151255D9B1900FAACA4 /* LevelResponse.swift */; };
 		F491644E24B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644824B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift */; };
 		F491644F24B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644924B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift */; };
 		F491645024B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644A24B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift */; };
@@ -378,6 +386,14 @@
 		F487DB9524651429001CA320 /* FormationCollaborateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateur.swift; sourceTree = "<group>"; };
 		F487DB9924657FFC001CA320 /* DemandeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandeTableViewCell.swift; sourceTree = "<group>"; };
 		F48A9054255ACBC500FAACA4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		F48A911A255C970400FAACA4 /* AjouterCompetencePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetencePresenter.swift; sourceTree = "<group>"; };
+		F48A911B255C970400FAACA4 /* AjouterCompetenceWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetenceWorker.swift; sourceTree = "<group>"; };
+		F48A911C255C970400FAACA4 /* AjouterCompetenceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetenceRouter.swift; sourceTree = "<group>"; };
+		F48A911D255C970400FAACA4 /* AjouterCompetenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetenceModels.swift; sourceTree = "<group>"; };
+		F48A911E255C970400FAACA4 /* AjouterCompetenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetenceViewController.swift; sourceTree = "<group>"; };
+		F48A911F255C970400FAACA4 /* AjouterCompetenceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetenceInteractor.swift; sourceTree = "<group>"; };
+		F48A9129255D578C00FAACA4 /* CompetencesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetencesTableViewCell.swift; sourceTree = "<group>"; };
+		F48A9151255D9B1900FAACA4 /* LevelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelResponse.swift; sourceTree = "<group>"; };
 		F491644824B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsPresenter.swift; sourceTree = "<group>"; };
 		F491644924B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsWorker.swift; sourceTree = "<group>"; };
 		F491644A24B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsRouter.swift; sourceTree = "<group>"; };
@@ -603,6 +619,7 @@
 		F4459540249FD62800512E17 /* CompetenceManager */ = {
 			isa = PBXGroup;
 			children = (
+				F48A9119255C942D00FAACA4 /* addCompetence */,
 				F4459541249FD65400512E17 /* CompetenceManagerPresenter.swift */,
 				F4459542249FD65400512E17 /* CompetenceManagerWorker.swift */,
 				F4459543249FD65400512E17 /* CompetenceManagerRouter.swift */,
@@ -744,6 +761,20 @@
 				F47CA65B246ACDF400C6ACB1 /* FormationCollaborateurViewControllerCell.swift */,
 			);
 			path = FormationCollaborateur;
+			sourceTree = "<group>";
+		};
+		F48A9119255C942D00FAACA4 /* addCompetence */ = {
+			isa = PBXGroup;
+			children = (
+				F48A911A255C970400FAACA4 /* AjouterCompetencePresenter.swift */,
+				F48A911B255C970400FAACA4 /* AjouterCompetenceWorker.swift */,
+				F48A911C255C970400FAACA4 /* AjouterCompetenceRouter.swift */,
+				F48A911D255C970400FAACA4 /* AjouterCompetenceModels.swift */,
+				F48A911E255C970400FAACA4 /* AjouterCompetenceViewController.swift */,
+				F48A911F255C970400FAACA4 /* AjouterCompetenceInteractor.swift */,
+				F48A9129255D578C00FAACA4 /* CompetencesTableViewCell.swift */,
+			);
+			path = addCompetence;
 			sourceTree = "<group>";
 		};
 		F491644724B80E3B00629F14 /* EvaluationCollaborateurDetails */ = {
@@ -940,6 +971,7 @@
 				F4C6931E23FD55E300980714 /* User.swift */,
 				F4C6931C23FD557F00980714 /* UserSession.swift */,
 				F48A9054255ACBC500FAACA4 /* Profile.swift */,
+				F48A9151255D9B1900FAACA4 /* LevelResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1349,6 +1381,7 @@
 				F4F7EE66243345B900CDF58B /* MenuInteractor.swift in Sources */,
 				F4B470D22456BF8200CFF242 /* FormationWorker.swift in Sources */,
 				F4F7EE162431B56200CDF58B /* createPostulerInteractor.swift in Sources */,
+				F48A9123255C970500FAACA4 /* AjouterCompetenceModels.swift in Sources */,
 				F4C6934C23FFFA4E00980714 /* MobilityTableViewCell.swift in Sources */,
 				F47CA674246AE12100C6ACB1 /* CatalogueFormationViewController.swift in Sources */,
 				F491644E24B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift in Sources */,
@@ -1357,6 +1390,7 @@
 				F4C6932B23FD7AC900980714 /* AccretioModule.swift in Sources */,
 				F44614FF240EAF1E00D4F567 /* MobiliteCollaborateurDetailsRouter.swift in Sources */,
 				F41E1A8624C89F6500CE4AD0 /* EvaluationManagerPresenter.swift in Sources */,
+				F48A9122255C970500FAACA4 /* AjouterCompetenceRouter.swift in Sources */,
 				F41E1A7A24C89EF100CE4AD0 /* menuEvalWorker.swift in Sources */,
 				F4B7804524ED7E80007F24F2 /* EvaluatedForManagerViewController.swift in Sources */,
 				F472FCCC24E81B970014A773 /* Menu2Router.swift in Sources */,
@@ -1431,6 +1465,7 @@
 				F445954C249FD65400512E17 /* CompetenceManagerInteractor.swift in Sources */,
 				F4B5981124045B3300D0F935 /* DetailsMobiliteWorker.swift in Sources */,
 				F4C6931523FD532200980714 /* LoginModels.swift in Sources */,
+				F48A9152255D9B1900FAACA4 /* LevelResponse.swift in Sources */,
 				F41E1A8A24C89F6500CE4AD0 /* EvaluationManagerViewController.swift in Sources */,
 				F47CA677246AE93D00C6ACB1 /* CatalogueFormationViewCell.swift in Sources */,
 				F41E1A7B24C89EF100CE4AD0 /* menuEvalRouter.swift in Sources */,
@@ -1455,9 +1490,11 @@
 				F472FCCA24E81B970014A773 /* Menu2Presenter.swift in Sources */,
 				F41E1A9124C8CBD900CE4AD0 /* EvaluationManagerTableViewCell.swift in Sources */,
 				F44614F1240D16E900D4F567 /* MobiliteCollaborateurModels.swift in Sources */,
+				F48A9120255C970500FAACA4 /* AjouterCompetencePresenter.swift in Sources */,
 				F4B5981524045B3300D0F935 /* DetailsMobiliteInteractor.swift in Sources */,
 				F4B5981024045B3300D0F935 /* DetailsMobilitePresenter.swift in Sources */,
 				F402689C24D92A8900AA4A7F /* PopulationCollectionViewCell.swift in Sources */,
+				F48A912A255D578C00FAACA4 /* CompetencesTableViewCell.swift in Sources */,
 				F4816DC724B8E9C100890B31 /* EvaluationDetails.swift in Sources */,
 				F4B5981224045B3300D0F935 /* DetailsMobiliteRouter.swift in Sources */,
 				F4FA44F524A8ACDE0071AABC /* CatalogueViewController.swift in Sources */,
@@ -1520,6 +1557,7 @@
 				F4B5981324045B3300D0F935 /* DetailsMobiliteModels.swift in Sources */,
 				F4DD6B382474648B0042B062 /* FormateurCatalogueFormationInteractor.swift in Sources */,
 				F4A59B4424A89CFF00513676 /* EvaluationCollaborateurViewController.swift in Sources */,
+				F48A9121255C970500FAACA4 /* AjouterCompetenceWorker.swift in Sources */,
 				F41E1A8924C89F6500CE4AD0 /* EvaluationManagerModels.swift in Sources */,
 				F4C6933D23FEA7ED00980714 /* MobilitePresenter.swift in Sources */,
 				F47CA675246AE12100C6ACB1 /* CatalogueFormationInteractor.swift in Sources */,
@@ -1527,8 +1565,10 @@
 				F4D38B2E24869EA1003F2FD4 /* CompetenceCollaborateurInteractor.swift in Sources */,
 				F4B5981424045B3300D0F935 /* DetailsMobiliteViewController.swift in Sources */,
 				F44AB25524CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift in Sources */,
+				F48A9124255C970500FAACA4 /* AjouterCompetenceViewController.swift in Sources */,
 				F4A59B4124A89CFF00513676 /* EvaluationCollaborateurWorker.swift in Sources */,
 				F4C6934823FF187400980714 /* MobiliteAPI.swift in Sources */,
+				F48A9125255C970500FAACA4 /* AjouterCompetenceInteractor.swift in Sources */,
 				F44614EE240D16E900D4F567 /* MobiliteCollaborateurPresenter.swift in Sources */,
 				F47CA68A246C586E00C6ACB1 /* PopUpWindow.swift in Sources */,
 				F4D38B2D24869EA1003F2FD4 /* CompetenceCollaborateurViewController.swift in Sources */,

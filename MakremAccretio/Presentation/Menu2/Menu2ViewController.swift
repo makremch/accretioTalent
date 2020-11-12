@@ -87,7 +87,6 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
         doSomething()
         setupiCarosel()
         userNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
-        print((UserDefaults.standard.string(forKey: "poste"))!)
         let poste = (UserDefaults.standard.string(forKey: "poste")!)
         print(poste)
         postLabel.text = poste

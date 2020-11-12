@@ -66,7 +66,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         radarIndex = radarIndex % (count)!
         updateRadar(index: radarIndex)
         chartViewBar.animate(xAxisDuration: 3)
-        chartViewBar.animate(yAxisDuration: 9)
+        chartViewBar.animate(yAxisDuration: 6)
     }
     
     @IBAction func previousButton(_ sender: Any) {
@@ -81,6 +81,12 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
           self.navigationController?.popViewController(animated: true)
       }
     
+    
+    @IBAction func addCompetence(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let addCompVC = storyBoard.instantiateViewController(withIdentifier: "addComp") as! AjouterCompetenceViewController
+        self.navigationController?.pushViewController(addCompVC, animated: true)
+    }
     
     // MARK:- Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)

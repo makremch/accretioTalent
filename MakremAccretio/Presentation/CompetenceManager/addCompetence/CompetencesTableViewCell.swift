@@ -2,39 +2,32 @@
 //  CompetenceTableViewCell.swift
 //  MakremAccretio
 //
-//  Created by Makrem chambah on 6/25/20.
+//  Created by Makrem chambah on 11/12/20.
 //  Copyright © 2020 Makrem. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import Charts
 
-class CompetenceTableViewCell: UITableViewCell{
+
+class CompetencesTableViewCell: UITableViewCell{
     
-    //    MARK:- IBOutlets
-    @IBOutlet weak var CollaborateurNameLabel: UILabel!
+    
+//     MARK:- let and variables :
+    static var codeSkill : String = ""
+    
+    //     MARK:- Declaration IBoutlets
     @IBOutlet weak var viewCell: UIView!
-    @IBOutlet weak var viewLabel: UIView!
+    @IBOutlet weak var nomCompetenceLabel: UILabel!
     
-    //    MARK:- var
-    var competence: CompetenceCollab? = nil
-    var values : [Double] = [10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    var skillsLabel:[String: String]? = nil
-    var activities : [String] = ["ss","","","","","","","","","","","","","","","","","","","","","",""]
-    var radarIndex : Int = 0
     
     //    MARK:- Configuration
     override func awakeFromNib() {
         super.awakeFromNib()
         configuringViewCell()
-        configuringViewLabelCollaborateur()
-        
-        //        chartView.delegate = self
-        
-        
     }
     
-    //    MARK:- Configuring cell color and corner radius
+    //    MARK:- cell Configuration:
     func configuringViewCell() {
         viewCell.layer.cornerRadius = 10
         viewCell.backgroundColor = UIColor.white
@@ -47,21 +40,12 @@ class CompetenceTableViewCell: UITableViewCell{
         viewCell.layer.shouldRasterize = true
         viewCell.layer.rasterizationScale = UIScreen.main.scale
     }
-    func configuringViewLabelCollaborateur(){
-        //        viewLabel.backgroundColor = UIColor.cyan
-        
-    }
-    override func layoutSubviews() {
-//        updateRadar(index: 0)
-
-    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
     }
     
+    
+    
 }
-    
-    
-

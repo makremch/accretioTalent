@@ -13,8 +13,8 @@ import Foundation
 // MARK: - CompetenseLabelResponseElement
 struct CompetenseLabelResponseElement: Codable {
     let id, code, label, competenseLabelResponseDescription: String?
-//    let classification: String?
-//    let levels: [LevelLabel]?
+    let classification: String?
+    let levels: [LevelLabel]?
 //    let codeModel: String?
 //    let version: Int?
 //    let usedBy: [UsedBy]?
