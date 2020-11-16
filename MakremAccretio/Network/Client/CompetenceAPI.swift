@@ -119,7 +119,7 @@ class CompetecenceAPI {
     
     
     static func showCompetenceLevels(token : String, codeClassification : String) -> Promise<LevelResponse>{
-        let url = "    https://mobile-int.accretio.io/dataandtranslation/api/c-r-skills-levels/crSkillClassification/" + codeClassification
+        let url = "https://mobile-int.accretio.io/dataandtranslation/api/c-r-skills-levels/crSkillClassification/" + codeClassification
 //        let url = "https://accretio-2-tnr.advyteam.com/ms-talent/api/skills"
         print(url)
         return  Promise<LevelResponse> { fulfill, reject in

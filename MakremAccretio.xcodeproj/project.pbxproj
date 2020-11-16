@@ -130,6 +130,7 @@
 		F48A9125255C970500FAACA4 /* AjouterCompetenceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A911F255C970400FAACA4 /* AjouterCompetenceInteractor.swift */; };
 		F48A912A255D578C00FAACA4 /* CompetencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9129255D578C00FAACA4 /* CompetencesTableViewCell.swift */; };
 		F48A9152255D9B1900FAACA4 /* LevelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9151255D9B1900FAACA4 /* LevelResponse.swift */; };
+		F48A9167255F420600FAACA4 /* NiveauCompetenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48A9166255F420500FAACA4 /* NiveauCompetenceTableViewCell.swift */; };
 		F491644E24B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644824B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift */; };
 		F491644F24B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644924B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift */; };
 		F491645024B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491644A24B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift */; };
@@ -394,6 +395,7 @@
 		F48A911F255C970400FAACA4 /* AjouterCompetenceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjouterCompetenceInteractor.swift; sourceTree = "<group>"; };
 		F48A9129255D578C00FAACA4 /* CompetencesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetencesTableViewCell.swift; sourceTree = "<group>"; };
 		F48A9151255D9B1900FAACA4 /* LevelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelResponse.swift; sourceTree = "<group>"; };
+		F48A9166255F420500FAACA4 /* NiveauCompetenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiveauCompetenceTableViewCell.swift; sourceTree = "<group>"; };
 		F491644824B80E7500629F14 /* EvaluationCollaborateurDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsPresenter.swift; sourceTree = "<group>"; };
 		F491644924B80E7500629F14 /* EvaluationCollaborateurDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsWorker.swift; sourceTree = "<group>"; };
 		F491644A24B80E7500629F14 /* EvaluationCollaborateurDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCollaborateurDetailsRouter.swift; sourceTree = "<group>"; };
@@ -773,6 +775,7 @@
 				F48A911E255C970400FAACA4 /* AjouterCompetenceViewController.swift */,
 				F48A911F255C970400FAACA4 /* AjouterCompetenceInteractor.swift */,
 				F48A9129255D578C00FAACA4 /* CompetencesTableViewCell.swift */,
+				F48A9166255F420500FAACA4 /* NiveauCompetenceTableViewCell.swift */,
 			);
 			path = addCompetence;
 			sourceTree = "<group>";
@@ -1402,6 +1405,7 @@
 				F4C6931623FD532200980714 /* LoginViewController.swift in Sources */,
 				F4E1CAEE24B25E3A002D9672 /* EvaluationAPI.swift in Sources */,
 				F41E1A9324C9D90C00CE4AD0 /* EvaluationManagerDetails.swift in Sources */,
+				F48A9167255F420600FAACA4 /* NiveauCompetenceTableViewCell.swift in Sources */,
 				F41E1A7D24C89EF100CE4AD0 /* menuEvalViewController.swift in Sources */,
 				F47CA6962471957200C6ACB1 /* CatalogueFormationDetailsViewController.swift in Sources */,
 				F4C6933023FDB62200980714 /* UserAPIClient.swift in Sources */,

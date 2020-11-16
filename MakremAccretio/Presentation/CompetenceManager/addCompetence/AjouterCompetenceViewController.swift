@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import Foundation
 
 protocol AjouterCompetenceDisplayLogic: class
 {
@@ -22,48 +23,85 @@ protocol AjouterCompetenceDisplayLogic: class
 class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDisplayLogic
 {
     
+    
     // MARK:- boutlets :
-    @IBOutlet weak var competenceButton: UIButton!
-    @IBOutlet weak var niveauButton: UIButton!
-    @IBOutlet weak var dateAcquisitionButton: UIButton!
-    @IBOutlet weak var sourceButton: UIButton!
-    @IBOutlet weak var annulerButton: UIButton!
-    @IBOutlet weak var validerButton: UIButton!
-    @IBOutlet weak var viewAdding: UIView!
-    @IBOutlet weak var competenceView: UIView!
-    @IBOutlet weak var viewTitle: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var competenceButton        : UIButton!
+    @IBOutlet weak var niveauButton            : UIButton!
+    @IBOutlet weak var dateAcquisitionButton   : UIButton!
+    @IBOutlet weak var sourceButton            : UIButton!
+    @IBOutlet weak var annulerButton           : UIButton!
+    @IBOutlet weak var validerButton           : UIButton!
+    @IBOutlet weak var competenceView          : UIView!
+    @IBOutlet weak var viewTitle               : UILabel!
+    @IBOutlet weak var tableView               : UITableView!
+    @IBOutlet weak var tableViewDeux           : UITableView!
+    @IBOutlet weak var NiveauView              : UIView!
+    @IBOutlet weak var cancelNiveauView        : UIButton!
+    @IBOutlet weak var viewAdding              : UIView!
+    @IBOutlet weak var evaluationButton        : UIButton!
+    @IBOutlet weak var recrutingButton         : UIButton!
+    
+    
+    
     
     // MARK:- let & var :
-    var interactor: AjouterCompetenceBusinessLogic?
-    var router: (NSObjectProtocol & AjouterCompetenceRoutingLogic & AjouterCompetenceDataPassing)?
-    var skillsLabel : [String:String] = ["":""]
-    var skillsList : [String] = []
-    var codeSkillsList : [String] = []
-    var codeSkill : String = ""
-    var skillsCompetenceCode : [String:String] = ["":""]
-    var levels: [Level] = []
+    var interactor             : AjouterCompetenceBusinessLogic?
+    var router                 : (NSObjectProtocol & AjouterCompetenceRoutingLogic & AjouterCompetenceDataPassing)?
+    var skillsLabel            : [String:String] = ["":""]
+    var skillsList             : [String]        = []
+    var codeSkillsList         : [String]        = []
+    var codeSkill              : String          = ""
+    var skillsCompetenceCode   : [String:String] = ["":""]
+    var levels                 : [Level]         = []
+    var niveauSelected         : String          = ""
+    var sourceSelected         : String          = ""
+    
+    
+    
     
     // MARK:- Button actions :
-    
     @IBAction func selectionnerCompetenceOnClick(_ sender: Any) {
-        competenceView.isHidden = false
-        viewTitle.text = "Sélectionner compétence"
+        competenceView.isHidden                   = false
+        viewTitle.text                            = "Sélectionner compétence"
     }
     
     @IBAction func annulerOnClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     @IBAction func cancelCompetenceView(_ sender: Any) {
-        competenceView.isHidden = true
-        viewTitle.text = "Ajouter compétence"
+        competenceView.isHidden                    = true
+        viewTitle.text                             = "Ajouter compétence"
+    }
+    
+    @IBAction func cancelNiveauOnClick(_ sender: Any) {
+        NiveauView.isHidden                        = true
+        viewAdding.isHidden                        = false
+    }
+    
+    @IBAction func selectionnerNiveauOnClick(_ sender: Any?) {
+        NiveauView.isHidden                        = false
+        viewAdding.isHidden                        = true
+    }
+    
+    @IBAction func evaluationButtonOnClick(_ sender: Any) {
+        self.sourceSelected                        = "Evaluation"
+    }
+    
+    @IBAction func recrutingButtonOnClick(_ sender: Any) {
+        self.sourceSelected                        = "Recrutement"
+    }
+    
+    @IBAction func formationButtonOnClick(_ sender: Any) {
+        self.sourceSelected                        = "Formation"
     }
     
     
-    // MARK: Object lifecycle
     
+    
+    
+    
+    // MARK:- Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -80,22 +118,23 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     
     private func setup()
     {
-        let viewController = self
-        let interactor = AjouterCompetenceInteractor()
-        let presenter = AjouterCompetencePresenter()
-        let router = AjouterCompetenceRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+        let viewController           = self
+        let interactor               = AjouterCompetenceInteractor()
+        let presenter                = AjouterCompetencePresenter()
+        let router                   = AjouterCompetenceRouter()
+        viewController.interactor    = interactor
+        viewController.router        = router
+        interactor.presenter         = presenter
+        presenter.viewController     = viewController
+        router.viewController        = viewController
+        router.dataStore             = interactor
     }
     
     func configuringbuttonAndViews(){
-        viewAdding.layer.cornerRadius             = 10
-        viewAdding.layer.borderColor              = UIColor.systemGray5.cgColor
+        viewAdding.layer.cornerRadius         = 10
+        viewAdding.layer.borderColor          = UIColor.systemGray5.cgColor
         
+        competenceView.layer.cornerRadius         = 10
         competenceButton.layer.cornerRadius       = 5
         competenceButton.backgroundColor          = UIColor.white
         competenceButton.layer.shadowColor        = UIColor.systemGray4.cgColor
@@ -158,16 +197,43 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
         validerButton.layer.rasterizationScale = UIScreen.main.scale
         validerButton.layer.borderColor        = UIColor.systemGray5.cgColor
         
-        competenceView.isHidden = true
+        evaluationButton.layer.cornerRadius       = 5
+        evaluationButton.backgroundColor          = UIColor.white
+        evaluationButton.layer.shadowColor        = UIColor.systemGray4.cgColor
+        evaluationButton.layer.shadowColor        = UIColor.systemGray4.cgColor
+        evaluationButton.layer.shadowOpacity      = 1
+        evaluationButton.layer.shadowOffset       = .zero
+        evaluationButton.layer.shadowRadius       = 5
+        evaluationButton.layer.shadowPath         = UIBezierPath(rect: evaluationButton.bounds).cgPath
+        evaluationButton.layer.shouldRasterize    = true
+        evaluationButton.layer.rasterizationScale = UIScreen.main.scale
+        evaluationButton.layer.borderColor        = UIColor.systemGray5.cgColor
+        
+        recrutingButton.layer.cornerRadius       = 5
+        recrutingButton.backgroundColor          = UIColor.white
+        recrutingButton.layer.shadowColor        = UIColor.systemGray4.cgColor
+        recrutingButton.layer.shadowColor        = UIColor.systemGray4.cgColor
+        recrutingButton.layer.shadowOpacity      = 1
+        recrutingButton.layer.shadowOffset       = .zero
+        recrutingButton.layer.shadowRadius       = 5
+        recrutingButton.layer.shadowPath         = UIBezierPath(rect: recrutingButton.bounds).cgPath
+        recrutingButton.layer.shouldRasterize    = true
+        recrutingButton.layer.rasterizationScale = UIScreen.main.scale
+        recrutingButton.layer.borderColor        = UIColor.systemGray5.cgColor
+        
+        competenceView.isHidden                = true
+        NiveauView.isHidden                    = true
+        competenceView.layer.cornerRadius      = 10
+        NiveauView.layer.cornerRadius          = 10
     }
     
     // MARK: Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
+        if let scene       = segue.identifier {
+            let selector   = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router  = router, router.responds(to: selector) {
                 router.perform(selector, with: segue)
             }
         }
@@ -180,14 +246,15 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
         super.viewDidLoad()
         doSomething()
         configuringbuttonAndViews()
-        let token = UserDefaults.standard.string(forKey: "accessToken")!
+        let token                                                 = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.getListCompetenceManager(token: token)
-        
+        tableViewDeux.isScrollEnabled                             = (tableViewDeux.contentSize.height <= self.tableViewDeux.frame.height);
+        self.tableViewDeux.alwaysBounceVertical                   = false
+        self.tableViewDeux.isScrollEnabled                        = self.tableViewDeux.contentSize.height > self.tableViewDeux.frame.size.height
     }
     
-    // MARK: Do something
     
-    //@IBOutlet weak var nameTextField: UITextField!
+    // MARK: Do something
     
     func doSomething()
     {
@@ -195,60 +262,85 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
         interactor?.doSomething(request: request)
     }
     
-    func displaySomething(viewModel: AjouterCompetence.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
+    func displaySomething(viewModel: AjouterCompetence.Something.ViewModel){}
     
     
     
+                                                  //       MARK: - Getting data from interactor Competence Response
     func getDataCompetenceManager(skillsLabel:[String: String], skillsCompetence:[String:String]){
         self.skillsCompetenceCode = skillsCompetence
-        print(skillsLabel)
-        print(skillsCompetence)
-        self.skillsLabel = skillsLabel
-        self.skillsList = Array(skillsLabel.values)
-        self.codeSkillsList = Array(skillsLabel.keys)
-        print(self.skillsLabel,self.skillsList)
-        print(self.skillsLabel)
+        self.skillsLabel          = skillsLabel
+        self.skillsList           = Array(skillsLabel.values)
+        self.codeSkillsList       = Array(skillsLabel.keys)
         tableView.reloadData()
     }
     
-    
+                                                 //       MARK: - Getting data from interactor Level Response
     func getDataLevel(level: LevelResponse){
-        print(level)
         self.levels = level.levels
+        self.tableViewDeux.reloadData()
     }
 }
 
 
+
+
+
+
+                                                 // MARK: -TableView extensions
 extension  AjouterCompetenceViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.skillsLabel.count
+        var numberOfRowsToReturn : Int = 0
+        if tableView == tableView{
+            numberOfRowsToReturn = self.skillsLabel.count
+        }else if  tableView == tableViewDeux{
+            numberOfRowsToReturn = 4
+        }
+        return numberOfRowsToReturn
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "compsCell", for: indexPath) as?
-                CompetencesTableViewCell
-        else {
-            return UITableViewCell()
+        
+        var cellToReturn = UITableViewCell()
+        
+        if tableView == self.tableView {
+            guard let  cell = tableView.dequeueReusableCell(withIdentifier: "compsCell", for: indexPath) as? CompetencesTableViewCell
+            else {
+                return UITableViewCell()
+            }
+            if self.skillsList.count != 0 {
+                cell.nomCompetenceLabel.text = self.skillsList[indexPath.item]
+            }
+            cellToReturn = cell
+        }else if tableView == self.tableViewDeux{
+            guard let  cell = tableView.dequeueReusableCell(withIdentifier: "niveauCell", for: indexPath) as?
+                    NiveauCompetenceTableViewCell
+            else {
+                return UITableViewCell()
+            }
+            if self.levels.count > 0 && indexPath.row < self.levels.count {
+                cell.niveauCompetence.text = self.levels[indexPath.row].label
+                    cellToReturn = cell
+            }
         }
-        //        cell.textLabel?.text = self.skillsList[indexPath.item]
-        print(self.skillsList)
-        if self.skillsList.count != 0 {
-            cell.nomCompetenceLabel.text = self.skillsList[indexPath.item]
-        }
-        return cell 
+        return cellToReturn
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.item,codeSkillsList[indexPath.item])
-        self.codeSkill = codeSkillsList[indexPath.item]
-        let classificationCode = (self.skillsCompetenceCode[self.codeSkill])!
-        let token = UserDefaults.standard.string(forKey: "accessToken")!
-        self.interactor?.getListCompetenceLevel(token: token, codeCompetence: classificationCode)
-        competenceView.isHidden = true
-        competenceButton.setTitle(self.skillsLabel[self.codeSkill], for: .normal)
-        
+        if tableView == self.tableView{
+            self.codeSkill = codeSkillsList[indexPath.item]
+            let classificationCode = (self.skillsCompetenceCode[self.codeSkill])!
+            let token = UserDefaults.standard.string(forKey: "accessToken")!
+            self.interactor?.getListCompetenceLevel(token: token, codeCompetence: classificationCode)
+            competenceView.isHidden = true
+            competenceButton.setTitle(self.skillsLabel[self.codeSkill], for: .normal)
+
+        }else if tableView == self.tableViewDeux{
+            niveauSelected = (self.levels[indexPath.row].label)!
+            NiveauView.isHidden = true
+            competenceView.isHidden = true
+            viewAdding.isHidden = false
+            niveauButton.setTitle(niveauSelected, for: .normal)
+        }
     }
-    
 }
+

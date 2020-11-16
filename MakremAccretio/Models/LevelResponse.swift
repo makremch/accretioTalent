@@ -14,7 +14,7 @@ struct LevelResponse: Codable {
     let levels: [Level]
     let flag: Bool
     let usedBy: [UsedBy]
-    let codeModel, destination: JSONNull?
+    let codeModel, destination: String?
     let levelResponseDefault: Bool
 
     enum CodingKeys: String, CodingKey {
