@@ -17,10 +17,13 @@ protocol AjouterCompetencePresentationLogic
     func presentSomething(response: AjouterCompetence.Something.Response)
     func showCompetenceManager(skillsLabel:[String: String],skillsClassification : [String:String])
     func showCompetenceLevel(level:LevelResponse)
+    func addCompetenceByManager(response : ResponseAddingCompetence)
 }
 
 class AjouterCompetencePresenter: AjouterCompetencePresentationLogic
 {
+    
+    
     weak var viewController: AjouterCompetenceDisplayLogic?
     
     // MARK: Do something
@@ -37,5 +40,9 @@ class AjouterCompetencePresenter: AjouterCompetencePresentationLogic
     
     func showCompetenceLevel(level:LevelResponse){
         viewController?.getDataLevel(level: level)
+    }
+    
+    func addCompetenceByManager(response : ResponseAddingCompetence) {
+        viewController?.getAddingResponse(response: response)
     }
 }

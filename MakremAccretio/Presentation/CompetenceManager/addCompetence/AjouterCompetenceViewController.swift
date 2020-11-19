@@ -18,6 +18,7 @@ protocol AjouterCompetenceDisplayLogic: class
     func displaySomething(viewModel: AjouterCompetence.Something.ViewModel)
     func getDataCompetenceManager(skillsLabel:[String: String], skillsCompetence:[String:String])
     func getDataLevel(level: LevelResponse)
+    func getAddingResponse(response:ResponseAddingCompetence)
 }
 
 class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDisplayLogic
@@ -40,7 +41,8 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     @IBOutlet weak var viewAdding              : UIView!
     @IBOutlet weak var evaluationButton        : UIButton!
     @IBOutlet weak var recrutingButton         : UIButton!
-    
+    @IBOutlet weak var cancelSourceButton: UIButton!
+    @IBOutlet weak var formationButton: UIButton!
     
     
     
@@ -55,17 +57,26 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     var levels                 : [Level]         = []
     var niveauSelected         : String          = ""
     var sourceSelected         : String          = ""
-    
-    
+    var codeSkillToInsert      : String          = ""
+    var skillLevelToInsert     : String          = ""
+    var codeComponentToInsert  : String          = UserDefaults.standard.string(forKey: "codeComponent")!
     
     
     // MARK:- Button actions :
     @IBAction func selectionnerCompetenceOnClick(_ sender: Any) {
-        competenceView.isHidden                   = false
-        viewTitle.text                            = "Sélectionner compétence"
+        UIView.animate(withDuration: 2.5){
+            self.competenceView.isHidden                   = false
+            self.viewTitle.text                            = "Sélectionner compétence"
+        }
     }
     
     @IBAction func annulerOnClick(_ sender: Any) {
+        UIView.animate(withDuration: 1){
+            self.recrutingButton.frame = CGRect(x: 164,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+            self.sourceButton.frame = CGRect(x: 164,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+            self.cancelSourceButton.alpha = 1
+            self.recrutingButton.alpha = 0
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -85,19 +96,124 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     }
     
     @IBAction func evaluationButtonOnClick(_ sender: Any) {
-        self.sourceSelected                        = "Evaluation"
+        self.sourceSelected = "Evaluation"
+        UIView.animate(withDuration: 1){
+            self.recrutingButton.frame = CGRect(x: 164,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+            self.sourceButton.frame = CGRect(x: 164,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+            self.cancelSourceButton.alpha = 1
+            self.recrutingButton.alpha = 0
+        }
+        self.cancelSourceButton.isHidden = false
+        
     }
     
     @IBAction func recrutingButtonOnClick(_ sender: Any) {
         self.sourceSelected                        = "Recrutement"
+        self.cancelSourceButton.isHidden = true
+        self.cancelSourceButton.alpha = 0
+        UIView.animate(withDuration: 1){
+            self.recrutingButton.frame = CGRect(x: 164,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+            self.sourceButton.frame = CGRect(x: 164,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+            self.cancelSourceButton.alpha = 1
+                        
+        }
+        self.evaluationButton.alpha = 1
+        self.sourceButton.alpha = 1
+        self.cancelSourceButton.isHidden = false
+        self.cancelSourceButton.alpha = 1
     }
     
     @IBAction func formationButtonOnClick(_ sender: Any) {
         self.sourceSelected                        = "Formation"
+        self.cancelSourceButton.isHidden = true
+        self.cancelSourceButton.alpha = 0
+        UIView.animate(withDuration: 1){
+            self.recrutingButton.frame = CGRect(x: 164,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+            self.sourceButton.frame = CGRect(x: 164,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+            self.cancelSourceButton.alpha = 1
+            self.evaluationButton.alpha = 0
+            self.recrutingButton.alpha = 0
+        }
+        self.sourceButton.alpha = 1
+        self.cancelSourceButton.isHidden = false
+        self.cancelSourceButton.alpha = 1
+        
+    }
+    
+    @IBAction func dateAcquisitionOnClick(_ sender: Any) {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        let alert = UIAlertController(title: "\n", message: nil, preferredStyle: .alert)
+        alert.view.addSubview(datePicker)
+        let ok = UIAlertAction(title: "OK", style: .default){
+            (action) in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let dateString = dateFormatter.string(from: datePicker.date)
+            self.dateAcquisitionButton.setTitle(dateString, for: .normal)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     
+    @IBAction func cancelSourceOnClick(_ sender: Any) {
+        if self.sourceSelected == "Recrutement" {
+            self.sourceButton.alpha = 1
+            self.sourceButton.isHidden = false
+            UIView.animate(withDuration: 2){
+                self.recrutingButton.frame = CGRect(x: 299,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+                self.sourceButton.frame = CGRect(x: 26,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+                self.cancelSourceButton.alpha = 0
+                self.cancelSourceButton.isHidden = true
+                self.formationButton.isHidden = false
+                self.evaluationButton.isHidden = false
+            }
+            self.sourceSelected = ""
+        } else if self.sourceSelected == "Evaluation"{
+            self.sourceButton.alpha = 1
+            self.recrutingButton.alpha = 1
+            UIView.animate(withDuration: 2){
+                self.recrutingButton.frame = CGRect(x: 299,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+                self.sourceButton.frame = CGRect(x: 26,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+                self.cancelSourceButton.alpha = 0
+                self.cancelSourceButton.isHidden = true
+                self.formationButton.isHidden = false
+                self.evaluationButton.isHidden = false
+            }
+        } else if self.sourceSelected == "Formation"{
+            self.evaluationButton.alpha = 1
+            self.recrutingButton.alpha = 1
+            UIView.animate(withDuration: 2){
+                self.recrutingButton.frame = CGRect(x: 299,y: 416,width: self.recrutingButton.frame.width, height: self.recrutingButton.frame.height)
+                self.sourceButton.frame = CGRect(x: 26,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+                self.cancelSourceButton.alpha = 0
+                self.cancelSourceButton.isHidden = true
+                self.recrutingButton.isHidden = false
+                self.evaluationButton.isHidden = false
+            }
+        }
+    }
     
+    let token = UserDefaults.standard.string(forKey: "accessToken")!
+    var params : [String:Any] = ["":""]
+    let code : String = UserDefaults.standard.string(forKey: "codeComponent")!
+    @IBAction func validerOnClick(_ sender: Any) {
+        params = [
+              "code": "",
+            "codeSkill": self.codeSkillToInsert,
+            "skillLevel": self.skillLevelToInsert,
+              "source": "SOR_RECR",
+              "acquisitionDate": "1606082400000",
+            "codeComponent": self.codeComponentToInsert,
+              "historicEmployeeAffectationSkills": ""
+        ]
+        self.interactor?.addCompetenceByManager(token: token, params: params, code: code)
+        self.navigationController?.popViewController(animated: true)
+        
+    }
     
     
     
@@ -225,6 +341,8 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
         NiveauView.isHidden                    = true
         competenceView.layer.cornerRadius      = 10
         NiveauView.layer.cornerRadius          = 10
+        self.cancelSourceButton.isHidden       = true
+
     }
     
     // MARK: Routing
@@ -266,7 +384,7 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     
     
     
-                                                  //       MARK: - Getting data from interactor Competence Response
+    //       MARK: - Getting data from interactor Competence Response
     func getDataCompetenceManager(skillsLabel:[String: String], skillsCompetence:[String:String]){
         self.skillsCompetenceCode = skillsCompetence
         self.skillsLabel          = skillsLabel
@@ -275,11 +393,19 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
         tableView.reloadData()
     }
     
-                                                 //       MARK: - Getting data from interactor Level Response
+    //       MARK: - Getting data from interactor Level Response
     func getDataLevel(level: LevelResponse){
         self.levels = level.levels
         self.tableViewDeux.reloadData()
     }
+    
+    
+    // MARK:- Adding Competence By manager
+    func getAddingResponse(response: ResponseAddingCompetence){
+        print(response)
+    }
+    
+    
 }
 
 
@@ -287,7 +413,7 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
 
 
 
-                                                 // MARK: -TableView extensions
+// MARK: -TableView extensions
 extension  AjouterCompetenceViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var numberOfRowsToReturn : Int = 0
@@ -298,6 +424,8 @@ extension  AjouterCompetenceViewController : UITableViewDelegate, UITableViewDat
         }
         return numberOfRowsToReturn
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cellToReturn = UITableViewCell()
@@ -319,7 +447,7 @@ extension  AjouterCompetenceViewController : UITableViewDelegate, UITableViewDat
             }
             if self.levels.count > 0 && indexPath.row < self.levels.count {
                 cell.niveauCompetence.text = self.levels[indexPath.row].label
-                    cellToReturn = cell
+                cellToReturn = cell
             }
         }
         return cellToReturn
@@ -333,14 +461,41 @@ extension  AjouterCompetenceViewController : UITableViewDelegate, UITableViewDat
             self.interactor?.getListCompetenceLevel(token: token, codeCompetence: classificationCode)
             competenceView.isHidden = true
             competenceButton.setTitle(self.skillsLabel[self.codeSkill], for: .normal)
-
+            codeSkillToInsert = codeSkillsList[indexPath.item]
+            
+            
         }else if tableView == self.tableViewDeux{
             niveauSelected = (self.levels[indexPath.row].label)!
             NiveauView.isHidden = true
             competenceView.isHidden = true
             viewAdding.isHidden = false
             niveauButton.setTitle(niveauSelected, for: .normal)
+            skillLevelToInsert = (self.levels[indexPath.row].code)!
         }
     }
 }
 
+
+
+extension UIView {
+
+  func fadeIn(duration: TimeInterval = 2, delay: TimeInterval = 2, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
+    UIView.animate(withDuration: duration,
+                   delay: delay,
+                   options: UIView.AnimationOptions.curveEaseIn,
+                   animations: {
+      self.alpha = 1.0
+    }, completion: completion)
+  }
+
+  func fadeOut(duration: TimeInterval = 0.5,
+               delay: TimeInterval = 0.0,
+               completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
+    UIView.animate(withDuration: duration,
+                   delay: delay,
+                   options: UIView.AnimationOptions.curveEaseIn,
+                   animations: {
+      self.alpha = 0.0
+    }, completion: completion)
+  }
+}

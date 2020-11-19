@@ -97,7 +97,9 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         alert.addAction(ok)
         alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)    }
+        present(alert, animated: true, completion: nil)
+        
+    }
     
     @IBAction func ImportanceButton(_ sender: Any) {
         let actionSheet = UIAlertController(title: "Selectionnez importance foramation ", message: nil, preferredStyle: .actionSheet)
@@ -339,7 +341,8 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
         let clearedStartDate =  dataValueCatalogue[indexPath.row].creationDate!.components(separatedBy: "T")
         cell.dateLabel.text = clearedStartDate[0]
         cell.themeLabel.text = dataValueCatalogue[indexPath.row].theme
-        let BaseURL = "https://accretio-2-tnr.advyteam.com/"
+        let BaseURL = "https://mobile-int.accretio.io/"
+//        let BaseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = URL(string: BaseURL + "documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (dataValueCatalogue[indexPath.row].picture)!)
         //        let token = UserDefaults.standard.string(forKey: "accessToken")!
         cell.formationImageView.kf.setImage(with: url){

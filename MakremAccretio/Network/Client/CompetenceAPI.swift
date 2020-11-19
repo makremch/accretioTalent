@@ -140,6 +140,32 @@ class CompetecenceAPI {
         }
     }
     
+    static func addCompetence(token : String,params : [String: Any], code : String) ->Promise<ResponseAddingCompetence>{
+        //        let url = base + "training/api/training-offers/search?page=" + String(page) + "&size=" + String(size) + "&sort=creationDate,DESC"
+        let url = "https://mobile-int.accretio.io/ms-talent/api/affectation-skills/" + code + "/skill?skillAffectationType=EMPLOYEE"
+        
+        print(url)
+        return  Promise<ResponseAddingCompetence> { fulfill, reject in
+            AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: [
+                "content-type":"application/json",
+                "Authorization": "Bearer " + token
+            ]).responseJSON { (responseInsert) in
+                print((responseInsert.response?.statusCode)!)
+                print("assba")
+                    switch responseInsert.result {
+                    
+                    case .success(let value):
+                        print("hello true !")
+                        print(value)
+                    case .failure(let error):
+                        print("hello false !")
+                        print(error)
+                        reject(error)
+                    }
+            }
+        }
+    }
+    
     
     
 }

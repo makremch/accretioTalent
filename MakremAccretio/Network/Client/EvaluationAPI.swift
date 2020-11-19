@@ -16,8 +16,8 @@ class EvaluationAPI {
     
     
     static func showEvaluationCollaborateur(token : String) -> Promise<EvaluationResponse>{
-        //        let baseURL = "https://mobile-int.accretio.io/"
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "evaluation/api/campaign/?userType=EMPLOYEE&size=5&page=0&roles=ROLE_USER"
         print(url)
         return  Promise<EvaluationResponse> { fulfill, reject in
@@ -40,7 +40,8 @@ class EvaluationAPI {
     
     
     static func showEvaluationDetailsCollaborateur(token : String , code : String) -> Promise<EvaluationDetailsResponse>{
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let registarionNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
         let url = baseURL + "evaluation/api/evaluated-process-details/smartEvaluation/campaign/" + code + "/evaluated/" + registarionNumber
         
@@ -64,7 +65,8 @@ class EvaluationAPI {
     }
     
     static func showEvaluationDetailsAxisCardsCollaborateur(token : String , code : String) -> Promise<[EvaluationCardsResponse]>{
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
         let url = baseURL + "evaluation/api/evaluation-cards/campaign/" + code + "/evaluated/" + registrationNumber + "/axiscard"
         print(url)
@@ -88,65 +90,65 @@ class EvaluationAPI {
     //    MARK:- Manager API
     
     static func showEvaluationManager(token : String) -> Promise<EvaluationManagerResponse>{
-        //        let baseURL = "https://mobile-int.accretio.io/"
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "evaluation/api/campaign/?userType=MANAGER&size=30&page=0&roles=ROLE_MANAGER"
         print(url)
         return  Promise<EvaluationManagerResponse> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
-                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluationManagerResponse, AFError>) in
-                    print(response)
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        fulfill(value)
-                    case .failure(let error):
-                        print(error)
-                        reject(error)
-                    }
-                })
+                        "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluationManagerResponse, AFError>) in
+                            print(response)
+                            switch response.result {
+                            case .success(let value):
+                                print(value)
+                                fulfill(value)
+                            case .failure(let error):
+                                print(error)
+                                reject(error)
+                            }
+                        })
         }
     }
     
     static func showEvaluationManagerDetails(token : String, code : String) -> Promise<EvaluationManagerDetailsResponse>{
-        //        let baseURL = "https://mobile-int.accretio.io/"
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "evaluation/api/campaign-statisticals/codeCampaign/" + code
         print(url)
         return  Promise<EvaluationManagerDetailsResponse> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
-                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluationManagerDetailsResponse, AFError>) in
-                    print(response)
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        fulfill(value)
-                    case .failure(let error):
-                        print(error)
-                        reject(error)
-                    }
-                })
+                        "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluationManagerDetailsResponse, AFError>) in
+                            print(response)
+                            switch response.result {
+                            case .success(let value):
+                                print(value)
+                                fulfill(value)
+                            case .failure(let error):
+                                print(error)
+                                reject(error)
+                            }
+                        })
         }
     }
     
     static func showEvaluationManagerStepsDetails(token : String, id : String) -> Promise<StepsDetailsResponse>{
-        //        let baseURL = "https://mobile-int.accretio.io/"
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
         let url = baseURL + "workflow/api/step-instance/statistics?workflowType=EVALUATION&requestCode=" + id + "&version=2"
         print(url)
         return  Promise<StepsDetailsResponse> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
-                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<StepsDetailsResponse, AFError>) in
-                    print(response)
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        fulfill(value)
-                    case .failure(let error):
-                        print(error)
-                        reject(error)
-                    }
-                })
+                        "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<StepsDetailsResponse, AFError>) in
+                            print(response)
+                            switch response.result {
+                            case .success(let value):
+                                print(value)
+                                fulfill(value)
+                            case .failure(let error):
+                                print(error)
+                                reject(error)
+                            }
+                        })
         }
     }
     
@@ -154,22 +156,23 @@ class EvaluationAPI {
     static func showEvaluationManagerEvaluated(token : String) -> Promise<EvaluatedResponse>{
         let code : String = UserDefaults.standard.string(forKey: "codeEvalManager")!
         //https://accretio-2-tnr.advyteam.com/
-        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        //        let baseURL = "https://accretio-2-tnr.advyteam.com/"
+        let baseURL = "https://mobile-int.accretio.io/"
         let url = baseURL + "evaluation/api/evaluation-cards/campaign/" + code + "/manager?size=5&page=0&level=1"
         print(url)
         return  Promise<EvaluatedResponse> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
-                "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluatedResponse, AFError>) in
-                    print(response)
-                    switch response.result {
-                    case .success(let value):
-                        print(value)
-                        fulfill(value)
-                    case .failure(let error):
-                        print(error)
-                        reject(error)
-                    }
-                })
+                        "Authorization": "Bearer " + token]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<EvaluatedResponse, AFError>) in
+                            print(response)
+                            switch response.result {
+                            case .success(let value):
+                                print(value)
+                                fulfill(value)
+                            case .failure(let error):
+                                print(error)
+                                reject(error)
+                            }
+                        })
         }
     }
     

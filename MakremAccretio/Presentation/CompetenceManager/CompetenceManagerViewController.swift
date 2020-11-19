@@ -112,6 +112,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         self.tableView.reloadData()
     }
     
+    var val : String = ""
     
     //    MARK:- Configuring TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,9 +121,9 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "CompetenceTableViewCell", for: indexPath) as?
-            CompetenceTableViewCell
-            else {
-                return UITableViewCell()
+                CompetenceTableViewCell
+        else {
+            return UITableViewCell()
         }
         print(indexPath.row)
         //        cell.CollaborateurNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")!
@@ -130,7 +131,8 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         
         cell.competence = self.response?.content![indexPath.row]
         cell.skillsLabel = self.skillsLabel
-        print(9)
+        val = (self.response?.content![indexPath.row].codeComponent)!
+        UserDefaults.standard.set(val,forKey:"codeComponent")
         return cell
     }
     
@@ -148,7 +150,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         print(indexPath)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CompetenceCollab") as!
-        CompetenceCollaborateurViewController
+            CompetenceCollaborateurViewController
         vc.response = self.response
         vc.skillsLabel = self.skillsLabel
         vc.index = indexPath.item
@@ -161,7 +163,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         }
         
         vc.nameAndLastNameFromManager = (self.response?.content![indexPath.item].firstName ?? "") + " " +  (self.response?.content![indexPath.item].lastName ?? "")
-     
+        
         self.navigationController?.pushViewController(vc,animated: true)
     }
     

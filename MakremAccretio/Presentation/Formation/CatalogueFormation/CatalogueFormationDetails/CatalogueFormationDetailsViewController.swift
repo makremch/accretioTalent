@@ -19,19 +19,23 @@ protocol CatalogueFormationDetailsDisplayLogic: class
 }
 
 class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormationDetailsDisplayLogic
-    
+
 {
     
-   
+    
     var interactor: CatalogueFormationDetailsBusinessLogic?
     var router: (NSObjectProtocol & CatalogueFormationDetailsRoutingLogic & CatalogueFormationDetailsDataPassing)?
-    
+    weak var viewControllerObjectif: ObjectifCatalogueDisplayLogic?
+
     
     //    MARK: var declarations
     var content : FormationCatalogue? = nil
     var code : String = ""
     
+    
+    @IBOutlet weak var ccc: UILabel!
     //    MARK: - Declaration UI:
+    @IBOutlet weak var demanderButton: UIButton!
     @IBOutlet weak var formateurView: UIView!
     @IBOutlet weak var objectifView: UIView!
     @IBOutlet weak var programmeView: UIView!
@@ -62,6 +66,14 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
             formateurView.alpha = 1
         }
     }
+    
+    @IBAction func demanderOnClick(_ sender: Any) {
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -105,7 +117,7 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     }
     
     // MARK: View lifecycle
-  var formation : FormationCatalogueDetails?
+    var formation : FormationCatalogueDetails?
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -113,20 +125,20 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         designImage ()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.gettingFormationCatalogueById(token: token, code: self.code)
-        let url = URL(string: "https://accretio-2-tnr.advyteam.com/documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (content!.picture)!)
+        let url = URL(string: "https://mobile-int.accretio.io/documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (content!.picture)!)
         imageView.kf.setImage(with: url){
-                    result in
-                    switch result {
-                    case .success:
-                        print(result)
-                        self.imageView.contentMode = UIView.ContentMode.scaleToFill
-                        self.imageView.clipsToBounds = true
-                        break
-                    case .failure:
-                        self.imageView.image = UIImage(named: "noImageAvailable")!
-                        self.imageView.contentMode = UIView.ContentMode.scaleAspectFit
-                    }
-                }
+            result in
+            switch result {
+            case .success:
+                print(result)
+                self.imageView.contentMode = UIView.ContentMode.scaleToFill
+                self.imageView.clipsToBounds = true
+                break
+            case .failure:
+                self.imageView.image = UIImage(named: "noImageAvailable")!
+                self.imageView.contentMode = UIView.ContentMode.scaleAspectFit
+            }
+        }
         imageView.layer.cornerRadius = 15
         formationTitleLabel.text = content?.label
         if content?.duration == nil{
@@ -135,6 +147,8 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
             sessionDuration.text = String((content?.duration)!)
         }
         initiatorNameLastname.text = (content?.initiator?.firstName)! + " " + (content?.initiator?.lastName)!
+        self.responsableNameLabel.text = (content?.trainingManager?.firstName!)! + " " + (content?.trainingManager?.lastName!)!
+        
     }
     
     // MARK: Do something
@@ -152,40 +166,26 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         //nameTextField.text = viewModel.name
     }
     
-    
-    @IBAction func demanderOnClick(_ sender: Any) {
-    }
-    
-    @IBOutlet weak var demanderButton: UIButton!
-    
-    @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
-    
     func designImage (){
         imageView.layer.cornerRadius = 10
         demanderButton.layer.cornerRadius = 8
     }
     
-    
-    
-    
-    
-    
+   
     //    MARK: - Getting data for formation by ID
     func getCatalogueDataDetails(response: FormationCatalogueDetails){
-        print("3assssba")
-        print(response.capacity)
-        print("3assssba")
+        print(response)
         formation = response
+        print("aa")
+        print(formation?.goals?.textArea as Any)
+        print("aa")
         locationLabel.text = formation?.place
         certificationLabel.text = "certification: " + String((formation?.certification)!)
+        print((formation?.goals?.textArea)!)
+        print("wwwwwww")
+        viewControllerObjectif?.setLabel(label: (formation?.goals?.textArea)!)
         
     }
-    
-    
     
     
     

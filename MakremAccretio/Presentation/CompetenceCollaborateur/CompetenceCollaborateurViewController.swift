@@ -22,24 +22,17 @@ protocol CompetenceCollaborateurDisplayLogic: class
 class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceCollaborateurDisplayLogic, IAxisValueFormatter
 {
     
-//    MARK:- IBOutlets
+    //    MARK:- IBOutlets
     @IBOutlet var chartView: RadarChartView!
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
-    
     @IBOutlet weak var viewBgBoth: UIView!
-    
     @IBOutlet weak var PosteLabel: UILabel!
-    
     @IBOutlet weak var nextButtonBO: UIButton!
     @IBOutlet weak var precedentButtonBO: UIButton!
-    
     @IBOutlet weak var noDataMessage: UILabel!
-    
     @IBOutlet weak var chartViewBar: HorizontalBarChartView!
-    
-    
     @IBOutlet weak var addCompetenceButton: UIButton!
     
     
@@ -59,7 +52,7 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     var managerPoste = ""
     var nameAndLastNameFromManager = ""
     
-//    MARK:- Button Actions
+    //    MARK:- Button Actions
     @IBAction func nextButton(_ sender: Any) {
         radarIndex+=1
         let count = (response?.content![self.index].affectationSkillByClassificationDTOList.count) != nil ? response?.content![self.index].affectationSkillByClassificationDTOList.count : 1
@@ -75,11 +68,11 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         radarIndex = radarIndex % (response?.content![self.index].affectationSkillByClassificationDTOList.count)!
         print(radarIndex)
         updateRadar(index: radarIndex)
-
+        
     }
     @IBAction func backButton(_ sender: Any) {
-          self.navigationController?.popViewController(animated: true)
-      }
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     @IBAction func addCompetence(_ sender: Any) {
@@ -130,62 +123,57 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
     // MARK:- View lifecycle
     override func viewDidLoad()
     {
-        
         super.viewDidLoad()
-        doSomething()
-//        PosteLabel.text = (UserDefaults.standard.string(forKey: "poste"))!
-        noDataMessage.isHidden = true
-        nextButtonBO.layer.cornerRadius = 5
-        precedentButtonBO.layer.cornerRadius = 5
-        nextButtonBO.layer.cornerCurve = CALayerCornerCurve.continuous
-        
-        nextButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
-        nextButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
-        nextButtonBO.layer.shadowOpacity = 1
-        nextButtonBO.layer.shadowOffset = .zero
-        nextButtonBO.layer.shadowRadius = 2
-        nextButtonBO.layer.shadowPath = UIBezierPath(rect: nextButtonBO.bounds).cgPath
-        nextButtonBO.layer.shouldRasterize = true
-        nextButtonBO.layer.rasterizationScale = UIScreen.main.scale
-        
-        precedentButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
-        precedentButtonBO.layer.shadowColor = UIColor.systemGray4.cgColor
-        precedentButtonBO.layer.shadowOpacity = 1
-        precedentButtonBO.layer.shadowOffset = .zero
-        precedentButtonBO.layer.shadowRadius = 2
-        precedentButtonBO.layer.shadowPath = UIBezierPath(rect: precedentButtonBO.bounds).cgPath
-        precedentButtonBO.layer.shouldRasterize = true
-        precedentButtonBO.layer.rasterizationScale = UIScreen.main.scale
-        
-        
-        viewBgBoth.layer.cornerRadius = 15
-        viewBgBoth.backgroundColor = UIColor.white
-        viewBgBoth.layer.shadowColor = UIColor.systemGray4.cgColor
-        viewBgBoth.layer.shadowColor = UIColor.systemGray4.cgColor
-        viewBgBoth.layer.shadowOpacity = 1
-        viewBgBoth.layer.shadowOffset = .zero
-        viewBgBoth.layer.shadowRadius = 10
-        viewBgBoth.layer.shadowPath = UIBezierPath(rect: viewBgBoth.bounds).cgPath
-        viewBgBoth.layer.shouldRasterize = true
-        viewBgBoth.layer.rasterizationScale = UIScreen.main.scale
         
         let token = UserDefaults.standard.string(forKey: "accessToken")!
+        doSomething()
+        
+        noDataMessage.isHidden                     = true
+        nextButtonBO.layer.cornerRadius            = 5
+        precedentButtonBO.layer.cornerRadius       = 5
+        nextButtonBO.layer.cornerCurve             = CALayerCornerCurve.continuous
+        
+        nextButtonBO.layer.shadowColor             = UIColor.systemGray4.cgColor
+        nextButtonBO.layer.shadowColor             = UIColor.systemGray4.cgColor
+        nextButtonBO.layer.shadowOpacity           = 1
+        nextButtonBO.layer.shadowOffset            = .zero
+        nextButtonBO.layer.shadowRadius            = 2
+        nextButtonBO.layer.shadowPath              = UIBezierPath(rect: nextButtonBO.bounds).cgPath
+        nextButtonBO.layer.shouldRasterize         = true
+        nextButtonBO.layer.rasterizationScale      = UIScreen.main.scale
+        
+        precedentButtonBO.layer.shadowColor        = UIColor.systemGray4.cgColor
+        precedentButtonBO.layer.shadowColor        = UIColor.systemGray4.cgColor
+        precedentButtonBO.layer.shadowOpacity      = 1
+        precedentButtonBO.layer.shadowOffset       = .zero
+        precedentButtonBO.layer.shadowRadius       = 2
+        precedentButtonBO.layer.shadowPath         = UIBezierPath(rect: precedentButtonBO.bounds).cgPath
+        precedentButtonBO.layer.shouldRasterize    = true
+        precedentButtonBO.layer.rasterizationScale = UIScreen.main.scale
+        
+        viewBgBoth.layer.cornerRadius              = 15
+        viewBgBoth.backgroundColor                 = UIColor.white
+        viewBgBoth.layer.shadowColor               = UIColor.systemGray4.cgColor
+        viewBgBoth.layer.shadowColor               = UIColor.systemGray4.cgColor
+        viewBgBoth.layer.shadowOpacity             = 1
+        viewBgBoth.layer.shadowOffset              = .zero
+        viewBgBoth.layer.shadowRadius              = 10
+        viewBgBoth.layer.shadowPath                = UIBezierPath(rect: viewBgBoth.bounds).cgPath
+        viewBgBoth.layer.shouldRasterize           = true
+        viewBgBoth.layer.rasterizationScale        = UIScreen.main.scale
+        
         if(self.response == nil) {
             self.interactor?.getCompetence(token: token)
             addCompetenceButton.isHidden  = true
             PosteLabel.text = UserDefaults.standard.string(forKey: "poste")
             NameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")!
-        }
-        else {
+        } else {
             self.updateRadar(index: self.radarIndex)
             print(managerPoste,nameAndLastNameFromManager)
             print("assba")
             PosteLabel.text = managerPoste
             NameLabel.text = nameAndLastNameFromManager
         }
-        // Do any additional setup after loading the view.
-
-        print("qqqqq")
         setChartData(label: "Waiting for data", values: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
         // Do any additional setup after loading the view.
         self.title = "Horizontal Bar Char"
@@ -202,33 +190,30 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
                         .toggleBarBorders]
         
         self.setup(barLineChartView: chartViewBar)
-
-        chartViewBar.delegate = self
         
-        chartViewBar.drawBarShadowEnabled = true
+        chartViewBar.delegate                 = self
+        chartViewBar.drawBarShadowEnabled     = true
         chartViewBar.drawValueAboveBarEnabled = true
+        chartViewBar.maxVisibleCount          = 60
         
-        chartViewBar.maxVisibleCount = 60
+        let xAxis                             = chartViewBar.xAxis
+        xAxis.labelPosition                   = .bottom
+        xAxis.labelFont                       = .systemFont(ofSize: 10)
+        xAxis.drawAxisLineEnabled             = false
+        xAxis.granularity                     = 10
         
-        let xAxis = chartViewBar.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.labelFont = .systemFont(ofSize: 10)
-        xAxis.drawAxisLineEnabled = false
-        xAxis.granularity = 10
+        let leftAxis                          = chartViewBar.leftAxis
+        leftAxis.labelFont                    = .systemFont(ofSize: 0)
+        leftAxis.drawAxisLineEnabled          = false
+        leftAxis.drawGridLinesEnabled         = false
+        leftAxis.axisMinimum                  = 0
         
+        let rightAxis                         = chartViewBar.rightAxis
+        rightAxis.enabled                     = false
+        rightAxis.labelFont                   = .systemFont(ofSize: 10)
+        rightAxis.drawAxisLineEnabled         = false
+        rightAxis.axisMinimum                 = 0
         
-        let leftAxis = chartViewBar.leftAxis
-        leftAxis.labelFont = .systemFont(ofSize: 0)
-        leftAxis.drawAxisLineEnabled = false
-        leftAxis.drawGridLinesEnabled = false
-        leftAxis.axisMinimum = 0
-
-        let rightAxis = chartViewBar.rightAxis
-        rightAxis.enabled = false
-        rightAxis.labelFont = .systemFont(ofSize: 10)
-        rightAxis.drawAxisLineEnabled = false
-        rightAxis.axisMinimum = 0
-
         let l = chartViewBar.legend
         l.horizontalAlignment = .left
         l.verticalAlignment = .bottom
@@ -238,24 +223,19 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         l.formSize = 8
         l.font = UIFont(name: "Arial Rounded MT Bold", size: 11)!
         l.xEntrySpace = 4
-//        chartView.legend = l
-
+        //        chartView.legend = l
         chartViewBar.fitBars = false
-
-        
         chartViewBar.animate(yAxisDuration: 1.5)
         self.setChartBarData(values: [0] , labels: ["0"])
-
-//        self.updateChartData()
+        
+        //        self.updateChartData()
         settingViewLabel()
     }
     
     func setChartBarData(values : [Double] , labels : [String]   ) {
-
         let d = values.enumerated().map { BarChartDataEntry(x:Double($0 * 10) , y : $1 ) }
         let set1 = BarChartDataSet(entries: d,label: "")
         set1.drawIconsEnabled = false
-        
         let data = BarChartData(dataSet: set1)
         data.setValueFont(UIFont(name:"Arial Rounded MT Bold", size:10)!)
         let xAxis = chartViewBar.xAxis
@@ -344,41 +324,41 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
         }
         return values
     }
-
-
-   
-//    MARK:- Getting data from API
+    
+    
+    
+    //    MARK:- Getting data from API
     func getDataCompetences(response: CompetenseResponse,skillsLabel:[String: String]){
         
         self.response = response
         
         self.skillsLabel = skillsLabel
-         
+        
         self.updateRadar(index: self.radarIndex)
-       
+        
     }
-
+    
     override func updateChartData() {
-           if self.shouldHideData {
-               chartView.data = nil
-               return
-           }
-       }
+        if self.shouldHideData {
+            chartView.data = nil
+            return
+        }
+    }
     
     func hideRadar()  {
         chartView.isHidden = true
         chartViewBar.isHidden =  true
     }
-       
+    
     func setChartData(label  : String , values : [Double]) {
-
-//        let mult: UInt32 = 80
-//        let min: UInt32 = 20
+        
+        //        let mult: UInt32 = 80
+        //        let min: UInt32 = 20
         print("somme:",activities.count)
         chartView.clear()
         chartView.clearValues()
         chartView.updateConstraints()
-//        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
+        //        let block: (Int) -> RadarChartDataEntry = { _ in return RadarChartDataEntry(value: Double(0) )}
         let entries1 = values.map { RadarChartDataEntry(value : $0) }
         let set1 = RadarChartDataSet(entries: entries1,label: label)
         //           set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
@@ -430,29 +410,28 @@ class CompetenceCollaborateurViewController: DemoBaseViewController, CompetenceC
             chartView.isHidden = true
         }
         
-       }
+    }
     
-   
+    
     func settingViewLabel(){
-//        NameLabel.text! = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
+        //        NameLabel.text! = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
         NameLabel.textColor = UIColor.black
-        NameLabel.alpha = 1
-        userImage.alpha = 1
-        userView.alpha = 1
-//        userView.isOpaque = false
+        NameLabel.alpha     = 1
+        userImage.alpha     = 1
+        userView.alpha      = 1
+        //        userView.isOpaque = false
         
-        userImage.layer.cornerRadius = 1
-        
-        userView.layer.cornerRadius = 10
-        userView.backgroundColor = UIColor.white
-        userView.layer.shadowColor = UIColor.systemGray4.cgColor
-        userView.layer.shadowColor = UIColor.systemGray4.cgColor
-        userView.layer.shadowOpacity = 1
-        userView.layer.shadowOffset = .zero
-        userView.layer.shadowRadius = 10
-        userView.layer.shadowPath = UIBezierPath(rect: userView.bounds).cgPath
-        userView.layer.shouldRasterize = true
-        userView.layer.rasterizationScale = UIScreen.main.scale
+        userImage.layer.cornerRadius       = 1
+        userView.layer.cornerRadius        = 10
+        userView.backgroundColor           = UIColor.white
+        userView.layer.shadowColor         = UIColor.systemGray4.cgColor
+        userView.layer.shadowColor         = UIColor.systemGray4.cgColor
+        userView.layer.shadowOpacity       = 1
+        userView.layer.shadowOffset        = .zero
+        userView.layer.shadowRadius        = 10
+        userView.layer.shadowPath          = UIBezierPath(rect: userView.bounds).cgPath
+        userView.layer.shouldRasterize     = true
+        userView.layer.rasterizationScale  = UIScreen.main.scale
     }
 }
 
@@ -723,7 +702,7 @@ class DemoBaseViewController: UIViewController, ChartViewDelegate {
         l.xEntrySpace = 7
         l.yEntrySpace = 0
         l.yOffset = 0
-//        chartView.legend = l
+        //        chartView.legend = l
     }
     
     func setup(radarChartView chartView: RadarChartView) {
@@ -732,7 +711,7 @@ class DemoBaseViewController: UIViewController, ChartViewDelegate {
     
     func setup(barLineChartView chartView: BarLineChartViewBase) {
         chartView.chartDescription?.enabled = false
-                
+        
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
         chartView.pinchZoomEnabled = false
@@ -831,5 +810,5 @@ public class ValueFormatter: NSObject,IAxisValueFormatter {
         print(value)
         return skills[Int(value / 10)]
     }
-        
+    
 }

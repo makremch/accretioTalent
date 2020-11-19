@@ -89,7 +89,7 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
         userNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
         let poste = (UserDefaults.standard.string(forKey: "poste")!)
         print(poste)
-        postLabel.text = poste
+        //postLabel.text = poste
         iCarosel.showsHorizontalScrollIndicator = false
     }
     

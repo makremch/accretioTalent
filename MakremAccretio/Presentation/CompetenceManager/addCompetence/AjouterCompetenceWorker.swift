@@ -27,4 +27,8 @@ class AjouterCompetenceWorker
         return CompetecenceAPI.showCompetenceLevels(token: token, codeClassification: codeClassification)
     }
     
+    func addCompetenceByManager(token:String,params:[String:Any],code:String)->Promise<ResponseAddingCompetence>{
+        return CompetecenceAPI.addCompetence(token: token, params: params, code: code)
+    }
+    
 }

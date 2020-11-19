@@ -48,6 +48,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         if searchActive {
             return currentDataValueArray.count
         }
+        print(dataValueCollaborateur.count)
         return dataValueCollaborateur.count
     }
     
@@ -73,7 +74,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
                         print("5edmet : ",result)
                         break
                     case .failure:
-                        print("l3asba ken te5dem :      " ,result)
+                      
                         cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
                     }
                 }
