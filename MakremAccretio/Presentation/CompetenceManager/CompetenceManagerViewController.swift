@@ -131,8 +131,7 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         
         cell.competence = self.response?.content![indexPath.row]
         cell.skillsLabel = self.skillsLabel
-        val = (self.response?.content![indexPath.row].codeComponent)!
-        UserDefaults.standard.set(val,forKey:"codeComponent")
+        
         return cell
     }
     
@@ -163,7 +162,10 @@ class CompetenceManagerViewController: UIViewController, CompetenceManagerDispla
         }
         
         vc.nameAndLastNameFromManager = (self.response?.content![indexPath.item].firstName ?? "") + " " +  (self.response?.content![indexPath.item].lastName ?? "")
-        
+        val = (self.response?.content![indexPath.row].codeComponent)!
+        print(val)
+        print("---------------------------------------------------")
+        UserDefaults.standard.set(val,forKey:"codeComponent")
         self.navigationController?.pushViewController(vc,animated: true)
     }
     

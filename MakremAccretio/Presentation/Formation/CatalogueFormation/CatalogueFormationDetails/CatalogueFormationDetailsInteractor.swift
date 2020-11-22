@@ -18,7 +18,7 @@ protocol CatalogueFormationDetailsBusinessLogic
 {
     func doSomething(request: CatalogueFormationDetails.Something.Request)
     func gettingFormationCatalogueById(token: String, code : String)
-    
+    func getSkills(token:String)
     
 }
 
@@ -42,6 +42,22 @@ class CatalogueFormationDetailsInteractor: CatalogueFormationDetailsBusinessLogi
         }
     }
     
+    func getSkills(token:String){
+        worker = CatalogueFormationDetailsWorker()
+        worker?.getSkills(token: token).then(){
+            skills in
+            print(skills)
+            var skillsLabel: [String: String] = [:]
+            
+            for skill in skills {
+                skillsLabel[skill.code!] = skill.label
+            }
+            self.presenter?.getSkills(response : skillsLabel)
+        }.catch{
+            error in
+            print(error)
+        }
+    }
     
     
     var presenter: CatalogueFormationDetailsPresentationLogic?

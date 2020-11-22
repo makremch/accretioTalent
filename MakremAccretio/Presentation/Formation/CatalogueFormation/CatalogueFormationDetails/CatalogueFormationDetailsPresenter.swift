@@ -16,7 +16,7 @@ protocol CatalogueFormationDetailsPresentationLogic
 {
     func presentSomething(response: CatalogueFormationDetails.Something.Response)
     func showCatalogueById(response : FormationCatalogueDetails)
-    
+    func getSkills(response : [String: String])
 }
 
 class CatalogueFormationDetailsPresenter: CatalogueFormationDetailsPresentationLogic
@@ -35,5 +35,9 @@ class CatalogueFormationDetailsPresenter: CatalogueFormationDetailsPresentationL
     
     func showCatalogueById(response: FormationCatalogueDetails) {
         viewController?.getCatalogueDataDetails(response: response)
+    }
+    
+    func getSkills(response:[String: String]){
+        viewController?.getSkills(response:response)
     }
 }

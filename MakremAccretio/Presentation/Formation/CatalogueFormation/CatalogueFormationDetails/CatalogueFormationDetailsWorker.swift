@@ -24,5 +24,8 @@ class CatalogueFormationDetailsWorker
         return FormationAPI.gettingFormationCatalogueById(token: token, code: code)
     }
     
+    func getSkills(token:String)->Promise<[CompetenseLabelResponseElement]>{
+        return CompetecenceAPI.showCompetenceLabelCollaborateur(token:token)
+    }
     
 }

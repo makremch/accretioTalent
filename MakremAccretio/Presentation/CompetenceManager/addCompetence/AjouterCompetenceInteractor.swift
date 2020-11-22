@@ -17,7 +17,7 @@ protocol AjouterCompetenceBusinessLogic
     func doSomething(request: AjouterCompetence.Something.Request)
     func getListCompetenceManager(token : String )
     func getListCompetenceLevel(token : String, codeCompetence : String )
-    func addCompetenceByManager(token : String, params:[String:Any], code : String)
+    func addCompetenceByManager(token : String, params:[String:Any])
 }
 
 protocol AjouterCompetenceDataStore
@@ -73,8 +73,8 @@ class AjouterCompetenceInteractor: AjouterCompetenceBusinessLogic, AjouterCompet
         }
     }
     
-    func addCompetenceByManager(token: String, params: [String : Any],code :String) {
-        self.worker?.addCompetenceByManager(token: token, params: params, code: code).then(){
+    func addCompetenceByManager(token: String, params: [String : Any]) {
+        self.worker?.addCompetenceByManager(token: token, params: params).then(){
             responseCompetenceAdd in
             print(responseCompetenceAdd)
             self.presenter?.addCompetenceByManager(response: responseCompetenceAdd)

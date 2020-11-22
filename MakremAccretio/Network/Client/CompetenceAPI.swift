@@ -82,7 +82,7 @@ class CompetecenceAPI {
                     
                 case .success(let value):
                     print(value)
-                    print(value.content?.count)
+                    print(value.content?.count as Any)
                     
                     fulfill(value)
                 case .failure(let error):
@@ -140,8 +140,9 @@ class CompetecenceAPI {
         }
     }
     
-    static func addCompetence(token : String,params : [String: Any], code : String) ->Promise<ResponseAddingCompetence>{
+    static func addCompetence(token : String,params : [String: Any]) ->Promise<ResponseAddingCompetence>{
         //        let url = base + "training/api/training-offers/search?page=" + String(page) + "&size=" + String(size) + "&sort=creationDate,DESC"
+        let code : String = params["codeComponent"] as! String
         let url = "https://mobile-int.accretio.io/ms-talent/api/affectation-skills/" + code + "/skill?skillAffectationType=EMPLOYEE"
         
         print(url)

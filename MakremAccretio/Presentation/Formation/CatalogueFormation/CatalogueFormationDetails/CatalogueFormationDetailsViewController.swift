@@ -11,34 +11,31 @@
 //
 
 import UIKit
+import WebKit
+
 
 protocol CatalogueFormationDetailsDisplayLogic: class
 {
     func displaySomething(viewModel: CatalogueFormationDetails.Something.ViewModel)
     func getCatalogueDataDetails(response: FormationCatalogueDetails)
+    func getSkills(response:[String:String])
 }
 
 class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormationDetailsDisplayLogic
 
 {
     
-    
+    //    MARK: var declarations
     var interactor: CatalogueFormationDetailsBusinessLogic?
     var router: (NSObjectProtocol & CatalogueFormationDetailsRoutingLogic & CatalogueFormationDetailsDataPassing)?
     weak var viewControllerObjectif: ObjectifCatalogueDisplayLogic?
-
-    
-    //    MARK: var declarations
     var content : FormationCatalogue? = nil
     var code : String = ""
+    var skillsLabel : [String:String] = ["":""]
     
     
-    @IBOutlet weak var ccc: UILabel!
     //    MARK: - Declaration UI:
     @IBOutlet weak var demanderButton: UIButton!
-    @IBOutlet weak var formateurView: UIView!
-    @IBOutlet weak var objectifView: UIView!
-    @IBOutlet weak var programmeView: UIView!
     @IBOutlet weak var segChoiceRubrique: UISegmentedControl!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var formationTitleLabel: UILabel!
@@ -49,21 +46,41 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     @IBOutlet weak var initiatorNameLastname: UILabel!
     @IBOutlet weak var effectifNumber: UILabel!
     @IBOutlet weak var sessionDuration: UILabel!
+    @IBOutlet weak var ccc: UILabel!
+    @IBOutlet weak var webViewObjectif: WKWebView!
+    @IBOutlet weak var objectifView: UIView!
+    @IBOutlet weak var programView: UIView!
+    @IBOutlet weak var webViewProgramme: WKWebView!
+    
     
     
     @IBAction func sgmentationControllerChangingView(_ sender: Any) {
         if segChoiceRubrique.selectedSegmentIndex == 0 {
-            objectifView.alpha = 1
-            programmeView.alpha = 0
-            formateurView.alpha = 0
+            self.programView.alpha = 0
+            programView.frame = CGRect(x:-400,y:506,width: self.programView.frame.width, height: self.programView.frame.height)
+            UIView.animate(withDuration: 0.4){
+                self.objectifView.frame = CGRect(x: 20,y: 506,width: self.objectifView.frame.width, height: self.objectifView.frame.height)
+                self.objectifView.alpha = 1
+            }
+            
         }else if segChoiceRubrique.selectedSegmentIndex == 1 {
-            objectifView.alpha = 0
-            programmeView.alpha = 1
-            formateurView.alpha = 0
-        } else{
-            objectifView.alpha = 0
-            programmeView.alpha = 0
-            formateurView.alpha = 1
+            
+            UIView.transition(with: segChoiceRubrique, duration: 0.4,
+                              options: .preferredFramesPerSecond30,
+                              animations: {
+                                self.programView.frame = CGRect(x: 20,y: 506,width: self.programView.frame.width, height: self.programView.frame.height)
+                                self.objectifView.alpha = 0
+                                self.programView.alpha = 1
+                          })
+            UIView.animate(withDuration: 1){
+                self.objectifView.frame = CGRect(x: 1200,y: 506,width: self.objectifView.frame.width, height: self.objectifView.frame.height)
+                //self.sourceButton.frame = CGRect(x: 26,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+                //self.cancelSourceButton.alpha = 0
+                self.objectifView.alpha = 1
+            }
+            
+        } else if segChoiceRubrique.selectedSegmentIndex == 2{
+            objectifView.alpha = 1
         }
     }
     
@@ -124,9 +141,10 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         doSomething()
         designImage ()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
+        self.interactor?.getSkills(token:token)
         self.interactor?.gettingFormationCatalogueById(token: token, code: self.code)
         let url = URL(string: "https://mobile-int.accretio.io/documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (content!.picture)!)
-        imageView.kf.setImage(with: url){
+        imageView.kf.setImage(with: url, completionHandler: {
             result in
             switch result {
             case .success:
@@ -138,7 +156,7 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
                 self.imageView.image = UIImage(named: "noImageAvailable")!
                 self.imageView.contentMode = UIView.ContentMode.scaleAspectFit
             }
-        }
+        })
         imageView.layer.cornerRadius = 15
         formationTitleLabel.text = content?.label
         if content?.duration == nil{
@@ -167,8 +185,35 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     }
     
     func designImage (){
-        imageView.layer.cornerRadius = 10
-        demanderButton.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = 2
+        
+        demanderButton.layer.cornerRadius = 5
+        demanderButton.layer.borderWidth = 5
+        demanderButton.layer.borderColor = UIColor.white.cgColor
+        
+        objectifView.layer.cornerRadius              = 15
+        objectifView.backgroundColor                 = UIColor.white
+        objectifView.layer.shadowColor               = UIColor.systemGray4.cgColor
+        objectifView.layer.shadowColor               = UIColor.systemGray4.cgColor
+        objectifView.layer.shadowOpacity             = 1
+        objectifView.layer.shadowOffset              = .zero
+        objectifView.layer.shadowRadius              = 10
+        objectifView.layer.shadowPath                = UIBezierPath(rect: objectifView.bounds).cgPath
+        objectifView.layer.shouldRasterize           = true
+        objectifView.layer.rasterizationScale        = UIScreen.main.scale
+        
+        programView.layer.cornerRadius              = 15
+        programView.backgroundColor                 = UIColor.white
+        programView.layer.shadowColor               = UIColor.systemGray4.cgColor
+        programView.layer.shadowColor               = UIColor.systemGray4.cgColor
+        programView.layer.shadowOpacity             = 1
+        programView.layer.shadowOffset              = .zero
+        programView.layer.shadowRadius              = 10
+        programView.layer.shadowPath                = UIBezierPath(rect: programView.bounds).cgPath
+        programView.layer.shouldRasterize           = true
+        programView.layer.rasterizationScale        = UIScreen.main.scale
+        
+        self.programView.alpha = 0
     }
     
    
@@ -177,18 +222,47 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         print(response)
         formation = response
         print("aa")
-        print(formation?.goals?.textArea as Any)
+        let goals = (formation?.goals?.textArea)! as String
+        let programs = (formation?.program?.textArea)!
+        print((formation?.goals?.textArea)! as String)
         print("aa")
+        print((formation?.targetSkills)!)
+//        print(skillsLabel[(formation?.targetSkills)!])
+        print("--------------------------------------")
         locationLabel.text = formation?.place
         certificationLabel.text = "certification: " + String((formation?.certification)!)
         print((formation?.goals?.textArea)!)
         print("wwwwwww")
         viewControllerObjectif?.setLabel(label: (formation?.goals?.textArea)!)
+        let html = """
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.1.min.css"/>
+<style>
+p{font-size : 30px}
+</style>
+</head>
+""" + goals
+        webViewObjectif.loadHTMLString(html, baseURL: nil)
         
+        
+        let htmlProg  =  """
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.1.min.css"/>
+<style>
+p{font-size : 50px}
+</style>
+</head>
+""" + programs
+        webViewProgramme.loadHTMLString(htmlProg, baseURL: nil)
     }
     
     
     
     
+    func getSkills(response:[String: String]){
+        print(response)
+        skillsLabel = response
+        
+    }
     
 }

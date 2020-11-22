@@ -41,8 +41,8 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     @IBOutlet weak var viewAdding              : UIView!
     @IBOutlet weak var evaluationButton        : UIButton!
     @IBOutlet weak var recrutingButton         : UIButton!
-    @IBOutlet weak var cancelSourceButton: UIButton!
-    @IBOutlet weak var formationButton: UIButton!
+    @IBOutlet weak var cancelSourceButton      : UIButton!
+    @IBOutlet weak var formationButton         : UIButton!
     
     
     
@@ -60,7 +60,9 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
     var codeSkillToInsert      : String          = ""
     var skillLevelToInsert     : String          = ""
     var codeComponentToInsert  : String          = UserDefaults.standard.string(forKey: "codeComponent")!
-    
+    let token                                    = UserDefaults.standard.string(forKey: "accessToken")!
+    var params                 : [String:Any]    = ["":""]
+    let code                   : String          = UserDefaults.standard.string(forKey: "codeComponent")!
     
     // MARK:- Button actions :
     @IBAction func selectionnerCompetenceOnClick(_ sender: Any) {
@@ -197,9 +199,7 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
         }
     }
     
-    let token = UserDefaults.standard.string(forKey: "accessToken")!
-    var params : [String:Any] = ["":""]
-    let code : String = UserDefaults.standard.string(forKey: "codeComponent")!
+    
     @IBAction func validerOnClick(_ sender: Any) {
         params = [
               "code": "",
@@ -207,10 +207,10 @@ class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDispla
             "skillLevel": self.skillLevelToInsert,
               "source": "SOR_RECR",
               "acquisitionDate": "1606082400000",
-            "codeComponent": self.codeComponentToInsert,
+            "codeComponent": code,
               "historicEmployeeAffectationSkills": ""
         ]
-        self.interactor?.addCompetenceByManager(token: token, params: params, code: code)
+        self.interactor?.addCompetenceByManager(token: token, params: params)
         self.navigationController?.popViewController(animated: true)
         
     }
