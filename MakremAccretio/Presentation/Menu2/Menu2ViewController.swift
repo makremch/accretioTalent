@@ -24,7 +24,11 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
     @IBOutlet weak var iCarosel:UICollectionView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var postLabel: UILabel!
-    
+    @IBOutlet weak var logoutView: UIView!
+    @IBAction func paramsOnClick(_ sender: Any) {
+        logoutView.alpha = 1
+        logoutView.isHidden = false
+    }
     
     var images: [UIImage] = [
         UIImage(named: "MobiliteInterneCartoon") ?? UIImage(),
@@ -91,6 +95,12 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
         print(poste)
         //postLabel.text = poste
         iCarosel.showsHorizontalScrollIndicator = false
+        logoutView.alpha = 0
+        logoutView.isHidden = true
+        
+        let blurredView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterialDark))
+        blurredView.frame = self.view.bounds
+        logoutView.addSubview(blurredView)
     }
     
     // MARK: Do something

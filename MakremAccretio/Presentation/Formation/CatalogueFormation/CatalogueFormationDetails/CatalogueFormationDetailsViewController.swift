@@ -18,7 +18,7 @@ protocol CatalogueFormationDetailsDisplayLogic: class
 {
     func displaySomething(viewModel: CatalogueFormationDetails.Something.ViewModel)
     func getCatalogueDataDetails(response: FormationCatalogueDetails)
-    func getSkills(response:[String:String])
+    func getSkills(response:[String: String])
 }
 
 class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormationDetailsDisplayLogic
@@ -26,32 +26,33 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
 {
     
     //    MARK: var declarations
-    var interactor: CatalogueFormationDetailsBusinessLogic?
-    var router: (NSObjectProtocol & CatalogueFormationDetailsRoutingLogic & CatalogueFormationDetailsDataPassing)?
-    weak var viewControllerObjectif: ObjectifCatalogueDisplayLogic?
-    var content : FormationCatalogue? = nil
-    var code : String = ""
-    var skillsLabel : [String:String] = ["":""]
     
+    weak var viewControllerObjectif: ObjectifCatalogueDisplayLogic?
+    var content                    : FormationCatalogue?          = nil
+    var code                       : String                       = ""
+    var skillsLabel                : [String:String]              = ["":""]
+    var interactor                 : CatalogueFormationDetailsBusinessLogic?
+    var router                     : (NSObjectProtocol & CatalogueFormationDetailsRoutingLogic & CatalogueFormationDetailsDataPassing)?
     
     //    MARK: - Declaration UI:
-    @IBOutlet weak var demanderButton: UIButton!
-    @IBOutlet weak var segChoiceRubrique: UISegmentedControl!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var formationTitleLabel: UILabel!
-    @IBOutlet weak var responsableNameLabel: UILabel!
-    @IBOutlet weak var certificationLabel: UILabel!
-    @IBOutlet weak var interExternLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var initiatorNameLastname: UILabel!
-    @IBOutlet weak var effectifNumber: UILabel!
-    @IBOutlet weak var sessionDuration: UILabel!
-    @IBOutlet weak var ccc: UILabel!
-    @IBOutlet weak var webViewObjectif: WKWebView!
-    @IBOutlet weak var objectifView: UIView!
-    @IBOutlet weak var programView: UIView!
-    @IBOutlet weak var webViewProgramme: WKWebView!
-    
+    @IBOutlet weak var demanderButton            : UIButton!
+    @IBOutlet weak var segChoiceRubrique         : UISegmentedControl!
+    @IBOutlet weak var imageView                 : UIImageView!
+    @IBOutlet weak var formationTitleLabel       : UILabel!
+    @IBOutlet weak var responsableNameLabel      : UILabel!
+    @IBOutlet weak var certificationLabel        : UILabel!
+    @IBOutlet weak var interExternLabel          : UILabel!
+    @IBOutlet weak var locationLabel             : UILabel!
+    @IBOutlet weak var initiatorNameLastname     : UILabel!
+    @IBOutlet weak var effectifNumber            : UILabel!
+    @IBOutlet weak var sessionDuration           : UILabel!
+    @IBOutlet weak var ccc                       : UILabel!
+    @IBOutlet weak var webViewObjectif           : WKWebView!
+    @IBOutlet weak var objectifView              : UIView!
+    @IBOutlet weak var programView               : UIView!
+    @IBOutlet weak var webViewProgramme          : WKWebView!
+    @IBOutlet weak var formateurTableView        : UITableView!
+    @IBOutlet weak var formateurView             : UIView!
     
     
     @IBAction func sgmentationControllerChangingView(_ sender: Any) {
@@ -109,16 +110,16 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     
     private func setup()
     {
-        let viewController = self
-        let interactor = CatalogueFormationDetailsInteractor()
-        let presenter = CatalogueFormationDetailsPresenter()
-        let router = CatalogueFormationDetailsRouter()
+        let viewController        = self
+        let interactor            = CatalogueFormationDetailsInteractor()
+        let presenter             = CatalogueFormationDetailsPresenter()
+        let router                = CatalogueFormationDetailsRouter()
         viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+        router.dataStore          = interactor
     }
     
     // MARK: Routing
@@ -185,11 +186,11 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     }
     
     func designImage (){
-        imageView.layer.cornerRadius = 2
+        imageView.layer.cornerRadius                 = 2
         
-        demanderButton.layer.cornerRadius = 5
-        demanderButton.layer.borderWidth = 5
-        demanderButton.layer.borderColor = UIColor.white.cgColor
+        demanderButton.layer.cornerRadius            = 5
+        demanderButton.layer.borderWidth             = 3
+        demanderButton.layer.borderColor             = UIColor.white.cgColor
         
         objectifView.layer.cornerRadius              = 15
         objectifView.backgroundColor                 = UIColor.white
@@ -214,17 +215,19 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         programView.layer.rasterizationScale        = UIScreen.main.scale
         
         self.programView.alpha = 0
+        
     }
     
-   
+    
+    
     //    MARK: - Getting data for formation by ID
     func getCatalogueDataDetails(response: FormationCatalogueDetails){
         print(response)
-        formation = response
+        self.formation = response
         print("aa")
         let goals = (formation?.goals?.textArea)! as String
         let programs = (formation?.program?.textArea)!
-        print((formation?.goals?.textArea)! as String)
+        print((formation?.trainer)!.count)
         print("aa")
         print((formation?.targetSkills)!)
 //        print(skillsLabel[(formation?.targetSkills)!])
@@ -264,5 +267,32 @@ p{font-size : 50px}
         skillsLabel = response
         
     }
+    
+}
+
+extension CatalogueFormationDetailsViewController : UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if formation?.trainer!.count != 0 {
+            return 5
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "formateurCell", for: indexPath) as?
+            CFDetailsViewCell
+            else {
+                return UITableViewCell()
+        }
+        if (formation?.trainer![indexPath.row].firstName)! != "" && (formation?.trainer![indexPath.row].lastName)! != "" {
+        cell.nomFormateurLabel.text = (formation?.trainer![indexPath.row].firstName)! as String + " " + (formation?.trainer![indexPath.row].lastName)!
+        }
+        cell.emailFormateurLabel.text = (formation?.trainer![indexPath.row].email)!
+        cell.telephoneFormateurLabel.text = (formation?.trainer![indexPath.row].phone)!
+        return cell
+    }
+    
+    
+    
     
 }

@@ -70,6 +70,7 @@
 		F44AB25524CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */; };
 		F44F72F324CDA130004BA958 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F72F124CDA130004BA958 /* RadarMarkerView.swift */; };
 		F44F72F424CDA130004BA958 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44F72F224CDA130004BA958 /* RadarMarkerView.xib */; };
+		F462EE7B256B510600A946EF /* CFDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462EE7A256B510600A946EF /* CFDetailsViewCell.swift */; };
 		F472C01B250D54FB00A8F7E1 /* responseOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */; };
 		F472FCC224E6E9C20014A773 /* FormationCollaborateurDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */; };
 		F472FCCA24E81B970014A773 /* Menu2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC424E81B970014A773 /* Menu2Presenter.swift */; };
@@ -348,6 +349,7 @@
 		F44AB24F24CA15FB0063E9B9 /* DetailsManagerEvalDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsManagerEvalDetailsInteractor.swift; sourceTree = "<group>"; };
 		F44F72F124CDA130004BA958 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		F44F72F224CDA130004BA958 /* RadarMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
+		F462EE7A256B510600A946EF /* CFDetailsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFDetailsViewCell.swift; sourceTree = "<group>"; };
 		F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = responseOfAdd.swift; sourceTree = "<group>"; };
 		F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurDetail.swift; sourceTree = "<group>"; };
 		F472FCC424E81B970014A773 /* Menu2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu2Presenter.swift; sourceTree = "<group>"; };
@@ -775,6 +777,7 @@
 				F47CA6902471957100C6ACB1 /* CatalogueFormationDetailsViewController.swift */,
 				F47CA6912471957100C6ACB1 /* CatalogueFormationDetailsInteractor.swift */,
 				F4FA44F424A8ACDE0071AABC /* CatalogueViewController.swift */,
+				F462EE7A256B510600A946EF /* CFDetailsViewCell.swift */,
 			);
 			path = CatalogueFormationDetails;
 			sourceTree = "<group>";
@@ -1513,6 +1516,7 @@
 				F4F7EE62243345B900CDF58B /* MenuWorker.swift in Sources */,
 				F4461504240FF37600D4F567 /* TalentEndpoint.swift in Sources */,
 				F47CA6942471957200C6ACB1 /* CatalogueFormationDetailsRouter.swift in Sources */,
+				F462EE7B256B510600A946EF /* CFDetailsViewCell.swift in Sources */,
 				F44614F5240D4F8A00D4F567 /* MobiliteCollaborateur.swift in Sources */,
 				F4B470D62456BF8200CFF242 /* FormationInteractor.swift in Sources */,
 				F47CA673246AE12100C6ACB1 /* CatalogueFormationModels.swift in Sources */,
