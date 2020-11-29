@@ -28,7 +28,7 @@ open class UPCarouselFlowLayout: UICollectionViewFlowLayout {
     @IBInspectable open var sideItemScale: CGFloat = 0.6
     @IBInspectable open var sideItemAlpha: CGFloat = 0.6
     @IBInspectable open var sideItemShift: CGFloat = 0.0
-    open var spacingMode = UPCarouselFlowLayoutSpacingMode.fixed(spacing: 40)
+    open var spacingMode = UPCarouselFlowLayoutSpacingMode.fixed(spacing: 10)
     
     fileprivate var state = LayoutState(size: CGSize.zero, direction: .horizontal)
     
@@ -59,7 +59,7 @@ open class UPCarouselFlowLayout: UICollectionViewFlowLayout {
         let isHorizontal = (self.scrollDirection == .horizontal)
         
         let yInset = (collectionSize.height - self.itemSize.height) / 2
-        let xInset = (collectionSize.width - self.itemSize.width) / 4.5
+        let xInset = (collectionSize.width - self.itemSize.width) / 2
         self.sectionInset = UIEdgeInsets(top: yInset, left: xInset, bottom: yInset, right: xInset)
         
         let side = isHorizontal ? self.itemSize.width : self.itemSize.height

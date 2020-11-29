@@ -60,8 +60,7 @@ class FormationInteractor: FormationBusinessLogic, FormationDataStore
         worker = FormationWorker()
         worker?.getListFormationMesDemandes(token: token).then(){
             formationValidation in
-            print("in Interactor formation mes demandes ***********************")
-            print(formationValidation)
+            
             self.presenter?.showFormationMyDemandes(response: formationValidation)
         }.catch{
             error in

@@ -24,7 +24,7 @@ class FormationWorker
         return FormationAPI.showListFormationManager(token:token)
     }
     
-    func getListFormationMesDemandes(token : String) -> Promise<ResponseFormation> {
+    func getListFormationMesDemandes(token : String) -> Promise<MesFromationResponse> {
         return FormationAPI.showListFormationManagerMesDemandes(token: token)
     }
     

@@ -31,7 +31,7 @@ struct InitiatorNewCatalogue: Codable {
 
 // MARK: - TrainingOfferCode
 struct TrainingOfferCode: Codable {
-    let code: JSONNull?
+    let code: String?
 }
 
 // MARK: - Encode/decode helpers

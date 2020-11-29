@@ -12,29 +12,43 @@ import UIKit
 class DemandeTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var NomFormationLabel: UILabel!
-    @IBOutlet weak var InitiateurLabel: UILabel!
-    @IBOutlet weak var nbreParticipantsLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var dateCreationLabel: UILabel!
-    @IBOutlet weak var cellViewDecoration: UIView!
-    @IBOutlet weak var statusView: UIView!
-    
+    @IBOutlet weak var MesDemandesView         : UIView!
+    @IBOutlet weak var formationLabel          : UILabel!
+    @IBOutlet weak var statusView              : UIView!
+    @IBOutlet weak var initiateurLabel         : UILabel!
+    @IBOutlet weak var dateLabel               : UILabel!
+    @IBOutlet weak var nombreParticipantsLabel : UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         addShadowView()
-        cellViewDecoration.layer.cornerRadius = 15
-        cellViewDecoration.backgroundColor = UIColor.systemGray5
+        
+        
     }
     
-    func addShadowView(width:CGFloat=0, height:CGFloat=1, Opacidade:Float=0.3, maskToBounds:Bool=false, radius:CGFloat=8){
-         self.layer.shadowColor = UIColor.black.cgColor
-         self.layer.shadowOffset = CGSize(width: width, height: height)
-         self.layer.shadowRadius = radius
-         self.layer.cornerRadius = radius
-         self.layer.shadowOpacity = Opacidade
-         self.layer.masksToBounds = maskToBounds
+    func addShadowView(){
+        MesDemandesView.layer.cornerRadius = 10
+        MesDemandesView.layer.shadowColor = UIColor.systemGray5.cgColor
+        MesDemandesView.layer.shadowOpacity = 1
+        MesDemandesView.layer.shadowOffset = .zero
+        MesDemandesView.layer.shadowRadius = 10
+        MesDemandesView.layer.shadowPath = UIBezierPath(rect: MesDemandesView.bounds).cgPath
+        MesDemandesView.layer.shouldRasterize = true
+        MesDemandesView.layer.rasterizationScale = UIScreen.main.scale
+        statusView.roundCorners([.bottomRight, .topRight], radius: 10.0)
+        
     }
    
+}
+
+
+extension UIView {
+
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+         let mask = CAShapeLayer()
+         mask.path = path.cgPath
+         self.layer.mask = mask
+    }
+
 }

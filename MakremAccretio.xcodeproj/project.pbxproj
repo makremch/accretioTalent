@@ -71,6 +71,7 @@
 		F44F72F324CDA130004BA958 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F72F124CDA130004BA958 /* RadarMarkerView.swift */; };
 		F44F72F424CDA130004BA958 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44F72F224CDA130004BA958 /* RadarMarkerView.xib */; };
 		F462EE7B256B510600A946EF /* CFDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462EE7A256B510600A946EF /* CFDetailsViewCell.swift */; };
+		F462EED025727BA600A946EF /* MesDemandesFormation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462EECF25727BA600A946EF /* MesDemandesFormation.swift */; };
 		F472C01B250D54FB00A8F7E1 /* responseOfAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */; };
 		F472FCC224E6E9C20014A773 /* FormationCollaborateurDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */; };
 		F472FCCA24E81B970014A773 /* Menu2Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472FCC424E81B970014A773 /* Menu2Presenter.swift */; };
@@ -350,6 +351,7 @@
 		F44F72F124CDA130004BA958 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		F44F72F224CDA130004BA958 /* RadarMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
 		F462EE7A256B510600A946EF /* CFDetailsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFDetailsViewCell.swift; sourceTree = "<group>"; };
+		F462EECF25727BA600A946EF /* MesDemandesFormation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesDemandesFormation.swift; sourceTree = "<group>"; };
 		F472C01A250D54FA00A8F7E1 /* responseOfAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = responseOfAdd.swift; sourceTree = "<group>"; };
 		F472FCC124E6E9C20014A773 /* FormationCollaborateurDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormationCollaborateurDetail.swift; sourceTree = "<group>"; };
 		F472FCC424E81B970014A773 /* Menu2Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu2Presenter.swift; sourceTree = "<group>"; };
@@ -1007,6 +1009,7 @@
 				F48A9054255ACBC500FAACA4 /* Profile.swift */,
 				F48A9151255D9B1900FAACA4 /* LevelResponse.swift */,
 				F4FBEABE25659C9700A0C488 /* AddCompetence.swift */,
+				F462EECF25727BA600A946EF /* MesDemandesFormation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1547,6 +1550,7 @@
 				F4C692D723FD521F00980714 /* MakremAccretio.xcdatamodeld in Sources */,
 				F4D38B2A24869EA1003F2FD4 /* CompetenceCollaborateurWorker.swift in Sources */,
 				F47CA681246B032A00C6ACB1 /* FormationMyActionPresenter.swift in Sources */,
+				F462EED025727BA600A946EF /* MesDemandesFormation.swift in Sources */,
 				F44614EF240D16E900D4F567 /* MobiliteCollaborateurWorker.swift in Sources */,
 				F487DB9424650AA8001CA320 /* FormationCollaborateurInteractor.swift in Sources */,
 				F487DB87246157E0001CA320 /* NewFormation.swift in Sources */,

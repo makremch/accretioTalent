@@ -20,7 +20,7 @@ class MobiliteCollaborateurTableViewCell : UITableViewCell {
     @IBOutlet weak var imase: UIImageView!
     
     func designForView(){
-        viewForData.layer.cornerRadius = 15
+        viewForData.layer.cornerRadius = 10
         viewForData.layer.shadowColor = UIColor.systemGray5.cgColor
         viewForData.layer.shadowOpacity = 1
         viewForData.layer.shadowOffset = .zero
@@ -28,16 +28,8 @@ class MobiliteCollaborateurTableViewCell : UITableViewCell {
         viewForData.layer.shadowPath = UIBezierPath(rect: viewForData.bounds).cgPath
         viewForData.layer.shouldRasterize = true
         viewForData.layer.rasterizationScale = UIScreen.main.scale
-        
-        imase.layer.cornerRadius = 10
-//        imase.layer.shadowColor = UIColor.gray.cgColor
-//        imase.layer.shadowOpacity = 10
-//        imase.layer.shadowOffset = .zero
-//        imase.layer.shadowRadius = 15
-//        imase.layer.shadowPath = UIBezierPath(rect: imase.bounds).cgPath
-//        imase.layer.shouldRasterize = true
-//        imase.layer.rasterizationScale = UIScreen.main.scale
-
+        viewForData.backgroundColor = UIColor.white
+  
                
     }
     

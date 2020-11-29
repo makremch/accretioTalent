@@ -19,23 +19,24 @@ protocol Menu2DisplayLogic: class
 
 class Menu2ViewController: UIViewController, Menu2DisplayLogic
 {
-    var interactor: Menu2BusinessLogic?
-    var router: (NSObjectProtocol & Menu2RoutingLogic & Menu2DataPassing)?
-    @IBOutlet weak var iCarosel:UICollectionView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var postLabel: UILabel!
-    @IBOutlet weak var logoutView: UIView!
+    var interactor                   : Menu2BusinessLogic?
+    var router                       : (NSObjectProtocol & Menu2RoutingLogic & Menu2DataPassing)?
+    @IBOutlet weak var iCarosel      : UICollectionView!
+    @IBOutlet weak var userNameLabel : UILabel!
+    @IBOutlet weak var postLabel     : UILabel!
+    @IBOutlet weak var logoutView    : UIView!
+    
     @IBAction func paramsOnClick(_ sender: Any) {
-        logoutView.alpha = 1
+        logoutView.alpha    = 1
         logoutView.isHidden = false
     }
     
     var images: [UIImage] = [
         UIImage(named: "MobiliteInterneCartoon") ?? UIImage(),
-        UIImage(named: "recrutementCartoon") ?? UIImage(),
-        UIImage(named: "FormationCartoon") ?? UIImage(),
-        UIImage(named: "CompetenceCartoon") ?? UIImage(),
-        UIImage(named: "EvaluationCartoon") ?? UIImage()
+        UIImage(named: "recrutementCartoon")     ?? UIImage(),
+        UIImage(named: "FormationCartoon")       ?? UIImage(),
+        UIImage(named: "CompetenceCartoon")      ?? UIImage(),
+        UIImage(named: "EvaluationCartoon")      ?? UIImage()
     ]
     
     var titles = ["Mobilite Interne","Recrutement","Formation","Competences","Evaluation"]
@@ -59,16 +60,16 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
     
     private func setup()
     {
-        let viewController = self
-        let interactor = Menu2Interactor()
-        let presenter = Menu2Presenter()
-        let router = Menu2Router()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+        let viewController         = self
+        let interactor             = Menu2Interactor()
+        let presenter              = Menu2Presenter()
+        let router                 = Menu2Router()
+        viewController.interactor  = interactor
+        viewController.router      = router
+        interactor.presenter       = presenter
+        presenter.viewController   = viewController
+        router.viewController      = viewController
+        router.dataStore           = interactor
     }
     
     // MARK: Routing

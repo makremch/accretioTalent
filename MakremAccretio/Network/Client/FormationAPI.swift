@@ -46,21 +46,22 @@ class FormationAPI {
     //    MARK: affichage liste formation a valider Manager
     
     
-    static func showListFormationManagerMesDemandes(token : String) -> Promise<ResponseFormation>{
+    static func showListFormationManagerMesDemandes(token : String) -> Promise<MesFromationResponse>{
         let registrationNumber : String = UserDefaults.standard.string(forKey: "registrationNumber")!
         print(registrationNumber)
-        let url = "https://mobile-int.accretio.io/training/api/training-participation-requests/initiator/"+registrationNumber+"?size=10&page=0&sort=creationDate,DESC"
-        //        let url = "https://mobile-int.accretio.io/training/api/training-participation-requests/initiator/06?size=10&page=0&sort=creationDate,DESC"
-        return  Promise<ResponseFormation> { fulfill, reject in
+        let url = "https://mobile-int.accretio.io/training/api/training-participation-requests/initiator/" + registrationNumber + "?size=90&page=0&sort=creationDate,DESC"
+        return  Promise<MesFromationResponse> { fulfill, reject in
             AF.request(url, method: .get,  encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token
-            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<ResponseFormation, AFError>) in
+            ]).responseDecodable(decoder: JSONDecoder(), completionHandler: { (response: DataResponse<MesFromationResponse, AFError>) in
                 switch response.result {
-                    
+                
                 case .success(let value):
+                    print("3asba")
                     print(value)
                     fulfill(value)
                 case .failure(let error):
+                    print("zeb")
                     print(error)
                     reject(error)
                 }

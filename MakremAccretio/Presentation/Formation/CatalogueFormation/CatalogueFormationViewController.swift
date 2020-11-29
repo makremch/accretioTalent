@@ -216,22 +216,22 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        viewDemande.isHidden = true
-        populationConcerneView.isHidden = true
+        viewDemande.isHidden                      = true
+        populationConcerneView.isHidden           = true
         populationConcerneView.layer.cornerRadius = 15
-        viewDemandePopUp.layer.cornerRadius = 15
-        PopulationButton.layer.borderColor = UIColor.black.cgColor
-        PopulationButton.layer.borderWidth = 1
-        PopulationButton.layer.cornerRadius = 15
-        PopulationButton.layer.backgroundColor = UIColor.systemGray3.cgColor
-        ImportanceButton.layer.cornerRadius = 15
-        ImportanceButton.layer.borderColor = UIColor.black.cgColor
-        ImportanceButton.layer.borderWidth = 1
-        ImportanceButton.layer.backgroundColor = UIColor.systemGray3.cgColor
-        DateButton.layer.cornerRadius = 15
-        DateButton.layer.borderColor = UIColor.black.cgColor
-        DateButton.layer.borderWidth = 1
-        DateButton.layer.backgroundColor = UIColor.systemGray3.cgColor
+        viewDemandePopUp.layer.cornerRadius       = 15
+        PopulationButton.layer.borderColor        = UIColor.black.cgColor
+        PopulationButton.layer.borderWidth        = 1
+        PopulationButton.layer.cornerRadius       = 15
+        PopulationButton.layer.backgroundColor    = UIColor.systemGray3.cgColor
+        ImportanceButton.layer.cornerRadius       = 15
+        ImportanceButton.layer.borderColor        = UIColor.black.cgColor
+        ImportanceButton.layer.borderWidth        = 1
+        ImportanceButton.layer.backgroundColor    = UIColor.systemGray3.cgColor
+        DateButton.layer.cornerRadius             = 15
+        DateButton.layer.borderColor              = UIColor.black.cgColor
+        DateButton.layer.borderWidth              = 1
+        DateButton.layer.backgroundColor          = UIColor.systemGray3.cgColor
         
         doSomething()
         let token = UserDefaults.standard.string(forKey: "accessToken")!
@@ -358,7 +358,7 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
                         cell.formationImageView.contentMode = UIView.ContentMode.scaleAspectFit
                     }
                 }
-        cell.formationImageView.layer.cornerRadius = 15
+       
         
         
         return cell
@@ -419,4 +419,13 @@ extension CatalogueFormationViewController : UICollectionViewDelegate, UICollect
         print("qqq")
     }
     
+}
+
+extension UIImageView {
+    func roundImageCorners(_ corners: UIRectCorner, radius: CGFloat) {
+         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+         let mask = CAShapeLayer()
+         mask.path = path.cgPath
+         self.layer.mask = mask
+    }
 }

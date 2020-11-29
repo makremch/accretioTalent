@@ -16,13 +16,14 @@ import WebKit
 
 protocol CatalogueFormationDetailsDisplayLogic: class
 {
-    func displaySomething(viewModel: CatalogueFormationDetails.Something.ViewModel)
-    func getCatalogueDataDetails(response: FormationCatalogueDetails)
-    func getSkills(response:[String: String])
+    func displaySomething            (viewModel: CatalogueFormationDetails.Something.ViewModel)
+    func getCatalogueDataDetails     (response: FormationCatalogueDetails)
+    func getSkills                   (response:[String: String])
 }
 
-class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormationDetailsDisplayLogic
 
+
+class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormationDetailsDisplayLogic
 {
     
     //    MARK: var declarations
@@ -53,26 +54,29 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
     @IBOutlet weak var webViewProgramme          : WKWebView!
     @IBOutlet weak var formateurTableView        : UITableView!
     @IBOutlet weak var formateurView             : UIView!
-    
+    @IBOutlet weak var competenceTarget          : UITextView!
     
     @IBAction func sgmentationControllerChangingView(_ sender: Any) {
         if segChoiceRubrique.selectedSegmentIndex == 0 {
-            self.programView.alpha = 0
+            self.programView.alpha       = 0
+            self.formateurView.alpha     = 0
             programView.frame = CGRect(x:-400,y:506,width: self.programView.frame.width, height: self.programView.frame.height)
+            formateurView.frame = CGRect(x:-400,y:506,width: self.formateurView.frame.width, height: self.formateurView.frame.height)
             UIView.animate(withDuration: 0.4){
-                self.objectifView.frame = CGRect(x: 20,y: 506,width: self.objectifView.frame.width, height: self.objectifView.frame.height)
-                self.objectifView.alpha = 1
+                self.objectifView.frame  = CGRect(x: 20,y: 506,width: self.objectifView.frame.width, height: self.objectifView.frame.height)
+                self.objectifView.alpha  = 1
             }
             
         }else if segChoiceRubrique.selectedSegmentIndex == 1 {
             
-            UIView.transition(with: segChoiceRubrique, duration: 0.4,
+            UIView.transition(with: segChoiceRubrique, duration: 1,
                               options: .preferredFramesPerSecond30,
                               animations: {
-                                self.programView.frame = CGRect(x: 20,y: 506,width: self.programView.frame.width, height: self.programView.frame.height)
-                                self.objectifView.alpha = 0
-                                self.programView.alpha = 1
-                          })
+                                self.programView.frame   = CGRect(x: 20,y: 506,width: self.programView.frame.width, height: self.programView.frame.height)
+                                self.objectifView.alpha  = 0
+                                self.formateurView.alpha = 0
+                                self.programView.alpha   = 1
+                              })
             UIView.animate(withDuration: 1){
                 self.objectifView.frame = CGRect(x: 1200,y: 506,width: self.objectifView.frame.width, height: self.objectifView.frame.height)
                 //self.sourceButton.frame = CGRect(x: 26,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
@@ -81,7 +85,24 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
             }
             
         } else if segChoiceRubrique.selectedSegmentIndex == 2{
-            objectifView.alpha = 1
+            objectifView.alpha = 0
+            UIView.transition(with: segChoiceRubrique, duration: 1,
+                              options: .preferredFramesPerSecond30,
+                              animations: {
+                                self.formateurView.alpha = 1
+                                self.formateurView.frame   = CGRect(x: 20,y: 506,width: self.formateurView.frame.width, height: self.formateurView.frame.height)
+                                self.objectifView.alpha  = 0
+                                self.programView.alpha   = 0
+                              })
+            UIView.animate(withDuration: 1){
+                self.programView.frame = CGRect(x: 1200,y: 506,width: self.programView.frame.width, height: self.programView.frame.height)
+                //self.sourceButton.frame = CGRect(x: 26,y: 416,width: self.sourceButton.frame.width, height: self.sourceButton.frame.height)
+                //self.cancelSourceButton.alpha = 0
+                self.programView.alpha  = 1
+                self.objectifView.alpha = 0
+                self.programView.alpha  = 0
+                
+            }
         }
     }
     
@@ -141,6 +162,7 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         super.viewDidLoad()
         doSomething()
         designImage ()
+        self.formateurView.alpha = 0
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.getSkills(token:token)
         self.interactor?.gettingFormationCatalogueById(token: token, code: self.code)
@@ -230,12 +252,18 @@ class CatalogueFormationDetailsViewController: UIViewController, CatalogueFormat
         print((formation?.trainer)!.count)
         print("aa")
         print((formation?.targetSkills)!)
-//        print(skillsLabel[(formation?.targetSkills)!])
+        //        print(skillsLabel[(formation?.targetSkills)!])
         print("--------------------------------------")
         locationLabel.text = formation?.place
         certificationLabel.text = "certification: " + String((formation?.certification)!)
         print((formation?.goals?.textArea)!)
+        print(formation?.targetSkills)
         print("wwwwwww")
+        let targetSkillsCode = formation?.targetSkills!.map { $0.codeSkill! }
+        let skillsTarget = skillsLabel.filter { targetSkillsCode?.contains($0.key) as! Bool  }.map { $0.value }
+        print(skillsTarget)
+        print("------------------------")
+        competenceTarget.text = skillsTarget.joined(separator: "\n")
         viewControllerObjectif?.setLabel(label: (formation?.goals?.textArea)!)
         let html = """
 <head>
@@ -257,6 +285,7 @@ p{font-size : 50px}
 </head>
 """ + programs
         webViewProgramme.loadHTMLString(htmlProg, baseURL: nil)
+        formateurTableView.reloadData()
     }
     
     
@@ -265,30 +294,36 @@ p{font-size : 50px}
     func getSkills(response:[String: String]){
         print(response)
         skillsLabel = response
-        
+        print(skillsLabel)
+        print("-----------------")
     }
     
 }
 
 extension CatalogueFormationDetailsViewController : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if formation?.trainer!.count != 0 {
-            return 5
+        if (formation?.trainer!) != nil && (formation?.trainer!)?.count != 0 {
+            return (formation?.trainer!.count)!
         }
-        return 0
+        return 1
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "formateurCell", for: indexPath) as?
-            CFDetailsViewCell
-            else {
-                return UITableViewCell()
+                CFDetailsViewCell
+        else {
+            return UITableViewCell()
         }
-        if (formation?.trainer![indexPath.row].firstName)! != "" && (formation?.trainer![indexPath.row].lastName)! != "" {
-        cell.nomFormateurLabel.text = (formation?.trainer![indexPath.row].firstName)! as String + " " + (formation?.trainer![indexPath.row].lastName)!
+        if (formation?.trainer![indexPath.row].firstName) != nil && (formation?.trainer![indexPath.row].lastName) != nil {
+            cell.nomFormateurLabel.text = (formation?.trainer![indexPath.row].firstName)! as String + " " + (formation?.trainer![indexPath.row].lastName)!
         }
-        cell.emailFormateurLabel.text = (formation?.trainer![indexPath.row].email)!
-        cell.telephoneFormateurLabel.text = (formation?.trainer![indexPath.row].phone)!
+        if (formation?.trainer![indexPath.row].email) != nil && (formation?.trainer![indexPath.row].phone) != nil {
+            cell.emailFormateurLabel.text = (formation?.trainer![indexPath.row].email)!
+            cell.telephoneFormateurLabel.text = (formation?.trainer![indexPath.row].phone)!
+        }
+        
         return cell
     }
     

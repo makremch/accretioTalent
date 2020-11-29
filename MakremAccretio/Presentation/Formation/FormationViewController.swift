@@ -17,36 +17,30 @@ protocol FormationDisplayLogic: class
 {
     func displaySomething(viewModel: Formation.Something.ViewModel)
     func formationForValidationData(response:ResponseFormation)
-    func formationMyDemandesData(response:ResponseFormation)
+    func formationMyDemandesData(response:MesFromationResponse)
     func getActionsSessionData(response : ResponseAction)
     func getCatalogueData(response:ResponseCatalogue)
 }
 
-class FormationViewController: UIViewController, FormationDisplayLogic,UITableViewDataSource,UITableViewDelegate
+class FormationViewController: UIViewController, FormationDisplayLogic
 {
     
-    //MARK: -IBOutlets :
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var choiceSeg: UISegmentedControl!
     
-//    MARK:- Var & Let
+    //MARK: -IBOutlets :
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var MesDemandesView: UIView!
+    @IBOutlet weak var tableViewMesDemandes: UITableView!
+    
+    
+    
+    //    MARK:- Var & Let
     var interactor: FormationBusinessLogic?
     var router: (NSObjectProtocol & FormationRoutingLogic & FormationDataPassing)?
     var dataValueForValidation : [FormationEntity] = []
-    var dataValueMyDemandes : [FormationEntity] = []
+    var dataValueMyDemandes : [DemandeFormation] = []
     
 //    MARK: - Action Button functions:
-    @IBAction func choiceSeg(_ sender: Any) {
-        let index = choiceSeg.selectedSegmentIndex
-        let title = choiceSeg.titleForSegment(at: index)!
-        if choiceSeg.selectedSegmentIndex == 0 {
-            
-            tableView.reloadData()
-        } else if title == "A valider" {
-            tableView.reloadData()
-        }
-        tableView.reloadData()
-    }
+
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -86,7 +80,18 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
             }
         }
     }
-
+    
+    
+    @IBAction func segmentationAction(_ sender: Any) {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            MesDemandesView.alpha = 1
+            MesDemandesView.isHidden = false
+        } else {
+            MesDemandesView.alpha = 0
+            MesDemandesView.isHidden = true
+        }
+    }
+    
     // MARK: View configuration  :
     let cellSpacingHeight: CGFloat = 5
     override func viewDidLoad()
@@ -96,83 +101,12 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         self.interactor?.getListFormationForValidation(token: token)
         self.interactor?.showListFormationManagerMesDemandes(token: token)
-        //        self.interactor?.showMyActions(token: token)
-        //        self.interactor?.showCatalogueFormation(token: token)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorColor = UIColor.white
+
         
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if choiceSeg.selectedSegmentIndex == 0 {
-            if dataValueMyDemandes.count == 0 {
-                tableView.setEmptyView(title: "Vous n'avez pas de demandes", message: "Vos demandes seront affichés ici !", messageImage:  UIImage(named: "messageImage")!)
-            }else{
-                tableView.restore()
-            }
-            return dataValueMyDemandes.count
-        }else if choiceSeg.selectedSegmentIndex == 1 {
-            
-            if dataValueForValidation.count == 0 {
-                tableView.setEmptyView(title: "Vous n'avez pas de demandes", message: "Vos demandes seront affichés ici !", messageImage:  UIImage(named: "messageImage")!)
-            }else{
-                tableView.restore()
-            }
-        }
-        return dataValueForValidation.count
-    }
+
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "MyDemandTableViewCell", for: indexPath) as? DemandeTableViewCell
-            else {
-                return UITableViewCell()
-        }
-        let index = choiceSeg.selectedSegmentIndex
-        if (choiceSeg.titleForSegment(at: index))! == "Mes demandes" {
-            if(dataValueMyDemandes.count == 0){
-            }else{
-                cell.NomFormationLabel.text = dataValueMyDemandes[indexPath.row].label ?? "Formation "
-                cell.InitiateurLabel.text = dataValueMyDemandes[indexPath.row].initiator!.firstName + " " + dataValueMyDemandes[indexPath.row].initiator!.lastName
-                cell.dateCreationLabel.text = String(dataValueMyDemandes[indexPath.row].creationDate!)
-                cell.statusView.layer.cornerRadius = 2
-                print(dataValueMyDemandes[indexPath.row].status!)
-                if dataValueMyDemandes[indexPath.row].status! == "PROGRESS"{
-                    cell.statusView.backgroundColor = UIColor.orange
-                    cell.statusLabel.text = "En cours"
-                }else{
-                    cell.statusView.backgroundColor = UIColor.systemGreen
-                    cell.statusLabel.text = "Validée"
-                }
-            }
-            return cell
-        }else{
-            dataValueMyDemandes.removeAll()
-            print("taille demandes a valider !")
-            if dataValueForValidation.count == 0 {
-                print("no data ! ")
-            }
-            cell.NomFormationLabel.text = dataValueForValidation[indexPath.row].label ?? "Formation "
-            cell.InitiateurLabel.text = dataValueForValidation[indexPath.row].initiator!.firstName + " " + dataValueForValidation[indexPath.row].initiator!.lastName
-            cell.dateCreationLabel.text = String(dataValueForValidation[indexPath.row].creationDate!)
-            cell.statusView.layer.cornerRadius = 2
-            print(dataValueForValidation[indexPath.row].status!)
-            if dataValueForValidation[indexPath.row].status! == "PROGRESS"{
-                cell.statusView.backgroundColor = UIColor.orange
-                cell.statusLabel.text = "En cours"
-            }else{
-                cell.statusView.backgroundColor = UIColor.systemGreen
-                cell.statusLabel.text = "Validée"
-            }
-            
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
-    
+
     
     //MARK: -Getting data from presenter :
     func doSomething()
@@ -189,13 +123,26 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
     func formationForValidationData(response:ResponseFormation){
         print(response)
         dataValueForValidation = response.content
-        tableView.reloadData()
+        
     }
     
     
-    func formationMyDemandesData(response:ResponseFormation){
-        dataValueMyDemandes = response.content
-        tableView.reloadData()
+    func formationMyDemandesData(response:MesFromationResponse){
+        dataValueMyDemandes = response.content!
+        print(dataValueMyDemandes)
+        print(response)
+        print(dataValueMyDemandes.count)
+        print("---------------------------------------------")
+        for demande in dataValueMyDemandes{
+            if demande.label != nil {
+                print(demande)
+            }else{
+                print("Hello")
+            }
+        }
+        print(dataValueMyDemandes[1])
+        print("-------------------------------")
+        tableViewMesDemandes.reloadData()
     }
     func getActionsSessionData(response : ResponseAction){
         //        print(response)
@@ -214,72 +161,114 @@ class FormationViewController: UIViewController, FormationDisplayLogic,UITableVi
     
 }
 
-
-extension UITableView {
-    func setEmptyView(title: String, message: String, messageImage: UIImage) {
-        
-        let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
-        
-        let messageImageView = UIImageView()
-        let titleLabel = UILabel()
-        let messageLabel = UILabel()
-        
-        messageImageView.backgroundColor = .clear
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageImageView.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        
-        messageLabel.textColor = UIColor.lightGray
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageImageView)
-        emptyView.addSubview(messageLabel)
-        
-        messageImageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageImageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: -20).isActive = true
-        messageImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        messageImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        
-        titleLabel.topAnchor.constraint(equalTo: messageImageView.bottomAnchor, constant: 10).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        
-        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        
-        messageImageView.image = messageImage
-        titleLabel.text = title
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        
-        UIView.animate(withDuration: 1, animations: {
-            
-            messageImageView.transform = CGAffineTransform(rotationAngle: .pi / 10)
-        }, completion: { (finish) in
-            UIView.animate(withDuration: 1, animations: {
-                messageImageView.transform = CGAffineTransform(rotationAngle: -1 * (.pi / 10))
-            }, completion: { (finishh) in
-                UIView.animate(withDuration: 1, animations: {
-                    messageImageView.transform = CGAffineTransform.identity
-                })
-            })
-            
-        })
-        
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
+extension FormationViewController:UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataValueMyDemandes.count
     }
     
-    func restore() {
-        
-        self.backgroundView = nil
-        self.separatorStyle = .singleLine
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "MesDemandesCell", for: indexPath) as?
+            DemandeTableViewCell
+            else {
+                return UITableViewCell()
+        }
+        var value : String? = (dataValueMyDemandes[indexPath.row].trainingOfferCode?.label)
+        if  value == nil {
+            value = (dataValueMyDemandes[indexPath.row].label)!
+        }
+        if value == nil{
+            value = "Formation sans nom"
+        }
+        cell.formationLabel.text  = value
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-mm-dd"
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd MMM yyyy"
+        if let date = dateFormatterGet.date(from: dataValueMyDemandes[indexPath.row].creationDate!) {
+            cell.dateLabel.text = dateFormatterPrint.string(from: date)
+        } else {
+            cell.dateLabel.text = dataValueMyDemandes[indexPath.row].creationDate
+
+        }
+        cell.initiateurLabel.text = (dataValueMyDemandes[indexPath.row].initiator?.firstName)! + " " + (dataValueMyDemandes[indexPath.row].initiator?.lastName)!
+        cell.nombreParticipantsLabel.text = String(dataValueMyDemandes[indexPath.row].targetEmployees!.count)
+        if dataValueMyDemandes[indexPath.row].status == "PROGRESS"{
+            cell.statusView.layer.backgroundColor = UIColor.orange.cgColor
+        }else{
+            cell.statusView.layer.backgroundColor = UIColor.green.cgColor
+        }
+        return cell
     }
     
 }
+
+//
+//extension UITableView {
+//    func setEmptyView(title: String, message: String, messageImage: UIImage) {
+//
+//        let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
+//
+//        let messageImageView = UIImageView()
+//        let titleLabel = UILabel()
+//        let messageLabel = UILabel()
+//
+//        messageImageView.backgroundColor = .clear
+//
+//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        messageImageView.translatesAutoresizingMaskIntoConstraints = false
+//        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+//
+//        titleLabel.textColor = UIColor.black
+//        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+//
+//        messageLabel.textColor = UIColor.lightGray
+//        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+//
+//        emptyView.addSubview(titleLabel)
+//        emptyView.addSubview(messageImageView)
+//        emptyView.addSubview(messageLabel)
+//
+//        messageImageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+//        messageImageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor, constant: -20).isActive = true
+//        messageImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+//        messageImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+//
+//        titleLabel.topAnchor.constraint(equalTo: messageImageView.bottomAnchor, constant: 10).isActive = true
+//        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+//
+//        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+//        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+//
+//        messageImageView.image = messageImage
+//        titleLabel.text = title
+//        messageLabel.text = message
+//        messageLabel.numberOfLines = 0
+//        messageLabel.textAlignment = .center
+//
+//        UIView.animate(withDuration: 1, animations: {
+//
+//            messageImageView.transform = CGAffineTransform(rotationAngle: .pi / 10)
+//        }, completion: { (finish) in
+//            UIView.animate(withDuration: 1, animations: {
+//                messageImageView.transform = CGAffineTransform(rotationAngle: -1 * (.pi / 10))
+//            }, completion: { (finishh) in
+//                UIView.animate(withDuration: 1, animations: {
+//                    messageImageView.transform = CGAffineTransform.identity
+//                })
+//            })
+//
+//        })
+//
+//        self.backgroundView = emptyView
+//        self.separatorStyle = .none
+//    }
+//
+//    func restore() {
+//
+//        self.backgroundView = nil
+//        self.separatorStyle = .singleLine
+//
+//    }
+//
+//}

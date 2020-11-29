@@ -16,7 +16,7 @@ protocol FormationPresentationLogic
 {
     func presentSomething(response: Formation.Something.Response)
     func showFormationForValidation(response:ResponseFormation)
-    func showFormationMyDemandes(response: ResponseFormation)
+    func showFormationMyDemandes(response: MesFromationResponse)
     func showMyActions(response: ResponseAction)
     func showCatalogue(response : ResponseCatalogue)
 }
@@ -36,7 +36,7 @@ class FormationPresenter: FormationPresentationLogic
     func showFormationForValidation(response:ResponseFormation){
         viewController?.formationForValidationData(response:response)
     }
-    func showFormationMyDemandes(response: ResponseFormation){
+    func showFormationMyDemandes(response: MesFromationResponse){
         viewController?.formationMyDemandesData(response: response)
     }
     func showMyActions(response: ResponseAction){

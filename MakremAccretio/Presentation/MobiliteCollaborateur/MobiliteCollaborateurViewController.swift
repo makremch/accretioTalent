@@ -60,13 +60,14 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             else {
                 return UITableViewCell()
         }
+        cellCollaborateur.imase.roundImageCorners([.topLeft,.topRight], radius: 10)
         if !searchActive{
             print(searchBar.selectedScopeButtonIndex)
             searchActive = false
             if dataValueCollaborateur[indexPath.row].publishedPictureOffer != nil {
                 let imageFromUrl = (dataValueCollaborateur[indexPath.row].publishedPictureOffer)!
                 let urlImage = URL(string: baseURL + "documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
-                cellCollaborateur.imase?.kf.setImage(with: urlImage){
+                cellCollaborateur.imase?.kf.setImage(with: urlImage, completionHandler: {
                     result in
                     switch result {
                     case .success:
@@ -74,10 +75,10 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
                         print("5edmet : ",result)
                         break
                     case .failure:
-                      
+                        
                         cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
                     }
-                }
+                })
             }else{
                 cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
             }
