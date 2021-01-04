@@ -14,7 +14,7 @@ import UIKit
 
 protocol CompanyLoginDisplayLogic: class
 {
-  func displaySomething(viewModel: CompanyLogin.Something.ViewModel)
+    func displaySomething(viewModel: CompanyLogin.Something.ViewModel)
 }
 
 
@@ -22,117 +22,170 @@ protocol CompanyLoginDisplayLogic: class
 class CompanyLoginViewController: UIViewController, CompanyLoginDisplayLogic
 {
     
-//    MARK:- Var and declarations
-  var interactor: CompanyLoginBusinessLogic?
-  var router: (NSObjectProtocol & CompanyLoginRoutingLogic & CompanyLoginDataPassing)?
-
-    
-//    MARK:- IBOutlets
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var codeClientTextField: UITextField!
-    @IBOutlet weak var SeConnecterButton: UIButton!
-    @IBOutlet var viewLogoAccretio: UIView!
+    //    MARK:- Var and declarations
+    var interactor: CompanyLoginBusinessLogic?
+    var router: (NSObjectProtocol & CompanyLoginRoutingLogic & CompanyLoginDataPassing)?
     
     
-//    MARK:- Button actions
+    //    MARK:- IBOutlets
+    @IBOutlet weak var backgroundImageView   : UIImageView!
+    @IBOutlet weak var codeClientTextField   : UITextField!
+    @IBOutlet weak var SeConnecterButton     : UIButton!
+    @IBOutlet var viewLogoAccretio           : UIView!
+    @IBOutlet weak var Message               : UILabel!
+    
+    @IBOutlet weak var warningImage: UIImageView!
+    @IBOutlet weak var viewMessage: UIView!
+    //    MARK:- Button actions
     @IBAction func CompanyConnectionOnClick(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-             let LoginUser = storyBoard.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
-        self.navigationController?.pushViewController(LoginUser, animated: true)
+        
+        if codeClientTextField.text == "mobile"{
+            
+            UIImageView.animate(withDuration: 2){
+                self.warningImage.image = (UIImage(named: "done"))
+                self.Message.text = "success login code client !"
+                self.Message.textColor = UIColor.systemGreen
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let LoginUser                 = storyBoard.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+                self.navigationController?.pushViewController(LoginUser, animated: true)
+                }
+            }
+            }
+            
+        else if codeClientTextField.text == "" || codeClientTextField.text != "mobile"{
+            self.Message.text = "Champs vide ou code client introuvable !"
+            
+            UIView.animate(withDuration: 1){
+                self.viewMessage.alpha = 0
+                self.viewMessage.alpha = 0.15
+                self.viewMessage.alpha = 0.16
+                self.viewMessage.alpha = 0.17
+                self.viewMessage.alpha = 0.18
+                self.viewMessage.alpha = 0.2
+                self.viewMessage.alpha = 0.3
+                self.viewMessage.alpha = 0.4
+                self.viewMessage.alpha = 0.45
+                self.viewMessage.alpha = 0.5
+                self.viewMessage.alpha = 0.55
+                self.viewMessage.alpha = 0.56
+                self.viewMessage.alpha = 0.6
+                self.viewMessage.alpha = 0.7
+                self.viewMessage.alpha = 0.8
+                self.viewMessage.alpha = 0.9
+                self.viewMessage.alpha = 0.95
+                self.viewMessage.alpha = 0
+                self.viewMessage.alpha = 1
+                self.viewMessage.frame = CGRect(x: 71,y: 550,width: self.viewMessage.frame.width, height: self.viewMessage.frame.height)
+                self.viewMessage.alpha  = 1
+            }
+        }
     }
     
-    
+    private func designView(){
+        viewMessage.layer.cornerRadius              = 5
+        viewMessage.backgroundColor                 = UIColor.systemGray6
+        viewMessage.layer.shadowColor               = UIColor.systemGray6.cgColor
+        viewMessage.layer.shadowColor               = UIColor.systemGray6.cgColor
+        viewMessage.layer.shadowOpacity             = 1
+        viewMessage.layer.shadowOffset              = .zero
+        viewMessage.layer.shadowRadius              = 5
+        viewMessage.layer.shadowPath                = UIBezierPath(rect: viewMessage.bounds).cgPath
+        viewMessage.layer.shouldRasterize           = true
+        viewMessage.layer.rasterizationScale        = UIScreen.main.scale
+    }
     
     // MARK: Object lifecycle
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = CompanyLoginInteractor()
-    let presenter = CompanyLoginPresenter()
-    let router = CompanyLoginRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController        = self
+        let interactor            = CompanyLoginInteractor()
+        let presenter             = CompanyLoginPresenter()
+        let router                = CompanyLoginRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+        router.dataStore          = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene    = segue.identifier {
+            let selector  = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
     // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-   
-    settingViews()
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    setupKeyboardDismissRecognizer()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = CompanyLogin.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: CompanyLogin.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        doSomething()
+        viewMessage.alpha = 0
+        self.designView()
+        settingViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        setupKeyboardDismissRecognizer()
+    }
+    
+    // MARK: Do something
+    
+    //@IBOutlet weak var nameTextField: UITextField!
+    
+    func doSomething()
+    {
+        let request = CompanyLogin.Something.Request()
+        interactor?.doSomething(request: request)
+    }
+    
+    func displaySomething(viewModel: CompanyLogin.Something.ViewModel)
+    {
+        //nameTextField.text = viewModel.name
+    }
     
     
     func settingViews(){
-        backgroundImageView.layer.opacity = 40
+        backgroundImageView.layer.opacity      = 40
         codeClientTextField.layer.cornerRadius = 5
-        SeConnecterButton.layer.cornerRadius = 5
-        viewLogoAccretio.layer.opacity = 20
+        SeConnecterButton.layer.cornerRadius   = 5
+        viewLogoAccretio.layer.opacity         = 20
     }
     
-   @objc func keyboardWillShow(notification: NSNotification) {
-       if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-           if self.view.frame.origin.y == 0 {
-               self.view.frame.origin.y -= keyboardSize.height/2
-           }
-       }
-   }
-   @objc func keyboardWillHide(notification: NSNotification) {
-       if self.view.frame.origin.y != 0 {
-           self.view.frame.origin.y = 0
-       }
-   }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height/2
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     func setupKeyboardDismissRecognizer(){
         let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,

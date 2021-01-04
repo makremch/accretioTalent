@@ -25,6 +25,25 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
     @IBOutlet weak var userNameLabel : UILabel!
     @IBOutlet weak var postLabel     : UILabel!
     @IBOutlet weak var logoutView    : UIView!
+    @IBOutlet weak var logoutPopUp: UIView!
+    @IBOutlet weak var okButton: UIButton!
+    
+    
+    
+    @IBAction func okOnClick(_ sender: Any) {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+        self.navigationController?.popViewController(animated: false)
+    }
+    
+  
+    
+    @IBAction func cancelLogout(_ sender: Any) {
+        logoutView.alpha    = 0
+        logoutView.isHidden = true
+    }
     
     @IBAction func paramsOnClick(_ sender: Any) {
         logoutView.alpha    = 1
@@ -41,6 +60,35 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
     
     var titles = ["Mobilite Interne","Recrutement","Formation","Competences","Evaluation"]
     // MARK: Object lifecycle
+    
+    private func desigingPopUpLogout(){
+        logoutPopUp.layer.cornerRadius        = 5
+        logoutPopUp.backgroundColor           = UIColor.white
+        logoutPopUp.layer.shadowColor         = UIColor.systemGray.cgColor
+        logoutPopUp.layer.shadowColor         = UIColor.systemGray.cgColor
+        logoutPopUp.layer.shadowOpacity       = 1
+        logoutPopUp.layer.shadowOffset        = .zero
+        logoutPopUp.layer.shadowRadius        = 10
+        logoutPopUp.layer.shadowPath          = UIBezierPath(rect: logoutPopUp.bounds).cgPath
+        logoutPopUp.layer.shouldRasterize     = true
+        logoutPopUp.layer.rasterizationScale  = UIScreen.main.scale
+        
+        okButton.layer.cornerRadius        = 5
+        okButton.layer.shadowColor         = UIColor.systemGray4.cgColor
+        okButton.layer.shadowColor         = UIColor.systemGray4.cgColor
+        okButton.layer.shadowOpacity       = 1
+        okButton.layer.shadowOffset        = .zero
+        okButton.layer.shadowRadius        = 10
+        okButton.layer.shadowPath          = UIBezierPath(rect: okButton.bounds).cgPath
+        okButton.layer.shouldRasterize     = true
+        okButton.layer.rasterizationScale  = UIScreen.main.scale
+        
+        
+        
+    }
+    
+    
+    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
@@ -89,6 +137,7 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.desigingPopUpLogout()
         doSomething()
         setupiCarosel()
         userNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
@@ -99,9 +148,7 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
         logoutView.alpha = 0
         logoutView.isHidden = true
         
-        let blurredView = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterialDark))
-        blurredView.frame = self.view.bounds
-        logoutView.addSubview(blurredView)
+        
     }
     
     // MARK: Do something

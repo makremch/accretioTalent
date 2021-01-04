@@ -46,6 +46,24 @@
                                     <action selector="CompanyConnectionOnClick:" destination="c9B-gU-Gl6" eventType="touchUpInside" id="BpE-2u-6E0"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUC-Zs-RvA">
+                                <rect key="frame" x="71" y="510" width="271" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Code client necessaire pour se connecter !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-gI-0b1">
+                                        <rect key="frame" x="4" y="16" width="263" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="mqI-Tb-ufV">
+                                        <rect key="frame" x="120" y="-24" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.26243029774485771" green="0.26116251852869898" blue="0.26369807696101644" alpha="0.32632977860018175" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5xI-Di-6Ed"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -72,10 +90,13 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="Message" destination="w2P-gI-0b1" id="ddh-ub-Y4f"/>
                         <outlet property="SeConnecterButton" destination="Tzm-ro-RV0" id="LO0-YY-ml8"/>
                         <outlet property="backgroundImageView" destination="Xs2-qq-Q9O" id="qYM-bQ-Bcm"/>
                         <outlet property="codeClientTextField" destination="fJC-bF-XSP" id="Wuz-1f-zDv"/>
                         <outlet property="viewLogoAccretio" destination="oLq-Ri-P2m" id="vef-3y-GZ7"/>
+                        <outlet property="viewMessage" destination="DUC-Zs-RvA" id="j6G-bH-cXW"/>
+                        <outlet property="warningImage" destination="mqI-Tb-ufV" id="Cak-gW-xT0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaU-VO-vcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -93,7 +114,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2" translatesAutoresizingMaskIntoConstraints="NO" id="7AO-R1-RLO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="naimhoussemeddine.rihani@advyteam.com" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="puN-9L-ZQN">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asmajlassi11@gmail.com" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="puN-9L-ZQN">
                                 <rect key="frame" x="20" y="420.5" width="374" height="55"/>
                                 <color key="backgroundColor" red="0.88235294117647056" green="0.88233143089999999" blue="0.8823464513" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
@@ -240,18 +261,54 @@
                                 <rect key="frame" x="87" y="51" width="240" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RhK-w5-QXP">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29934783329237374" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhK-w5-QXP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rO-Qe-vAb">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="cancelLogout:" destination="a7x-hY-xU8" eventType="touchUpInside" id="0FT-aB-Uhu"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKY-Jv-3OK">
+                                        <rect key="frame" x="87" y="370" width="240" height="155"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThZ-TC-6X2">
+                                                <rect key="frame" x="17" y="93" width="206" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.22189927201009757" green="0.59938017221851625" blue="0.96223719433100541" alpha="0.89896458505794707" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="19"/>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="okOnClick:" destination="a7x-hY-xU8" eventType="touchUpInside" id="z30-2L-FrQ"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Est ce que vous allez vous deconnecter ? " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2G-qf-hLo">
+                                                <rect key="frame" x="10" y="16" width="221" height="60"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0022752022506780721" green="0.0061456313240240042" blue="0.0098661172269570718" alpha="0.79533204337619001" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sor-Ob-rqE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hYr-KZ-n6N" firstAttribute="height" secondItem="6C2-Vt-R4z" secondAttribute="height" multiplier="0.5" id="35b-JF-ptc"/>
+                            <constraint firstItem="RhK-w5-QXP" firstAttribute="trailing" secondItem="Sor-Ob-rqE" secondAttribute="trailing" id="4pq-Zj-Ngy"/>
                             <constraint firstItem="Sor-Ob-rqE" firstAttribute="bottom" secondItem="d6I-Vz-rOU" secondAttribute="bottom" constant="2" id="6t6-AK-xTv"/>
                             <constraint firstItem="d6I-Vz-rOU" firstAttribute="leading" secondItem="Sor-Ob-rqE" secondAttribute="leading" id="77P-kz-Vxb"/>
+                            <constraint firstAttribute="bottom" secondItem="RhK-w5-QXP" secondAttribute="bottom" id="885-7Z-iML"/>
                             <constraint firstItem="05r-8N-PLG" firstAttribute="width" secondItem="6C2-Vt-R4z" secondAttribute="width" multiplier="0.169082" id="AW7-63-9ec"/>
                             <constraint firstItem="hrs-Wm-DAy" firstAttribute="top" secondItem="Sor-Ob-rqE" secondAttribute="top" constant="15" id="Cs4-Wi-4YV"/>
                             <constraint firstItem="d6I-Vz-rOU" firstAttribute="top" secondItem="OMP-u2-60H" secondAttribute="bottom" id="CuR-Iy-Dou"/>
@@ -261,14 +318,18 @@
                             <constraint firstItem="hYr-KZ-n6N" firstAttribute="trailing" secondItem="Sor-Ob-rqE" secondAttribute="trailing" id="SHd-YI-yNN"/>
                             <constraint firstItem="OMP-u2-60H" firstAttribute="height" secondItem="6C2-Vt-R4z" secondAttribute="height" multiplier="0.1" id="fTO-VF-Doz"/>
                             <constraint firstItem="hYr-KZ-n6N" firstAttribute="leading" secondItem="Sor-Ob-rqE" secondAttribute="leading" id="hIB-Jh-G08"/>
+                            <constraint firstItem="RhK-w5-QXP" firstAttribute="leading" secondItem="Sor-Ob-rqE" secondAttribute="leading" id="kdY-a9-wfr"/>
                             <constraint firstItem="hYr-KZ-n6N" firstAttribute="top" secondItem="Sor-Ob-rqE" secondAttribute="top" id="qwx-nU-i7N"/>
                             <constraint firstItem="hrs-Wm-DAy" firstAttribute="leading" secondItem="Sor-Ob-rqE" secondAttribute="leading" constant="15" id="rGk-5l-Ipi"/>
                             <constraint firstItem="d6I-Vz-rOU" firstAttribute="trailing" secondItem="Sor-Ob-rqE" secondAttribute="trailing" id="y1x-ez-P2Q"/>
+                            <constraint firstItem="RhK-w5-QXP" firstAttribute="top" secondItem="6C2-Vt-R4z" secondAttribute="top" id="zJK-ay-HQo"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="iCarosel" destination="d6I-Vz-rOU" id="b1h-us-5Uz"/>
+                        <outlet property="logoutPopUp" destination="rKY-Jv-3OK" id="7ax-Pu-kQK"/>
                         <outlet property="logoutView" destination="RhK-w5-QXP" id="4f3-bk-vCF"/>
+                        <outlet property="okButton" destination="ThZ-TC-6X2" id="yw4-ZT-sVh"/>
                         <outlet property="postLabel" destination="Zhk-yY-pK8" id="Yin-Ci-PbH"/>
                         <outlet property="userNameLabel" destination="wdB-ur-fJX" id="0OC-fp-Jnu"/>
                     </connections>
@@ -2962,8 +3023,8 @@
         <image name="background2" width="1400" height="2500"/>
         <image name="barcode" width="25" height="25"/>
         <image name="book" catalog="system" width="128" height="102"/>
-        <image name="calendar" width="37.5" height="37.5"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar" width="37.5" height="37.5"/>
         <image name="cancel" width="75" height="75"/>
         <image name="cible" width="32" height="32"/>
         <image name="collaborator" width="40" height="40"/>
@@ -3062,6 +3123,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
