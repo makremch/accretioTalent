@@ -182,6 +182,7 @@ class FormationAPI {
                 let baseURL = "https://mobile-int.accretio.io/"
         let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
         let url = baseURL + "core/api/employees/employeeforabsence/manager/" + registrationNumber + "/100"
+        print(url)
         return  Promise<Population> { fulfill, reject in
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: [
                 "Authorization": "Bearer " + token
@@ -210,22 +211,26 @@ class FormationAPI {
         //        let url = base + "training/api/training-offers/search?page=" + String(page) + "&size=" + String(size) + "&sort=creationDate,DESC"
         let url = baseURL + "training/api/training-participation-requests"
         print(url)
+        let registrationNumber = UserDefaults.standard.string(forKey: "registrationNumber")!
+        print(registrationNumber)
+        print("------------------------")
         let params: [String: Any] = [
             "description"  : param.trainingRequestModelDescription!,
             "importance" : param.importance! ,
-            "targetEmployees" : [],
+            "targetEmployees" : param.targetEmployees!.map{["registrationNumber" : $0.registrationNumber]},
             "priority" : "false" ,
             "status" : param.status! ,
             "creationDate" : param.creationDate! ,
             "limitDate" : param.limitDate! ,
             "label" : param.label! ,
-            "initiator" : ["registrationNumber": "DFG00030"] ,
+            "initiator" : ["registrationNumber": registrationNumber] ,
             "initiatorType" : param.initiatorType! ,
             "isOutOfCatalog" : param.isOutOfCatalog! ,
             "codeModel" : param.codeModel!,
             "trainingOfferCode": ["code": ""]
         ]
-        print(params)
+        print("array:   ",params)
+        print("--------------------------------- bchhechel")
         return  Promise<ResponseAdding> { fulfill, reject in
             AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: [
                 "content-type":"application/json",

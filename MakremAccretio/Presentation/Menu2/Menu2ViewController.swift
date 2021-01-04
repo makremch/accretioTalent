@@ -92,8 +92,8 @@ class Menu2ViewController: UIViewController, Menu2DisplayLogic
         doSomething()
         setupiCarosel()
         userNameLabel.text = UserDefaults.standard.string(forKey: "nameOfUser")! + " " + UserDefaults.standard.string(forKey: "lastNameOfUser")!
-        let poste = (UserDefaults.standard.string(forKey: "poste")!)
-        print(poste)
+//        let poste = (UserDefaults.standard.string(forKey: "poste")!)
+//        print(poste)
         //postLabel.text = poste
         iCarosel.showsHorizontalScrollIndicator = false
         logoutView.alpha = 0

@@ -15,10 +15,10 @@ import Foundation
 
 protocol AjouterCompetenceDisplayLogic: class
 {
-    func displaySomething(viewModel: AjouterCompetence.Something.ViewModel)
-    func getDataCompetenceManager(skillsLabel:[String: String], skillsCompetence:[String:String])
-    func getDataLevel(level: LevelResponse)
-    func getAddingResponse(response:ResponseAddingCompetence)
+    func displaySomething           (viewModel: AjouterCompetence.Something.ViewModel)
+    func getDataCompetenceManager   (skillsLabel:[String: String], skillsCompetence:[String:String])
+    func getDataLevel               (level: LevelResponse)
+    func getAddingResponse          (response:ResponseAddingCompetence)
 }
 
 class AjouterCompetenceViewController: UIViewController, AjouterCompetenceDisplayLogic

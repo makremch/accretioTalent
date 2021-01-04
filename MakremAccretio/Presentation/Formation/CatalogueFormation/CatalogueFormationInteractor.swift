@@ -58,7 +58,7 @@ class CatalogueFormationInteractor: CatalogueFormationBusinessLogic, CatalogueFo
         worker = CatalogueFormationWorker()
         worker?.showListPopulation(token: token).then(){
             population in
-            print("in interractor formation Catalogue **************************")
+            print("in interractor list Population **************************")
             print(population)
             print("wwww")
             self.presenter?.showPopulation(response : population)

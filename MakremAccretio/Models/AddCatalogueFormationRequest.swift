@@ -46,7 +46,7 @@ struct TrainingRequestModelAdd: Codable {
 
 
 struct InitiatorSessionRequest: Codable {
-    internal init(registrationNumber: String?) {
+    internal init(registrationNumber: String) {
         self.registrationNumber = registrationNumber
     }
     
@@ -56,5 +56,19 @@ struct InitiatorSessionRequest: Codable {
     }
 
     
-    let  registrationNumber: String?
+    let  registrationNumber: String
+}
+
+struct targetEmployees: Codable{
+    internal init(registrationNumber: String) {
+        self.registrationNumber = registrationNumber
+    }
+    
+    
+    internal init() {
+        self.registrationNumber = ""
+    }
+
+    
+    let  registrationNumber: String
 }

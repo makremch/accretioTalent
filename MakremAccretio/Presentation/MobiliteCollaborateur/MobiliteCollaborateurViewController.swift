@@ -19,117 +19,38 @@ protocol MobiliteCollaborateurDisplayLogic: class {
     
 }
 
-class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborateurDisplayLogic, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
+class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborateurDisplayLogic {
+    
+    //    MARK: - Iboutlets:
+    @IBOutlet weak var searchBar    : UISearchBar!
+    @IBOutlet weak var tableView    : UITableView!
+    @IBOutlet var exampleRemoteLabel: UILabel! = UILabel()
+    @IBOutlet var exampleLocalLabel : UILabel! = UILabel()
     
     
-    @IBAction func onClickManagerButton(_ sender: Any) {
-//        presentViewController(MobiliteViewController, animated: true, completion: nil)
-    }
+//    MARK:- Let and var declaration :
+    typealias Models                              = MobiliteCollaborateurModels
+    let ud                                        = UserDefaults.standard
+    var dataValueCollaborateur        : [Content] = []
+    var searchActive                  : Bool      = false
+    var selectedScopeSearchButton     : Int       = 0
+    var currentDataValueCollaborateur : [Content] = []
+    let baseURL                       : String    = "https://mobile-int.accretio.io/"
+//    let baseURL                     : String    = "https://accretio-2-tnr.advyteam.com/"
+    var router                        : (NSObjectProtocol & MobiliteCollaborateurRoutingLogic & MobiliteCollaborateurDataPassing)?
+    var interactor                    : MobiliteCollaborateurBusinessLogic?
     
+   
+   
+//    MARK:- Button Actions :
     @IBAction func backButton(_ sender: Any) {
-        
         self.navigationController?.popViewController(animated: true)
-        
-    }
-    //    MARK: - DECLARATION UI & var :
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    
-    let ud = UserDefaults.standard
-    var dataValueCollaborateur : [Content] = []
-    var searchActive : Bool = false
-    var selectedScopeSearchButton : Int = 0
-    
-    let baseURL = "https://mobile-int.accretio.io/"
-//    let baseURL = "https://accretio-2-tnr.advyteam.com/"
-    //    MARK: - TableView insert Data
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive {
-            return currentDataValueArray.count
-        }
-        print(dataValueCollaborateur.count)
-        return dataValueCollaborateur.count
     }
     
+   
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let  cellCollaborateur = tableView.dequeueReusableCell(withIdentifier: "MobilityCollaborateurTableViewCell", for: indexPath) as?
-            MobiliteCollaborateurTableViewCell
-            else {
-                return UITableViewCell()
-        }
-        cellCollaborateur.imase.roundImageCorners([.topLeft,.topRight], radius: 10)
-        if !searchActive{
-            print(searchBar.selectedScopeButtonIndex)
-            searchActive = false
-            if dataValueCollaborateur[indexPath.row].publishedPictureOffer != nil {
-                let imageFromUrl = (dataValueCollaborateur[indexPath.row].publishedPictureOffer)!
-                let urlImage = URL(string: baseURL + "documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
-                cellCollaborateur.imase?.kf.setImage(with: urlImage, completionHandler: {
-                    result in
-                    switch result {
-                    case .success:
-                        print(result)
-                        print("5edmet : ",result)
-                        break
-                    case .failure:
-                        
-                        cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
-                    }
-                })
-            }else{
-                cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
-            }
-            cellCollaborateur.offreTitre.text=dataValueCollaborateur[indexPath.row].publishedLabelOffer
-            cellCollaborateur.codeCollaborateurLabel.text=dataValueCollaborateur[indexPath.row].offerCode
-//            cellCollaborateur.RegionLabel.text = (dataValueCollaborateur[indexPath.row].publishedLocalisationOffer as Any) as? String
-            let test = dataValueCollaborateur[indexPath.row]
-            if test.publishedLocalisationOffer != [] {
-                
-                cellCollaborateur.RegionLabel.text = (test.publishedLocalisationOffer?[0])
-            }
-            if test.publishedContractOffer != [] {
-                cellCollaborateur.offreContrat.text = (test.publishedContractOffer?[0])
-            }
-        }
-        else if searchActive {
-           
-
-            
-            cellCollaborateur.offreTitre.text = currentDataValueArray[indexPath.row].publishedLabelOffer
-            cellCollaborateur.codeCollaborateurLabel.text = currentDataValueArray[indexPath.row].offerCode
-//            cellCollaborateur.RegionLabel.text = currentDataValueArray[indexPath.row].publishedLocalisationOffer[0] ?? ""
-        }
-//        cellCollaborateur.bgImage.layer.cornerRadius = 15
-        
-        
-        return cellCollaborateur
-    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "detailVC") as! MobiliteCollaborateurDetailsViewController
-        if searchActive {
-            vc.content = currentDataValueArray[indexPath.row]
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(vc,animated: false)
-            }
-        }else {
-        vc.content = dataValueCollaborateur[indexPath.row]
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(vc,animated: true)
-        }
-//                   self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    
-    func getDataCollaborator(response: Response) {
-        dataValueCollaborateur = response.content!
-        tableView.reloadData()
-    }
     
     //    MARK: - Onclick cell row
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -138,104 +59,17 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
             else {
                 return
         }
-        mobiliteCollaborateurDetails.content = dataValueCollaborateur[index]
+        mobiliteCollaborateurDetails.content = currentDataValueCollaborateur[index]
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-    }
+   
     
-    private func searchBarShouldBeginEditing(_ searchBar: UISearchBar){
-        searchActive = true
-    }
-    
-    private func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    // MARK: - SearchBar
-    
-    
-    
-    var currentDataValueArray = [Content]()
-    private func setUpSearchBar(){
-        currentDataValueArray = dataValueCollaborateur
-        searchBar.delegate = self
-        tableView.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard  !searchText.isEmpty else {
-            currentDataValueArray = dataValueCollaborateur;
-            tableView.reloadData()
-            return
-        }
-        
-        if selectedScopeSearchButton == 0 {
-            
-            print(selectedScopeSearchButton)
-            self.findByOfferName(text: searchText)
-            tableView.reloadData()
-        }else if selectedScopeSearchButton == 1{
-            self.findByOfferRegion(text: searchText)
-            tableView.reloadData()
-        }else if selectedScopeSearchButton == 2{
-            self.findByOfferContrat(text: searchText)
-            tableView.reloadData()
-        }
-        
-    }
-    
-    private func findByOfferName(text : String) {
-        
-    }
-    
-    
-    private func findByOfferRegion(text : String) {
-        
-    }
-    
-    private func findByOfferContrat(text : String) {
-        
-    }
-    
-    
-    
-    //    MARK: - ScopeBar for search :
-    
-    private func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) -> Int{
-        print("New scope index is now \(selectedScope)")
-        selectedScopeSearchButton = selectedScope
-        return selectedScopeSearchButton
-    }
     
   
     
     
     // MARK: - Properties
     
-    typealias Models = MobiliteCollaborateurModels
-    var router: (NSObjectProtocol & MobiliteCollaborateurRoutingLogic & MobiliteCollaborateurDataPassing)?
-    var interactor: MobiliteCollaborateurBusinessLogic?
     
     // MARK: - Object lifecycle
     
@@ -271,14 +105,11 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setinngUpSearchBar()
         setupFetchFromLocalDataStore()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let token = ud.string(forKey: "accessToken")!
-        print("break ...",token)
         self.interactor?.getListMobilityCollaborator(token: token)
-        
-        //        currentDataValueArray = dataValueCollaborateur
-        self.setUpSearchBar()
         
     }
     
@@ -312,7 +143,7 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     
     // MARK: - Use Case - Fetch From Local DataStore
     
-    @IBOutlet var exampleLocalLabel: UILabel! = UILabel()
+    
     func setupFetchFromLocalDataStore() {
         let request = Models.FetchFromLocalDataStore.Request()
         interactor?.fetchFromLocalDataStore(with: request)
@@ -322,9 +153,9 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
         exampleLocalLabel.text = viewModel.exampleTranslation
     }
     
-    // MARK: - Use Case - Fetch From Remote DataStore
     
-    @IBOutlet var exampleRemoteLabel: UILabel! = UILabel()
+    
+    // MARK: - Use Case - Fetch From Remote DataStore
     func setupFetchFromRemoteDataStore() {
         let request = Models.FetchFromRemoteDataStore.Request()
         interactor?.fetchFromRemoteDataStore(with: request)
@@ -335,7 +166,6 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     }
     
     // MARK: - Use Case - Track Analytics
-    
     @objc
     func trackScreenViewAnalytics() {
         trackAnalytics(event: .screenView)
@@ -378,6 +208,86 @@ class MobiliteCollaborateurViewController: UIViewController, MobiliteCollaborate
     }
     
     
+//    MARK:- Getting data from API :
+    func getDataCollaborator(response: Response) {
+        dataValueCollaborateur = response.content!
+        currentDataValueCollaborateur = dataValueCollaborateur
+        tableView.reloadData()
+    }
     
+}
+
+
+
+extension MobiliteCollaborateurViewController : UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+//    MARK:- SearchBar :
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            currentDataValueCollaborateur = dataValueCollaborateur
+            tableView.reloadData()
+            UIView.transition(with: tableView, duration: 1.0, options: .transitionCurlUp, animations: {self.tableView.reloadData()}, completion: nil)
+            return
+        }
+        currentDataValueCollaborateur = dataValueCollaborateur.filter({r -> Bool in r.publishedLabelOffer!.contains(searchText)})
+        tableView.reloadData()
+    }
+    
+    private func setinngUpSearchBar(){
+        searchBar.delegate = self
+    }
+    
+    //    MARK: - TableView insert Data
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currentDataValueCollaborateur.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let  cellCollaborateur = tableView.dequeueReusableCell(withIdentifier: "MobilityCollaborateurTableViewCell", for: indexPath) as?
+            MobiliteCollaborateurTableViewCell
+            else {
+                return UITableViewCell()
+        }
+        cellCollaborateur.imase.roundImageCorners([.topLeft,.topRight], radius: 10)
+            if currentDataValueCollaborateur[indexPath.row].publishedPictureOffer != nil {
+                let imageFromUrl = (currentDataValueCollaborateur[indexPath.row].publishedPictureOffer)!
+                let urlImage = URL(string: baseURL + "documentsmanagement/api/document-mgm?moduleName=recruitment&codeFile=" + imageFromUrl)
+                cellCollaborateur.imase?.kf.setImage(with: urlImage, completionHandler: {
+                    result in
+                    switch result {
+                    case .success:
+                        print(result)
+                        print("5edmet : ",result)
+                        break
+                    case .failure:
+                        
+                        cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
+                    }
+                })
+            }else{
+                cellCollaborateur.imase?.image = UIImage(named: "noImageAvailable")!
+            }
+            cellCollaborateur.offreTitre.text=currentDataValueCollaborateur[indexPath.row].publishedLabelOffer
+            cellCollaborateur.codeCollaborateurLabel.text=currentDataValueCollaborateur[indexPath.row].offerCode
+//            cellCollaborateur.RegionLabel.text = (dataValueCollaborateur[indexPath.row].publishedLocalisationOffer as Any) as? String
+            let test = currentDataValueCollaborateur[indexPath.row]
+            if test.publishedLocalisationOffer != [] {
+                
+                cellCollaborateur.RegionLabel.text = (test.publishedLocalisationOffer?[0])
+            }
+            if test.publishedContractOffer != [] {
+                cellCollaborateur.offreContrat.text = (test.publishedContractOffer?[0])
+            }
+        return cellCollaborateur
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "detailVC") as! MobiliteCollaborateurDetailsViewController
+        vc.content = currentDataValueCollaborateur[indexPath.row]
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(vc,animated: true)
+        }
+    }
 }

@@ -13,17 +13,20 @@ import Foundation
 struct Profile: Codable {
     let id: String
     let addresses: [JSONAny]
-    let citation, authorCitation: String
+//    let  authorCitation: String
+//    let citation : String?
     let summary: JSONNull?
     let hobbies: [String]
     let facebook, linkedIn, twitter, firstName: String
     let lastName: String
     let birthDay: JSONNull?
-    let businessPhone, email, coverPicture, profilePicture: String
+    let businessPhone, email :String
+//    let coverPicture, profilePicture: String
     let affectation: Affectation
     let hiringExit: HiringExit
     let registrationNumber, seniorityCompanyPeriod, seniorityGroupPeriod: String
-    let profileSkills, languages, firstHiringDate, lastHiringDate: JSONNull?
+//    let profileSkills: String
+//    let languages, firstHiringDate, lastHiringDate: JSONNull?
     let dateAnnivPerso, dateAnnivPersonalized: Bool
 }
 

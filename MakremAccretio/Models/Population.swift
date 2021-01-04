@@ -25,7 +25,7 @@ struct PopulationElement: Codable {
     let profilePicture: String?
     let site, company, payRollNumber, employeeWorkCycle: JSONNull?
     let employeeCalendar: EmployeeCalendar?
-    let employeeWorkCycles: JSONNull?
+//    let employeeWorkCycles: JSONNull?
 }
 
 

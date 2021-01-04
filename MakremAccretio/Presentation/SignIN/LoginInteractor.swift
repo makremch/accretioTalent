@@ -100,13 +100,16 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
                 userdefault.set(user.employee.firstName, forKey: "nameOfUser")
                 userdefault.set(user.employee.lastName, forKey: "lastNameOfUser")
                 userdefault.set((user.employee.employeeType?.employeeType)!, forKey: "employeType")
+                print("3assba ! ")
                 self.worker?.profile(token: userSession.accessToken,id : user.employee.id).then {
                     profile in
+                    print(profile.affectation.affectedPosition.label)
+                    print("ll")
                     UserDefaults.standard.setValue(profile.affectation.affectedPosition.label, forKey: "poste")
                     KingfisherManager.shared.defaultOptions = [.requestModifier(CookiesImageDownloaderPlugin(authToken: userSession.accessToken, docToken: Connected.documentToken, bnesDocToken: Connected.bnesDocumentToken))]
-                    self.presenter?.presentSignInSuccess()
+                    
                 }
-                
+                self.presenter?.presentSignInSuccess()
             }
         }.catch {error in
             print(error)

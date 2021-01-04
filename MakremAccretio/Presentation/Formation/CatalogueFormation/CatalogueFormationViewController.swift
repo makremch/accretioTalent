@@ -29,9 +29,12 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     
     
     //    MARK:- Var & Let
-    var interactor: CatalogueFormationBusinessLogic?
-    var router: (NSObjectProtocol & CatalogueFormationRoutingLogic & CatalogueFormationDataPassing)?
-    lazy var popUpWindow : PopUpWindow = {
+    var interactor                    : CatalogueFormationBusinessLogic?
+    var router                        : (NSObjectProtocol & CatalogueFormationRoutingLogic & CatalogueFormationDataPassing)?
+    var dataValueForPopulation        :  [PopulationElement] = []
+    var dataValueCatalogue            : [FormationCatalogue] = []
+    var currentDataValueCatalogue     : [FormationCatalogue] = []
+    lazy var popUpWindow              : PopUpWindow          = {
         let view = PopUpWindow()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 15
@@ -39,30 +42,30 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         return view
     }()
     
-    var dataValueForPopulation :  [PopulationElement] = []
-    var dataValueCatalogue : [FormationCatalogue] = []
-//    var page = 0
-//    var size = 1
-//    var totalPages = 0
-    //    MARK:- IBOutlets
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var TitleOfView: UILabel!
-    @IBOutlet weak var viewDemande: UIView!
-    @IBOutlet weak var viewDemandePopUp: UIView!
-    @IBOutlet weak var PopulationButton: UIButton!
-    @IBOutlet weak var ImportanceButton: UIButton!
-    @IBOutlet weak var DateButton: UIButton!
-    @IBOutlet weak var urgenceSwitch: UISwitch!
-    @IBOutlet weak var populationConcerneView: UIView!
-    @IBOutlet weak var populationCollectionView: UICollectionView!
-    @IBOutlet weak var bgView: UIView!
-    @IBAction func onclickSwitch(_ sender: Any) {
-    }
-    @IBOutlet weak var validerButton: UIButton!
-    @IBOutlet weak var annulerButton: UIButton!
     
-    @IBOutlet weak var formationNameField: UITextField!
+    //    MARK:- IBOutlets
+    @IBOutlet weak var searchBar               : UISearchBar!
+    @IBOutlet weak var tableView               : UITableView!
+    @IBOutlet weak var TitleOfView             : UILabel!
+    @IBOutlet weak var viewDemande             : UIView!
+    @IBOutlet weak var viewDemandePopUp        : UIView!
+    @IBOutlet weak var PopulationButton        : UIButton!
+    @IBOutlet weak var ImportanceButton        : UIButton!
+    @IBOutlet weak var DateButton              : UIButton!
+    @IBOutlet weak var urgenceSwitch           : UISwitch!
+    @IBOutlet weak var populationConcerneView  : UIView!
+    @IBOutlet weak var populationCollectionView: UICollectionView!
+    @IBOutlet weak var bgView                  : UIView!
+    @IBOutlet weak var validerButton           : UIButton!
+    @IBOutlet weak var annulerButton           : UIButton!
+    @IBOutlet weak var formationNameField      : UITextField!
+    
+    
+//    MARK:- Button actions :
     @IBAction func formationTextField(_ sender: Any) {
+    }
+    
+    @IBAction func onclickSwitch(_ sender: Any) {
     }
     
     @IBAction func closeView(_ sender: Any) {
@@ -76,11 +79,11 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         }
         
     }
-    
-    //    MARK:- Button actions
+
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
     }
+    
     @IBAction func DateButton(_ sender: Any) {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -129,14 +132,15 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
    
     @IBAction func PopulationButton(_ sender: Any) {
         populationConcerneView.isHidden = false
-       
-        print("ww")
     }
+    
     @IBAction func ConfirmerButton(_ sender: Any) {
-        let newArrayOfParticipant = PopulationCollectionViewCell.participants.map{ InitiatorSessionRequest(registrationNumber: $0.registrationNumber) }
+        let newArrayOfParticipant = PopulationCollectionViewCell.participants.map{ InitiatorSessionRequest(registrationNumber: $0.registrationNumber!) }
         var newObject = TrainingRequestModelAdd()
         newObject.importance = (ImportanceButton.titleLabel?.text)!
         newObject.targetEmployees = newArrayOfParticipant
+        print(newArrayOfParticipant)
+        print("---------------------------")
         newObject.trainingRequestModelDescription = formationNameField.text
         newObject.priority = false
         newObject.status = "PROGRESS"
@@ -160,8 +164,6 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     
     @IBAction func DemandeHorsCatalogue(_ sender: Any) {
         viewDemande.isHidden = false
-        
-        //        view.layer.opacity = 0.1
     }
     
     
@@ -237,6 +239,7 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
         let token = UserDefaults.standard.string(forKey: "accessToken")!
         print(token)
         self.interactor?.showCatalogueFormation(token: token,page: 0, size: 10)
+        print(99)
         self.interactor?.showListPopulation(token: token)
         view.addSubview(visualEffectView)
         designingEffectView()
@@ -262,22 +265,22 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     func getCatalogueData(response:ResponseCatalogue){
         print(response)
         dataValueCatalogue.append(contentsOf : response.content)
-//        self.totalPages = response.totalPages!
-//        self.page+=1
+        self.currentDataValueCatalogue = self.dataValueCatalogue
         tableView.reloadData()
     }
     
     func showDataPopulation(response:Population){
         self.dataValueForPopulation = response
+        
         self.populationCollectionView.reloadData()
     }
     
     func designingPopUp(){
         view.addSubview(popUpWindow)
         popUpWindow.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: -40).isActive = true
-        popUpWindow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        popUpWindow.heightAnchor.constraint(equalToConstant: view.frame.width - 64).isActive = true
-        popUpWindow.widthAnchor.constraint(equalToConstant: view.frame.width-64).isActive = true
+        popUpWindow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive               = true
+        popUpWindow.heightAnchor.constraint(equalToConstant: view.frame.width - 64).isActive     = true
+        popUpWindow.widthAnchor.constraint(equalToConstant: view.frame.width-64).isActive        = true
     }
     
     let visualEffectView: UIVisualEffectView = {
@@ -288,10 +291,10 @@ class CatalogueFormationViewController: UIViewController,CatalogueFormationDispl
     }()
     
     func designingEffectView(){
-        visualEffectView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        visualEffectView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        visualEffectView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        visualEffectView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive               = true
+        visualEffectView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive             = true
+        visualEffectView.topAnchor.constraint(equalTo: view.topAnchor).isActive                 = true
+        visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive           = true
         visualEffectView.alpha = 0
     }
     
@@ -301,8 +304,8 @@ extension CatalogueFormationViewController: PopUpDelegate{
     func handleDismissAll() {
         UIView.animate(withDuration: 0.5, animations: {
             self.visualEffectView.alpha = 0
-            self.popUpWindow.alpha = 0
-            self.popUpWindow.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.popUpWindow.alpha      = 0
+            self.popUpWindow.transform  = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }) { (_) in
             self.popUpWindow.removeFromSuperview()
             print("Did remove pop up window..")
@@ -323,44 +326,38 @@ extension UIColor {
 extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-            return dataValueCatalogue.count
-        
+            return self.currentDataValueCatalogue.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-       
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "catalogueCell", for: indexPath) as?
             CatalogueFormationViewCell
             else {
                 return UITableViewCell()
         }
-        cell.formationNameLabel.text = dataValueCatalogue[indexPath.row].label
-        cell.initiatorLabel.text = (dataValueCatalogue[indexPath.row].initiator?.firstName)! + " " + (dataValueCatalogue[indexPath.row].initiator?.lastName)!
-        let clearedStartDate =  dataValueCatalogue[indexPath.row].creationDate!.components(separatedBy: "T")
-        cell.dateLabel.text = clearedStartDate[0]
-        cell.themeLabel.text = dataValueCatalogue[indexPath.row].theme
-        let BaseURL = "https://mobile-int.accretio.io/"
-//        let BaseURL = "https://accretio-2-tnr.advyteam.com/"
-        let url = URL(string: BaseURL + "documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (dataValueCatalogue[indexPath.row].picture)!)
-        //        let token = UserDefaults.standard.string(forKey: "accessToken")!
-        cell.formationImageView.kf.setImage(with: url){
-                    result in
-                    switch result {
-                    case .success:
-                        print(result)
-                        cell.formationImageView.contentMode = UIView.ContentMode.scaleToFill
-                        cell.formationImageView.clipsToBounds = true
-                        break
-                    case .failure:
-                        cell.formationImageView.image = UIImage(named: "noImageAvailable")!
-                        cell.formationImageView.contentMode = UIView.ContentMode.scaleAspectFit
-                    }
-                }
-       
+         
+        cell.formationNameLabel.text = self.currentDataValueCatalogue[indexPath.row].label
+        cell.initiatorLabel.text     = (self.currentDataValueCatalogue[indexPath.row].initiator?.firstName)! + " " + (self.currentDataValueCatalogue[indexPath.row].initiator?.lastName)!
+        let clearedStartDate         =  self.currentDataValueCatalogue[indexPath.row].creationDate!.components(separatedBy: "T")
+        cell.dateLabel.text          = clearedStartDate[0]
+        cell.themeLabel.text         = self.currentDataValueCatalogue[indexPath.row].theme
+        let BaseURL                  = "https://mobile-int.accretio.io/"
+//        let BaseURL                = "https://accretio-2-tnr.advyteam.com/"
+        let url                      = URL(string: BaseURL + "documentsmanagement/api/document-mgm?moduleName=training&codeFile=" + (self.currentDataValueCatalogue[indexPath.row].picture)!)
         
-        
+        cell.formationImageView.kf.setImage(with: url, completionHandler: {
+            result in
+            switch result {
+            case .success:
+                print(result)
+                cell.formationImageView.contentMode = UIView.ContentMode.scaleToFill
+                cell.formationImageView.clipsToBounds = true
+                break
+            case .failure:
+                cell.formationImageView.image = UIImage(named: "noImageAvailable")!
+                cell.formationImageView.contentMode = UIView.ContentMode.scaleAspectFit
+            }
+        })
         return cell
     }
     
@@ -369,8 +366,8 @@ extension CatalogueFormationViewController : UITableViewDelegate, UITableViewDat
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CatalogueFormationDetailsViewController") as!
         CatalogueFormationDetailsViewController
-        vc.content = dataValueCatalogue[indexPath.row]
-        vc.code = dataValueCatalogue[indexPath.row].code!
+        vc.content = self.currentDataValueCatalogue[indexPath.row]
+        vc.code = self.currentDataValueCatalogue[indexPath.row].code!
         self.navigationController?.pushViewController(vc,animated: true)
         
     }
@@ -428,4 +425,23 @@ extension UIImageView {
          mask.path = path.cgPath
          self.layer.mask = mask
     }
+}
+
+extension CatalogueFormationViewController : UISearchBarDelegate {
+    //    MARK:- SearchBar :
+        
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            guard !searchText.isEmpty else {
+                currentDataValueCatalogue = dataValueCatalogue
+                tableView.reloadData()
+                UIView.transition(with: tableView, duration: 1.0, options: .transitionCurlUp, animations: {self.tableView.reloadData()}, completion: nil)
+                return
+            }
+            currentDataValueCatalogue = dataValueCatalogue.filter({r -> Bool in r.label!.contains(searchText)})
+            tableView.reloadData()
+        }
+        
+        private func setinngUpSearchBar(){
+            searchBar.delegate = self
+        }
 }

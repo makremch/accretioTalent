@@ -222,16 +222,17 @@ class MobiliteViewController: UIViewController, MobiliteDisplayLogic, UITableVie
     
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt demande: Demande) {
-        performSegue(withIdentifier: "ident", sender: demande)
+   
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "DetailsMobiliteViewController") as!
+        let vc = storyboard.instantiateViewController(identifier: "detailsMobilite") as!
+            
         DetailsMobiliteViewController
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(vc,animated: true)
         }
     }
-    
     
     
     

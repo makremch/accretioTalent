@@ -71,7 +71,7 @@ class UserAPIClient: APIClient {
                     print(response)
                     print("----------------------------------------")
                 case .failure(let error):
-                    
+                    print(error)
                     reject(error)
                 }
             })
